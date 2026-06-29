@@ -336,39 +336,39 @@ export const getLandingPageData = (pathname: string): LandingPageData | null => 
       { client: "Global Logix LLC", challenge: "Global Logix staff spent 4 hours daily keying in tracking codes from PDF manifests.", outcome: "Deployed AI Document Processing pipelines with automatic OCR validation.", metrics: "Reduced data entry times to under 3 minutes, cutting errors by 98%." },
       { client: "Apex Tech Support", challenge: "Faced high ticket volumes, causing average support reply delays of 12 hours.", outcome: "Integrated RAG Knowledge Base FAQ Agent.", metrics: "Resolved 65% of support queries instantly, reducing total tickets by half." }
     ];
-  } else if (categoryId === "automations" || lowerSlug.includes("whatsapp") || lowerSlug.includes("reply") || lowerSlug.includes("broadcast")) {
+  } else if (categoryId === "automations" || lowerSlug.includes("whatsapp") || lowerSlug.includes("reply") || lowerSlug.includes("broadcast") || lowerSlug.includes("automation")) {
     problemPoints = [
-      { title: "Unresponsive Customer Chats", desc: "Leads requesting information via messaging channels go hours without a reply, leaking conversions." },
-      { title: "Manual Shipping Status Logs", desc: "Support teams copy tracking numbers and email invoices manually, draining customer success resources." },
-      { title: "Fragmented Inbox Silos", desc: "Sales, billing, and support agents check different numbers, resulting in disjointed customer threads." }
+      { title: "Fragmented Software Silos", desc: "CRMs, accounting ledgers, and marketing databases run in isolation, requiring manual data copying and invoice syncing." },
+      { title: "Manual Administrative Overhead", desc: "Staff spend hours daily keying in tracking codes, creating purchase orders, and updating spreadsheets manually." },
+      { title: "Brittle Script Failures", desc: "Ad-hoc integration scripts break quietly without alerting teams, leading to lost customer records and stock mismatches." }
     ];
-    solutionDesc = "ELVTERA Automations integrate official Meta WhatsApp Business APIs and Twilio SIP trunks directly with your ERP tables, deploying automated template sequences and multi-agent shared inbox dashboards.";
+    solutionDesc = "ELVTERA Workflow Automations connect scattered enterprise applications into seamless, event-driven pipelines. We build custom webhook routers, database synchronization loops, and API wrappers to automate repetitive business administration.";
     solutionHighlights = [
-      "Verified Meta Cloud API integrations",
-      "Automated shipping and billing alerts",
-      "Shared team support inbox channels",
-      "Low-cost template conversation pipelines"
+      "Event-driven workflow orchestration",
+      "Multi-system database synchronization",
+      "Robust API webhook connectors",
+      "Automated audit logs & error alerting"
     ];
     features = [
-      { title: "Official Meta Porting", desc: "Port and verify your company phone numbers to acquire business green badges." },
-      { title: "Triggered Broadcast Flows", desc: "Configure webhook alerts to auto-dispatch shipping logs, progress updates, and payment reminders." },
-      { title: "Shared Inbox Dashboard", desc: "Assign incoming customer chats to team representatives and use quick-reply canned templates." },
-      { title: "Meta Template Approvals", desc: "Program, test, and submit message templates to Meta directories for pre-clearance." }
+      { title: "API Pipeline Integration", desc: "Build custom webhook connectors and REST API wrappers to pass data securely between platforms." },
+      { title: "Database Auto-Sync", desc: "Keep customer profiles, stock numbers, and sales logs in perfect alignment across systems in real time." },
+      { title: "Trigger-Based Actions", desc: "Define custom rules to send emails, push support tickets, and update ledgers automatically based on database changes." },
+      { title: "Error Logging & Alerts", desc: "Deploys background error checks that notify your engineering team immediately if any API connection times out." }
     ];
     benefits = [
-      { title: "100% Message Ingestion", desc: "Never miss a customer inquiry with automated qualifier chatbot routing." },
-      { title: "Carrier Ban Protection", desc: "Use verified, rate-compliant templates to safeguard customer phone registrations." },
-      { title: "Zero Manual Alert Overheads", desc: "Cut administrative work by triggering order notifications from database logs." },
-      { title: "Accurate Conversation Stats", desc: "Track delivered, read, and conversion rates across all broadcast campaigns." }
+      { title: "Zero Manual Data Copying", desc: "Save hundreds of labor hours by letting system events trigger downstream updates automatically." },
+      { title: "Eliminated Invoice Lag", desc: "Write transaction records directly to ledger accounts the second an order clears in the CRM." },
+      { title: "Robust Error Recovery", desc: "Automatically retry failed API requests and keep audit trails for complete operational transparency." },
+      { title: "Consolidated Workflows", desc: "Track all system integrations and trigger pipelines from a single, unified administration console." }
     ];
-    techStack = ["Meta Cloud API", "Twilio Gateway", "Node.js Webhooks", "PostgreSQL", "React Inbox"];
+    techStack = ["Node.js Engine", "Webhook Routers", "PostgreSQL", "REST APIs", "Audit Logs"];
     faq = [
-      { q: "Will Meta charge us for WhatsApp messages?", a: "Yes. Meta charges per conversation, depending on whether it is utility-based, marketing-based, or user-initiated. We will optimize your templates to keep costs minimal." },
-      { q: "Can we send files and PDFs via WhatsApp?", a: "Yes. Our WhatsApp CRM supports attachments, images, pricing sheets, voice notes, and PDF brochures." }
+      { q: "Can we automate workflows between legacy databases and modern cloud APIs?", a: "Yes. We design secure ETL pipelines and API proxies to bridge legacy on-premise SQL databases with cloud-based software." },
+      { q: "How do you handle API security and token credentials?", a: "We encrypt all API secrets and access tokens inside secure virtual key vaults with strict, role-based access permissions." }
     ];
     caseStudies = [
-      { client: "Summit Realty", challenge: "Sales agents struggled to follow up on 500+ daily property inquiries across three portals.", outcome: "Integrated custom Real Estate CRM with instant SMS & WhatsApp capture.", metrics: "Lead contact times dropped to 90 seconds, lifting bookings by 60%." },
-      { client: "Care Clinics Group", challenge: "Patient support logs were scattered across local clinic spreadsheets, leading to double-booked appointments.", outcome: "Deployed unified Healthcare CRM with centralized scheduling.", metrics: "Decreased appointment check-in queues by 35%." }
+      { client: "Logix Logistics", challenge: "Staff spent hours copy-pasting tracking details from supplier notifications into local databases.", outcome: "Built event-driven API webhook pipelines to parse notifications and update ledger schemas.", metrics: "Saved 25 hours per week of manual entry work, achieving 100% data accuracy." },
+      { client: "Apex Distributors", challenge: "Sales invoices took up to 3 days to post from the CRM into the ledger database, causing cash flow tracking delays.", outcome: "Deployed automatic CRM-to-ledger database synchronization trigger loops.", metrics: "Cut invoice posting latency from 72 hours to under 2 seconds." }
     ];
   } else if (categoryId === "digital-marketing" || lowerSlug.includes("seo") || lowerSlug.includes("ads") || lowerSlug.includes("marketing")) {
     problemPoints = [

@@ -12,13 +12,13 @@ import {
   Database,
   MessageSquare,
   CheckCircle2,
-  Coins,
-  Package,
-  ShoppingCart,
-  Factory,
   Terminal,
   Network,
-  Layers
+  Layers,
+  Briefcase,
+  Send,
+  Bot,
+  TrendingUp
 } from 'lucide-react';
 import { StatsCounter } from '../components/StatsCounter';
 import { InteractiveWorkflow } from '../components/InteractiveWorkflow';
@@ -27,6 +27,8 @@ import SEO from '../components/SEO';
 export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [visualMode, setVisualMode] = useState<'topology' | 'console'>('topology');
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [consoleLogs, setConsoleLogs] = useState<{ time: string; type: string; msg: string; color: string }[]>([
     { time: "10:14:02", type: "INGEST", msg: "Received Sales Invoice SI-2026-00492", color: "text-brand-blue" },
     { time: "10:14:05", type: "STOCK", msg: "Deducted yarn batch #FAB-292", color: "text-brand-teal" },
@@ -53,6 +55,10 @@ export const Home: React.FC = () => {
         ...prev.slice(-3),
         { time: timeStr, ...randomTx }
       ]);
+
+      // Rotate constellation nodes (6 nodes = 360 / 6 = 60 degrees per step)
+      setActiveIndex(prev => (prev + 1) % 6);
+      setRotationAngle(prev => prev + 60);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -78,11 +84,11 @@ export const Home: React.FC = () => {
       badge: "Workflow Automation"
     },
     {
-      title: "Automations",
-      desc: "Decommission manual shipping notifications, untracked client chats, and lead drop-offs. We configure official Meta API channels, multi-agent shared support desks, automatic WhatsApp template flows, and calendar booking triggers to streamline communication.",
-      features: ["Meta Business Verification", "Shared Team Inbox Dashboard", "Automatic Shipping Logs Flow", "Triggered Template Broadcasts"],
+      title: "Workflow Automations",
+      desc: "Connect scattered business applications (such as CRMs, SQL databases, messaging endpoints, and email gateways) into automated, event-driven pipelines. We build custom triggers and background scripts that synchronize records, compile logs, and alert teams instantly, eliminating manual administration overhead.",
+      features: ["Event-Driven Workflow Engines", "Webhooks & API Integrations", "Database Synchronization Loops", "Custom Alert & Reporting Rules"],
       color: "border-emerald-500/20 hover:border-emerald-500",
-      badge: "98% Message Open Rate"
+      badge: "Workflow Optimization"
     },
     {
       title: "Digital Growth",
@@ -253,80 +259,73 @@ export const Home: React.FC = () => {
                 <div className="grow flex flex-col justify-center py-4 relative min-h-[280px]">
                   
                   {visualMode === 'topology' ? (
-                    /* Topology Map Graphic */
-                    <div className="w-full h-full flex items-center justify-center relative">
-                      
-                      {/* Grid / Network Lines Background (SVG) */}
-                      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="50%" y1="50%" x2="50%" y2="15%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                        <line x1="50%" y1="50%" x2="80%" y2="25%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                        <line x1="50%" y1="50%" x2="80%" y2="75%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                        <line x1="50%" y1="50%" x2="50%" y2="85%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                        <line x1="50%" y1="50%" x2="20%" y2="75%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                        <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
-                      </svg>
-
-                      {/* Central Ledger Core Node */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
-                        <div className="relative group">
-                          <div className="absolute inset-0 bg-brand-blue/20 rounded-full blur-xl scale-150 animate-pulse"></div>
-                          <div className="bg-brand-blue text-white p-4.5 rounded-full shadow-lg border-2 border-brand-blue relative z-10 transition-transform hover:scale-105">
-                            <Database className="h-7 w-7 text-white" />
+                    /* Orbiting Constellation Map (Inspiration: CubeAI Solutions) */
+                    <div className="w-full h-full flex items-center justify-center scale-[0.8] sm:scale-100 select-none">
+                      <div className="relative w-80 h-80 flex items-center justify-center">
+                        
+                        {/* Central Ledger Core Node */}
+                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                          <div className="w-24 h-24 bg-white rounded-full shadow-lg flex flex-col items-center justify-center border border-slate-100 p-4">
+                            <Database className="h-6 w-6 text-brand-blue animate-pulse mb-1" />
+                            <span className="font-display font-extrabold text-[11px] text-slate-800 tracking-tight">Ledger Core</span>
+                            <span className="text-[8px] font-bold text-brand-teal uppercase tracking-wider mt-0.5">ELVTERA</span>
                           </div>
                         </div>
-                        <span className="text-[10px] font-bold text-slate-900 mt-2 bg-white px-2 py-0.5 rounded-full shadow-xs border border-slate-100">
-                          Ledger Core
-                        </span>
-                      </div>
 
-                      {/* Satellite Node 1: Accounting (Top Center) */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-[8%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <Coins className="h-4.5 w-4.5 text-brand-blue" />
+                        {/* Orbiting Ring container (rotates by -rotationAngle) */}
+                        <div 
+                          className="absolute inset-0 transition-transform duration-1000 ease-out"
+                          style={{ transform: `rotate(${-rotationAngle}deg)` }}
+                        >
+                          {/* Orbit dashed circle line */}
+                          <div className="absolute inset-4 rounded-full border-2 border-dashed border-slate-200 pointer-events-none"></div>
+                          
+                          {/* Map of the 6 nodes */}
+                          {[
+                            { label: "ERP Systems", icon: Layers },
+                            { label: "Workflows", icon: Cpu },
+                            { label: "AI Agents", icon: Bot },
+                            { label: "APIs & Webhooks", icon: Send },
+                            { label: "Digital Growth", icon: TrendingUp },
+                            { label: "IT Consulting", icon: Briefcase }
+                          ].map((node, index) => {
+                            const angle = (60 * index - 90) * (Math.PI / 180);
+                            const radius = 130; // px
+                            const x = radius * Math.cos(angle);
+                            const y = radius * Math.sin(angle);
+                            const isActive = index === activeIndex;
+                            const Icon = node.icon;
+                            
+                            return (
+                              <div 
+                                key={index}
+                                className="absolute top-1/2 left-1/2 transition-all duration-500"
+                                style={{
+                                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${rotationAngle}deg)`
+                                }}
+                              >
+                                <div className={`flex flex-col items-center justify-center p-2.5 rounded-xl transition-all duration-300 w-24 border ${
+                                  isActive 
+                                    ? "bg-white shadow-lg scale-110 border-brand-blue/60" 
+                                    : "bg-white/95 scale-90 opacity-60 border-slate-200"
+                                }`}>
+                                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                                    isActive ? "bg-brand-blue text-white" : "bg-slate-100 text-slate-500"
+                                  }`}>
+                                    <Icon className="h-4.5 w-4.5" />
+                                  </div>
+                                  <span className={`text-[8px] font-bold mt-1 text-center whitespace-nowrap leading-none ${
+                                    isActive ? "text-slate-900" : "text-slate-500"
+                                  }`}>
+                                    {node.label}
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Accounting</span>
-                      </div>
 
-                      {/* Satellite Node 2: Stock/Inventory (Top Right) */}
-                      <div className="absolute right-[12%] top-[20%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <Package className="h-4.5 w-4.5 text-brand-blue" />
-                        </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Inventory</span>
                       </div>
-
-                      {/* Satellite Node 3: CRM/Selling (Bottom Right) */}
-                      <div className="absolute right-[12%] bottom-[16%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <Users className="h-4.5 w-4.5 text-brand-blue" />
-                        </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Selling/CRM</span>
-                      </div>
-
-                      {/* Satellite Node 4: Procurement (Bottom Center) */}
-                      <div className="absolute left-1/2 -translate-x-1/2 bottom-[6%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <ShoppingCart className="h-4.5 w-4.5 text-brand-blue" />
-                        </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Buying</span>
-                      </div>
-
-                      {/* Satellite Node 5: Manufacturing (Bottom Left) */}
-                      <div className="absolute left-[12%] bottom-[16%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <Factory className="h-4.5 w-4.5 text-brand-blue" />
-                        </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">MRP/Mfg</span>
-                      </div>
-
-                      {/* Satellite Node 6: HRMS & Payroll (Top Left) */}
-                      <div className="absolute left-[12%] top-[20%] flex flex-col items-center z-10">
-                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
-                          <Layers className="h-4.5 w-4.5 text-brand-blue" />
-                        </div>
-                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">HRMS/Payroll</span>
-                      </div>
-
                     </div>
                   ) : (
                     /* Live Transaction Logs Console */
@@ -414,7 +413,7 @@ export const Home: React.FC = () => {
             {pillars.map((pillar, idx) => (
               <div 
                 key={idx} 
-                className={`bg-white border border-slate-200 rounded-2xl p-6 flex flex-col justify-between h-96 hover-card hover:border-brand-blue transition-all duration-300 ${pillar.color}`}
+                className={`bg-white border border-slate-200 rounded-2xl p-8 pb-10 flex flex-col justify-between h-full hover-card hover:border-brand-blue transition-all duration-300 ${pillar.color}`}
               >
                 <div className="space-y-4 text-left">
                   <div className="flex justify-between items-center">
@@ -430,7 +429,7 @@ export const Home: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="border-t border-slate-100 pt-4 mt-6">
+                <div className="border-t border-slate-100 pt-5 mt-6">
                   <ul className="space-y-2 text-left">
                     {pillar.features.map((feat, fIdx) => (
                       <li key={fIdx} className="text-xs font-bold text-slate-700 flex items-center space-x-2">
@@ -444,7 +443,7 @@ export const Home: React.FC = () => {
             ))}
 
             {/* Call to Action Grid Card */}
-            <div className="bg-gradient-brand rounded-2xl p-8 flex flex-col justify-between text-white shadow-xl shadow-brand-blue/10 h-96">
+            <div className="bg-gradient-brand rounded-2xl p-8 pb-10 flex flex-col justify-between text-white shadow-xl shadow-brand-blue/10 h-full">
               <div className="text-left space-y-4">
                 <h3 className="font-display font-bold text-2xl">
                   Need a custom enterprise architecture?

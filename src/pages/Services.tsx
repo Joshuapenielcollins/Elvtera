@@ -81,25 +81,25 @@ export const Services: React.FC = () => {
       ]
     },
     {
-      title: "Automations",
-      tagline: "Decommission manual shipping notifications, untracked client chats, and lead drop-offs.",
-      longDesc: "Connect directly with customers through official Meta Cloud APIs and Twilio gateways. We configure multi-agent shared support desks, automatic WhatsApp template flows, and calendar booking triggers to streamline communication.",
+      title: "Workflow Automations",
+      tagline: "Decommission manual data copying and disjointed software pipelines.",
+      longDesc: "Connect all your enterprise applications (such as CRMs, SQL databases, email, and messaging APIs) into seamless, event-driven workflow automation pipelines. We build custom triggers and actions that automatically sync logs, dispatch notifications, compile reports, and audit data, keeping your business running 24/7 without manual effort.",
       icon: Send,
       benefits: [
-        { title: "Official API Verifications", desc: "We guide your team through official Meta business validation to secure green badges and prevent carrier number blocking." },
-        { title: "Shared Multi-Agent Team Inboxes", desc: "Permit your sales, billing, and support agents to chat concurrently using a single central corporate number." },
-        { title: "Transactional Broadcast Flows", desc: "Scale conversions by triggering automatic templates for order updates, progress notes, and payment clearance reminders." }
+        { title: "Event-Driven Workflows", desc: "Connect scattered systems using webhooks and direct database links, running pipeline scripts immediately on events." },
+        { title: "Multi-System Auto-Sync", desc: "Keep Customer, Inventory, and Accounting ledgers fully updated across platforms automatically." },
+        { title: "Custom Triggers & Alerts", desc: "Set up rules for email broadcasts, team notifications, and warning flags based on database activity." }
       ],
       features: [
-        { name: "Official API Setup", specs: "Meta business setup, phone porting, and template approvals", path: "/automations/whatsapp-api" },
-        { name: "Campaign Broadcasting", specs: "Bulk brochure deliveries, targeting triggers, and real-time read statistics", path: "/automations/broadcast-campaigns" },
-        { name: "Shared Team Inbox", specs: "Central sales & support dashboard with ticket assignments and canned replies", path: "/automations/team-inbox" },
-        { name: "Chatbot Funnels", specs: "Lead capture questionnaires, automated calendar hooks, and document routing", path: "/automations/whatsapp-chatbot" }
+        { name: "API Pipeline Integration", specs: "Webhook connectors, REST API wrappers, and multi-system data flows", path: "/automations/whatsapp-api" },
+        { name: "Database Auto-Sync", specs: "Syncing lead databases, inventory records, and invoicing sheets in real time", path: "/automations/broadcast-campaigns" },
+        { name: "Trigger-Based Actions", specs: "Custom notification triggers, email dispatches, and reports compiler", path: "/automations/team-inbox" },
+        { name: "Process Workflows", specs: "Automatic verification approvals, document routing, and ledger entries", path: "/automations/whatsapp-chatbot" }
       ],
-      workflow: ["Meta business verification", "API routing & webhook setup", "Shared inbox configuration", "Chat templates approvals", "Workflow routing test"],
+      workflow: ["Systems API & webhook scoping", "Pipeline logic & routing maps design", "Data transformation rules testing", "Trigger & schedule validation", "Background engine deployment"],
       faq: [
-        { q: "Will Meta charge us for WhatsApp messages?", a: "Yes. Meta charges per conversation, depending on whether it is utility-based, marketing-based, or user-initiated. We will optimize your templates to keep costs minimal." },
-        { q: "Can we send files and PDFs via WhatsApp?", a: "Yes. Our WhatsApp CRM supports attachments, images, pricing sheets, voice notes, and PDF brochures." }
+        { q: "Can you automate workflows across different cloud platforms?", a: "Yes. We configure pipelines connecting various cloud APIs, custom internal databases, email servers, and support queues." },
+        { q: "How do you handle API downtime or connection failures?", a: "We build automatic retry queues, log event failures to audit logs, and trigger immediate alerts to administrators if an API request fails persistently." }
       ]
     },
     {
@@ -150,13 +150,137 @@ export const Services: React.FC = () => {
   const tabs = [
     { name: "Business Software", icon: Layers },
     { name: "AI Solutions", icon: Cpu },
-    { name: "Automations", icon: Send },
+    { name: "Workflow Automations", icon: Send },
     { name: "Digital Growth", icon: TrendingUp },
     { name: "Business Consulting", icon: Briefcase }
   ];
 
   const activePillar = pillarsData[activeTab];
   const ActiveIcon = activePillar.icon;
+
+  const renderIllustration = (tab: number) => {
+    switch (tab) {
+      case 0:
+        return (
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
+            <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="35" width="60" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="40" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="9" fontWeight="bold">POS Intake</text>
+              <rect x="25" y="68" width="30" height="6" rx="2" fill="#3b82f6" opacity="0.2" />
+              
+              <path d="M70 60 H110" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
+              
+              <rect x="110" y="25" width="60" height="70" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="140" y="45" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Ledger DB</text>
+              <line x1="120" y1="60" x2="160" y2="60" stroke="#14b8a6" strokeWidth="1" strokeDasharray="2 2" />
+              <text x="140" y="72" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Double Entry</text>
+              <text x="140" y="82" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="6">POSTED: INVOICE</text>
+              
+              <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
+              
+              <rect x="210" y="35" width="60" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="9" fontWeight="bold">GL Accounts</text>
+              <circle cx="240" cy="71" r="5" fill="#14b8a6" className="animate-ping" />
+            </svg>
+          </div>
+        );
+      case 1:
+        return (
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
+            <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="30" width="55" height="60" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="37.5" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">PDF Doc</text>
+              <line x1="20" y1="58" x2="55" y2="58" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="2 2" />
+              <line x1="20" y1="68" x2="50" y2="68" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="2 2" />
+              <line x1="20" y1="78" x2="45" y2="78" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="2 2" />
+              
+              <path d="M65 60 H110" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+              
+              <rect x="110" y="35" width="60" height="50" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="140" y="53" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">AI Brain</text>
+              <text x="140" y="68" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Embeddings</text>
+              
+              <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+              
+              <rect x="210" y="30" width="60" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="240" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Vector DB</text>
+              <circle cx="230" cy="65" r="3" fill="#14b8a6" />
+              <circle cx="242" cy="72" r="3" fill="#3b82f6" />
+              <circle cx="250" cy="62" r="3" fill="#14b8a6" />
+            </svg>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
+            <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="45" width="50" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="35" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="8" fontWeight="bold">Webhook</text>
+              
+              <path d="M60 60 C80 60, 80 35, 105 35" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
+              <path d="M60 60 C80 60, 80 85, 105 85" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
+              
+              <rect x="105" y="20" width="65" height="30" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="137.5" y="35" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Filter Check</text>
+              
+              <rect x="105" y="70" width="65" height="30" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="137.5" y="85" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Sync DB</text>
+              
+              <path d="M170 35 H210" stroke="#14b8a6" strokeWidth="1.5" strokeDasharray="2 2" />
+              <path d="M170 85 H210" stroke="#14b8a6" strokeWidth="1.5" strokeDasharray="2 2" />
+              
+              <rect x="210" y="20" width="60" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="240" y="35" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Send Email</text>
+              
+              <rect x="210" y="70" width="60" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="240" y="85" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Post Ledger</text>
+            </svg>
+          </div>
+        );
+      case 3:
+        return (
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
+            <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="35" width="55" height="50" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="37.5" y="60" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">SEO Pages</text>
+              <line x1="20" y1="70" x2="55" y2="70" stroke="#14b8a6" strokeWidth="1" />
+              
+              <path d="M65 60 H110" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+              
+              <rect x="110" y="30" width="60" height="60" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="140" y="55" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Search Index</text>
+              <circle cx="140" cy="75" r="4" fill="#3b82f6" className="animate-ping" />
+              
+              <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+              
+              <rect x="210" y="35" width="60" height="50" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Conversion</text>
+              <text x="240" y="70" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Sales Lead</text>
+            </svg>
+          </div>
+        );
+      case 4:
+        return (
+          <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
+            <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="70" cy="60" r="35" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="70" y="60" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Offline SOP</text>
+              
+              <circle cx="150" cy="60" r="35" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
+              <text x="150" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">DB Blueprint</text>
+              
+              <path d="M185 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
+              
+              <rect x="210" y="35" width="60" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
+              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">RFP Specs</text>
+              <text x="240" y="70" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Deployment</text>
+            </svg>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="w-full relative overflow-hidden font-sans bg-brand-bg-light text-slate-700">
@@ -238,6 +362,12 @@ export const Services: React.FC = () => {
                   {activePillar.longDesc}
                 </p>
 
+                {/* Animated SVG Diagram Illustration */}
+                <div className="py-2">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-450 mb-3">Service Architecture Blueprint</h4>
+                  {renderIllustration(activeTab)}
+                </div>
+
                 <div className="pt-4 border-t border-slate-200 space-y-3">
                   <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-500">Pillar Deployment Workflow</h4>
                   <ol className="space-y-2 text-sm">
@@ -273,8 +403,8 @@ export const Services: React.FC = () => {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {activePillar.benefits.map((benefit, bIdx) => (
-                      <div key={bIdx} className="bg-white border border-slate-200/50 p-4.5 rounded-xl space-y-1.5 hover-card shadow-xs">
-                        <h4 className="font-bold text-xs text-slate-900 flex items-center space-x-1">
+                      <div key={bIdx} className="bg-white border border-slate-200/50 p-6 pb-8 rounded-xl space-y-2 hover-card shadow-xs flex flex-col justify-start h-full">
+                        <h4 className="font-bold text-xs text-slate-900 flex items-center space-x-1.5 shrink-0">
                           <Check className="h-4 w-4 text-brand-teal shrink-0" />
                           <span className="truncate">{benefit.title}</span>
                         </h4>
