@@ -9,19 +9,39 @@ import {
   Send, 
   TrendingUp, 
   Briefcase,
-  ArrowRight
+  ArrowRight,
+  Database,
+  Users,
+  MessageSquare,
+  Bot,
+  FolderOpen,
+  Globe,
+  Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMega, setActiveMega] = useState<boolean>(false);
+  const [activeProductsDrop, setActiveProductsDrop] = useState<boolean>(false);
   const location = useLocation();
 
   const handleLinkClick = () => {
     setIsOpen(false);
     setActiveMega(false);
+    setActiveProductsDrop(false);
   };
+
+  const products = [
+    { name: 'Enterprise ERP Engine', desc: 'All-in-one resource planning platform', path: '/products', icon: Database },
+    { name: 'Omnichannel Sales CRM', desc: 'Manage client relationships & pipelines', path: '/products', icon: Users },
+    { name: 'Official WhatsApp CRM API', desc: 'Broadcasting & shared team inboxes', path: '/products', icon: MessageSquare },
+    { name: 'AI Voice Calling Agent', desc: 'Autonomous inbound & outbound dialer', path: '/products', icon: Bot },
+    { name: 'HRMS & Payroll Core', desc: 'Automate shifts, payroll, & local taxes', path: '/products', icon: Layers },
+    { name: 'Warehouse Stock Engine', desc: 'Track multi-warehouse inventory items', path: '/products', icon: FolderOpen },
+    { name: 'Custom Client Portals', desc: 'Secure customer & employee logins', path: '/products', icon: Globe },
+    { name: 'AI Booking Assistant', desc: 'Schedule appointments & sync calendars', path: '/products', icon: Zap }
+  ];
 
   const navLinks = [
     { name: 'About', path: '/about' },
@@ -206,20 +226,80 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Nav links */}
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={handleLinkClick}
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors ${
-                  location.pathname === link.path
-                    ? 'text-brand-blue bg-brand-blue/5'
-                    : 'text-slate-700 hover:text-brand-blue hover:bg-slate-100/50'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.name === 'Products') {
+                return (
+                  <div 
+                    key={link.name}
+                    className="relative"
+                    onMouseEnter={() => setActiveProductsDrop(true)}
+                    onMouseLeave={() => setActiveProductsDrop(false)}
+                  >
+                    <button 
+                      className={`flex items-center space-x-1.5 px-4 py-2 rounded-lg text-base font-semibold transition-colors cursor-pointer ${
+                        location.pathname === '/products'
+                          ? 'text-brand-blue bg-brand-blue/5'
+                          : 'text-slate-700 hover:text-brand-blue hover:bg-slate-100/50'
+                      }`}
+                    >
+                      <span>Products</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${activeProductsDrop ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {activeProductsDrop && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 15 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
+                          className="absolute left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-white rounded-2xl shadow-2xl border border-slate-200/80 p-5 grid grid-cols-2 gap-4 z-50"
+                        >
+                          {products.map((prod, pIdx) => {
+                            const Icon = prod.icon;
+                            return (
+                              <Link 
+                                key={pIdx} 
+                                to={prod.path}
+                                onClick={handleLinkClick}
+                                className="flex items-start space-x-2.5 p-2 rounded-xl hover:bg-slate-50 transition-colors"
+                              >
+                                <div className="p-2 rounded-lg bg-brand-blue/10 text-brand-blue shrink-0 mt-0.5">
+                                  <Icon className="h-4.5 w-4.5" />
+                                </div>
+                                <div className="text-left">
+                                  <span className="block text-xs font-bold text-slate-800 leading-tight">
+                                    {prod.name}
+                                  </span>
+                                  <span className="block text-[10px] text-slate-500 mt-1 leading-snug">
+                                    {prod.desc}
+                                  </span>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={handleLinkClick}
+                  className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors ${
+                    location.pathname === link.path
+                      ? 'text-brand-blue bg-brand-blue/5'
+                      : 'text-slate-700 hover:text-brand-blue hover:bg-slate-100/50'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Action buttons */}
