@@ -373,7 +373,7 @@ export const Services: React.FC = () => {
                   <ol className="space-y-2 text-sm">
                     {activePillar.workflow.map((step, sIdx) => (
                       <li key={sIdx} className="flex items-center space-x-2">
-                        <span className="h-5 w-5 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center font-bold text-[11px] shrink-0">
+                        <span className="h-5 w-5 rounded-full bg-brand-teal/10 text-brand-teal flex items-center justify-center font-bold text-xs shrink-0">
                           {sIdx + 1}
                         </span>
                         <span className="text-slate-750 font-semibold">{step}</span>
@@ -437,9 +437,9 @@ export const Services: React.FC = () => {
                                 {feat.name}
                               </Link>
                             </td>
-                            <td className="px-5 py-4 text-slate-600 font-medium">
+                            <td className="px-5 py-4 text-slate-600 font-medium text-sm">
                               {feat.specs}
-                              <Link to={feat.path} className="ml-2 inline-flex items-center text-[10px] text-brand-teal font-extrabold hover:underline">
+                              <Link to={feat.path} className="ml-2 inline-flex items-center text-xs text-brand-teal font-extrabold hover:underline">
                                 <span>View Details</span>
                                 <ArrowRight className="h-2.5 w-2.5 ml-0.5" />
                               </Link>

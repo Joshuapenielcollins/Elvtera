@@ -12,13 +12,7 @@ import {
   Database,
   MessageSquare,
   CheckCircle2,
-  Terminal,
-  Network,
-  Layers,
-  Briefcase,
-  Send,
-  Bot,
-  TrendingUp
+  Terminal
 } from 'lucide-react';
 import { StatsCounter } from '../components/StatsCounter';
 import { InteractiveWorkflow } from '../components/InteractiveWorkflow';
@@ -27,8 +21,6 @@ import SEO from '../components/SEO';
 export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [visualMode, setVisualMode] = useState<'topology' | 'console'>('topology');
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [rotationAngle, setRotationAngle] = useState<number>(0);
   const [consoleLogs, setConsoleLogs] = useState<{ time: string; type: string; msg: string; color: string }[]>([
     { time: "10:14:02", type: "INGEST", msg: "Received Sales Invoice SI-2026-00492", color: "text-brand-blue" },
     { time: "10:14:05", type: "STOCK", msg: "Deducted yarn batch #FAB-292", color: "text-brand-teal" },
@@ -55,10 +47,6 @@ export const Home: React.FC = () => {
         ...prev.slice(-3),
         { time: timeStr, ...randomTx }
       ]);
-
-      // Rotate constellation nodes (6 nodes = 360 / 6 = 60 degrees per step)
-      setActiveIndex(prev => (prev + 1) % 6);
-      setRotationAngle(prev => prev + 60);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -229,28 +217,28 @@ export const Home: React.FC = () => {
                   <div className="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-xl">
                     <button
                       onClick={() => setVisualMode('topology')}
-                      className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                      className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         visualMode === 'topology' 
                           ? 'bg-white text-brand-blue shadow-sm' 
                           : 'text-slate-500 hover:text-slate-800'
                       }`}
                     >
-                      <Network className="h-3 w-3" />
-                      <span>Architecture Map</span>
+                      <Activity className="h-3.5 w-3.5" />
+                      <span>Performance Monitor</span>
                     </button>
                     <button
                       onClick={() => setVisualMode('console')}
-                      className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                      className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                         visualMode === 'console' 
                           ? 'bg-white text-brand-blue shadow-sm' 
                           : 'text-slate-500 hover:text-slate-800'
                       }`}
                     >
-                      <Terminal className="h-3 w-3" />
-                      <span>Live Activity</span>
+                      <Terminal className="h-3.5 w-3.5" />
+                      <span>Live Command Console</span>
                     </button>
                   </div>
-                  <span className="text-[9px] bg-brand-blue/10 text-brand-blue font-extrabold px-2.5 py-1 rounded-full">
+                  <span className="text-xs bg-brand-blue/10 text-brand-blue font-extrabold px-3 py-1 rounded-full">
                     Core Dashboard
                   </span>
                 </div>
@@ -259,86 +247,90 @@ export const Home: React.FC = () => {
                 <div className="grow flex flex-col justify-center py-4 relative min-h-[280px]">
                   
                   {visualMode === 'topology' ? (
-                    /* Orbiting Constellation Map (Inspiration: CubeAI Solutions) */
-                    <div className="w-full h-full flex items-center justify-center scale-[0.8] sm:scale-100 select-none">
-                      <div className="relative w-80 h-80 flex items-center justify-center">
+                    /* Performance Monitor Mock (High-Fidelity Dashboard) */
+                    <div className="w-full h-full flex flex-col justify-center space-y-4 select-none">
+                      
+                      {/* Operational Throughput Line Graph Card */}
+                      <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 relative overflow-hidden">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-xs font-extrabold text-slate-450 uppercase tracking-wider">Transaction Throughput (req/s)</span>
+                          <span className="text-xs font-extrabold text-brand-blue flex items-center space-x-1.5 bg-brand-blue/10 px-2.5 py-1 rounded-full">
+                            <span className="h-2 w-2 rounded-full bg-brand-blue animate-pulse"></span>
+                            <span>42.8 msg/sec</span>
+                          </span>
+                        </div>
                         
-                        {/* Central Ledger Core Node */}
-                        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-lg flex flex-col items-center justify-center border border-slate-100 p-4">
-                            <Database className="h-6 w-6 text-brand-blue animate-pulse mb-1" />
-                            <span className="font-display font-extrabold text-[11px] text-slate-800 tracking-tight">Ledger Core</span>
-                            <span className="text-[8px] font-bold text-brand-teal uppercase tracking-wider mt-0.5">ELVTERA</span>
-                          </div>
-                        </div>
-
-                        {/* Orbiting Ring container (rotates by -rotationAngle) */}
-                        <div 
-                          className="absolute inset-0 transition-transform duration-1000 ease-out"
-                          style={{ transform: `rotate(${-rotationAngle}deg)` }}
-                        >
-                          {/* Orbit dashed circle line */}
-                          <div className="absolute inset-4 rounded-full border-2 border-dashed border-slate-200 pointer-events-none"></div>
-                          
-                          {/* Map of the 6 nodes */}
-                          {[
-                            { label: "ERP Systems", icon: Layers },
-                            { label: "Workflows", icon: Cpu },
-                            { label: "AI Agents", icon: Bot },
-                            { label: "APIs & Webhooks", icon: Send },
-                            { label: "Digital Growth", icon: TrendingUp },
-                            { label: "IT Consulting", icon: Briefcase }
-                          ].map((node, index) => {
-                            const angle = (60 * index - 90) * (Math.PI / 180);
-                            const radius = 130; // px
-                            const x = radius * Math.cos(angle);
-                            const y = radius * Math.sin(angle);
-                            const isActive = index === activeIndex;
-                            const Icon = node.icon;
-                            
-                            return (
-                              <div 
-                                key={index}
-                                className="absolute top-1/2 left-1/2 transition-all duration-500"
-                                style={{
-                                  transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${rotationAngle}deg)`
-                                }}
-                              >
-                                <div className={`flex flex-col items-center justify-center p-2.5 rounded-xl transition-all duration-300 w-24 border ${
-                                  isActive 
-                                    ? "bg-white shadow-lg scale-110 border-brand-blue/60" 
-                                    : "bg-white/95 scale-90 opacity-60 border-slate-200"
-                                }`}>
-                                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                                    isActive ? "bg-brand-blue text-white" : "bg-slate-100 text-slate-500"
-                                  }`}>
-                                    <Icon className="h-4.5 w-4.5" />
-                                  </div>
-                                  <span className={`text-[8px] font-bold mt-1 text-center whitespace-nowrap leading-none ${
-                                    isActive ? "text-slate-900" : "text-slate-500"
-                                  }`}>
-                                    {node.label}
-                                  </span>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-
+                        <svg className="w-full h-24" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <line x1="0" y1="20" x2="320" y2="20" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
+                          <line x1="0" y1="50" x2="320" y2="50" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
+                          <line x1="0" y1="80" x2="320" y2="80" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
+                          <path 
+                            d="M0 75 Q 40 30, 80 80 T 160 40 T 240 65 T 320 20" 
+                            fill="none" 
+                            stroke="url(#chart-grad)" 
+                            strokeWidth="3" 
+                            strokeLinecap="round"
+                            style={{
+                              strokeDasharray: '400',
+                              strokeDashoffset: '0',
+                              animation: 'drawChart 8s linear infinite'
+                            }}
+                          />
+                          <defs>
+                            <linearGradient id="chart-grad" x1="0" y1="0" x2="1" y2="0">
+                              <stop offset="0%" stopColor="#0031c7" />
+                              <stop offset="100%" stopColor="#14b8a6" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
                       </div>
+
+                      {/* DB Performance circular stats / Gauges */}
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
+                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">Engine Load</span>
+                          <span className="text-sm font-bold text-slate-800 block mt-1">24.2%</span>
+                          <span className="text-[9px] text-brand-success font-extrabold block mt-0.5 uppercase tracking-wider">Optimal</span>
+                        </div>
+                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
+                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">DB Latency</span>
+                          <span className="text-sm font-bold text-slate-800 block mt-1">14.8 ms</span>
+                          <span className="text-[9px] text-brand-blue font-extrabold block mt-0.5 uppercase tracking-wider">Nominal</span>
+                        </div>
+                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
+                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">Sync Rate</span>
+                          <span className="text-sm font-bold text-slate-800 block mt-1">99.999%</span>
+                          <span className="text-[9px] text-brand-teal font-extrabold block mt-0.5 uppercase tracking-wider">Replicated</span>
+                        </div>
+                      </div>
+
+                      {/* Technical Spec Matrix Console */}
+                      <div className="bg-slate-900 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-1.5 select-none border border-slate-800 shadow-inner">
+                        <div className="flex justify-between border-b border-slate-800 pb-2 mb-2 font-bold text-[10px]">
+                          <span className="text-brand-teal">DATABASE SPECIFICATIONS</span>
+                          <span className="text-slate-500">SCHEMA VERSION 3.4 OK</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                          <div><span className="text-slate-500">Sync Pipeline:</span> Postgres SQL</div>
+                          <div><span className="text-slate-500">Index Type:</span> Balanced B-Tree</div>
+                          <div><span className="text-slate-500">Active Pools:</span> 16 Threads</div>
+                          <div><span className="text-slate-500">Uptime Metric:</span> 99.999%</div>
+                        </div>
+                      </div>
+
                     </div>
                   ) : (
                     /* Live Transaction Logs Console */
-                    <div className="bg-slate-950 text-slate-300 p-4.5 rounded-2xl font-mono text-[10px] text-left space-y-2 border border-slate-800 shadow-inner select-none h-full flex flex-col justify-center">
-                      <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-900 pb-2 mb-1 shrink-0">
+                    <div className="bg-slate-950 text-slate-300 p-4.5 rounded-2xl font-mono text-xs text-left space-y-2 border border-slate-800 shadow-inner select-none h-full flex flex-col justify-center">
+                      <div className="flex items-center justify-between text-[10px] text-slate-500 font-bold border-b border-slate-900 pb-2 mb-1.5 shrink-0">
                         <span>LIVE EVENT STREAM</span>
-                        <span className="text-brand-teal flex items-center space-x-1 animate-pulse">
-                          <span className="h-1.5 w-1.5 rounded-full bg-brand-teal"></span>
+                        <span className="text-brand-teal flex items-center space-x-1.5 animate-pulse">
+                          <span className="h-2 w-2 rounded-full bg-brand-teal"></span>
                           <span>ACTIVE</span>
                         </span>
                       </div>
                       
-                      <div className="space-y-2 grow flex flex-col justify-end">
+                      <div className="space-y-2.5 grow flex flex-col justify-end">
                         {consoleLogs.map((log, lIdx) => (
                           <div key={lIdx} className="flex items-start space-x-2 transition-all duration-300 animate-fadeInUp">
                             <span className="text-slate-500 shrink-0">[{log.time}]</span>
@@ -355,12 +347,12 @@ export const Home: React.FC = () => {
                 {/* Status Footer */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-450 font-semibold mt-auto shrink-0">
                   <div className="flex items-center space-x-1.5">
-                    <span className="h-2 w-2 rounded-full bg-brand-teal animate-pulse"></span>
-                    <span className="text-[10px] sm:text-xs">
+                    <span className="h-2.5 w-2.5 rounded-full bg-brand-teal animate-pulse"></span>
+                    <span className="text-xs">
                       Core Operations Online
                     </span>
                   </div>
-                  <span className="text-[10px] sm:text-xs">Uptime &gt; 99.9%</span>
+                  <span className="text-xs">Uptime &gt; 99.999%</span>
                 </div>
 
               </div>
@@ -534,41 +526,41 @@ export const Home: React.FC = () => {
                   
                   {/* Column 1: Sources */}
                   <div className="space-y-3">
-                    <span className="text-[10px] font-bold text-slate-450 uppercase block">Sources</span>
+                    <span className="text-xs font-bold text-slate-450 uppercase block">Sources</span>
                     
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <MessageSquare className="h-4.5 w-4.5 text-brand-blue mx-auto mb-1.5" />
-                      <span className="text-[10px] font-bold text-slate-800 block">WhatsApp API</span>
+                      <span className="text-xs font-bold text-slate-800 block">WhatsApp API</span>
                     </div>
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <Users className="h-4.5 w-4.5 text-brand-blue mx-auto mb-1.5" />
-                      <span className="text-[10px] font-bold text-slate-800 block">POS Systems</span>
+                      <span className="text-xs font-bold text-slate-800 block">POS Systems</span>
                     </div>
                   </div>
 
                   {/* Column 2: Pipelines */}
                   <div className="space-y-3">
                     <div className="h-8 flex items-center justify-center">
-                      <span className="text-[10px] font-bold text-brand-teal animate-pulse">Syncing...</span>
+                      <span className="text-xs font-bold text-brand-teal animate-pulse">Syncing...</span>
                     </div>
                     
                     <div className="bg-brand-blue text-white p-4.5 rounded-xl shadow-md border border-brand-blue">
                       <Cpu className="h-6 w-6 mx-auto mb-1.5 text-white animate-spin" style={{ animationDuration: '6s' }} />
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider block">Elvtera Core</span>
+                      <span className="text-xs font-extrabold uppercase tracking-wider block">Elvtera Core</span>
                     </div>
                   </div>
 
                   {/* Column 3: Ledger */}
                   <div className="space-y-3">
-                    <span className="text-[10px] font-bold text-slate-450 uppercase block">Ledger</span>
+                    <span className="text-xs font-bold text-slate-450 uppercase block">Ledger</span>
                     
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <Database className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-[10px] font-bold text-slate-800 block">PostgreSQL</span>
+                      <span className="text-xs font-bold text-slate-800 block">PostgreSQL</span>
                     </div>
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <CheckCircle className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-[10px] font-bold text-slate-800 block">GAAP Ledger</span>
+                      <span className="text-xs font-bold text-slate-800 block">GAAP Ledger</span>
                     </div>
                   </div>
 
@@ -606,33 +598,33 @@ export const Home: React.FC = () => {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
               
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue block">Apex Textile Group</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Apex Textile Group</span>
                 <h3 className="font-display font-extrabold text-3xl text-slate-950">60%</h3>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-500 font-semibold leading-relaxed">
                   Reduction in weekly administrative hours via unified materials reordering.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue block">MedTech Distribution</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">MedTech Distribution</span>
                 <h3 className="font-display font-extrabold text-3xl text-slate-950">42%</h3>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-500 font-semibold leading-relaxed">
                   Increase in inbound booked consultations using AI phone call qualifiers.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue block">System Stability</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">System Stability</span>
                 <h3 className="font-display font-extrabold text-3xl text-slate-950">99.99%</h3>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-500 font-semibold leading-relaxed">
                   Database general ledger availability during high-traffic transactional queues.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue block">Financial Closure</span>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Financial Closure</span>
                 <h3 className="font-display font-extrabold text-3xl text-slate-950">85%</h3>
-                <p className="text-xs text-slate-500 font-semibold leading-relaxed">
+                <p className="text-sm text-slate-500 font-semibold leading-relaxed">
                   Reduction in end-of-month general balance sheets reconciliation logs.
                 </p>
               </div>

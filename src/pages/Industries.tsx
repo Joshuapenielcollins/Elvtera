@@ -219,7 +219,7 @@ export const Industries: React.FC = () => {
                         <ShieldAlert className="h-4.5 w-4.5" />
                         <span>Core Challenge</span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-slate-550 leading-relaxed font-semibold">
+                      <p className="text-sm text-slate-550 leading-relaxed font-semibold">
                         {activeInd.challenge}
                       </p>
                     </div>
@@ -230,7 +230,7 @@ export const Industries: React.FC = () => {
                         <ShieldCheck className="h-4.5 w-4.5" />
                         <span>ELVTERA Solution</span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-slate-550 leading-relaxed font-semibold">
+                      <p className="text-sm text-slate-550 leading-relaxed font-semibold">
                         {activeInd.solution}
                       </p>
                     </div>
@@ -239,7 +239,7 @@ export const Industries: React.FC = () => {
 
                   {/* Common Operational Leaks (Pain Points - NEW DETAIL ADDITION) */}
                   <div className="pt-2 space-y-3">
-                    <h4 className="text-[10px] font-extrabold uppercase tracking-wider text-red-500">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-red-500">
                       Common Operational Leaks (Pain Points)
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -254,7 +254,7 @@ export const Industries: React.FC = () => {
 
                   {/* Industry Specific specs list */}
                   <div className="pt-2">
-                    <h4 className="text-[10px] font-extrabold uppercase tracking-wider text-slate-450 mb-3">
+                    <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-450 mb-3">
                       Key Technical Deliverables
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -270,7 +270,7 @@ export const Industries: React.FC = () => {
                   {/* KPI Impact */}
                   <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="space-y-1">
-                      <span className="text-[9px] font-extrabold uppercase tracking-wider text-slate-400 block">
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400 block">
                         Verified Industry Impact
                       </span>
                       <p className="text-sm font-bold text-slate-800 flex items-center space-x-1.5">

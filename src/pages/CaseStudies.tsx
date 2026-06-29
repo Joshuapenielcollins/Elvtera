@@ -118,24 +118,24 @@ export const CaseStudies: React.FC = () => {
                         <h2 className="font-display font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
                           {study.client}
                         </h2>
-                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                           {study.industry}
                         </span>
                       </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-650 dark:text-slate-300 font-semibold leading-relaxed">
+                    <p className="text-sm text-slate-650 dark:text-slate-300 font-semibold leading-relaxed">
                       "{study.summary}"
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
                       <div className="space-y-1.5">
-                        <span className="text-[10px] font-extrabold text-red-500 uppercase tracking-wider block">Operational Bottlenecks</span>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{study.problem}</p>
+                        <span className="text-xs font-extrabold text-red-500 uppercase tracking-wider block">Operational Bottlenecks</span>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{study.problem}</p>
                       </div>
                       <div className="space-y-1.5">
-                        <span className="text-[10px] font-extrabold text-brand-success uppercase tracking-wider block">Implementation Scopes</span>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">{study.solution}</p>
+                        <span className="text-xs font-extrabold text-brand-success uppercase tracking-wider block">Implementation Scopes</span>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{study.solution}</p>
                       </div>
                     </div>
                   </div>
@@ -147,7 +147,7 @@ export const CaseStudies: React.FC = () => {
                         <span className="font-display font-extrabold text-2xl sm:text-3xl text-brand-blue dark:text-blue-400 block tracking-tight">
                           {m.value}
                         </span>
-                        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block leading-tight">
+                        <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block leading-tight">
                           {m.label}
                         </span>
                       </div>
@@ -159,7 +159,7 @@ export const CaseStudies: React.FC = () => {
                 {/* Right side before-after charts (5 cols) */}
                 <div className="lg:col-span-5 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 text-left">
                   <div className="space-y-1.5">
-                    <span className="text-[9px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
+                    <span className="text-xs font-extrabold text-slate-440 dark:text-slate-500 uppercase tracking-wider block">
                       Operations Yield Audit
                     </span>
                     <h4 className="font-display font-semibold text-sm text-slate-900 dark:text-white">
@@ -183,7 +183,7 @@ export const CaseStudies: React.FC = () => {
                           <div className="space-y-1">
                             {/* Before Bar */}
                             <div className="flex items-center space-x-2">
-                              <span className="text-[9px] font-bold text-red-500 w-9 uppercase shrink-0">Before</span>
+                              <span className="text-xs font-bold text-red-500 w-9 uppercase shrink-0">Before</span>
                               <div className="grow bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                                 <div 
                                   className="bg-red-400 h-full rounded-full" 
@@ -193,7 +193,7 @@ export const CaseStudies: React.FC = () => {
                             </div>
                             {/* After Bar */}
                             <div className="flex items-center space-x-2">
-                              <span className="text-[9px] font-bold text-brand-success w-9 uppercase shrink-0">After</span>
+                              <span className="text-xs font-bold text-brand-success w-9 uppercase shrink-0">After</span>
                               <div className="grow bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                                 <div 
                                   className="bg-brand-success h-full rounded-full" 
@@ -207,7 +207,7 @@ export const CaseStudies: React.FC = () => {
                     })}
                   </div>
 
-                  <div className="pt-4 border-t border-slate-150 dark:border-slate-850 flex items-center space-x-2 text-[10px] text-slate-450 italic">
+                  <div className="pt-4 border-t border-slate-150 dark:border-slate-850 flex items-center space-x-2 text-xs text-slate-450 italic">
                     <ShieldCheck className="h-4.5 w-4.5 text-brand-teal" />
                     <span>Metrics certified by client stakeholder logs.</span>
                   </div>
