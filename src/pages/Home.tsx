@@ -11,7 +11,14 @@ import {
   CheckCircle,
   Database,
   MessageSquare,
-  CheckCircle2
+  CheckCircle2,
+  Coins,
+  Package,
+  ShoppingCart,
+  Factory,
+  Terminal,
+  Network,
+  Layers
 } from 'lucide-react';
 import { StatsCounter } from '../components/StatsCounter';
 import { InteractiveWorkflow } from '../components/InteractiveWorkflow';
@@ -19,6 +26,37 @@ import SEO from '../components/SEO';
 
 export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [visualMode, setVisualMode] = useState<'topology' | 'console'>('topology');
+  const [consoleLogs, setConsoleLogs] = useState<{ time: string; type: string; msg: string; color: string }[]>([
+    { time: "10:14:02", type: "INGEST", msg: "Received Sales Invoice SI-2026-00492", color: "text-brand-blue" },
+    { time: "10:14:05", type: "STOCK", msg: "Deducted yarn batch #FAB-292", color: "text-brand-teal" },
+    { time: "10:14:08", type: "LEDGER", msg: "Posted journal debit $1,250.00", color: "text-brand-blue" }
+  ]);
+
+  React.useEffect(() => {
+    const transactionPool = [
+      { type: "INGEST", msg: "Parsed customer query via CRM API", color: "text-slate-400" },
+      { type: "LEDGER", msg: "Posted invoice clearing ledger record", color: "text-brand-blue" },
+      { type: "STOCK", msg: "Inventory levels check: SKU yarn low", color: "text-amber-500" },
+      { type: "TRIGGER", msg: "Auto-issued restocking PO to Supplier A", color: "text-brand-teal" },
+      { type: "HRMS", msg: "Registered shift clock-in: User ID 992", color: "text-slate-400" },
+      { type: "MRP", msg: "Generated production Work Order WO-492", color: "text-brand-teal" },
+      { type: "SUPPORT", msg: "Assigned customer ticket to rep queue", color: "text-brand-blue" }
+    ];
+
+    const interval = setInterval(() => {
+      const date = new Date();
+      const timeStr = date.toTimeString().split(' ')[0];
+      const randomTx = transactionPool[Math.floor(Math.random() * transactionPool.length)];
+      
+      setConsoleLogs(prev => [
+        ...prev.slice(-3),
+        { time: timeStr, ...randomTx }
+      ]);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
@@ -175,106 +213,155 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Right Side: Operational Dashboard Visualizer */}
-            <div className="lg:col-span-6 relative w-full min-h-[460px] flex items-center justify-center">
+            <div className="lg:col-span-6 relative w-full min-h-[480px] flex items-center justify-center">
               <div className="absolute inset-0 bg-brand-blue/5 rounded-3xl blur-2xl"></div>
               
               <div className="absolute inset-0 bg-white border border-slate-200 rounded-3xl shadow-xl p-6 flex flex-col justify-between overflow-hidden relative">
                 
-                {/* Dashboard Header */}
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <div className="flex items-center space-x-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand-blue animate-pulse"></span>
-                    <span className="text-[10px] font-bold text-slate-800 uppercase tracking-wider">ELVTERA Hub Core Dashboard</span>
+                {/* Dashboard Header with Mode Toggles */}
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
+                  <div className="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-xl">
+                    <button
+                      onClick={() => setVisualMode('topology')}
+                      className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                        visualMode === 'topology' 
+                          ? 'bg-white text-brand-blue shadow-sm' 
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                    >
+                      <Network className="h-3 w-3" />
+                      <span>Architecture Map</span>
+                    </button>
+                    <button
+                      onClick={() => setVisualMode('console')}
+                      className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+                        visualMode === 'console' 
+                          ? 'bg-white text-brand-blue shadow-sm' 
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                    >
+                      <Terminal className="h-3 w-3" />
+                      <span>Live Activity</span>
+                    </button>
                   </div>
-                  <span className="text-[9px] bg-slate-100 text-slate-600 font-extrabold px-2.5 py-1 rounded-full">
-                    v2.4.1 Active
+                  <span className="text-[9px] bg-brand-blue/10 text-brand-blue font-extrabold px-2.5 py-1 rounded-full">
+                    Core Dashboard
                   </span>
                 </div>
 
-                {/* Topology Map Graphic */}
-                <div className="grow py-6 flex flex-col justify-center relative">
+                {/* Dashboard Core Body */}
+                <div className="grow flex flex-col justify-center py-4 relative min-h-[280px]">
                   
-                  {/* Grid nodes */}
-                  <div className="grid grid-cols-3 gap-4 items-center justify-center relative z-10">
-                    
-                    {/* Left: Input Nodes */}
-                    <div className="space-y-4">
-                      <div className="bg-slate-50 border border-slate-200/80 p-3 rounded-2xl text-center shadow-xs">
-                        <span className="text-[9px] font-extrabold text-slate-450 uppercase block">Intake</span>
-                        <span className="text-xs font-bold text-slate-800 block mt-1">POS Checkout</span>
-                        <span className="text-[9px] text-brand-teal font-extrabold block mt-0.5 animate-pulse">Scanning...</span>
-                      </div>
-                      <div className="bg-slate-50 border border-slate-200/80 p-3 rounded-2xl text-center shadow-xs">
-                        <span className="text-[9px] font-extrabold text-slate-450 uppercase block">Ingest</span>
-                        <span className="text-xs font-bold text-slate-800 block mt-1">Meta API</span>
-                        <span className="text-[9px] text-brand-blue font-extrabold block mt-0.5">Webhook OK</span>
-                      </div>
-                    </div>
+                  {visualMode === 'topology' ? (
+                    /* Topology Map Graphic */
+                    <div className="w-full h-full flex items-center justify-center relative">
+                      
+                      {/* Grid / Network Lines Background (SVG) */}
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50%" y1="50%" x2="50%" y2="15%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                        <line x1="50%" y1="50%" x2="80%" y2="25%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                        <line x1="50%" y1="50%" x2="80%" y2="75%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                        <line x1="50%" y1="50%" x2="50%" y2="85%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                        <line x1="50%" y1="50%" x2="20%" y2="75%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                        <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
+                      </svg>
 
-                    {/* Middle: Core processing Database Node */}
-                    <div className="flex flex-col items-center">
-                      <div className="relative">
-                        {/* Pulsing Aura */}
-                        <div className="absolute inset-0 bg-brand-blue/10 rounded-full blur-lg scale-150 animate-pulse"></div>
-                        
-                        <div className="bg-brand-blue text-white p-5 rounded-full shadow-lg border border-brand-blue relative z-10">
-                          <Database className="h-8 w-8 text-white" />
+                      {/* Central Ledger Core Node */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20">
+                        <div className="relative group">
+                          <div className="absolute inset-0 bg-brand-blue/20 rounded-full blur-xl scale-150 animate-pulse"></div>
+                          <div className="bg-brand-blue text-white p-4.5 rounded-full shadow-lg border-2 border-brand-blue relative z-10 transition-transform hover:scale-105">
+                            <Database className="h-7 w-7 text-white" />
+                          </div>
                         </div>
+                        <span className="text-[10px] font-bold text-slate-900 mt-2 bg-white px-2 py-0.5 rounded-full shadow-xs border border-slate-100">
+                          Ledger Core
+                        </span>
                       </div>
-                      <span className="text-xs font-bold text-slate-900 mt-3 block">Central Ledger</span>
-                      <span className="text-[9px] text-brand-teal font-bold uppercase mt-0.5 tracking-wider">Syncing Data</span>
+
+                      {/* Satellite Node 1: Accounting (Top Center) */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-[8%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <Coins className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Accounting</span>
+                      </div>
+
+                      {/* Satellite Node 2: Stock/Inventory (Top Right) */}
+                      <div className="absolute right-[12%] top-[20%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <Package className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Inventory</span>
+                      </div>
+
+                      {/* Satellite Node 3: CRM/Selling (Bottom Right) */}
+                      <div className="absolute right-[12%] bottom-[16%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <Users className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Selling/CRM</span>
+                      </div>
+
+                      {/* Satellite Node 4: Procurement (Bottom Center) */}
+                      <div className="absolute left-1/2 -translate-x-1/2 bottom-[6%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <ShoppingCart className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">Buying</span>
+                      </div>
+
+                      {/* Satellite Node 5: Manufacturing (Bottom Left) */}
+                      <div className="absolute left-[12%] bottom-[16%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <Factory className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">MRP/Mfg</span>
+                      </div>
+
+                      {/* Satellite Node 6: HRMS & Payroll (Top Left) */}
+                      <div className="absolute left-[12%] top-[20%] flex flex-col items-center z-10">
+                        <div className="bg-slate-50 hover:bg-brand-blue/5 border border-slate-200 p-2.5 rounded-xl shadow-sm transition-colors duration-300">
+                          <Layers className="h-4.5 w-4.5 text-brand-blue" />
+                        </div>
+                        <span className="text-[8px] font-bold text-slate-500 mt-1 select-none">HRMS/Payroll</span>
+                      </div>
+
                     </div>
-
-                    {/* Right: Actions / Outputs */}
-                    <div className="space-y-4">
-                      <div className="bg-slate-50 border border-slate-200/80 p-3 rounded-2xl text-center shadow-xs">
-                        <span className="text-[9px] font-extrabold text-slate-450 uppercase block">Automate</span>
-                        <span className="text-xs font-bold text-slate-800 block mt-1">Supplier PO</span>
-                        <span className="text-[9px] text-brand-teal font-extrabold block mt-0.5">Trigger Sent</span>
+                  ) : (
+                    /* Live Transaction Logs Console */
+                    <div className="bg-slate-950 text-slate-300 p-4.5 rounded-2xl font-mono text-[10px] text-left space-y-2 border border-slate-800 shadow-inner select-none h-full flex flex-col justify-center">
+                      <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-900 pb-2 mb-1 shrink-0">
+                        <span>LIVE EVENT STREAM</span>
+                        <span className="text-brand-teal flex items-center space-x-1 animate-pulse">
+                          <span className="h-1.5 w-1.5 rounded-full bg-brand-teal"></span>
+                          <span>ACTIVE</span>
+                        </span>
                       </div>
-                      <div className="bg-slate-50 border border-slate-200/80 p-3 rounded-2xl text-center shadow-xs">
-                        <span className="text-[9px] font-extrabold text-slate-450 uppercase block">Ledger</span>
-                        <span className="text-xs font-bold text-slate-800 block mt-1">GAAP Journal</span>
-                        <span className="text-[9px] text-brand-blue font-extrabold block mt-0.5">Posted Log</span>
+                      
+                      <div className="space-y-2 grow flex flex-col justify-end">
+                        {consoleLogs.map((log, lIdx) => (
+                          <div key={lIdx} className="flex items-start space-x-2 transition-all duration-300 animate-fadeInUp">
+                            <span className="text-slate-500 shrink-0">[{log.time}]</span>
+                            <span className={`${log.color} font-bold shrink-0`}>{log.type}:</span>
+                            <span className="text-slate-350 break-all">{log.msg}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
+                  )}
 
-                  </div>
-
-                </div>
-
-                {/* Live Transaction Logs Console */}
-                <div className="bg-slate-900 text-slate-300 p-3.5 rounded-2xl font-mono text-[10px] text-left space-y-1 select-none">
-                  <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-800 pb-1.5 mb-1.5">
-                    <span>CONSOLE FEED</span>
-                    <span className="text-brand-teal">CONNECTED</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-slate-500">[09:41:02]</span>
-                    <span className="text-brand-teal">INGEST:</span>
-                    <span>Raw PO-4902 Inflow (OCR Check OK)</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-slate-500">[09:41:03]</span>
-                    <span className="text-brand-blue">LEDGER:</span>
-                    <span>Deducted 1,200m cotton yarn batch #88</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-slate-500">[09:41:05]</span>
-                    <span className="text-amber-500">TRIGGER:</span>
-                    <span>Auto-issued restocking PO to Supplier 2</span>
-                  </div>
                 </div>
 
                 {/* Status Footer */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-450 font-semibold mt-4">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-450 font-semibold mt-auto shrink-0">
                   <div className="flex items-center space-x-1.5">
                     <span className="h-2 w-2 rounded-full bg-brand-teal animate-pulse"></span>
                     <span className="text-[10px] sm:text-xs">
-                      Operations flow secure & online
+                      Core Operations Online
                     </span>
                   </div>
-                  <span className="text-[10px] sm:text-xs">Latency &lt; 85ms</span>
+                  <span className="text-[10px] sm:text-xs">Uptime &gt; 99.9%</span>
                 </div>
 
               </div>

@@ -36,10 +36,10 @@ export const Industries: React.FC = () => {
       icon: Building2,
       context: "Heavy industrial operations require precision raw materials tracking, precise bills of materials (BOM), and synchronized assembly line schedules to control margins.",
       challenge: "Fragmented spreadsheets, manual stock audits, delayed payroll for wage-workers, and lack of real-time BOM tracking leading to 15% or more revenue leakage.",
-      solution: "We implement custom Textile and Manufacturing ERP modules that sync scanner guns, barcode tags, purchase ledgers, and automated stock alert scripts in real time.",
+      solution: "We implement custom Textile and Manufacturing ERP modules that sync sales orders, stock ledgers, purchase ledgers, and automated stock alert scripts in real time.",
       impact: "Reduced inventory overheads by 50% with 100% tax compliant ledgers and automatic materials reorder triggers.",
       kpi: "Inventory Turnover Yield",
-      features: ["Bill of Materials (BOM) Control", "Barcode & RFID Scanners Setup", "Work-in-Progress (WIP) Tracking", "Automated Supplier Purchase Orders"],
+      features: ["Bill of Materials (BOM) Control", "Batch & Inventory Ledger Setup", "Work-in-Progress (WIP) Tracking", "Automated Supplier Purchase Orders"],
       painPoints: [
         "Inventory count in ledger sheets mismatching actual bins on the shopfloor by up to 10 days.",
         "Production batch bottlenecks resulting in late deliveries and penalty charges.",
@@ -100,13 +100,13 @@ export const Industries: React.FC = () => {
       icon: ShoppingBag,
       context: "High-volume retail outlets need fast register checkouts, real-time stock balances, and dynamic discount structures.",
       challenge: "Slow checkout register lines, manual price audits, high staff training times, and lack of cross-location inventory sync.",
-      solution: "Modular Retail POS client synced to cloud Inventory ERP. Automatic barcode lookups, integrated billing card terminal, and real-time stock deductions.",
+      solution: "Modular Retail POS client synced to cloud Inventory ERP. Automatic SKU lookups, integrated cloud payment gateways, and real-time stock deductions.",
       impact: "Checkout time reduced to under 5 seconds, instant multi-location stock replenishment triggers, and digital sales accounting.",
       kpi: "Register Checkout Speed",
-      features: ["Multi-Register Cloud POS", "Barcode Catalog Scanner", "Loyalty Rewards Calculator", "Direct Digital Receipt Delivery"],
+      features: ["Multi-Register Cloud POS", "Digital Catalog Sync", "Loyalty Rewards Calculator", "Direct Digital Receipt Delivery"],
       painPoints: [
         "Peak hour register checkout bottlenecks leading to queue drop-offs.",
-        "Stock counts in catalog mismatching physical warehouse inventory levels.",
+        "Stock counts in catalog mismatching actual warehouse inventory levels.",
         "Cashiers applying manual discounts, leaking profits at checkout points.",
         "Complex cashier interfaces requiring days of training for new seasonal workers."
       ]

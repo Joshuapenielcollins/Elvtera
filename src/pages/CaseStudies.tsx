@@ -26,7 +26,7 @@ export const CaseStudies: React.FC = () => {
       icon: Building2,
       summary: "Consolidating 4 separate spinning mills, raw yarn inventories, and payroll ledgers into a single unified cloud ERP dashboard.",
       problem: "Yarn stocks audits took 48 hours, BOM margins were calculated on manual spreadsheets, and payroll for 600 shift-workers was delayed by a week, causing 12% revenue leakages.",
-      solution: "We engineered a modular Manufacturing ERP with barcode scanner adapters, double-entry financial accounting ledgers, and automated shift-payroll calculation engines.",
+      solution: "We engineered a modular Manufacturing ERP with automated SKU ledger reconciliations, double-entry financial accounting ledgers, and automated shift-payroll calculation engines.",
       metrics: [
         { value: "-60%", label: "Stock Audits Time" },
         { value: "+38%", label: "Fulfillment Speed" },

@@ -14,7 +14,12 @@ import {
   TrendingUp,
   Globe,
   Settings,
-  FolderOpen
+  FolderOpen,
+  Coins,
+  Package,
+  ShoppingCart,
+  Factory,
+  FileCode
 } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -26,6 +31,52 @@ interface ProductItem {
   specs: string[];
   path: string;
 }
+
+interface ERPModule {
+  title: string;
+  source: string;
+  desc: string;
+  icon: React.ComponentType<any>;
+}
+
+const erpModulesList: ERPModule[] = [
+  {
+    title: "General Ledger & Accounts",
+    source: "core_erp/accounts/doctype/journal_entry.py",
+    desc: "Double-entry compliance journals, automatic accounts receivable/payable, payment reconciliations, localized tax structures (GST/VAT), and real-time income sheets.",
+    icon: Coins
+  },
+  {
+    title: "Inventory & Warehousing",
+    source: "core_erp/stock/doctype/stock_ledger_entry.py",
+    desc: "Multi-warehouse store grids, moving-average stock valuation sheets, stock adjustments queues, and automated low-resource reorder warning routines.",
+    icon: Package
+  },
+  {
+    title: "Selling & CRM Core",
+    source: "core_erp/selling/doctype/sales_order.py",
+    desc: "Lead-to-deal transition maps, customer contact histories, sales discount limit validations, and customer sales order generation engines.",
+    icon: Users
+  },
+  {
+    title: "Buying & Procurement",
+    source: "core_erp/buying/doctype/purchase_order.py",
+    desc: "Supplier directory indexes, RFQ collection queues, purchase orders tracker, automated supplier invoices, and Goods Received Note (GRN) vouchers.",
+    icon: ShoppingCart
+  },
+  {
+    title: "Manufacturing & MRP",
+    source: "core_erp/manufacturing/doctype/bom.py",
+    desc: "Multi-level Bills of Materials (BOM) management, workstation routes scheduler, material depletion algorithms, and production work order sheets.",
+    icon: Factory
+  },
+  {
+    title: "HRMS & Payroll Core",
+    source: "core_erp/hrms/doctype/payroll_entry.py",
+    desc: "Employee shift allocations, attendance registration hooks, payroll calculators, wage slip templates, and company tax code compliance files.",
+    icon: FolderOpen
+  }
+];
 
 export const Products: React.FC = () => {
   const [employees, setEmployees] = useState(30);
@@ -40,7 +91,7 @@ export const Products: React.FC = () => {
       icon: Database,
       path: "/business-software/erp-solutions",
       desc: "All-in-one resource planning dashboard connecting manufacturing schedules, double-entry general ledger, real-time inventory levels, and payroll cycles.",
-      specs: ["Modular Schema design", "Multi-warehouse inventories", "Automatic bank ledger audit sync", "Biometric clock-in integrations"]
+      specs: ["Modular Schema design", "Multi-warehouse inventories", "Automatic bank ledger audit sync", "Custom attendance API integrations"]
     },
     {
       title: "Omnichannel Sales CRM",
@@ -71,8 +122,8 @@ export const Products: React.FC = () => {
       category: "Business Software",
       icon: Layers,
       path: "/business-software/hr",
-      desc: "Coordinate employee records, biometrics tracking, attendance sheets, and payroll logs. Issues pay slips and calculates local tax contributions automatically.",
-      specs: ["Biometric scanner integration", "Custom tax bracket models", "Employee request portal", "Shift-work pay calculations"]
+      desc: "Coordinate employee records, shift logs tracking, attendance sheets, and payroll logs. Issues pay slips and calculates local tax contributions automatically.",
+      specs: ["Shift check-in integrations", "Custom tax bracket models", "Employee request portal", "Shift-work pay calculations"]
     },
     {
       title: "Warehouse & Stock Inventory Engine",
@@ -147,6 +198,62 @@ export const Products: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-550 max-w-lg mx-auto leading-relaxed">
             Discover our core software components. Each module fits into a unified API structure, allowing you to deploy individual features or scale into a complete ecosystem.
           </p>
+        </div>
+      </section>
+
+      {/* ERP Core Modules Section */}
+      <section className="py-20 bg-white border-b border-slate-200/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <div className="flex items-center space-x-2 bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full w-fit mx-auto">
+              <FileCode className="h-4 w-4" />
+              <span>Core Source Architecture</span>
+            </div>
+            <h2 className="font-display font-extrabold text-3xl text-slate-900">
+              The Enterprise Core ERP Backbone
+            </h2>
+            <p className="text-sm text-slate-550 max-w-2xl mx-auto leading-relaxed font-medium">
+              ELVTERA systems are built upon a robust, double-entry audit-compliant ERP ledger core. Review the core modules below mapped directly to their system codebase source controllers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {erpModulesList.map((module, idx) => {
+              const Icon = module.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col justify-between hover-card text-left"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="p-2.5 rounded-xl bg-brand-blue/10 text-brand-blue">
+                        <Icon className="h-5.5 w-5.5" />
+                      </div>
+                      <span className="text-[10px] font-mono font-bold text-slate-450 select-none">
+                        MODULE 0{idx + 1}
+                      </span>
+                    </div>
+
+                    <h3 className="font-display font-bold text-lg text-slate-900">
+                      {module.title}
+                    </h3>
+                    <p className="text-xs text-slate-550 leading-relaxed font-semibold">
+                      {module.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-slate-100 space-y-2">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Source Code Controller</span>
+                    <div className="flex items-center space-x-1.5 bg-slate-900 text-brand-teal px-3 py-2 rounded-xl border border-slate-800 font-mono text-[10px] select-all overflow-x-auto whitespace-nowrap scrollbar-none">
+                      <span className="text-slate-500 shrink-0">$</span>
+                      <span>{module.source}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

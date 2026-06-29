@@ -42,15 +42,15 @@ export const Services: React.FC = () => {
       longDesc: "We build modular, custom-tailored ERP, CRM, POS, and HRMS applications specifically modeled on your offline operational workflows. No rigid pre-set limits, no unnecessary modules, just a clean, double-entry ledger-secured system built to grow alongside you.",
       icon: Layers,
       benefits: [
-        { title: "Real-Time Inventory Reconciliation", desc: "Eliminate stock count mismatches by linking barcode scanners, supplier purchase orders, and sales inventories." },
+        { title: "Real-Time Inventory Reconciliation", desc: "Eliminate stock count mismatches by linking digital stock counts, supplier purchase orders, and sales inventories." },
         { title: "GAAP Double-Entry Ledger", desc: "Ensure complete compliance by automatically writing every stock adjustment and payroll debit to an unalterable accounting log." },
         { title: "Custom Production Scheduling", desc: "Coordinate Bills of Materials (BOM) and factory floor scheduling directly with materials depletion and purchase order routines." }
       ],
       features: [
         { name: "Enterprise ERP", specs: "Resource planning, materials tracking, bills of materials (BOM), and factory yield charts", path: "/business-software/erp-solutions" },
         { name: "Client CRM", specs: "Customer lifecycles, lead tracking, conversion stages, and phone/email diaries", path: "/business-software/crm" },
-        { name: "HRMS & Payroll Core", specs: "Biometric clock-in integrations, automated tax deductions, and wage slip dispatches", path: "/business-software/hr" },
-        { name: "Warehouse Tracker", specs: "Multi-register retail billing, barcode scans, and inventory ledger dispatches", path: "/business-software/inventory" }
+        { name: "HRMS & Payroll Core", specs: "Digital check-in integrations, automated tax deductions, and wage slip dispatches", path: "/business-software/hr" },
+        { name: "Warehouse Tracker", specs: "Multi-register retail billing, SKU checks, and inventory ledger dispatches", path: "/business-software/inventory" }
       ],
       workflow: ["Scoping & SOP mapping", "Database Architecture Design", "Interface custom modeling", "Dry-run ledgers testing", "Onsite training & SLA launch"],
       faq: [

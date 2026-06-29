@@ -26,6 +26,7 @@ export const DynamicLandingPage: React.FC = () => {
   // Construct lookup path
   const lookupPath = slug ? `${category}/${slug}` : `${category}`;
   const data: LandingPageData | null = getLandingPageData(lookupPath);
+  const lowerSlug = slug ? slug.toLowerCase() : "";
 
   // Inbound redirect state for placeholder form
   const [formOpened, setFormOpened] = useState(false);
@@ -158,21 +159,20 @@ export const DynamicLandingPage: React.FC = () => {
 
   // Render Custom visual block depending on category to make pages stand out
   const renderCategoryVisual = () => {
-    const lowerSlug = slug ? slug.toLowerCase() : "";
     const activeCategory = category || "";
 
     if (activeCategory === "business-software" || activeCategory === "business-automation" || activeCategory === "industries") {
       let industryName = "Manufacturing / Textiles";
       let manualTasks = [
-        "Inventory counted by hand; warehouse stock lists mismatch physical counts by up to 10 days.",
+        "Inventory counted by hand; warehouse stock lists mismatch actual count levels by up to 10 days.",
         "Bills of Materials (BOM) managed on spreadsheets; raw materials price changes blow procurement budgets.",
         "Attendance logs written on card sheets; payroll calculated manually resulting in labor bill errors."
       ];
       let automatedTiers = [
         {
-          tier: "1. Intake Devices",
-          elements: ["Barcode Scanners", "Yarn Weight Scales", "RFID Gates"],
-          desc: "Physical scanners read batch barcodes and update raw material weight inputs automatically."
+          tier: "1. Digital Intake",
+          elements: ["Sales Invoices", "PO Receipts", "Stock Vouchers"],
+          desc: "Digital records capture incoming shipments and update the central raw materials ledger automatically."
         },
         {
           tier: "2. Validation Rules",
@@ -230,8 +230,8 @@ export const DynamicLandingPage: React.FC = () => {
         automatedTiers = [
           {
             tier: "1. Field Logging",
-            elements: ["Onsite Mobile Logs", "Biometric ID Scans", "Receipt OCR Camera"],
-            desc: "Contractors photograph raw receipts and clock shifts on mobile devices."
+            elements: ["Onsite Mobile Logs", "Portal Check-in", "Receipt OCR Camera"],
+            desc: "Contractors photograph raw receipts and log shifts directly via secure mobile check-ins."
           },
           {
             tier: "2. Approvals Middleware",
@@ -259,8 +259,8 @@ export const DynamicLandingPage: React.FC = () => {
         automatedTiers = [
           {
             tier: "1. Register Checkout",
-            elements: ["POS Barcode Scanner", "Payment card swipe", "Loyalty Rewards scan"],
-            desc: "Cashier registers scan item bar codes and read terminal payment logs."
+            elements: ["POS Register Input", "Cloud Payment API", "Loyalty Card lookup"],
+            desc: "Cashier registers retrieve item catalog pricing and parse payment API logs."
           },
           {
             tier: "2. Middleware Check",
@@ -282,14 +282,14 @@ export const DynamicLandingPage: React.FC = () => {
         industryName = "Logistics & Distribution";
         manualTasks = [
           "Manifest logs lost in transit; driver route assignments run via manual phone calls.",
-          "Weighbridge logs entered on paper sheets; cargo weights mismatch invoice logs.",
+          "Checkin logs entered on paper sheets; cargo weights mismatch invoice logs.",
           "Dispatch support operators manually answer customers looking for shipment alerts."
         ];
         automatedTiers = [
           {
-            tier: "1. Fleet Tracking",
-            elements: ["Driver Mobile GPS", "Weighbridge Weight Sensors", "Cargo Barcode tags"],
-            desc: "Truck drivers transmit coordinates; scales register cargo weights automatically."
+            tier: "1. Route Tracking",
+            elements: ["Driver Mobile GPS", "Digital Checkpoint Logs", "Cargo Batch tags"],
+            desc: "Truck drivers transmit coordinates; digital logs record cargo route checkins automatically."
           },
           {
             tier: "2. Dispatch Middleware",
@@ -887,6 +887,47 @@ export const DynamicLandingPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* 9.5 ERP Source Code Blueprints */}
+      {(lowerSlug.includes("erp") || data.parentPath === "/business-software") && (
+        <section className="py-20 bg-white border-b border-slate-200/50 text-left">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block">
+                Codebase Integration Blueprint
+              </span>
+              <h3 className="font-display font-extrabold text-2.5xl text-slate-900 text-center">
+                System Code Controllers & Document Schemas
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-550 text-center max-w-xl mx-auto">
+                Review the technical controllers and schema hierarchies mapped inside this business software deployment.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { name: "Controller Entry", file: "core_erp/controllers/document.py", details: "Standard validation controls, data auditing triggers, workflow status routers, and JSON REST API handlers." },
+                { name: "DocType Schema", file: "core_erp/models/schema_mapper.py", details: "Relational PostgreSQL database schema definitions, custom column indexes, validation rules, and double-entry hooks." },
+                { name: "Server Controller", file: "core_erp/server/api_router.js", details: "API route registers, token verification checkpoints, RAG system hooks, and background worker job dispatches." }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-slate-50 border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover-card">
+                  <div className="space-y-3">
+                    <span className="text-[10px] font-extrabold text-brand-blue uppercase tracking-wider block">Component 0{idx + 1}</span>
+                    <h4 className="font-display font-bold text-slate-900 text-base">{item.name}</h4>
+                    <p className="text-xs text-slate-550 leading-relaxed font-semibold">{item.details}</p>
+                  </div>
+                  <div className="mt-5 pt-3 border-t border-slate-200/50">
+                    <span className="text-[9px] font-extrabold uppercase text-slate-400 block mb-1.5">File Source Path</span>
+                    <div className="bg-slate-900 text-brand-teal px-3 py-1.5 rounded-lg border border-slate-800 font-mono text-[10px] select-all overflow-x-auto whitespace-nowrap scrollbar-none">
+                      {item.file}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 10. FAQ Accordion Grid */}
       <section className="py-20 lg:py-24 bg-white border-b border-slate-200/50">

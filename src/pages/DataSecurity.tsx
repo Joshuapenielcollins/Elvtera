@@ -62,10 +62,10 @@ export const DataSecurity: React.FC = () => {
           <section className="space-y-3">
             <h2 className="font-display font-bold text-lg text-slate-950 flex items-center space-x-2">
               <ShieldAlert className="h-5 w-5 text-brand-blue" />
-              <span>4. Physical and Telephony Security Safeguards</span>
+              <span>4. Infrastructure and Telephony Security Safeguards</span>
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed font-medium">
-              Our cloud servers are hosted in Tier-III data centers audited under ISO 27001 guidelines, requiring biometric access permissions and round-the-clock physical monitoring. For telephony automations, all Twilio SIP connections are secured using Secure Real-Time Transport Protocols (SRTP) to encrypt voice consultation audio packets against interceptions.
+              Our cloud servers are hosted in Tier-III data centers audited under ISO 27001 guidelines, requiring strict multi-factor authentication controls and round-the-clock facility monitoring. For telephony automations, all Twilio SIP connections are secured using Secure Real-Time Transport Protocols (SRTP) to encrypt voice consultation audio packets against interceptions.
             </p>
           </section>
 
