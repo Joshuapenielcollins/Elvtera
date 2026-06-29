@@ -73,17 +73,13 @@ export const parentCategories: ParentCategory[] = [
     ]
   },
   {
-    id: "ai",
-    name: "AI Solutions",
-    path: "/ai",
-    iconName: "Sparkles",
-    shortDesc: "Autonomous voice agents, RAG document scrapers, and predictive analysis modules.",
+    id: "integrations",
+    name: "System Integrations",
+    path: "/integrations",
+    iconName: "Cpu",
+    shortDesc: "REST API routes, real-time database sync loops, webhooks, and secure authentication gateways.",
     subPages: [
-      "ai-sales-agent", "lead-qualification", "proposal-generation", "sales-assistant", "follow-up-automation",
-      "chatbot", "customer-support-agent", "faq-assistant", "knowledge-base", "ticket-resolution",
-      "voice-calling-agent", "ai-receptionist", "appointment-booking", "customer-calling", "call-center-automation",
-      "email-assistant", "document-processing", "report-generation", "workflow-automation", "data-extraction",
-      "business-intelligence"
+      "api-routes", "db-sync", "webhooks", "audit-logs", "rest-apis", "oauth2-gateways", "database-sync", "data-pipelines"
     ]
   },
   {
@@ -301,36 +297,35 @@ export const getLandingPageData = (pathname: string): LandingPageData | null => 
       { client: "Summit Realty", challenge: "Sales agents struggled to follow up on 500+ daily property inquiries across three portals.", outcome: "Integrated custom Real Estate CRM with instant SMS & WhatsApp capture.", metrics: "Lead contact times dropped to 90 seconds, lifting bookings by 60%." },
       { client: "Care Clinics Group", challenge: "Patient support logs were scattered across local clinic spreadsheets, leading to double-booked appointments.", outcome: "Deployed unified Healthcare CRM with centralized scheduling.", metrics: "Decreased appointment check-in queues by 35%." }
     ];
-  } else if (categoryId === "ai" || lowerSlug.includes("ai") || lowerSlug.includes("agent")) {
+  } else if (categoryId === "integrations" || lowerSlug.includes("integrations") || lowerSlug.includes("sync") || lowerSlug.includes("api")) {
     problemPoints = [
-      { title: "High Customer Service Costs", desc: "Support teams struggle under repetitive FAQs, inflating human resource budgets and response delays." },
-      { title: "Manual Document Processing", desc: "Employees spend hours copying invoice data and shipping slips manually into system tables." },
-      { title: "Missed Call Opportunities", desc: "Inbound client calls after hours go to voicemail, losing high-value prospects to competitors." }
+      { title: "Brittle System Connections", desc: "Brittle API integrations fail quietly, causing lost invoices and stock discrepancies." },
+      { title: "Legacy Database Silos", desc: "Mainframes and local databases cannot speak to cloud CRMs, blocking automation." },
+      { title: "Delayed Data Processing", desc: "Batch reports run once a day, creating visibility lags in sales and inventory metrics." }
     ];
-    solutionDesc = "ELVTERA AI Solutions deploy end-to-end operational automation loops and process orchestrations. We construct custom agents that parse invoices, cross-reference relational tables, execute database triggers, and streamline B2B communication pipelines.";
+    solutionDesc = "ELVTERA System Integrations bridge isolated databases and modern SaaS APIs. We design real-time database sync triggers, secure REST API gateways, and custom webhook connectors to unify your operations.";
     solutionHighlights = [
-      "Process & Database triggers automation",
-      "Autonomous RAG document scanners with 99.8% accuracy",
-      "Outbound support agents with custom rules",
-      "Automatic ledger reconciliation scripts"
+      "Real-time database sync triggers",
+      "REST API gateway integration",
+      "Secure OAuth2 tokens & key management",
+      "Comprehensive transaction audit trails"
     ];
     features = [
-      { title: "Database Trigger Automations", desc: "Automate downstream actions: purchase approvals trigger inventory deductions, sync customer ledgers, and alert warehouse teams." },
-      { title: "RAG Knowledge Extractor", desc: "Deploy AI context search layers trained on private PDFs, manuals, and schemas with strict database bounds." },
-      { title: "Optical Document Audits", desc: "Scan, audit, and extract purchase bills, shipping logs, and contracts, writing structured values to PostgreSQL tables." },
-      { title: "Workflow Coordination Desk", desc: "Analyze incoming queries, classify support tickets, and execute background notifications automatically." }
+      { title: "REST API Gateway", desc: "Build custom, high-throughput REST APIs to transfer data between platforms." },
+      { title: "Database Auto-Sync", desc: "Run background triggers that replicate record edits to downstream servers in milliseconds." },
+      { title: "Webhook Event Routers", desc: "Dispatch payloads to partner databases immediately upon billing actions." },
+      { title: "Audit Logs Ticker", desc: "Deploys monitoring panels to log every API response code and token request." }
     ];
     benefits = [
-      { title: "80% Support Cost Cut", desc: "Deflect standard inquiries to automated AI agents, keeping support staff free for complex concerns." },
-      { title: "Immediate Response Times", desc: "Resolve client queries in real-time, boosting bookings and satisfaction metrics." },
-      { title: "Eliminate Manual Typos", desc: "Import high-volume document tables directly into databases with zero copy errors." },
-      { title: "Continuous Operation", desc: "Ensure your sales and service pipelines are running 24/7/365, without holiday breaks." }
+      { title: "Unified System Operations", desc: "Eliminate manual imports by synchronizing all systems instantly." },
+      { title: "Zero Latency Updates", desc: "Make business decisions with real-time inventory and sales metrics." },
+      { title: "Robust Key Security", desc: "Protect endpoints using enterprise OAuth2 protocols." },
+      { title: "Fast Debugging Cycles", desc: "Identify integration problems instantly via central logs." }
     ];
-    techStack = ["Python REST Engine", "OpenAI / Anthropic APIs", "Pinecone VectorDB", "Twilio SIP", "Node.js"];
+    techStack = ["Node.js Gateway", "PostgreSQL Replicator", "REST APIs", "OAuth2 Security", "Audit logs"];
     faq = [
-      { q: "How do you ensure the AI does not hallucinate false information?", a: "We lock the AI model using Retrieval-Augmented Generation (RAG). The agent is programmed to only answer using provided technical documents, defaulting to a human transfer if information is missing." },
-      { q: "Is customer data kept private?", a: "Yes. All corporate data is processed inside private virtual servers with zero third-party model training use, ensuring enterprise GDPR and HIPAA security compliance." },
-      { q: "What is the typical setup timeline for a voice agent?", a: "A custom voice agent takes 3 to 5 weeks to map, prompt-test, integrate with Twilio trunks, and launch." }
+      { q: "Do you support integrations with legacy systems?", a: "Yes. We design customized API adapters and ETL pipelines to safely interface with on-premise SQL databases and legacy systems." },
+      { q: "How are database connections kept secure?", a: "All connections use SSL encryption, and API tokens are stored in secure virtual vaults with role-based access limits." }
     ];
     caseStudies = [
       { client: "Global Logix LLC", challenge: "Global Logix staff spent 4 hours daily keying in tracking codes from PDF manifests.", outcome: "Deployed AI Document Processing pipelines with automatic OCR validation.", metrics: "Reduced data entry times to under 3 minutes, cutting errors by 98%." },

@@ -68,16 +68,16 @@ export const Navbar: React.FC = () => {
       ]
     },
     {
-      title: 'AI Solutions',
-      description: 'Intelligent digital agents for sales, support, and calls.',
+      title: 'System Integrations',
+      description: 'Event-driven system pipelines and database synchronizations.',
       icon: Cpu,
       color: 'text-teal-600 bg-teal-50',
-      path: '/ai',
+      path: '/integrations',
       items: [
-        { name: 'AI Voice Agents', desc: 'Automated high-fidelity outbound calls', path: '/ai/voice-calling-agent' },
-        { name: 'AI Sales Agents', desc: 'Conversational lead booking systems', path: '/ai/ai-sales-agent' },
-        { name: 'AI Support Desk', desc: 'Instant multilingual customer help', path: '/ai/customer-support-agent' },
-        { name: 'AI Knowledge Base', desc: 'Smart enterprise search & discovery', path: '/ai/knowledge-base' }
+        { name: 'REST API Routers', desc: 'Bespoke system API gateway endpoints', path: '/integrations/api-routes' },
+        { name: 'Database Auto-Sync', desc: 'Real-time records synchronization', path: '/integrations/db-sync' },
+        { name: 'Webhook Pipelines', desc: 'Event-triggered script actions', path: '/integrations/webhooks' },
+        { name: 'Audit Logging Hub', desc: 'Central log files & performance stats', path: '/integrations/audit-logs' }
       ]
     },
     {
@@ -146,7 +146,7 @@ export const Navbar: React.FC = () => {
               <button 
                 className={`flex items-center space-x-1.5 px-4 py-2 rounded-lg text-base font-semibold transition-colors cursor-pointer ${
                   location.pathname.startsWith('/business-software') || 
-                  location.pathname.startsWith('/ai') || 
+                  location.pathname.startsWith('/integrations') || 
                   location.pathname.startsWith('/automations') || 
                   location.pathname.startsWith('/consulting') || 
                   location.pathname.startsWith('/digital-marketing')

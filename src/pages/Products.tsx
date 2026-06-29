@@ -110,12 +110,12 @@ export const Products: React.FC = () => {
       specs: ["Meta verification setup", "Shared team inbox dashboard", "Custom broadcasting triggers", "Opt-out list manager"]
     },
     {
-      title: "AI Voice Calling Agent",
-      category: "AI Solutions",
+      title: "REST API Router & Integrations",
+      category: "Automations",
       icon: Bot,
-      path: "/ai/voice-calling-agent",
-      desc: "Autonomous outbound and inbound phone dialer. Qualifies lead sheets, books calendar slots, and routes high-intent transfers to live personnel.",
-      specs: ["VoIP trunking configuration", "Low-latency voice outputs", "Cal.com & Calendly hooks", "Dial logs & call transcripts summaries"]
+      path: "/automations/api-router",
+      desc: "Secure, low-latency REST API gateway endpoints that bridge information securely between isolated databases and web application platforms.",
+      specs: ["REST API endpoint maps", "Automated webhook routers", "Secure OAuth2 tokens", "Detailed request logs diaries"]
     },
     {
       title: "HRMS & Payroll Core",
@@ -142,12 +142,12 @@ export const Products: React.FC = () => {
       specs: ["2FA credentialing", "Encrypted document uploads", "Custom brand white-labeling", "Self-service service desks"]
     },
     {
-      title: "AI Receptionist & Appointment Booker",
-      category: "AI Solutions",
+      title: "Automated Notification Router",
+      category: "Automations",
       icon: Zap,
-      path: "/ai/appointment-booking",
-      desc: "Qualify client inquiries, book sessions into team calendars, and respond to FAQs 24/7 across multiple channels.",
-      specs: ["Cal.com schedule syncing", "Multi-turn lead screening", "Context RAG safety checks", "Multilingual speech responses"]
+      path: "/automations/notification-router",
+      desc: "Configure custom cron triggers and background scripts that automatically send emails, push support alerts, and update general ledger entries based on database shifts.",
+      specs: ["Event-driven action loops", "Multi-channel message sends", "Secure ledger auto-postings", "Complete log audit reports"]
     },
     {
       title: "Enterprise Accounting Suite",
@@ -175,14 +175,14 @@ export const Products: React.FC = () => {
   const tierLabel = tier === 0.20 
     ? "Basic Software" 
     : tier === 0.40 
-      ? "AI & WhatsApp Agent" 
+      ? "Sync & WhatsApp Pipelines" 
       : "Complete ERP Ecosystem";
 
   return (
     <div className="w-full relative overflow-hidden font-sans bg-brand-bg-light text-slate-700">
       <SEO 
         title="Our Software Products" 
-        description="Explore ELVTERA's software suite including Enterprise ERP, Sales CRM, WhatsApp API, and AI voice agents. Use our ROI Calculator to estimate savings." 
+        description="Explore ELVTERA's software suite including Enterprise ERP, Sales CRM, WhatsApp API, and systems integration automation pipelines. Use our ROI Calculator to estimate savings." 
       />
 
       {/* Hero Header */}

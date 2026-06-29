@@ -12,7 +12,8 @@ import {
   Database,
   MessageSquare,
   CheckCircle2,
-  Terminal
+  Package,
+  Settings
 } from 'lucide-react';
 import { StatsCounter } from '../components/StatsCounter';
 import { InteractiveWorkflow } from '../components/InteractiveWorkflow';
@@ -20,34 +21,51 @@ import SEO from '../components/SEO';
 
 export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [visualMode, setVisualMode] = useState<'topology' | 'console'>('topology');
-  const [consoleLogs, setConsoleLogs] = useState<{ time: string; type: string; msg: string; color: string }[]>([
-    { time: "10:14:02", type: "INGEST", msg: "Received Sales Invoice SI-2026-00492", color: "text-brand-blue" },
-    { time: "10:14:05", type: "STOCK", msg: "Deducted yarn batch #FAB-292", color: "text-brand-teal" },
-    { time: "10:14:08", type: "LEDGER", msg: "Posted journal debit $1,250.00", color: "text-brand-blue" }
-  ]);
+  const [currentProductIndex, setCurrentProductIndex] = useState<number>(0);
+
+  const heroProducts = [
+    {
+      title: "Enterprise ERP Engine",
+      category: "Business Software",
+      icon: Database,
+      color: "bg-blue-50 text-blue-600 border-blue-100",
+      desc: "All-in-one resource planning platform connecting general ledger, warehouses, and payroll logs.",
+      specs: ["Modular Ledger Schema", "Multi-Warehouse Inventories", "GAAP Accounts Compliance"],
+      visualType: "erp"
+    },
+    {
+      title: "Workflow Sync Automation",
+      category: "Automations",
+      icon: Cpu,
+      color: "bg-emerald-50 text-emerald-600 border-emerald-100",
+      desc: "Connect CRM databases directly to ledger databases with event-driven sync triggers.",
+      specs: ["Event-Driven Pipelines", "REST API & Webhooks", "Zero Manual Overhead"],
+      visualType: "workflow"
+    },
+    {
+      title: "Database Integrations",
+      category: "API Sync",
+      icon: Settings,
+      color: "bg-indigo-50 text-indigo-600 border-indigo-100",
+      desc: "API gateway routers to pass information securely between internal ledger tables.",
+      specs: ["Verified Endpoints Setup", "Webhook Router Arrays", "Encrypted Token Vaults"],
+      visualType: "api"
+    },
+    {
+      title: "Warehouse Stock Engine",
+      category: "Business Software",
+      icon: Package,
+      color: "bg-amber-50 text-amber-600 border-amber-100",
+      desc: "Track raw materials inventory counts across regional warehouse centers in real time.",
+      specs: ["Low-Stock Warnings", "Supplier PO Auto-Triggers", "Batch Expiry Logs"],
+      visualType: "stock"
+    }
+  ];
 
   React.useEffect(() => {
-    const transactionPool = [
-      { type: "INGEST", msg: "Parsed customer query via CRM API", color: "text-slate-400" },
-      { type: "LEDGER", msg: "Posted invoice clearing ledger record", color: "text-brand-blue" },
-      { type: "STOCK", msg: "Inventory levels check: SKU yarn low", color: "text-amber-500" },
-      { type: "TRIGGER", msg: "Auto-issued restocking PO to Supplier A", color: "text-brand-teal" },
-      { type: "HRMS", msg: "Registered shift clock-in: User ID 992", color: "text-slate-400" },
-      { type: "MRP", msg: "Generated production Work Order WO-492", color: "text-brand-teal" },
-      { type: "SUPPORT", msg: "Assigned customer ticket to rep queue", color: "text-brand-blue" }
-    ];
-
     const interval = setInterval(() => {
-      const date = new Date();
-      const timeStr = date.toTimeString().split(' ')[0];
-      const randomTx = transactionPool[Math.floor(Math.random() * transactionPool.length)];
-      
-      setConsoleLogs(prev => [
-        ...prev.slice(-3),
-        { time: timeStr, ...randomTx }
-      ]);
-    }, 3000);
+      setCurrentProductIndex(prev => (prev + 1) % heroProducts.length);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, []);
@@ -65,11 +83,11 @@ export const Home: React.FC = () => {
       badge: "99.99% Database Uptime"
     },
     {
-      title: "AI Solutions",
-      desc: "Eliminate manual data entries and administrative bottlenecks. Deploys private RAG vector storage, LLM-based OCR parsers, and trigger scripts to analyze incoming contracts, match bills of materials, and schedule calendar queues automatically.",
-      features: ["LLM-Based Document Auditing", "RAG Vector Context Search", "Automatic Database Syncing", "Multi-Agent Support Routing"],
+      title: "System Integrations",
+      desc: "Bridge isolated software systems and database tables. We build custom API routers, real-time database synchronization triggers, and secure network gateways to pass information automatically between platforms.",
+      features: ["Real-Time Database Syncing", "Custom REST API Gateways", "Encrypted Data Bridges", "Multi-System Webhook Links"],
       color: "border-teal-500/20 hover:border-teal-500",
-      badge: "Workflow Automation"
+      badge: "Database Sync Core"
     },
     {
       title: "Workflow Automations",
@@ -127,7 +145,7 @@ export const Home: React.FC = () => {
       avatar: "MC"
     },
     {
-      quote: "The AI Voice calling agent qualified 12,000 inbound leads in under a week, booking over 800 booked demos directly on our team's calendar. It felt like we added 15 sales reps overnight.",
+      quote: "The automated lead synchronization pipeline ingestion qualified 12,000 inbound records in under a week, updating over 800 sales entries directly inside our team's CRM. It felt like we scaled our operations overnight.",
       author: "Sarah Jenkins",
       role: "VP of Business Development",
       company: "MedTech Distribution",
@@ -150,7 +168,7 @@ export const Home: React.FC = () => {
       a: "We develop completely customized enterprise ecosystems. While we leverage standard libraries and secure cloud components for efficiency, your business processes, databases, and UX configurations are engineered specifically for your brand."
     },
     {
-      q: "Can your AI Voice Agents and WhatsApp chat setups integrate with my current CRM?",
+      q: "Can your database sync pipelines and WhatsApp chat setups integrate with my current CRM?",
       a: "Yes. We build custom API connectors for Zoho, Salesforce, Hubspot, and custom database backends. All lead captures, chat transcripts, call outcomes, and booked appointments sync back into your central database automatically."
     },
     {
@@ -159,7 +177,7 @@ export const Home: React.FC = () => {
     },
     {
       q: "How does the pricing work for custom enterprise developments?",
-      a: "We provide clear, milestones-based pricing after our initial consultation and scoping process. We also offer subscription-based options for our ready-to-deploy products (like AI Callers, WhatsApp CRM, and POS) to allow fast deployments with lower initial overheads."
+      a: "We provide clear, milestones-based pricing after our initial consultation and scoping process. We also offer subscription-based options for our ready-to-deploy products (like Sync pipelines, WhatsApp CRM, and POS) to allow fast deployments with lower initial overheads."
     }
   ];
 
@@ -167,7 +185,7 @@ export const Home: React.FC = () => {
     <div className="w-full relative overflow-hidden bg-brand-bg-light text-slate-700">
       <SEO 
         title="Transform Your Operations" 
-        description="Transform your business with intelligent software, custom ERP/CRM developments, autonomous AI voice agents, and workflow automations by ELVTERA." 
+        description="Transform your business with intelligent software, custom ERP/CRM developments, database integrations, and workflow automations by ELVTERA." 
       />
 
       {/* Hero Section */}
@@ -183,10 +201,10 @@ export const Home: React.FC = () => {
                 <span>Enterprise Operations • Built for Scale</span>
               </div>
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 leading-[1.1] tracking-tight">
-                Build a Smarter Business with AI, Automation & Enterprise Software
+                Build a Smarter Business with Custom ERP, Workflow Automation & Systems Integration
               </h1>
-              <p className="text-base sm:text-lg text-slate-650 max-w-xl leading-relaxed font-medium">
-                From ERP and CRM to AI agents and business automation, ELVTERA helps growing businesses streamline operations, improve productivity, and scale with confidence.
+              <p className="text-base sm:text-lg text-slate-655 max-w-xl leading-relaxed font-medium">
+                From ERP and CRM core modules to secure webhooks and custom business automations, ELVTERA helps growing businesses streamline operations, improve productivity, and scale with confidence.
               </p>
               
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -206,153 +224,197 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Side: Operational Dashboard Visualizer */}
+            {/* Right Side: Simple Product Showcase Animation */}
             <div className="lg:col-span-6 relative w-full min-h-[480px] flex items-center justify-center">
               <div className="absolute inset-0 bg-brand-blue/5 rounded-3xl blur-2xl"></div>
               
               <div className="absolute inset-0 bg-white border border-slate-200 rounded-3xl shadow-xl p-6 flex flex-col justify-between overflow-hidden relative">
                 
-                {/* Dashboard Header with Mode Toggles */}
+                {/* Header */}
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3 shrink-0">
-                  <div className="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-xl">
-                    <button
-                      onClick={() => setVisualMode('topology')}
-                      className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        visualMode === 'topology' 
-                          ? 'bg-white text-brand-blue shadow-sm' 
-                          : 'text-slate-500 hover:text-slate-800'
-                      }`}
-                    >
-                      <Activity className="h-3.5 w-3.5" />
-                      <span>Performance Monitor</span>
-                    </button>
-                    <button
-                      onClick={() => setVisualMode('console')}
-                      className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        visualMode === 'console' 
-                          ? 'bg-white text-brand-blue shadow-sm' 
-                          : 'text-slate-500 hover:text-slate-800'
-                      }`}
-                    >
-                      <Terminal className="h-3.5 w-3.5" />
-                      <span>Live Command Console</span>
-                    </button>
+                  <span className="text-xs font-bold text-slate-450 uppercase tracking-wider">Product Showcase</span>
+                  <div className="flex space-x-1">
+                    {heroProducts.map((_, pIdx) => (
+                      <button
+                        key={pIdx}
+                        onClick={() => setCurrentProductIndex(pIdx)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          currentProductIndex === pIdx ? 'w-4 bg-brand-blue' : 'w-1.5 bg-slate-200 hover:bg-slate-350'
+                        }`}
+                      />
+                    ))}
                   </div>
-                  <span className="text-xs bg-brand-blue/10 text-brand-blue font-extrabold px-3 py-1 rounded-full">
-                    Core Dashboard
-                  </span>
                 </div>
 
-                {/* Dashboard Core Body */}
-                <div className="grow flex flex-col justify-center py-4 relative min-h-[280px]">
-                  
-                  {visualMode === 'topology' ? (
-                    /* Performance Monitor Mock (High-Fidelity Dashboard) */
-                    <div className="w-full h-full flex flex-col justify-center space-y-4 select-none">
-                      
-                      {/* Operational Throughput Line Graph Card */}
-                      <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 relative overflow-hidden">
-                        <div className="flex items-center justify-between mb-3">
-                          <span className="text-xs font-extrabold text-slate-450 uppercase tracking-wider">Transaction Throughput (req/s)</span>
-                          <span className="text-xs font-extrabold text-brand-blue flex items-center space-x-1.5 bg-brand-blue/10 px-2.5 py-1 rounded-full">
-                            <span className="h-2 w-2 rounded-full bg-brand-blue animate-pulse"></span>
-                            <span>42.8 msg/sec</span>
-                          </span>
-                        </div>
-                        
-                        <svg className="w-full h-24" viewBox="0 0 320 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <line x1="0" y1="20" x2="320" y2="20" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
-                          <line x1="0" y1="50" x2="320" y2="50" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
-                          <line x1="0" y1="80" x2="320" y2="80" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 3" />
-                          <path 
-                            d="M0 75 Q 40 30, 80 80 T 160 40 T 240 65 T 320 20" 
-                            fill="none" 
-                            stroke="url(#chart-grad)" 
-                            strokeWidth="3" 
-                            strokeLinecap="round"
-                            style={{
-                              strokeDasharray: '400',
-                              strokeDashoffset: '0',
-                              animation: 'drawChart 8s linear infinite'
-                            }}
-                          />
-                          <defs>
-                            <linearGradient id="chart-grad" x1="0" y1="0" x2="1" y2="0">
-                              <stop offset="0%" stopColor="#0031c7" />
-                              <stop offset="100%" stopColor="#14b8a6" />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                      </div>
-
-                      {/* DB Performance circular stats / Gauges */}
-                      <div className="grid grid-cols-3 gap-4">
-                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
-                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">Engine Load</span>
-                          <span className="text-sm font-bold text-slate-800 block mt-1">24.2%</span>
-                          <span className="text-[9px] text-brand-success font-extrabold block mt-0.5 uppercase tracking-wider">Optimal</span>
-                        </div>
-                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
-                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">DB Latency</span>
-                          <span className="text-sm font-bold text-slate-800 block mt-1">14.8 ms</span>
-                          <span className="text-[9px] text-brand-blue font-extrabold block mt-0.5 uppercase tracking-wider">Nominal</span>
-                        </div>
-                        <div className="bg-slate-50 border border-slate-200/50 p-3 rounded-2xl text-center">
-                          <span className="text-[10px] font-extrabold text-slate-450 uppercase block tracking-wider">Sync Rate</span>
-                          <span className="text-sm font-bold text-slate-800 block mt-1">99.999%</span>
-                          <span className="text-[9px] text-brand-teal font-extrabold block mt-0.5 uppercase tracking-wider">Replicated</span>
-                        </div>
-                      </div>
-
-                      {/* Technical Spec Matrix Console */}
-                      <div className="bg-slate-900 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-1.5 select-none border border-slate-800 shadow-inner">
-                        <div className="flex justify-between border-b border-slate-800 pb-2 mb-2 font-bold text-[10px]">
-                          <span className="text-brand-teal">DATABASE SPECIFICATIONS</span>
-                          <span className="text-slate-500">SCHEMA VERSION 3.4 OK</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                          <div><span className="text-slate-500">Sync Pipeline:</span> Postgres SQL</div>
-                          <div><span className="text-slate-500">Index Type:</span> Balanced B-Tree</div>
-                          <div><span className="text-slate-500">Active Pools:</span> 16 Threads</div>
-                          <div><span className="text-slate-500">Uptime Metric:</span> 99.999%</div>
-                        </div>
-                      </div>
-
+                {/* Animated Showcase Card Container */}
+                <div className="grow flex flex-col justify-center py-4 relative min-h-[300px]">
+                  <div className="w-full h-full flex flex-col justify-between space-y-4 select-none">
+                    
+                    {/* Active Product Header Info */}
+                    <div className="flex items-start space-x-3.5 text-left">
+                      {(() => {
+                        const activeProduct = heroProducts[currentProductIndex];
+                        const IconComponent = activeProduct.icon;
+                        return (
+                          <>
+                            <div className={`p-3 rounded-2xl ${activeProduct.color} border shrink-0`}>
+                              <IconComponent className="h-6 w-6" />
+                            </div>
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <h3 className="font-display font-extrabold text-lg text-slate-900 leading-tight">
+                                  {activeProduct.title}
+                                </h3>
+                                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md border border-slate-200/50 whitespace-nowrap">
+                                  {activeProduct.category}
+                                </span>
+                              </div>
+                              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                                {activeProduct.desc}
+                              </p>
+                            </div>
+                          </>
+                        );
+                      })()}
                     </div>
-                  ) : (
-                    /* Live Transaction Logs Console */
-                    <div className="bg-slate-950 text-slate-300 p-4.5 rounded-2xl font-mono text-xs text-left space-y-2 border border-slate-800 shadow-inner select-none h-full flex flex-col justify-center">
-                      <div className="flex items-center justify-between text-[10px] text-slate-500 font-bold border-b border-slate-900 pb-2 mb-1.5 shrink-0">
-                        <span>LIVE EVENT STREAM</span>
-                        <span className="text-brand-teal flex items-center space-x-1.5 animate-pulse">
-                          <span className="h-2 w-2 rounded-full bg-brand-teal"></span>
-                          <span>ACTIVE</span>
-                        </span>
-                      </div>
-                      
-                      <div className="space-y-2.5 grow flex flex-col justify-end">
-                        {consoleLogs.map((log, lIdx) => (
-                          <div key={lIdx} className="flex items-start space-x-2 transition-all duration-300 animate-fadeInUp">
-                            <span className="text-slate-500 shrink-0">[{log.time}]</span>
-                            <span className={`${log.color} font-bold shrink-0`}>{log.type}:</span>
-                            <span className="text-slate-350 break-all">{log.msg}</span>
-                          </div>
+
+                    {/* Active Product Custom Visual Graphic Block */}
+                    <div className="grow min-h-[140px] flex flex-col justify-center relative">
+                      {(() => {
+                        const activeProduct = heroProducts[currentProductIndex];
+                        if (activeProduct.visualType === 'erp') {
+                          return (
+                            <div className="bg-slate-900 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-1.5 border border-slate-800 shadow-inner w-full">
+                              <div className="flex justify-between border-b border-slate-800 pb-1.5 mb-1.5 font-bold text-[9px] text-brand-teal uppercase tracking-wider">
+                                <span>ERP Ledger Engine Core</span>
+                                <span className="animate-pulse">Active Sync</span>
+                              </div>
+                              <div className="space-y-1">
+                                <div><span className="text-slate-500">Database SQL:</span> Postgres SQL Core</div>
+                                <div><span className="text-slate-500">Active Pools:</span> 16 Balance Threads</div>
+                                <div><span className="text-slate-500">Sync Status:</span> ledger_entry.py synced</div>
+                                <div className="flex items-center space-x-1.5 text-brand-teal text-[10px] font-bold animate-pulse pt-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-teal"></span>
+                                  <span>Syncing core_erp/accounts/doctype/...</span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        } else if (activeProduct.visualType === 'workflow') {
+                          return (
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 w-full flex flex-col justify-center relative overflow-hidden">
+                              <div className="flex items-center justify-between mb-3.5">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Event Trigger Sync</span>
+                                <span className="text-[10px] font-extrabold text-brand-blue flex items-center space-x-1 bg-brand-blue/10 px-2 py-0.5 rounded-md">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue animate-pulse"></span>
+                                  <span>Pipeline Sync</span>
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-between px-2 pt-1">
+                                <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
+                                  <span className="text-[10px] font-bold text-slate-700 block">CRM DB</span>
+                                </div>
+                                <div className="grow relative flex items-center justify-center">
+                                  <div className="h-0.5 bg-slate-200 w-full absolute top-1/2 -translate-y-1/2"></div>
+                                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-1/4"></div>
+                                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-3/4"></div>
+                                </div>
+                                <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
+                                  <span className="text-[10px] font-bold text-slate-700 block">ERP Ledger</span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        } else if (activeProduct.visualType === 'api') {
+                          return (
+                            <div className="bg-slate-955 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-2 border border-slate-800 shadow-inner w-full">
+                              <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-900 pb-1.5 mb-1 shrink-0">
+                                <span>API GATEWAY ROUTER</span>
+                                <span className="text-brand-blue flex items-center space-x-1.5">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue animate-pulse"></span>
+                                  <span>LISTENING</span>
+                                </span>
+                              </div>
+                              <div className="space-y-1 text-slate-400">
+                                <div className="flex items-center space-x-1.5">
+                                  <span className="text-slate-600">[10:14:02]</span>
+                                  <span className="text-brand-blue font-bold">API:</span>
+                                  <span>200 OK (CRM Lead)</span>
+                                </div>
+                                <div className="flex items-center space-x-1.5">
+                                  <span className="text-slate-600">[10:14:05]</span>
+                                  <span className="text-amber-500 font-bold">WH:</span>
+                                  <span>Dispatched (Sync Loop)</span>
+                                </div>
+                                <div className="flex items-center space-x-1.5">
+                                  <span className="text-slate-600">[10:14:08]</span>
+                                  <span className="text-brand-teal font-bold">DB:</span>
+                                  <span>Postgres GAAP Ledger Synced</span>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        } else {
+                          return (
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 w-full flex flex-col justify-center space-y-3">
+                              <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Inventory Levels</span>
+                                <span className="text-xs font-bold text-brand-teal">84% Capacity</span>
+                              </div>
+                              <div className="space-y-2">
+                                <div className="space-y-1">
+                                  <div className="flex justify-between text-[10px] font-bold text-slate-600">
+                                    <span>Yarn Materials</span>
+                                    <span>92%</span>
+                                  </div>
+                                  <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                    <div className="bg-brand-blue h-full rounded-full" style={{ width: '92%' }}></div>
+                                  </div>
+                                </div>
+                                <div className="space-y-1">
+                                  <div className="flex justify-between text-[10px] font-bold text-slate-600">
+                                    <span>Packaging Boxes</span>
+                                    <span>34%</span>
+                                  </div>
+                                  <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                    <div className="bg-amber-500 h-full rounded-full animate-pulse" style={{ width: '34%' }}></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        }
+                      })()}
+                    </div>
+
+                    {/* Active Product Bottom Specifications */}
+                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                      <div className="flex flex-wrap gap-2 text-left">
+                        {heroProducts[currentProductIndex].specs.map((spec, sIdx) => (
+                          <span 
+                            key={sIdx} 
+                            className="inline-flex items-center space-x-1 text-[10px] font-bold text-slate-500 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200/50"
+                          >
+                            <span className="h-1 w-1 rounded-full bg-brand-teal"></span>
+                            <span>{spec}</span>
+                          </span>
                         ))}
                       </div>
                     </div>
-                  )}
 
+                  </div>
                 </div>
 
-                {/* Status Footer */}
+                {/* Footer Link */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-450 font-semibold mt-auto shrink-0">
-                  <div className="flex items-center space-x-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand-teal animate-pulse"></span>
-                    <span className="text-xs">
-                      Core Operations Online
-                    </span>
-                  </div>
-                  <span className="text-xs">Uptime &gt; 99.999%</span>
+                  <Link 
+                    to="/products"
+                    className="text-brand-blue hover:text-brand-blue/80 inline-flex items-center space-x-1 font-bold"
+                  >
+                    <span>Explore Products Catalog</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                  <span className="text-xs">Uptime &gt; 99.99%</span>
                 </div>
 
               </div>
@@ -751,7 +813,7 @@ export const Home: React.FC = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-base text-slate-600">
-              Everything you need to know about our implementation cycles, AI models, and technology stacks.
+              Everything you need to know about our implementation cycles, software frameworks, and technology stacks.
             </p>
           </div>
 
