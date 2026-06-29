@@ -201,6 +201,54 @@ export const Products: React.FC = () => {
         </div>
       </section>
 
+      {/* Animated Integration Flow Diagram */}
+      <section className="py-12 bg-slate-50 border-b border-slate-200/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-xs font-extrabold uppercase tracking-wider text-slate-400 block mb-6">
+            Ecosystem Integration Flow
+          </span>
+          
+          <div className="bg-white border border-slate-200/80 rounded-3xl p-8 shadow-xs relative overflow-hidden max-w-2xl mx-auto">
+            {/* Visual Connecting Streams */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-10">
+              
+              {/* Product 1: ERP Engine */}
+              <div className="bg-slate-50 border border-slate-250/60 p-5 rounded-2xl text-center space-y-2 hover-card shadow-2xs">
+                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl w-fit mx-auto border border-blue-100">
+                  <Database className="h-6 w-6" />
+                </div>
+                <h4 className="font-display font-bold text-sm text-slate-800">ERP Ledger Core</h4>
+                <p className="text-xs text-slate-500 font-medium">Double-Entry Financial Ledger</p>
+              </div>
+
+              {/* Connecting Sync Gateway */}
+              <div className="flex flex-col items-center justify-center space-y-2 relative">
+                <div className="h-10 w-10 bg-brand-teal/10 text-brand-teal border border-brand-teal/20 rounded-full flex items-center justify-center font-bold text-xs animate-pulse">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <span className="text-[10px] font-bold text-brand-teal uppercase tracking-wider">Sync Router</span>
+                
+                {/* Horizontal flow line with moving light dot (desktop only) */}
+                <div className="hidden md:block absolute w-48 h-0.5 bg-slate-250 top-[35%] -translate-y-1/2 left-[-60px] pointer-events-none">
+                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-1/4"></div>
+                  <div className="h-2 w-2 rounded-full bg-brand-teal absolute animate-ping left-3/4"></div>
+                </div>
+              </div>
+
+              {/* Product 2: APIs & Broadcasts */}
+              <div className="bg-slate-50 border border-slate-250/60 p-5 rounded-2xl text-center space-y-2 hover-card shadow-2xs">
+                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl w-fit mx-auto border border-emerald-100">
+                  <MessageSquare className="h-6 w-6" />
+                </div>
+                <h4 className="font-display font-bold text-sm text-slate-800">API Notification Hub</h4>
+                <p className="text-xs text-slate-500 font-medium">Automated Trigger Pipelines</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ERP Core Modules Section */}
       <section className="py-20 bg-white border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
