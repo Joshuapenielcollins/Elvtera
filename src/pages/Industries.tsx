@@ -143,7 +143,7 @@ export const Industries: React.FC = () => {
       <section className="relative pt-12 pb-16 bg-white border-b border-slate-200/50">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[200px] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+          <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
             Target Industries
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight">

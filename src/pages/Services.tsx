@@ -38,35 +38,35 @@ export const Services: React.FC = () => {
   const pillarsData: ServiceDetail[] = [
     {
       title: "Business Software",
-      tagline: "Decommission scattered spreadsheets and manual invoice copying.",
-      longDesc: "We build modular, custom-tailored ERP, CRM, POS, and HRMS applications specifically modeled on your offline operational workflows. No rigid pre-set limits, no unnecessary modules, just a clean, double-entry ledger-secured system built to grow alongside you.",
+      tagline: "Get rid of scattered spreadsheets and manual invoice copying.",
+      longDesc: "We build custom software systems for your business, matching your everyday work routines. No rigid pre-set limits, no unnecessary modules, just a clean, secure system built to grow alongside you.",
       icon: Layers,
       benefits: [
         { title: "Real-Time Inventory Reconciliation", desc: "Eliminate stock count mismatches by linking digital stock counts, supplier purchase orders, and sales inventories." },
-        { title: "GAAP Double-Entry Ledger", desc: "Ensure complete compliance by automatically writing every stock adjustment and payroll debit to an unalterable accounting log." },
+        { title: "Automatic Bookkeeping", desc: "Ensure complete accuracy by automatically recording every stock adjustment and payroll payment." },
         { title: "Custom Production Scheduling", desc: "Coordinate Bills of Materials (BOM) and factory floor scheduling directly with materials depletion and purchase order routines." }
       ],
       features: [
         { name: "Enterprise ERP", specs: "Resource planning, materials tracking, bills of materials (BOM), and factory yield charts", path: "/business-software/erp-solutions" },
         { name: "Client CRM", specs: "Customer lifecycles, lead tracking, conversion stages, and phone/email diaries", path: "/business-software/crm" },
         { name: "HRMS & Payroll Core", specs: "Digital check-in integrations, automated tax deductions, and wage slip dispatches", path: "/business-software/hr" },
-        { name: "Warehouse Tracker", specs: "Multi-register retail billing, SKU checks, and inventory ledger dispatches", path: "/business-software/inventory" }
+        { name: "Warehouse Tracker", specs: "Multi-register retail billing, SKU checks, and inventory records", path: "/business-software/inventory" }
       ],
-      workflow: ["Scoping & SOP mapping", "Database Architecture Design", "Interface custom modeling", "Dry-run ledgers testing", "Onsite training & SLA launch"],
+      workflow: ["Scoping & SOP mapping", "System Architecture Design", "Interface custom modeling", "Dry-run records testing", "Onsite training & support launch"],
       faq: [
-        { q: "Can we migrate data from our existing ERP?", a: "Yes. We design custom ETL pipelines to scrub, validate, and migrate your database logs from Excel, SAP, or legacy SQL tables." },
-        { q: "Is the accounting module compliant with tax guidelines?", a: "Our accounting engines are structured using standard double-entry rules and support local tax parameters, depreciation calculations, and invoice schemas." }
+        { q: "Can we migrate data from our existing ERP?", a: "Yes. We design custom sync pipelines to clean, validate, and migrate your existing logs and spreadsheet records." },
+        { q: "Is the accounting module compliant with tax guidelines?", a: "Our accounting engines are structured using standard accounting rules and support local tax parameters, depreciation calculations, and invoice schemas." }
       ]
     },
     {
       title: "AI Solutions",
       tagline: "Eliminate manual data entries and administrative bottlenecks.",
-      longDesc: "Deploy end-to-end operational automation loops using fine-tuned AI agents. We construct secure systems that parse complex PDFs, verify data across relational tables, execute automatic order dispatches, and handle customer dialogs.",
+      longDesc: "Deploy end-to-end operational automation loops using fine-tuned AI agents. We construct secure systems that parse complex PDFs, verify data across records, execute automatic order dispatches, and handle customer dialogs.",
       icon: Cpu,
       benefits: [
-        { title: "LLM-Based Document Auditing", desc: "Extract values from purchase bills, contracts, and custom logistics sheets automatically, writing structured records directly to PostgreSQL database tables." },
-        { title: "RAG Vector Context Search", desc: "Deploy private vector indexes to search corporate manuals and customer files securely with strict permission shields." },
-        { title: "Database Trigger Automations", desc: "Configure background triggers where system outputs (like customer calendar bookings) update ledgers and inventory logs in real time." }
+        { title: "Document Auditing", desc: "Extract values from purchase bills, contracts, and custom logistics sheets automatically, writing structured records directly to your central files." },
+        { title: "Vector Context Search", desc: "Deploy private vector indexes to search corporate manuals and customer files securely with strict permission shields." },
+        { title: "Automatic System Triggers", desc: "Configure background triggers where system outputs (like customer calendar bookings) update your records and inventory logs in real time." }
       ],
       features: [
         { name: "AI Voice Calling Agents", specs: "Low-latency outbound phone consultations, answering FAQs, and schedule booking", path: "/ai/voice-calling-agent" },
@@ -83,22 +83,22 @@ export const Services: React.FC = () => {
     {
       title: "Workflow Automations",
       tagline: "Decommission manual data copying and disjointed software pipelines.",
-      longDesc: "Connect all your enterprise applications (such as CRMs, SQL databases, email, and messaging APIs) into seamless, event-driven workflow automation pipelines. We build custom triggers and actions that automatically sync logs, dispatch notifications, compile reports, and audit data, keeping your business running 24/7 without manual effort.",
+      longDesc: "Connect all your everyday applications (such as email, messaging, CRM, and files) into seamless workflow automation pipelines. We build custom triggers and actions that automatically sync records, send notifications, and compile reports, keeping your business running 24/7 without manual effort.",
       icon: Send,
       benefits: [
-        { title: "Event-Driven Workflows", desc: "Connect scattered systems using webhooks and direct database links, running pipeline scripts immediately on events." },
-        { title: "Multi-System Auto-Sync", desc: "Keep Customer, Inventory, and Accounting ledgers fully updated across platforms automatically." },
-        { title: "Custom Triggers & Alerts", desc: "Set up rules for email broadcasts, team notifications, and warning flags based on database activity." }
+        { title: "Event-Driven Workflows", desc: "Connect scattered systems using webhooks and direct links, running sync scripts immediately on events." },
+        { title: "Multi-System Auto-Sync", desc: "Keep Customer, Inventory, and Accounting files fully updated across platforms automatically." },
+        { title: "Custom Triggers & Alerts", desc: "Set up rules for email broadcasts, team notifications, and warning flags based on system updates." }
       ],
       features: [
-        { name: "API Pipeline Integration", specs: "Webhook connectors, REST API wrappers, and multi-system data flows", path: "/automations/whatsapp-api" },
-        { name: "Database Auto-Sync", specs: "Syncing lead databases, inventory records, and invoicing sheets in real time", path: "/automations/broadcast-campaigns" },
+        { name: "API Pipeline Integration", specs: "Webhook connectors, API wrappers, and multi-system data flows", path: "/automations/whatsapp-api" },
+        { name: "Automatic Data Sync", specs: "Syncing lead lists, inventory records, and invoicing sheets in real time", path: "/automations/broadcast-campaigns" },
         { name: "Trigger-Based Actions", specs: "Custom notification triggers, email dispatches, and reports compiler", path: "/automations/team-inbox" },
-        { name: "Process Workflows", specs: "Automatic verification approvals, document routing, and ledger entries", path: "/automations/whatsapp-chatbot" }
+        { name: "Process Workflows", specs: "Automatic verification approvals, document routing, and record entries", path: "/automations/whatsapp-chatbot" }
       ],
       workflow: ["Systems API & webhook scoping", "Pipeline logic & routing maps design", "Data transformation rules testing", "Trigger & schedule validation", "Background engine deployment"],
       faq: [
-        { q: "Can you automate workflows across different cloud platforms?", a: "Yes. We configure pipelines connecting various cloud APIs, custom internal databases, email servers, and support queues." },
+        { q: "Can you automate workflows across different cloud platforms?", a: "Yes. We configure pipelines connecting various cloud APIs, custom internal systems, email servers, and support queues." },
         { q: "How do you handle API downtime or connection failures?", a: "We build automatic retry queues, log event failures to audit logs, and trigger immediate alerts to administrators if an API request fails persistently." }
       ]
     },
@@ -127,22 +127,22 @@ export const Services: React.FC = () => {
     {
       title: "Business Consulting",
       tagline: "Strategic digital transformation scoping.",
-      longDesc: "Establish a clear automation roadmap before spending on software. We review your team's offline routines, audit your database structures, and deliver a detailed systems blueprint to scale yields.",
+      longDesc: "Establish a clear automation roadmap before spending on software. We review your team's offline routines, audit your systems, and deliver a detailed blueprint to scale yields.",
       icon: Briefcase,
       benefits: [
         { title: "Process SOP Mapping", desc: "Document department tasks and highlight data leakage loops between paper documents and offline folders." },
-        { title: "Technology Risk Audits", desc: "Ensure database permissions, token lifecycles, and API security keys match modern standard compliance guidelines." },
-        { title: "Custom Vendor RFP Blueprints", desc: "Receive detailed software requirements sheets and schema mappings to evaluate packages accurately before procurement." }
+        { title: "Technology Risk Audits", desc: "Ensure system permissions, token lifecycles, and API security keys match modern standard compliance guidelines." },
+        { title: "Custom Vendor RFP Blueprints", desc: "Receive detailed software requirements sheets and workflow mappings to evaluate packages accurately before procurement." }
       ],
       features: [
-        { name: "Digital Transformation", specs: "Legacy software reviews, database migration plans, and cloud cost optimizations", path: "/consulting/digital-transformation" },
+        { name: "Digital Transformation", specs: "Legacy software reviews, record migration plans, and cloud cost optimizations", path: "/consulting/digital-transformation" },
         { name: "Workflow Strategy", specs: "Staff interviews, process bottleneck maps, and system requirements specifications", path: "/consulting/automation-strategy" },
-        { name: "IT Strategy & Audits", specs: "Enterprise security architecture audits, database token clearances, and ETL designs", path: "/consulting/it-strategy" }
+        { name: "IT Strategy & Audits", specs: "Enterprise security audits, security key clearances, and sync pipeline designs", path: "/consulting/it-strategy" }
       ],
-      workflow: ["Onsite stakeholder workshops", "Workflow audits & SOP diagrams", "Bottlenecks & licensing audits reports", "Architecture blueprint delivery", "Execution oversight consulting"],
+      workflow: ["Onsite stakeholder workshops", "Workflow audits & SOP diagrams", "Bottlenecks & licensing audits reports", "Systems blueprint delivery", "Execution oversight consulting"],
       faq: [
-        { q: "Can we hire ELVTERA only for consulting and let our own team build it?", a: "Yes. We deliver comprehensive system design blueprints, database schemas, and RFPs that your in-house engineering team can execute." },
-        { q: "What is the typical duration of a consulting cycle?", a: "A standard scoping and systems design cycle takes between 4 to 8 weeks, depending on the number of departments, locations, and databases involved." }
+        { q: "Can we hire ELVTERA only for consulting and let our own team build it?", a: "Yes. We deliver comprehensive system design blueprints, specifications, and RFPs that your in-house engineering team can execute." },
+        { q: "What is the typical duration of a consulting cycle?", a: "A standard scoping and systems design cycle takes between 4 to 8 weeks, depending on the number of departments, locations, and systems involved." }
       ]
     }
   ];
@@ -171,10 +171,10 @@ export const Services: React.FC = () => {
               <path d="M70 60 H110" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
               
               <rect x="110" y="25" width="60" height="70" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="140" y="45" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Ledger DB</text>
+              <text x="140" y="45" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Records Hub</text>
               <line x1="120" y1="60" x2="160" y2="60" stroke="#14b8a6" strokeWidth="1" strokeDasharray="2 2" />
               <text x="140" y="72" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Double Entry</text>
-              <text x="140" y="82" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="6">POSTED: INVOICE</text>
+              <text x="140" y="82" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="6">POSTED: SYSTEM</text>
               
               <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
               
@@ -203,7 +203,7 @@ export const Services: React.FC = () => {
               <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
               
               <rect x="210" y="30" width="60" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
-              <text x="240" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Vector DB</text>
+              <text x="240" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Vector Sync</text>
               <circle cx="230" cy="65" r="3" fill="#14b8a6" />
               <circle cx="242" cy="72" r="3" fill="#3b82f6" />
               <circle cx="250" cy="62" r="3" fill="#14b8a6" />
@@ -224,7 +224,7 @@ export const Services: React.FC = () => {
               <text x="137.5" y="35" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Filter Check</text>
               
               <rect x="105" y="70" width="65" height="30" rx="6" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
-              <text x="137.5" y="85" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Sync DB</text>
+              <text x="137.5" y="85" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Sync Files</text>
               
               <path d="M170 35 H210" stroke="#14b8a6" strokeWidth="1.5" strokeDasharray="2 2" />
               <path d="M170 85 H210" stroke="#14b8a6" strokeWidth="1.5" strokeDasharray="2 2" />
@@ -233,7 +233,7 @@ export const Services: React.FC = () => {
               <text x="240" y="35" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Send Email</text>
               
               <rect x="210" y="70" width="60" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="240" y="85" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Post Ledger</text>
+              <text x="240" y="85" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Post Accounts</text>
             </svg>
           </div>
         );
@@ -267,7 +267,7 @@ export const Services: React.FC = () => {
               <text x="70" y="60" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="7" fontWeight="bold">Offline SOP</text>
               
               <circle cx="150" cy="60" r="35" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="150" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">DB Blueprint</text>
+              <text x="150" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">System Blueprint</text>
               
               <path d="M185 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
               
@@ -293,14 +293,14 @@ export const Services: React.FC = () => {
       <section className="relative pt-12 pb-16 bg-white border-b border-slate-200/50">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[200px] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
             Our Pillars
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight">
             Comprehensive Technology Services
           </h1>
           <p className="text-xs sm:text-sm text-slate-550 max-w-lg mx-auto leading-relaxed font-medium">
-            Select one of our five core pillars below to view detailed operational features, deployment workflows, and technical details.
+            Select one of our services below to learn how we work with your team, how we deploy, and what you get.
           </p>
         </div>
       </section>

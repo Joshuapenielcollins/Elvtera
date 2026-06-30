@@ -3,7 +3,6 @@ import {
   Target, 
   Users, 
   MessageSquare, 
-  Bot, 
   TrendingUp, 
   Database, 
   FilePieChart, 
@@ -57,13 +56,13 @@ export const InteractiveWorkflow: React.FC = () => {
       impact: "98% Message Read Ratio"
     },
     {
-      name: "AI Agent Followup",
-      icon: Bot,
-      shortDesc: "24/7 Consultation",
-      longDesc: "An AI Sales or Voice Agent engages the user, answers their technical questions using your custom knowledge base, qualifies budget/intent, and books a call directly on your sales team's calendar.",
-      tech: ["NLP Models", "Function Calling Agents", "Cal.com Integration"],
-      kpi: "Autonomous Booking",
-      impact: "65% Meetings Booked via AI"
+      name: "Sync Engagement",
+      icon: Zap,
+      shortDesc: "Real-time Validation",
+      longDesc: "Automated integration triggers engage the prospect, validating company records, fetching registration dossiers, and preparing calendar slots for the sales team instantly.",
+      tech: ["Sync Engines", "Database Triggers", "Cal.com Webhooks"],
+      kpi: "Automation Trigger Speed",
+      impact: "99.9% Sync Accuracy"
     },
     {
       name: "Sales Closing",
@@ -162,10 +161,9 @@ export const InteractiveWorkflow: React.FC = () => {
           >
             {/* Left side description */}
             <div className="lg:col-span-2 space-y-4">
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-brand-teal bg-brand-teal/10 px-2.5 py-1 rounded-full w-fit">
-                <Zap className="h-3 w-3" />
-                <span>Ecosystem Stage 0{activeStep + 1}</span>
-              </div>
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-teal block mb-2">
+                Ecosystem Stage 0{activeStep + 1}
+              </span>
               <h3 className="font-display font-bold text-2xl sm:text-3xl text-slate-900 dark:text-white">
                 {steps[activeStep].name}
               </h3>

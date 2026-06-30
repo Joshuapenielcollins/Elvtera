@@ -13,7 +13,7 @@ export const FloatingWhatsApp: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       sender: 'bot', 
-      text: "Hi there! 👋 I'm ELVTERA's automation assistant. How can we optimize your operations today?", 
+      text: "Hi there! I'm ELVTERA's automation assistant. How can we optimize your operations today?", 
       time: 'Just now' 
     }
   ]);

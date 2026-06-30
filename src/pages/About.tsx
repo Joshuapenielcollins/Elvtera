@@ -26,40 +26,40 @@ export const About: React.FC = () => {
     {
       year: "2022",
       title: "Founding & Core Ideation",
-      subtitle: "Enterprise Integration Vision",
-      details: "ELVTERA was established by Joshua Collins and Mark Kavin with a clear goal: simplify how mid-market businesses structure databases, automate workflows, and connect legacy software systems.",
+      subtitle: "System Integration Vision",
+      details: "ELVTERA was established by Joshua Collins and Mark Kavin with a clear goal: simplify how mid-market businesses structure systems, automate workflows, and connect legacy software.",
       stats: "2 Founders • 1 Office"
     },
     {
       year: "2024",
-      title: "ERP & WhatsApp Launches",
-      subtitle: "First Enterprise Core Releases",
-      details: "Released our custom resource planning ledger and automated WhatsApp Business API integrations. Enabled direct queue mappings and unified team dashboard suites.",
+      title: "System & WhatsApp Launches",
+      subtitle: "First Central System Releases",
+      details: "Released our custom resource planning systems and automated WhatsApp Business API integrations. Enabled direct queue mappings and unified team dashboard suites.",
       stats: "15+ Core Integrations"
     },
     {
       year: "2026",
       title: "Phased Scaling Standard",
       subtitle: "Unified Enterprise Pillars",
-      details: "Established company services into 5 core pillars. Scaling database replication pipelines and low-latency custom integrations to support real-time workflows.",
+      details: "Established company services into 5 core pillars. Scaling system replication pipelines and low-latency custom integrations to support real-time workflows.",
       stats: "25+ Industries Enabled"
     }
   ];
 
   const coreValues = [
     {
-      title: "Enterprise Reliability",
+      title: "System Reliability",
       desc: "Our systems handle millions of records. We build with redundancy, security, and 99.99% uptime as baseline standards.",
       icon: Award
     },
     {
       title: "Innovation first",
-      desc: "We invest 20% of our yields into AI models, automated pipeline testing, and modern cloud database architecture.",
+      desc: "We invest 20% of our yields into AI models, automated pipeline testing, and modern cloud system architecture.",
       icon: TrendingUp
     },
     {
       title: "Absolute Integrity",
-      desc: "We scope projects transparently, quote fairly, and never hide database constraints, vendor costs, or delivery metrics.",
+      desc: "We scope projects transparently, quote fairly, and never hide system limitations, vendor costs, or delivery metrics.",
       icon: CheckCircle2
     },
     {
@@ -87,7 +87,7 @@ export const About: React.FC = () => {
     {
       name: "Sarah Chen",
       role: "CTO",
-      bio: "Manages database systems engineering and RAG automation.",
+      bio: "Manages central systems engineering and automation.",
       avatar: "SC",
       color: "bg-indigo-600"
     },
@@ -105,7 +105,7 @@ export const About: React.FC = () => {
     { name: "Meta Business Network", type: "WhatsApp Cloud API" },
     { name: "Twilio API Systems", type: "Telephony & VoIP Solutions" },
     { name: "OpenAI Enterprise", type: "Advanced LLM Integration" },
-    { name: "Snowflake Cloud DB", type: "Data Warehousing" },
+    { name: "Snowflake Cloud Systems", type: "Data Systems" },
     { name: "Stripe Payments", type: "Transactional Infrastructure" }
   ];
 
@@ -114,21 +114,19 @@ export const About: React.FC = () => {
       <SEO 
         title="About Our Company" 
         description="Learn about ELVTERA's story, mission, core values, technology partners, and our leadership team driving enterprise digital transformation." 
-      />
-
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 md:py-24 bg-slate-50 dark:bg-slate-950/20">
+      />      {/* Hero Section */}
+      <section className="relative pt-12 pb-20 md:py-24 bg-slate-50 dark:bg-slate-955/20">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[250px] bg-gradient-glow rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <div className="flex items-center space-x-2 bg-brand-blue/10 dark:bg-brand-blue/20 text-brand-blue dark:text-blue-400 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full w-fit mx-auto">
+          <div className="flex items-center space-x-2 text-brand-blue dark:text-blue-400 text-xs font-bold uppercase tracking-wider w-fit mx-auto">
             <History className="h-4 w-4" />
             <span>Who We Are</span>
           </div>
-          <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight">
-            We Architect the Core Engines of Modern Business
+          <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 dark:text-white tracking-tight max-w-4xl mx-auto leading-tight">
+            Custom software for growing businesses
           </h1>
           <p className="text-sm sm:text-base text-slate-650 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-            ELVTERA is a technology partnership company. We merge database systems, automation scripts, and conversational AI into a unified operating standard.
+            ELVTERA is a technology partnership company. We merge business systems, automation scripts, and conversational AI into a unified operating standard.
           </p>
         </div>
       </section>
@@ -146,7 +144,7 @@ export const About: React.FC = () => {
               <div className="space-y-3">
                 <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white">Our Mission</h3>
                 <p className="text-xs sm:text-sm text-slate-550 dark:text-slate-400 leading-relaxed">
-                  To serve as the definitive technology partner for growing enterprises. We dismantle legacy database bottlenecks and replace manually-operated routines with resilient, self-orchestrating cloud solutions.
+                  To serve as the technology partner for growing businesses. We dismantle legacy system bottlenecks and replace manually-operated routines with resilient, self-orchestrating cloud solutions.
                 </p>
               </div>
             </div>
@@ -169,7 +167,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Interactive Vertical Timeline Milestone */}
-      <section className="py-24 bg-slate-50 dark:bg-slate-950/20">
+      <section className="py-24 bg-slate-50 dark:bg-slate-955/20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-display font-bold text-3xl text-slate-900 dark:text-white">
@@ -188,13 +186,9 @@ export const About: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setSelectedMilestone(idx)}
-                  className={`w-full text-center md:text-left px-5 py-4.5 rounded-xl font-display font-bold text-sm transition-all shrink-0 cursor-pointer ${
-                    idx === selectedMilestone
-                      ? 'bg-brand-blue text-white shadow-lg shadow-brand-blue/15'
-                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800'
-                  }`}
+                  className="w-full text-center md:text-left px-5 py-4.5 rounded-xl font-display font-bold text-sm transition-all shrink-0 cursor-pointer bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-350 hover:bg-slate-100 dark:hover:bg-slate-800"
                 >
-                  <span className="block text-xs uppercase text-blue-200 font-semibold mb-0.5">Year {m.year}</span>
+                  <span className="block text-xs uppercase text-slate-455 font-semibold mb-0.5">Year {m.year}</span>
                   <span className="text-sm truncate block">{m.title}</span>
                 </button>
               ))}
@@ -215,7 +209,7 @@ export const About: React.FC = () => {
                   className="space-y-6"
                 >
                   <div className="space-y-2">
-                    <span className="text-xs font-extrabold bg-brand-teal/15 text-brand-teal px-3 py-1 rounded-full uppercase tracking-wider">
+                    <span className="text-xs font-extrabold text-brand-teal uppercase tracking-wider block">
                       {milestones[selectedMilestone].subtitle}
                     </span>
                     <h3 className="font-display font-bold text-2xl text-slate-900 dark:text-white pt-1">
@@ -223,7 +217,7 @@ export const About: React.FC = () => {
                     </h3>
                   </div>
 
-                  <p className="text-sm sm:text-base text-slate-650 dark:text-slate-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-slate-655 dark:text-slate-400 leading-relaxed font-medium">
                     {milestones[selectedMilestone].details}
                   </p>
 
@@ -245,8 +239,8 @@ export const About: React.FC = () => {
             <h2 className="font-display font-bold text-3xl text-slate-900 dark:text-white">
               Our Core Operating Values
             </h2>
-            <p className="text-base text-slate-650 dark:text-slate-450">
-              Five principles dictate every block of code we compile and every consulting SLA we commit to.
+            <p className="text-base text-slate-655 dark:text-slate-455">
+              Five principles dictate every block of code we write and every service we deliver.
             </p>
           </div>
 

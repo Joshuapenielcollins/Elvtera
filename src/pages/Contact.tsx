@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
   const [step, setStep] = useState(1);
   
   // Lead state
-  const [pillar, setPillar] = useState(location.state?.planName ? "Business Software" : "AI Solutions");
+  const [pillar, setPillar] = useState(location.state?.planName ? "One central system" : "Connecting my apps");
   const [teamSize, setTeamSize] = useState("11-50 employees");
   const [budget, setBudget] = useState("$5,000 - $15,000");
   const [name, setName] = useState('');
@@ -33,7 +33,7 @@ export const Contact: React.FC = () => {
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [meetingBooked, setMeetingBooked] = useState(false);
 
-  const pillars = ["Business Software", "AI Solutions", "Automations", "Digital Growth", "Business Consulting"];
+  const pillars = ["One central system", "Connecting my apps", "Automatic daily tasks", "Not sure yet"];
   const teamSizes = ["1-10 employees", "11-50 employees", "51-200 employees", "200+ employees"];
   const budgets = ["Under $5,000", "$5,000 - $15,000", "$15,000 - $50,000", "$50,000+"];
 
@@ -82,14 +82,14 @@ export const Contact: React.FC = () => {
       <section className="relative pt-12 pb-16 bg-slate-50 dark:bg-slate-950/20">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[200px] bg-gradient-glow rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 dark:bg-brand-blue/20 px-3.5 py-1.5 rounded-full w-fit mx-auto">
-            Get Scoped
+          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
+            Get in Touch
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
-            Initiate Your Transformation
+            Let's build your system
           </h1>
           <p className="text-xs sm:text-sm text-slate-550 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
-            Fill out our step-by-step systems questionnaire below. After submitting your parameters, you can lock in a consultation directly on our team's calendar.
+            Fill out our step-by-step questions below. After submitting your details, you can lock in a free, no-pressure call directly on our team's calendar.
           </p>
         </div>
       </section>
@@ -103,10 +103,10 @@ export const Contact: React.FC = () => {
             <div className="lg:col-span-4 text-left space-y-8">
               <div className="space-y-4">
                 <h3 className="font-display font-bold text-lg sm:text-xl text-slate-900 dark:text-white">
-                  Corporate Coordinates
+                  Contact Details
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  Have quick inquiries regarding custom API adapter scopes or standard SaaS licensing guidelines? Contact our solutions desk directly.
+                <p className="text-xs text-slate-500 leading-relaxed font-semibold">
+                  Have quick questions about our process, pricing, or custom systems? Reach out to our team directly.
                 </p>
               </div>
 
@@ -306,7 +306,7 @@ export const Contact: React.FC = () => {
                           <label className="text-[10px] font-bold text-slate-450 uppercase">Operational Scopes / Details</label>
                           <textarea 
                             rows={3} 
-                            placeholder="Briefly describe your database silos or manual workflows..." 
+                            placeholder="Briefly describe your current systems or manual workflows..." 
                             value={leadDetail}
                             onChange={(e) => setLeadDetail(e.target.value)}
                             className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-blue text-slate-900 dark:text-white"
@@ -316,7 +316,7 @@ export const Contact: React.FC = () => {
                     )}
 
                     {/* Navigation buttons */}
-                    <div className="flex justify-between items-center pt-4 border-t border-slate-200/60 dark:border-slate-850">
+                    <div className="flex justify-between items-center pt-4 border-t border-slate-200/60 dark:border-slate-855">
                       <button
                         type="button"
                         onClick={handlePrev}
@@ -360,10 +360,10 @@ export const Contact: React.FC = () => {
                     <CheckCircle2 className="h-10 w-10 text-brand-success shrink-0" />
                     <div className="space-y-1">
                       <h4 className="font-display font-bold text-base text-slate-900 dark:text-white">
-                        Ecosystem Details Logged!
+                        Information Saved!
                       </h4>
                       <p className="text-sm text-slate-650 dark:text-slate-400 leading-relaxed">
-                        We have processed your scopes for **{pillar}** ({teamSize}, budget: {budget}). Lock in a consultation time below.
+                        We have processed your details for **{pillar}** ({teamSize}, budget: {budget}). Lock in a meeting time below.
                       </p>
                     </div>
                   </div>

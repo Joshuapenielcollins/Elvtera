@@ -13,7 +13,6 @@ import {
   Activity, 
   FileText, 
   CheckCircle2, 
-  Zap,
   Globe,
   AlertTriangle,
   Server
@@ -314,7 +313,7 @@ export const DynamicLandingPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
                 {industryName} Architecture
               </span>
               <h3 className="font-display font-bold text-2.5xl text-slate-900">
@@ -346,7 +345,7 @@ export const DynamicLandingPage: React.FC = () => {
                 </div>
 
                 <div className="pt-6 border-t border-red-100 mt-6 text-xs text-red-700/80 font-bold">
-                  ⚠️ Results in manual reconciliation bottlenecks, error rates, and margin leaks.
+                  Results in manual reconciliation bottlenecks, error rates, and margin leaks.
                 </div>
               </div>
 
@@ -385,19 +384,19 @@ export const DynamicLandingPage: React.FC = () => {
       );
     }
 
-    if (activeCategory === "ai") {
+    if (activeCategory === "integrations") {
       return (
         <section className="py-16 bg-slate-50 border-b border-slate-200/50 text-left">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
-                AI Workflows & Automations
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
+                System Integration Flows
               </span>
               <h3 className="font-display font-bold text-2xl text-slate-900">
-                End-to-End Autonomous Systems Architecture
+                End-to-End Real-Time Data Pipeline Architecture
               </h3>
               <p className="text-xs sm:text-sm text-slate-550 max-w-lg mx-auto">
-                AI Solutions are not limited to call scheduling. We automate entire operational workflows, file audits, and database synchronizations.
+                Our integrations connect scattered data layers, API gateways, and cloud databases securely, ensuring seamless replication and zero lag.
               </p>
             </div>
 
@@ -407,45 +406,45 @@ export const DynamicLandingPage: React.FC = () => {
                 {/* 1. Input Tier */}
                 <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex flex-col justify-between h-56">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">1. Data & Communication Tier</span>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">1. Data Ingestion Tier</span>
                     <h4 className="font-bold text-sm text-slate-900">Ingest Multi-Channel Stream</h4>
                     <p className="text-xs text-slate-500 leading-normal font-semibold">
-                      Captures Twilio voice streams, Meta WhatsApp chats, raw PDF purchase invoices, and biometric logs.
+                      Captures webhook payloads, third-party REST API endpoints, incoming ledger files, and event streams.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-1 pt-2 border-t border-slate-200/50">
-                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">Voice API</span>
-                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">PDF OCR</span>
+                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">Webhook</span>
+                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">REST API</span>
                   </div>
                 </div>
 
-                {/* 2. Automation Middle Tier */}
+                {/* 2. Middle Tier */}
                 <div className="bg-brand-blue text-white p-5 rounded-2xl shadow-md border border-brand-blue flex flex-col justify-between h-56">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-200">2. Processing & Rules Tier</span>
-                    <h4 className="font-bold text-sm">LLM Orchestration & RAG</h4>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-200">2. Processing & Sync Tier</span>
+                    <h4 className="font-bold text-sm">Schema Mapping & Logic</h4>
                     <p className="text-xs text-blue-100 leading-normal font-semibold">
-                      Analyzes text context using private vector indexes, applies SOP workflow check rules, and routes logic commands.
+                      Maps data keys, validates relational constraints, filters payloads, and routes actions using secure background triggers.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-1 pt-2 border-t border-blue-900">
-                    <span className="text-[9px] bg-blue-950/60 text-white font-bold px-2 py-0.5 rounded">Vector DB</span>
-                    <span className="text-[9px] bg-blue-950/60 text-white font-bold px-2 py-0.5 rounded">Function Calls</span>
+                    <span className="text-[9px] bg-blue-950/60 text-white font-bold px-2 py-0.5 rounded">Sync Loop</span>
+                    <span className="text-[9px] bg-blue-950/60 text-white font-bold px-2 py-0.5 rounded">DB Triggers</span>
                   </div>
                 </div>
 
                 {/* 3. Action Tier */}
                 <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl flex flex-col justify-between h-56">
                   <div className="space-y-2">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">3. Action & Ledger Tier</span>
-                    <h4 className="font-bold text-sm text-slate-900">Database Sync & Outputs</h4>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">3. Target Ledger Tier</span>
+                    <h4 className="font-bold text-sm text-slate-900">Database Replication</h4>
                     <p className="text-xs text-slate-500 leading-normal font-semibold">
-                      Deducts inventory counts, dispatches WhatsApp template status updates, issues calendar bookings, and updates accounting sheets.
+                      Replicates data directly to PostgreSQL ledger tables, syncs CRM pipelines, and posts updates to central systems.
                     </p>
                   </div>
                   <div className="flex flex-wrap gap-1 pt-2 border-t border-slate-200/50">
                     <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">PostgreSQL</span>
-                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">Auto Reorder</span>
+                    <span className="text-[9px] bg-white border border-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded">Audit Log</span>
                   </div>
                 </div>
 
@@ -461,7 +460,7 @@ export const DynamicLandingPage: React.FC = () => {
         <section className="py-16 bg-slate-50 border-b border-slate-200/50 text-left">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
                 B2C Interaction Simulator
               </span>
               <h3 className="font-display font-bold text-2.5xl text-slate-900">
@@ -505,7 +504,7 @@ export const DynamicLandingPage: React.FC = () => {
         <section className="py-16 bg-slate-50 border-b border-slate-200/50 text-left">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
                 Growth Dashboard
               </span>
               <h3 className="font-display font-bold text-2.5xl text-slate-900">
@@ -549,7 +548,7 @@ export const DynamicLandingPage: React.FC = () => {
         <section className="py-16 bg-slate-50 border-b border-slate-200/50 text-left">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
                 Operational Scoping
               </span>
               <h3 className="font-display font-bold text-2.5xl text-slate-900">
@@ -612,10 +611,9 @@ export const DynamicLandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-left grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div className="lg:col-span-8 space-y-6">
-            <div className="flex items-center space-x-2 bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full w-fit">
-              <Zap className="h-3.5 w-3.5" />
-              <span>Enterprise Grade Platform</span>
-            </div>
+            <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500 block mb-2">
+              Enterprise Grade Platform
+            </span>
             
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-tight">
               {data.h1}
@@ -893,7 +891,7 @@ export const DynamicLandingPage: React.FC = () => {
         <section className="py-20 bg-white border-b border-slate-200/50 text-left">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
                 Codebase Integration Blueprint
               </span>
               <h3 className="font-display font-extrabold text-2.5xl text-slate-900 text-center">
@@ -1135,7 +1133,7 @@ export const DynamicLandingPage: React.FC = () => {
             ) : (
               <div className="space-y-4">
                 <div className="p-4 bg-brand-blue/5 border border-brand-blue/15 text-slate-650 rounded-xl text-xs sm:text-sm leading-relaxed font-semibold">
-                  📢 <strong>Redirecting to Typeform...</strong> (This button is pre-built to route users directly to your Typeform questions for lead qualification).
+                  <strong>Redirecting to Typeform...</strong> (This button is pre-built to route users directly to your Typeform questions for lead qualification).
                 </div>
                 <a
                   href="https://cal.com/elvtera"

@@ -84,7 +84,7 @@ export const CaseStudies: React.FC = () => {
       <section className="relative pt-12 pb-16 bg-slate-50 dark:bg-slate-950/20">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[200px] bg-gradient-glow rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 dark:bg-brand-blue/20 px-3.5 py-1.5 rounded-full w-fit mx-auto">
+          <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
             Client Success
           </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 dark:text-white tracking-tight">
@@ -170,9 +170,9 @@ export const CaseStudies: React.FC = () => {
                   {/* Custom CSS Bar Charts */}
                   <div className="space-y-6 grow flex flex-col justify-center">
                     {study.chartData.map((item, cIdx) => {
-                      const total = item.before + item.after;
-                      const beforePercent = (item.before / total) * 100;
-                      const afterPercent = (item.after / total) * 100;
+                      const maxVal = Math.max(item.before, item.after);
+                      const beforePercent = (item.before / maxVal) * 100;
+                      const afterPercent = (item.after / maxVal) * 100;
                       
                       return (
                         <div key={cIdx} className="space-y-2">
@@ -182,8 +182,8 @@ export const CaseStudies: React.FC = () => {
                           </div>
                           <div className="space-y-1">
                             {/* Before Bar */}
-                            <div className="flex items-center space-x-2">
-                              <span className="text-xs font-bold text-red-500 w-9 uppercase shrink-0">Before</span>
+                            <div className="flex items-center space-x-3">
+                              <span className="text-xs font-extrabold text-red-500 w-12 uppercase shrink-0">Before</span>
                               <div className="grow bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                                 <div 
                                   className="bg-red-400 h-full rounded-full" 
@@ -192,8 +192,8 @@ export const CaseStudies: React.FC = () => {
                               </div>
                             </div>
                             {/* After Bar */}
-                            <div className="flex items-center space-x-2">
-                              <span className="text-xs font-bold text-brand-success w-9 uppercase shrink-0">After</span>
+                            <div className="flex items-center space-x-3">
+                              <span className="text-xs font-extrabold text-brand-success w-12 uppercase shrink-0">After</span>
                               <div className="grow bg-slate-200 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                                 <div 
                                   className="bg-brand-success h-full rounded-full" 

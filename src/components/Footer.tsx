@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
   const footerLinks = {
     pillars: [
       { name: 'Business Software', path: '/business-software' },
-      { name: 'AI Solutions', path: '/ai' },
+      { name: 'System Integrations', path: '/integrations' },
       { name: 'Automations', path: '/automations' },
       { name: 'Digital Growth', path: '/digital-marketing' },
       { name: 'Business Consulting', path: '/consulting' }
@@ -38,11 +38,11 @@ export const Footer: React.FC = () => {
       { name: 'Contact Sales', path: '/contact' }
     ],
     products: [
-      { name: 'Enterprise ERP', path: '/products' },
-      { name: 'Sales CRM', path: '/products' },
-      { name: 'Retail POS', path: '/products' },
-      { name: 'WhatsApp CRM', path: '/products' },
-      { name: 'AI Calling Agent', path: '/products' }
+      { name: 'Central Systems', path: '/products' },
+      { name: 'Customer Manager', path: '/products' },
+      { name: 'Inventory Tracker', path: '/products' },
+      { name: 'Message Sync', path: '/products' },
+      { name: 'System Connector', path: '/products' }
     ]
   };
 
@@ -63,9 +63,9 @@ export const Footer: React.FC = () => {
               />
             </Link>
             <p className="text-sm text-slate-550 leading-relaxed max-w-sm font-medium">
-              Architecting complete digital ecosystems for growing enterprises. Custom business software, AI agents, WhatsApp systems, and consulting.
+              We build central systems for growing businesses, bringing your sales, stock, books, and everyday work together. Easy to use, and supported by our team.
             </p>
-            <p className="text-xs text-slate-450 leading-normal max-w-sm font-semibold">
+            <p className="text-xs text-slate-455 leading-normal max-w-sm font-semibold">
               Built and operated by Collins Enterprise Solutions LLP.
             </p>
             
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
           {/* Pillars Column */}
           <div>
             <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
-              Five Pillars
+              What We Do
             </h3>
             <ul className="space-y-3 text-sm font-medium">
               {footerLinks.pillars.map((link, idx) => (
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
           {/* Products Column */}
           <div>
             <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
-              Solutions
+              Our Systems
             </h3>
             <ul className="space-y-3 text-sm font-medium">
               {footerLinks.products.map((link, idx) => (
@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
           {/* Company Column */}
           <div>
             <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
-              Resources
+              Company
             </h3>
             <ul className="space-y-3 text-sm font-medium">
               {footerLinks.company.map((link, idx) => (
@@ -140,10 +140,10 @@ export const Footer: React.FC = () => {
           
           <div className="lg:col-span-2 space-y-2">
             <h4 className="text-slate-900 font-display font-bold text-lg">
-              Subscribe to our Business Technology Newsletter
+              Stay in touch
             </h4>
             <p className="text-xs text-slate-550 font-medium">
-              Get bi-weekly insights on AI Agents, WhatsApp marketing pipelines, and ERP scaling strategies.
+              Sign up to get occasional business tips and updates from our team.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export const Footer: React.FC = () => {
                 <input 
                   type="email" 
                   required
-                  placeholder="Enter corporate email" 
+                  placeholder="Enter your email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="bg-transparent border-0 focus:outline-none focus:ring-0 text-sm px-3.5 py-2.5 text-slate-800 grow placeholder:text-slate-400"
@@ -169,7 +169,7 @@ export const Footer: React.FC = () => {
             ) : (
               <div className="flex items-center space-x-2 text-brand-success bg-brand-success/5 border border-brand-success/20 px-4 py-3 rounded-xl text-xs font-semibold">
                 <CheckCircle2 className="h-4 w-4" />
-                <span>Success! Welcome to Elvtera Insights.</span>
+                <span>Thank you! You are now subscribed.</span>
               </div>
             )}
           </div>

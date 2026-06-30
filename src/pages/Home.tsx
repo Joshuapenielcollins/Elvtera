@@ -25,39 +25,39 @@ export const Home: React.FC = () => {
 
   const heroProducts = [
     {
-      title: "Enterprise ERP Engine",
-      category: "Business Software",
+      title: "Central Business System",
+      category: "Our Software",
       icon: Database,
       color: "bg-blue-50 text-blue-600 border-blue-100",
-      desc: "All-in-one resource planning platform connecting general ledger, warehouses, and payroll logs.",
-      specs: ["Modular Ledger Schema", "Multi-Warehouse Inventories", "GAAP Accounts Compliance"],
+      desc: "One system connecting your orders, inventory, and payroll.",
+      specs: ["Linked Systems", "Inventory Tracking", "Simple Record Keeping"],
       visualType: "erp"
     },
     {
-      title: "Workflow Sync Automation",
+      title: "Automatic Task Sync",
       category: "Automations",
       icon: Cpu,
       color: "bg-emerald-50 text-emerald-600 border-emerald-100",
-      desc: "Connect CRM databases directly to ledger databases with event-driven sync triggers.",
-      specs: ["Event-Driven Pipelines", "REST API & Webhooks", "Zero Manual Overhead"],
+      desc: "Connect your customer list directly to your business books.",
+      specs: ["Automatic Updates", "Instant Sharing", "Zero Manual Typing"],
       visualType: "workflow"
     },
     {
-      title: "Database Integrations",
-      category: "API Sync",
+      title: "System Connections",
+      category: "App Sync",
       icon: Settings,
       color: "bg-indigo-50 text-indigo-600 border-indigo-100",
-      desc: "API gateway routers to pass information securely between internal ledger tables.",
-      specs: ["Verified Endpoints Setup", "Webhook Router Arrays", "Encrypted Token Vaults"],
+      desc: "Connectors to share information safely between different departments.",
+      specs: ["Secure Connections", "Reliable Syncing", "Private Data Sharing"],
       visualType: "api"
     },
     {
-      title: "Warehouse Stock Engine",
-      category: "Business Software",
+      title: "Stock Tracking Engine",
+      category: "Our Software",
       icon: Package,
       color: "bg-amber-50 text-amber-600 border-amber-100",
-      desc: "Track raw materials inventory counts across regional warehouse centers in real time.",
-      specs: ["Low-Stock Warnings", "Supplier PO Auto-Triggers", "Batch Expiry Logs"],
+      desc: "Track materials and stock across all your locations in real time.",
+      specs: ["Low-Stock Warnings", "Auto-Reordering", "Expiry Date Alerts"],
       visualType: "stock"
     }
   ];
@@ -76,68 +76,68 @@ export const Home: React.FC = () => {
 
   const pillars = [
     {
-      title: "Business Software",
-      desc: "Decommission scattered spreadsheets and manual invoice copying. We build modular, custom-tailored ERP, CRM, and POS applications that coordinate stock levels, dispatch cycles, and sales debits automatically into a single GAAP-compliant general ledger.",
-      features: ["Real-Time Inventory Reconciliation", "GAAP Double-Entry Ledger", "Custom Multi-Warehouse POS", "BOM & Production Scheduling"],
+      title: "Central Systems",
+      desc: "Get rid of scattered spreadsheets and copying data by hand. We build simple, custom systems that keep your stock levels, sales, and accounts in sync automatically.",
+      features: ["Live Stock Tracking", "Automatic Bookkeeping", "Custom Point-of-Sale", "Production Planning"],
       color: "border-blue-500/20 hover:border-blue-500",
-      badge: "99.99% Database Uptime"
+      badge: "99.99% System Reliability"
     },
     {
-      title: "System Integrations",
-      desc: "Bridge isolated software systems and database tables. We build custom API routers, real-time database synchronization triggers, and secure network gateways to pass information automatically between platforms.",
-      features: ["Real-Time Database Syncing", "Custom REST API Gateways", "Encrypted Data Bridges", "Multi-System Webhook Links"],
+      title: "Connecting Your Apps",
+      desc: "Bridge your separate tools. We build secure links that automatically copy and share information between your different systems, saving your team hours.",
+      features: ["Real-Time Record Sync", "Secure Connections", "Encrypted Data Sharing", "Multi-App Integrations"],
       color: "border-teal-500/20 hover:border-teal-500",
-      badge: "Database Sync Core"
+      badge: "Automatic Sync Core"
     },
     {
-      title: "Workflow Automations",
-      desc: "Connect scattered business applications (such as CRMs, SQL databases, messaging endpoints, and email gateways) into automated, event-driven pipelines. We build custom triggers and background scripts that synchronize records, compile logs, and alert teams instantly, eliminating manual administration overhead.",
-      features: ["Event-Driven Workflow Engines", "Webhooks & API Integrations", "Database Synchronization Loops", "Custom Alert & Reporting Rules"],
+      title: "Automatic Daily Tasks",
+      desc: "Link your everyday business tools (like email, messaging, and customer lists) to run tasks automatically. We build triggers that update records and alert teams instantly, without any manual typing.",
+      features: ["Automated Tasks Engine", "Simple App Connections", "Automatic Sync Loops", "Custom Reporting Rules"],
       color: "border-emerald-500/20 hover:border-emerald-500",
-      badge: "Workflow Optimization"
+      badge: "Workflow Automations"
     },
     {
-      title: "Digital Growth",
-      desc: "Acquire qualified pipeline systematically. We design and build programmatic landing pages, page indexing architectures, Core Web Vitals speed optimizations, and performance analytics funnels that scale conversion rates.",
-      features: ["Programmatic Page Indexing", "Core Web Vitals Speed Optimization", "Multi-Channel Tracking Scripts", "CRO Funnel Rebuilding"],
+      title: "Websites that Grow",
+      desc: "Attract more customers online. We design and build fast, clean websites and landing pages optimized to help people find you and book calls with your team.",
+      features: ["SEO and Web Visibility", "Fast-Loading Pages", "Conversion Tracking", "Lead Generation Funnels"],
       color: "border-indigo-500/20 hover:border-indigo-500",
-      badge: "4.2x Average ROAS"
+      badge: "Higher Conversion Rates"
     },
     {
-      title: "Business Consulting",
-      desc: "Strategic digital transformation scoping. We run hands-on database mapping workshops, audit legacy SOP bottlenecks, design database schemas, and deliver custom technical RFPs to prepare your infrastructure for secure scaling.",
-      features: ["Database Schema Mapping", "SOP Bottleneck Auditing", "Custom Vendor RFP Specs", "SLA Deployment Scoping"],
+      title: "Planning and Review",
+      desc: "Set up your plans before you build. We sit down with your team to review your processes, find bottlenecks, and write a clear roadmap for your software.",
+      features: ["Process Mapping", "Bottleneck Auditing", "Clear System Roadmap", "Phased Delivery Scoping"],
       color: "border-orange-500/20 hover:border-orange-500",
-      badge: "Phased SLA Scoping"
+      badge: "Phased System Scoping"
     }
   ];
 
   const whyUs = [
     {
-      title: "Enterprise Security",
-      desc: "Bank-grade encryption, database access limits, and rigorous access controls safeguard your company's operational records.",
+      title: "Safe and Secure",
+      desc: "Secure login rules, access controls, and encryption safeguard your business files and customer records.",
       icon: Shield
     },
     {
-      title: "AI-First Ecosystems",
-      desc: "We build machine-learning workflows directly into the database layers of every ledger system we design.",
+      title: "Smart Automations",
+      desc: "We build helpful automation checks directly into your setup to flag errors before they happen.",
       icon: Cpu
     },
     {
-      title: "Modular Scalability",
-      desc: "Our software grows alongside you. Plug in inventory modules, payroll, or WhatsApp funnels seamlessly when you need them.",
+      title: "Built to Grow",
+      desc: "Our software grows alongside your business. Add features like inventory tracking, payroll support, or chat messaging when you're ready.",
       icon: Activity
     },
     {
-      title: "24/7 Dedicated SLA",
-      desc: "Enjoy complete operational safety with structured service level agreements and a dedicated developer support group.",
+      title: "Ongoing Support",
+      desc: "Get peace of mind with guaranteed support response times and direct access to our technical team.",
       icon: Users
     }
   ];
 
   const testimonials = [
     {
-      quote: "ELVTERA consolidated our manufacturing schedule, inventory system, and sales pipelines into a single custom ERP. We reduced administration hours by 60% in just four months.",
+      quote: "ELVTERA consolidated our production schedule, inventory, and sales into a single custom system. We reduced admin time by 60% in just four months.",
       author: "Marcus Chen",
       role: "VP of Operations",
       company: "Apex Textile Group",
@@ -145,7 +145,7 @@ export const Home: React.FC = () => {
       avatar: "MC"
     },
     {
-      quote: "The automated lead synchronization pipeline ingestion qualified 12,000 inbound records in under a week, updating over 800 sales entries directly inside our team's CRM. It felt like we scaled our operations overnight.",
+      quote: "The automated lead setup processed 12,000 inquiries in under a week, updating over 800 contacts directly inside our team's system. It felt like we grew overnight.",
       author: "Sarah Jenkins",
       role: "VP of Business Development",
       company: "MedTech Distribution",
@@ -165,11 +165,11 @@ export const Home: React.FC = () => {
   const faqs = [
     {
       q: "Does ELVTERA build custom software, or do you use standard templates?",
-      a: "We develop completely customized enterprise ecosystems. While we leverage standard libraries and secure cloud components for efficiency, your business processes, databases, and UX configurations are engineered specifically for your brand."
+      a: "We develop completely customized systems. While we leverage standard libraries and secure cloud components for efficiency, your business processes, data flows, and layouts are engineered specifically for your brand."
     },
     {
-      q: "Can your database sync pipelines and WhatsApp chat setups integrate with my current CRM?",
-      a: "Yes. We build custom API connectors for Zoho, Salesforce, Hubspot, and custom database backends. All lead captures, chat transcripts, call outcomes, and booked appointments sync back into your central database automatically."
+      q: "Can your sync setups and WhatsApp chat integrate with my current tools?",
+      a: "Yes. We build custom connectors for standard business apps like Zoho, Salesforce, HubSpot, and custom tools. All leads, chat histories, call notes, and booked appointments sync back into your central system automatically."
     },
     {
       q: "What industries do you specialize in?",
@@ -196,15 +196,15 @@ export const Home: React.FC = () => {
             
             {/* Left side text */}
             <div className="lg:col-span-6 space-y-8 text-left">
-              <div className="flex items-center space-x-2 bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full w-fit">
+              <div className="flex items-center space-x-2 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
                 <Sparkles className="h-4 w-4" />
                 <span>Enterprise Operations • Built for Scale</span>
               </div>
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 leading-[1.1] tracking-tight">
-                Build a Smarter Business with Custom ERP, Workflow Automation & Systems Integration
+                Run your whole business from one place.
               </h1>
               <p className="text-base sm:text-lg text-slate-655 max-w-xl leading-relaxed font-medium">
-                From ERP and CRM core modules to secure webhooks and custom business automations, ELVTERA helps growing businesses streamline operations, improve productivity, and scale with confidence.
+                ELVTERA builds custom central systems that connect your sales, stock, accounts, and tasks. We set up your software around how you actually work, and stay on to support you.
               </p>
               
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -212,14 +212,14 @@ export const Home: React.FC = () => {
                   to="/contact"
                   className="bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 text-sm whitespace-nowrap"
                 >
-                  <span>Book a Free Consultation</span>
+                  <span>Book a free call</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
                 <Link
                   to="/services"
                   className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 px-7 py-4 rounded-xl font-bold transition-colors text-center text-sm shadow-sm whitespace-nowrap"
                 >
-                  Explore Our Solutions
+                  See how it works
                 </Link>
               </div>
             </div>
@@ -286,16 +286,16 @@ export const Home: React.FC = () => {
                           return (
                             <div className="bg-slate-900 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-1.5 border border-slate-800 shadow-inner w-full">
                               <div className="flex justify-between border-b border-slate-800 pb-1.5 mb-1.5 font-bold text-[9px] text-brand-teal uppercase tracking-wider">
-                                <span>ERP Ledger Engine Core</span>
+                                <span>Central System Sync</span>
                                 <span className="animate-pulse">Active Sync</span>
                               </div>
                               <div className="space-y-1">
-                                <div><span className="text-slate-500">Database SQL:</span> Postgres SQL Core</div>
-                                <div><span className="text-slate-500">Active Pools:</span> 16 Balance Threads</div>
-                                <div><span className="text-slate-500">Sync Status:</span> ledger_entry.py synced</div>
+                                <div><span className="text-slate-500">Core System:</span> Central File Sync</div>
+                                <div><span className="text-slate-500">Active Pools:</span> 16 Active Threads</div>
+                                <div><span className="text-slate-500">Sync Status:</span> Files updated</div>
                                 <div className="flex items-center space-x-1.5 text-brand-teal text-[10px] font-bold animate-pulse pt-1">
                                   <span className="h-1.5 w-1.5 rounded-full bg-brand-teal"></span>
-                                  <span>Syncing core_erp/accounts/doctype/...</span>
+                                  <span>Syncing systems/accounts/...</span>
                                 </div>
                               </div>
                             </div>
@@ -312,7 +312,7 @@ export const Home: React.FC = () => {
                               </div>
                               <div className="flex items-center justify-between px-2 pt-1">
                                 <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
-                                  <span className="text-[10px] font-bold text-slate-700 block">CRM DB</span>
+                                  <span className="text-[10px] font-bold text-slate-700 block">Customer List</span>
                                 </div>
                                 <div className="grow relative flex items-center justify-center">
                                   <div className="h-0.5 bg-slate-200 w-full absolute top-1/2 -translate-y-1/2"></div>
@@ -320,7 +320,7 @@ export const Home: React.FC = () => {
                                   <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-3/4"></div>
                                 </div>
                                 <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
-                                  <span className="text-[10px] font-bold text-slate-700 block">ERP Ledger</span>
+                                  <span className="text-[10px] font-bold text-slate-700 block">Main System</span>
                                 </div>
                               </div>
                             </div>
@@ -329,7 +329,7 @@ export const Home: React.FC = () => {
                           return (
                             <div className="bg-slate-955 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-2 border border-slate-800 shadow-inner w-full">
                               <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-900 pb-1.5 mb-1 shrink-0">
-                                <span>API GATEWAY ROUTER</span>
+                                <span>System Connection Router</span>
                                 <span className="text-brand-blue flex items-center space-x-1.5">
                                   <span className="h-1.5 w-1.5 rounded-full bg-brand-blue animate-pulse"></span>
                                   <span>LISTENING</span>
@@ -339,7 +339,7 @@ export const Home: React.FC = () => {
                                 <div className="flex items-center space-x-1.5">
                                   <span className="text-slate-600">[10:14:02]</span>
                                   <span className="text-brand-blue font-bold">API:</span>
-                                  <span>200 OK (CRM Lead)</span>
+                                  <span>200 OK (Lead Received)</span>
                                 </div>
                                 <div className="flex items-center space-x-1.5">
                                   <span className="text-slate-600">[10:14:05]</span>
@@ -348,8 +348,8 @@ export const Home: React.FC = () => {
                                 </div>
                                 <div className="flex items-center space-x-1.5">
                                   <span className="text-slate-600">[10:14:08]</span>
-                                  <span className="text-brand-teal font-bold">DB:</span>
-                                  <span>Postgres GAAP Ledger Synced</span>
+                                  <span className="text-brand-teal font-bold">Sync:</span>
+                                  <span>Accounts and Files Synced</span>
                                 </div>
                               </div>
                             </div>
@@ -406,12 +406,12 @@ export const Home: React.FC = () => {
                 </div>
 
                 {/* Footer Link */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-450 font-semibold mt-auto shrink-0">
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-455 font-semibold mt-auto shrink-0">
                   <Link 
                     to="/products"
                     className="text-brand-blue hover:text-brand-blue/80 inline-flex items-center space-x-1 font-bold"
                   >
-                    <span>Explore Products Catalog</span>
+                    <span>Explore our systems</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                   <span className="text-xs">Uptime &gt; 99.99%</span>
@@ -452,14 +452,14 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-slate-50 border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
               Our Capabilities
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-slate-900">
-              The Five Pillars of Operations Automation
+              We bring it all together, once.
             </h2>
-            <p className="text-base text-slate-650">
-              We engineer custom software modules that combine database storage, communication APIs, and localized logic into one compliant ledger structure.
+            <p className="text-base text-slate-655 font-medium">
+              ELVTERA designs one connected system for your business. Orders, inventory, invoices, customers, and reports all live in the same place and stay up to date on their own.
             </p>
           </div>
 
@@ -471,7 +471,7 @@ export const Home: React.FC = () => {
               >
                 <div className="space-y-4 text-left">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs font-extrabold uppercase tracking-wider bg-brand-blue/10 text-brand-blue px-3.5 py-1.5 rounded-full">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue">
                       {pillar.badge}
                     </span>
                   </div>
@@ -500,10 +500,10 @@ export const Home: React.FC = () => {
             <div className="bg-gradient-brand rounded-2xl p-8 pb-10 flex flex-col justify-between text-white shadow-xl shadow-brand-blue/10 h-full">
               <div className="text-left space-y-4">
                 <h3 className="font-display font-bold text-2xl">
-                  Need a custom enterprise architecture?
+                  Need a custom system?
                 </h3>
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-medium">
-                  Let's analyze your team's offline routines, audit your spreadsheet setups, and construct a scalable systems blueprint.
+                  Let's review your team's offline routines, audit your spreadsheet setups, and map out a simple software blueprint.
                 </p>
               </div>
 
@@ -511,27 +511,25 @@ export const Home: React.FC = () => {
                 to="/contact"
                 className="bg-white text-slate-900 px-6 py-3.5 rounded-xl font-bold hover:bg-slate-50 transition-colors flex items-center justify-center space-x-2 text-sm mt-8 shadow-sm"
               >
-                <span>Request Custom Blueprint</span>
+                <span>Request a free blueprint</span>
                 <ArrowRight className="h-4.5 w-4.5" />
               </Link>
             </div>
 
           </div>
         </div>
-      </section>
-
-      {/* System Integration Workflow Section */}
+      </section>      {/* System Integration Workflow Section */}
       <section className="py-20 bg-white border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
               Deployment Lifecycle
             </span>
             <h2 className="font-display font-bold text-3xl text-slate-900">
-              Operational Automation Stages
+              Too many tools, too much manual work?
             </h2>
             <p className="text-sm text-slate-550 max-w-lg mx-auto">
-              How our software modules execute standard operating procedures, qualify queries, and synchronize company ledgers.
+              Most growing businesses end up running on a messy mix of spreadsheets, separate apps, and a lot of typing things in by hand.
             </p>
           </div>
           <InteractiveWorkflow />
@@ -542,14 +540,14 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-slate-50 border-t border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit mx-auto block mb-3.5">
+            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
               System Architecture
             </span>
             <h2 className="font-display font-bold text-3xl text-slate-900">
-              Clean Data Synchronization Model
+              A simple way to connect your work
             </h2>
             <p className="text-sm text-slate-650">
-              How ELVTERA connects communication endpoints, automation scripts, and database general ledgers securely.
+              How ELVTERA connects your chat channels, automation tasks, and main office systems safely.
             </p>
           </div>
 
@@ -558,14 +556,14 @@ export const Home: React.FC = () => {
               
               {/* Left Side: Steps (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
-                <h3 className="font-display font-bold text-xl text-slate-950">Secure Flow Cycles</h3>
+                <h3 className="font-display font-bold text-xl text-slate-950">How it flows</h3>
                 
                 <div className="space-y-4">
                   {[
-                    { title: "Client Action Logs", desc: "WhatsApp questions, calendar bookings, or POS bills log immediately." },
-                    { title: "AI Telephony Validation", desc: "Machine-learning scripts verify details, minimizing typos." },
-                    { title: "Database Write Queue", desc: "Encrypted PostgreSQL routes record information synchronously." },
-                    { title: "Compliant Accounting Update", desc: "General ledger entries register automatically, closing accounts instantly." }
+                    { title: "Customer Action Logs", desc: "WhatsApp questions, booked appointments, or sales entries log immediately." },
+                    { title: "Automatic Checks", desc: "System scripts check and verify details to avoid typos." },
+                    { title: "Records Sync", desc: "Encrypted connections route record information instantly." },
+                    { title: "Books Synced", desc: "Your sales and inventory records update automatically, keeping books current." }
                   ].map((step, idx) => (
                     <div key={idx} className="flex items-start space-x-3.5">
                       <div className="h-7 w-7 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
@@ -612,17 +610,17 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Column 3: Ledger */}
+                  {/* Column 3: Records */}
                   <div className="space-y-3">
-                    <span className="text-xs font-bold text-slate-450 uppercase block">Ledger</span>
+                    <span className="text-xs font-bold text-slate-450 uppercase block">Records</span>
                     
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <Database className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">PostgreSQL</span>
+                      <span className="text-xs font-bold text-slate-800 block">Central Hub</span>
                     </div>
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <CheckCircle className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">GAAP Ledger</span>
+                      <span className="text-xs font-bold text-slate-800 block">Your Accounts</span>
                     </div>
                   </div>
 
@@ -632,25 +630,23 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* NEW CONTAINER 2: Performance Audit Logs (Proof Section) */}
+      </section>      {/* NEW CONTAINER 2: Performance Audit Logs (Proof Section) */}
       <section className="py-16 bg-white border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Left Side: Context (5 cols) */}
             <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">Verified Performance Logs</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">What you actually get out of it</span>
               <h2 className="font-display font-bold text-3xl text-slate-900 leading-tight">
-                Audited Operational Yields
+                Time saved and fewer mistakes
               </h2>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                We review system metrics post-deployment to verify actual yields. Below are benchmarks logged across our active enterprise installations.
+                We check in after every launch to measure the real impact. Here are the average results reported by our clients.
               </p>
               <div className="p-4 bg-brand-blue/5 border border-brand-blue/15 rounded-2xl flex items-start space-x-2.5">
                 <CheckCircle2 className="h-5 w-5 text-brand-teal shrink-0" />
-                <p className="text-xs text-slate-500 font-semibold leading-normal">
+                <p className="text-xs text-slate-550 font-semibold leading-normal">
                   All metrics are checked and verified by client operational heads during phased system sign-offs.
                 </p>
               </div>
@@ -661,33 +657,33 @@ export const Home: React.FC = () => {
               
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Apex Textile Group</span>
-                <h3 className="font-display font-extrabold text-3xl text-slate-950">60%</h3>
+                <h3 className="font-display font-extrabold text-3xl text-slate-955">60%</h3>
                 <p className="text-sm text-slate-500 font-semibold leading-relaxed">
-                  Reduction in weekly administrative hours via unified materials reordering.
+                  Time saved on weekly admin work by connecting stock and orders.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
                 <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">MedTech Distribution</span>
-                <h3 className="font-display font-extrabold text-3xl text-slate-950">42%</h3>
+                <h3 className="font-display font-extrabold text-3xl text-slate-955">42%</h3>
                 <p className="text-sm text-slate-500 font-semibold leading-relaxed">
-                  Increase in inbound booked consultations using AI phone call qualifiers.
+                  Increase in booked sales calls by automating your inbound leads.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">System Stability</span>
-                <h3 className="font-display font-extrabold text-3xl text-slate-950">99.99%</h3>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Always Online</span>
+                <h3 className="font-display font-extrabold text-3xl text-slate-955">99.99%</h3>
                 <p className="text-sm text-slate-500 font-semibold leading-relaxed">
-                  Database general ledger availability during high-traffic transactional queues.
+                  System reliability and uptime even during your busiest sales days.
                 </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 space-y-2">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Financial Closure</span>
-                <h3 className="font-display font-extrabold text-3xl text-slate-950">85%</h3>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block">Faster Bookkeeping</span>
+                <h3 className="font-display font-extrabold text-3xl text-slate-955">85%</h3>
                 <p className="text-sm text-slate-500 font-semibold leading-relaxed">
-                  Reduction in end-of-month general balance sheets reconciliation logs.
+                  Fewer hours spent each month balancing accounts and spreadsheets.
                 </p>
               </div>
 
@@ -704,14 +700,14 @@ export const Home: React.FC = () => {
             
             {/* Left side text */}
             <div className="lg:col-span-5 text-left space-y-6">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit block mb-3.5">
+              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5">
                 Why Us
               </span>
               <h2 className="font-display font-bold text-3xl sm:text-4xl text-slate-900 leading-tight">
-                Designed for Growing Corporate Pipelines
+                Set up once. Supported for the long run.
               </h2>
               <p className="text-base text-slate-600 leading-relaxed font-medium">
-                We bridge the gap between complex engineering and elegant product design. We don't just supply software, we build reliable growth ecosystems that adapt as you expand.
+                We get your software running correctly the first time, and then we stay on to support, update, and improve your setup as your business grows.
               </p>
               
               <div className="space-y-4">
@@ -720,8 +716,8 @@ export const Home: React.FC = () => {
                     <CheckCircle className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-base text-slate-900">Cloud-Native Reliability</h4>
-                    <p className="text-sm text-slate-500">Fast page loads and robust database structures using premium cloud providers.</p>
+                    <h4 className="font-bold text-base text-slate-900">Reliable Systems</h4>
+                    <p className="text-sm text-slate-500">Fast page loads and secure record backups hosted on premium cloud systems.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -729,8 +725,8 @@ export const Home: React.FC = () => {
                     <CheckCircle className="h-4.5 w-4.5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-base text-slate-900">Bespoke SLA Architecture</h4>
-                    <p className="text-sm text-slate-500">Service level guarantees tailored to match client traffic and system criticality.</p>
+                    <h4 className="font-bold text-base text-slate-900">Dedicated Support</h4>
+                    <p className="text-sm text-slate-500">Guaranteed support response times tailored to match how your team works.</p>
                   </div>
                 </div>
               </div>
@@ -768,7 +764,7 @@ export const Home: React.FC = () => {
               Trusted by Leading Organizations
             </h2>
             <p className="text-base sm:text-lg text-slate-600">
-              Read how enterprise executives and operations directors streamline workflows using our custom-tailored technology suites.
+              See how business owners and operations teams save time using our systems.
             </p>
           </div>
 
@@ -813,7 +809,7 @@ export const Home: React.FC = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-base text-slate-600">
-              Everything you need to know about our implementation cycles, software frameworks, and technology stacks.
+              Common questions about how we build and support your business system.
             </p>
           </div>
 
@@ -852,24 +848,24 @@ export const Home: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[300px] bg-brand-blue/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 tracking-tight leading-tight">
-            Ready to Build Your Digital Ecosystem?
+            Let's see if we're a good fit
           </h2>
           <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed font-medium">
-            Let's structure your automation workflows and cloud databases today. Book a call with our enterprise consulting team.
+            Book a free, no-pressure call. We'll learn about your business and show you what a system built around you could look like.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/contact"
               className="w-full sm:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-brand-blue/20 hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 cursor-pointer text-sm"
             >
-              <span>Book Free Consultation</span>
+              <span>Book a free call</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/contact"
               className="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-800 px-7 py-4 rounded-xl font-bold transition-all text-center border border-slate-300 cursor-pointer shadow-sm text-sm"
             >
-              Talk to Expert
+              Talk to us
             </Link>
           </div>
         </div>
