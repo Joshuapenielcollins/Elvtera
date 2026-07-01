@@ -36,12 +36,12 @@ export const Industries: React.FC = () => {
       icon: Building2,
       context: "Heavy industrial operations require precision raw materials tracking, precise bills of materials (BOM), and synchronized assembly line schedules to control margins.",
       challenge: "Fragmented spreadsheets, manual stock audits, delayed payroll for wage-workers, and lack of real-time BOM tracking leading to 15% or more revenue leakage.",
-      solution: "We implement custom Textile and Manufacturing ERP modules that sync sales orders, stock ledgers, purchase ledgers, and automated stock alert scripts in real time.",
-      impact: "Reduced inventory overheads by 50% with 100% tax compliant ledgers and automatic materials reorder triggers.",
+      solution: "We implement custom Textile and Manufacturing ERP modules that sync sales orders, stock registers, purchase logs, and automated stock alert scripts in real time.",
+      impact: "Reduced inventory overheads by 50% with 100% tax compliant records and automatic materials reorder triggers.",
       kpi: "Inventory Turnover Yield",
-      features: ["Bill of Materials (BOM) Control", "Batch & Inventory Ledger Setup", "Work-in-Progress (WIP) Tracking", "Automated Supplier Purchase Orders"],
+      features: ["Bill of Materials (BOM) Control", "Batch & Inventory System Setup", "Work-in-Progress (WIP) Tracking", "Automated Supplier Purchase Orders"],
       painPoints: [
-        "Inventory count in ledger sheets mismatching actual bins on the shopfloor by up to 10 days.",
+        "Inventory count in inventory sheets mismatching actual bins on the shopfloor by up to 10 days.",
         "Production batch bottlenecks resulting in late deliveries and penalty charges.",
         "Manual card attendance entries leading to labor cost errors for high-volume shifts.",
         "Real-time material price changes not logging instantly, blowing past procurement budgets."
@@ -55,7 +55,7 @@ export const Industries: React.FC = () => {
       solution: "Official WhatsApp Cloud API scheduler combined with a custom Clinic Management Portal. Patient details, queue schedules, and invoicing sync automatically.",
       impact: "65% of bookings handled by AI, zero lost medical records, and instantaneous card billing integrations.",
       kpi: "Patient Intake Capacity",
-      features: ["HIPAA-Aligned Database encryption", "WhatsApp Appointment Booker", "Clinic Queue Management Engine", "Medical Store Inventory Sync"],
+      features: ["HIPAA-Aligned System encryption", "WhatsApp Appointment Booker", "Clinic Queue Management Engine", "Medical Store Inventory Sync"],
       painPoints: [
         "Queue congestion at check-in desks creating long patient wait times.",
         "Delayed insurance verification logs delaying payments by weeks.",
@@ -83,7 +83,7 @@ export const Industries: React.FC = () => {
       name: "Education & Colleges",
       icon: GraduationCap,
       context: "Schools, colleges, and training academies need to coordinate student admissions, course fees billing, and grading reports.",
-      challenge: "Manual paper admissions forms, delayed tuition collections, lack of centralized grading databases, and fragmented parent announcements loops.",
+      challenge: "Manual paper admissions forms, delayed tuition collections, lack of centralized grading records, and fragmented parent announcements loops.",
       solution: "Integrated School ERP. Online portal captures student registrations, auto-issues invoices, integrates card gateways, and logs teacher grade reports.",
       impact: "Automated tuition collection alerts, 90% online student self-registrations, and direct student communication inboxes.",
       kpi: "Fee Collection Efficiency",
@@ -91,8 +91,8 @@ export const Industries: React.FC = () => {
       painPoints: [
         "Unstructured web forms leading to applicant drop-offs during admissions cycles.",
         "Delayed collection tracking resulting in fee defaults and administrative backlog.",
-        "Student progress grades locked in offline tables, delaying transcript dispatches.",
-        "School announcements sent via paper slips and emails going unread by busy parents."
+        "Student progress grades locked in offline registers, delaying transcript dispatches.",
+        "School announcements sent via paper slips and emails going unread by parents."
       ]
     },
     {
@@ -143,14 +143,11 @@ export const Industries: React.FC = () => {
       <section className="relative pt-12 pb-16 bg-white border-b border-slate-200/50">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[85%] h-[200px] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
-          <span className="text-xs font-extrabold uppercase tracking-wider text-brand-blue block mb-3">
-            Target Industries
-          </span>
           <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight">
-            Proven Operations Solutions
+            Built for your industry. Customized for your workflow.
           </h1>
           <p className="text-xs sm:text-sm text-slate-550 max-w-lg mx-auto leading-relaxed font-medium">
-            Select your industry sector below to see how our engineering teams coordinate databases, AI bots, and custom ERP software to resolve specific operational challenges.
+            Explore how we help companies solve operational bottlenecks, replace disjointed systems, and automate manual work in your specific sector.
           </p>
         </div>
       </section>

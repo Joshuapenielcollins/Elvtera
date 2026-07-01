@@ -12,7 +12,8 @@ import {
   MessageSquare,
   CheckCircle2,
   Package,
-  Settings
+  Settings,
+  Layers
 } from 'lucide-react';
 import { StatsCounter } from '../components/StatsCounter';
 import { InteractiveWorkflow } from '../components/InteractiveWorkflow';
@@ -532,14 +533,14 @@ export const Home: React.FC = () => {
               
               {/* Left Side: Steps (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
-                <h3 className="font-display font-bold text-xl text-slate-950">How it flows</h3>
+                <h3 className="font-display font-bold text-xl text-slate-955">How it flows</h3>
                 
                 <div className="space-y-4">
                   {[
-                    { title: "Customer Action Logs", desc: "WhatsApp questions, booked appointments, or sales entries log immediately." },
-                    { title: "Automatic Checks", desc: "System scripts check and verify details to avoid typos." },
-                    { title: "Records Sync", desc: "Encrypted connections route record information instantly." },
-                    { title: "Books Synced", desc: "Your sales and inventory records update automatically, keeping books current." }
+                    { title: "Operational Scoping & Audit", desc: "We map your current offline workflows and identify bottlenecks before writing any software roadmap." },
+                    { title: "ERP, CRM & Web Development", desc: "We implement customized central systems, corporate websites, and secure client portals for your team." },
+                    { title: "AI & WhatsApp Automations", desc: "We connect conversational voice agents and official WhatsApp API messaging channels to automate daily tasks." },
+                    { title: "Ongoing Managed Support", desc: "We continuously monitor performance, optimize cloud setups, and provide guaranteed developer support." }
                   ].map((step, idx) => (
                     <div key={idx} className="flex items-start space-x-3.5">
                       <div className="h-7 w-7 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
@@ -547,7 +548,7 @@ export const Home: React.FC = () => {
                       </div>
                       <div>
                         <h4 className="font-bold text-slate-900 text-sm">{step.title}</h4>
-                        <p className="text-xs text-slate-500 mt-0.5 leading-normal">{step.desc}</p>
+                        <p className="text-xs text-slate-550 mt-0.5 leading-normal">{step.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -560,21 +561,21 @@ export const Home: React.FC = () => {
                 
                 <div className="grid grid-cols-3 gap-4 text-center items-center relative z-10">
                   
-                  {/* Column 1: Sources */}
+                  {/* Column 1: Channels */}
                   <div className="space-y-3">
-                    <span className="text-xs font-bold text-slate-450 uppercase block">Sources</span>
+                    <span className="text-xs font-bold text-slate-450 uppercase block">Channels</span>
                     
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
                       <MessageSquare className="h-4.5 w-4.5 text-brand-blue mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">WhatsApp API</span>
+                      <span className="text-xs font-bold text-slate-800 block">AI & WhatsApp</span>
                     </div>
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
-                      <Users className="h-4.5 w-4.5 text-brand-blue mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">POS Systems</span>
+                      <Settings className="h-4.5 w-4.5 text-brand-blue mx-auto mb-1.5" />
+                      <span className="text-xs font-bold text-slate-800 block">Websites & Apps</span>
                     </div>
                   </div>
 
-                  {/* Column 2: Pipelines */}
+                  {/* Column 2: Integration */}
                   <div className="space-y-3">
                     <div className="h-8 flex items-center justify-center">
                       <span className="text-xs font-bold text-brand-teal animate-pulse">Syncing...</span>
@@ -586,17 +587,17 @@ export const Home: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Column 3: Records */}
+                  {/* Column 3: Workspace */}
                   <div className="space-y-3">
-                    <span className="text-xs font-bold text-slate-450 uppercase block">Records</span>
+                    <span className="text-xs font-bold text-slate-450 uppercase block">Workspace</span>
                     
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
-                      <Database className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">Central Hub</span>
+                      <Layers className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
+                      <span className="text-xs font-bold text-slate-800 block">ERP & CRM System</span>
                     </div>
                     <div className="bg-white border border-slate-200 p-3 rounded-xl shadow-xs">
-                      <CheckCircle className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
-                      <span className="text-xs font-bold text-slate-800 block">Your Accounts</span>
+                      <Shield className="h-4.5 w-4.5 text-brand-teal mx-auto mb-1.5" />
+                      <span className="text-xs font-bold text-slate-800 block">Active Support</span>
                     </div>
                   </div>
 
