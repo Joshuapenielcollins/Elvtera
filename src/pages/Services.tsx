@@ -59,7 +59,7 @@ export const Services: React.FC = () => {
       ]
     },
     {
-      title: "AI & WhatsApp",
+      title: "AI Agents & Automations",
       tagline: "Automate customer engagement and support with smart message routing.",
       longDesc: "Customer inquiries can easily fall through the cracks when scattered across channels. We build WhatsApp Business automations and deploy AI Sales and Voice Agents that qualify leads, answer customer questions instantly, and schedule meetings 24/7.",
       icon: Cpu,
@@ -150,7 +150,7 @@ export const Services: React.FC = () => {
 
   const tabs = [
     { name: "ERP & CRM", icon: Layers },
-    { name: "AI & WhatsApp", icon: Cpu },
+    { name: "AI Agents & Automations", icon: Cpu },
     { name: "Workflow & Apps", icon: Send },
     { name: "Websites", icon: TrendingUp },
     { name: "Consulting & Support", icon: Briefcase }
