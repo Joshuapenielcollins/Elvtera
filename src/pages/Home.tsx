@@ -394,7 +394,7 @@ export const Home: React.FC = () => {
                 {/* Footer Link */}
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-455 font-semibold mt-auto shrink-0">
                   <Link 
-                    to="/products"
+                    to="/services"
                     className="text-brand-blue hover:text-brand-blue/80 inline-flex items-center space-x-1 font-bold"
                   >
                     <span>Explore our systems</span>

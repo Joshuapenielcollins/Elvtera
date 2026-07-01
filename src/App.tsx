@@ -7,7 +7,6 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Products from './pages/Products';
 import Industries from './pages/Industries';
 import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
@@ -45,7 +44,6 @@ export const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
-              <Route path="/products" element={<Products />} />
               <Route path="/industries" element={<Industries />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/blog" element={<Blog />} />

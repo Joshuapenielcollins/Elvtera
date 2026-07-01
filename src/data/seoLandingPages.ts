@@ -521,9 +521,9 @@ export const getLandingPageData = (pathname: string): LandingPageData | null => 
 
   // Related Products Builder - selects 3 products from our suite
   const mockProducts = [
-    { name: "Elvtera Custom ERP Engine", path: "/products" },
-    { name: "Elvtera AI Voice Agent", path: "/products" },
-    { name: "Elvtera WhatsApp API CRM", path: "/products" }
+    { name: "Elvtera Custom ERP Engine", path: "/services" },
+    { name: "Elvtera AI Voice Agent", path: "/services" },
+    { name: "Elvtera WhatsApp API CRM", path: "/services" }
   ];
 
   const suggestedBlogs = [

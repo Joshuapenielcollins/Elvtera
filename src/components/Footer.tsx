@@ -38,11 +38,11 @@ export const Footer: React.FC = () => {
       { name: 'Contact Sales', path: '/contact' }
     ],
     products: [
-      { name: 'Central Systems', path: '/products' },
-      { name: 'Customer Manager', path: '/products' },
-      { name: 'Inventory Tracker', path: '/products' },
-      { name: 'Message Sync', path: '/products' },
-      { name: 'System Connector', path: '/products' }
+      { name: 'Central Systems', path: '/services' },
+      { name: 'Customer Manager', path: '/services' },
+      { name: 'Inventory Tracker', path: '/services' },
+      { name: 'Message Sync', path: '/services' },
+      { name: 'System Connector', path: '/services' }
     ]
   };
 
