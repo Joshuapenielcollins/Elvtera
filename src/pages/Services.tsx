@@ -37,122 +37,123 @@ export const Services: React.FC = () => {
 
   const pillarsData: ServiceDetail[] = [
     {
-      title: "Business Software",
-      tagline: "Get rid of scattered spreadsheets and manual invoice copying.",
-      longDesc: "We build custom software systems for your business, matching your everyday work routines. No rigid pre-set limits, no unnecessary modules, just a clean, secure system built to grow alongside you.",
+      title: "ERP & CRM",
+      tagline: "Connect your sales pipelines and office operations in one central system.",
+      longDesc: "Growing companies face a common challenge: sales conversations, customer info, stock levels, and accounts live in separate files. We implement and customize ERP and CRM systems to align with your unique workflows, creating a unified workspace for your entire business.",
       icon: Layers,
       benefits: [
-        { title: "Real-Time Inventory Reconciliation", desc: "Eliminate stock count mismatches by linking digital stock counts, supplier purchase orders, and sales inventories." },
-        { title: "Automatic Bookkeeping", desc: "Ensure complete accuracy by automatically recording every stock adjustment and payroll payment." },
-        { title: "Custom Production Scheduling", desc: "Coordinate Bills of Materials (BOM) and factory floor scheduling directly with materials depletion and purchase order routines." }
+        { title: "Unified Customer View", desc: "See every client call, message, invoice, and delivery status on a single timeline." },
+        { title: "Simplified Operations", desc: "Manage production schedules, supplier purchase orders, and stock levels in real time." },
+        { title: "Sales Optimization", desc: "Route leads automatically, track sales team activities, and shorten deal cycles." }
       ],
       features: [
-        { name: "Enterprise ERP", specs: "Resource planning, materials tracking, bills of materials (BOM), and factory yield charts", path: "/business-software/erp-solutions" },
-        { name: "Client CRM", specs: "Customer lifecycles, lead tracking, conversion stages, and phone/email diaries", path: "/business-software/crm" },
-        { name: "HRMS & Payroll Core", specs: "Digital check-in integrations, automated tax deductions, and wage slip dispatches", path: "/business-software/hr" },
-        { name: "Warehouse Tracker", specs: "Multi-register retail billing, SKU checks, and inventory records", path: "/business-software/inventory" }
+        { name: "ERP Customization", specs: "Tailoring resource planning, materials tracking, work schedules, and inventory registers.", path: "/business-software/erp-solutions" },
+        { name: "CRM Optimizations", specs: "Structuring sales stages, team assignments, call logs, and customer communication histories.", path: "/business-software/crm" },
+        { name: "Workplace Integration", specs: "Linking your internal departments directly into a single, clean workspace.", path: "/business-software/hr" },
+        { name: "Records Migration", specs: "Cleaning and transferring old spreadsheet files into your new central system.", path: "/business-software/inventory" }
       ],
-      workflow: ["Scoping & SOP mapping", "System Architecture Design", "Interface custom modeling", "Dry-run records testing", "Onsite training & support launch"],
+      workflow: ["Understand current workflows", "Design system architecture", "Configure and test pipelines", "Migrate existing records", "Launch and train team"],
       faq: [
-        { q: "Can we migrate data from our existing ERP?", a: "Yes. We design custom sync pipelines to clean, validate, and migrate your existing logs and spreadsheet records." },
-        { q: "Is the accounting module compliant with tax guidelines?", a: "Our accounting engines are structured using standard accounting rules and support local tax parameters, depreciation calculations, and invoice schemas." }
+        { q: "Can we connect our existing tools?", a: "Yes, we build secure connections to sync CRM contacts and sales metrics with your other business apps." },
+        { q: "How long does implementation take?", a: "Typically 6 to 12 weeks, depending on the complexity of your team's current processes." }
       ]
     },
     {
-      title: "AI Solutions",
-      tagline: "Eliminate manual data entries and administrative bottlenecks.",
-      longDesc: "Deploy end-to-end operational automation loops using fine-tuned AI agents. We construct secure systems that parse complex PDFs, verify data across records, execute automatic order dispatches, and handle customer dialogs.",
+      title: "AI & WhatsApp",
+      tagline: "Automate customer engagement and support with smart message routing.",
+      longDesc: "Customer inquiries can easily fall through the cracks when scattered across channels. We build WhatsApp Business automations and deploy AI Sales and Voice Agents that qualify leads, answer customer questions instantly, and schedule meetings 24/7.",
       icon: Cpu,
       benefits: [
-        { title: "Document Auditing", desc: "Extract values from purchase bills, contracts, and custom logistics sheets automatically, writing structured records directly to your central files." },
-        { title: "Vector Context Search", desc: "Deploy private vector indexes to search corporate manuals and customer files securely with strict permission shields." },
-        { title: "Automatic System Triggers", desc: "Configure background triggers where system outputs (like customer calendar bookings) update your records and inventory logs in real time." }
+        { title: "Instant Response Time", desc: "Engage leads within seconds on WhatsApp or web chat before they walk away." },
+        { title: "Conversational Callers", desc: "Deploy smart voice agents to handle inbound phone questions and book calendar calls." },
+        { title: "Unified Team Inbox", desc: "Bring all WhatsApp business lines into a shared screen so no message is missed." }
       ],
       features: [
-        { name: "AI Voice Calling Agents", specs: "Low-latency outbound phone consultations, answering FAQs, and schedule booking", path: "/ai/voice-calling-agent" },
-        { name: "AI Sales Agents", specs: "Multi-turn WhatsApp and web chat conversation to qualify budget, timeline, and booking", path: "/ai/ai-sales-agent" },
-        { name: "AI Support Desk", specs: "Multilingual instant query resolutions, automated tickets tagging, and desk dispatches", path: "/ai/customer-support-agent" },
-        { name: "AI Knowledge Base (RAG)", specs: "PDF and image OCR, table mapping, vector search, and metadata verification", path: "/ai/knowledge-base" }
+        { name: "AI Voice Agents", specs: "Inbound and outbound phone agents with natural, human-like speaking patterns.", path: "/ai/voice-calling-agent" },
+        { name: "AI Sales Agents", specs: "Conversational web and WhatsApp agents to qualify leads and book meetings.", path: "/ai/ai-sales-agent" },
+        { name: "WhatsApp Automations", specs: "Official WhatsApp Business API setup, chat templates, and shared support screens.", path: "/ai/customer-support-agent" },
+        { name: "Support Ticket Router", specs: "Tagging client requests automatically and routing urgent queries to live reps.", path: "/ai/knowledge-base" }
       ],
-      workflow: ["Materials ingestion & training", "Conversational route trees modeling", "VoIP trunking configuration", "Pilot runs & validation testing", "Live dashboard rollout"],
+      workflow: ["Design conversation flows", "Integrate chat APIs", "Train AI on business files", "Run simulation tests", "Go live with metrics dashboard"],
       faq: [
-        { q: "Do the voice agents sound human?", a: "We use advanced voice generation engines that simulate realistic breathing, pitch transitions, and pauses, providing premium phone consultations." },
-        { q: "How do you prevent the AI from making up information?", a: "We restrict agent responses using strict RAG (Retrieval-Augmented Generation) bounds. The AI only responds using verified data uploaded in your proprietary knowledge files." }
+        { q: "How does the AI know how to answer?", a: "We train the AI exclusively on your company's product manuals and guidelines. It only uses approved facts." },
+        { q: "Is WhatsApp automation compliant?", a: "Yes, we configure official Meta WhatsApp API accounts to ensure compliance and avoid phone number bans." }
       ]
     },
     {
-      title: "Workflow Automations",
-      tagline: "Decommission manual data copying and disjointed software pipelines.",
-      longDesc: "Connect all your everyday applications (such as email, messaging, CRM, and files) into seamless workflow automation pipelines. We build custom triggers and actions that automatically sync records, send notifications, and compile reports, keeping your business running 24/7 without manual effort.",
+      title: "Workflow & Apps",
+      tagline: "Eliminate manual data entry with business apps built for your workflow.",
+      longDesc: "Most growing companies waste hours copying information between different apps. We design workflow automations and custom business applications that sync files, update records, and connect your business tools automatically.",
       icon: Send,
       benefits: [
-        { title: "Event-Driven Workflows", desc: "Connect scattered systems using webhooks and direct links, running sync scripts immediately on events." },
-        { title: "Multi-System Auto-Sync", desc: "Keep Customer, Inventory, and Accounting files fully updated across platforms automatically." },
-        { title: "Custom Triggers & Alerts", desc: "Set up rules for email broadcasts, team notifications, and warning flags based on system updates." }
+        { title: "Zero Manual Typing", desc: "Move sales details, stock counts, and invoice records automatically between systems." },
+        { title: "Custom Business Portals", desc: "Provide secure logins for employees to log shifts and clients to view invoice details." },
+        { title: "Fewer Costly Mistakes", desc: "Stop human errors by letting automated background tasks verify record formats." }
       ],
       features: [
-        { name: "API Pipeline Integration", specs: "Webhook connectors, API wrappers, and multi-system data flows", path: "/automations/whatsapp-api" },
-        { name: "Automatic Data Sync", specs: "Syncing lead lists, inventory records, and invoicing sheets in real time", path: "/automations/broadcast-campaigns" },
-        { name: "Trigger-Based Actions", specs: "Custom notification triggers, email dispatches, and reports compiler", path: "/automations/team-inbox" },
-        { name: "Process Workflows", specs: "Automatic verification approvals, document routing, and record entries", path: "/automations/whatsapp-chatbot" }
+        { name: "Workflow Automation", specs: "Background triggers and actions that sync records across different tools.", path: "/automations/whatsapp-api" },
+        { name: "Custom Business Portals", specs: "Secure client and employee portals for self-service actions and documents.", path: "/automations/broadcast-campaigns" },
+        { name: "Custom Web Apps", specs: "Operational tools built specifically to solve unique business bottlenecks.", path: "/automations/team-inbox" },
+        { name: "API Integrations", specs: "Secure connections that transfer files and details safely between cloud tools.", path: "/automations/whatsapp-chatbot" }
       ],
-      workflow: ["Systems API & webhook scoping", "Pipeline logic & routing maps design", "Data transformation rules testing", "Trigger & schedule validation", "Background engine deployment"],
+      workflow: ["Scope operational tasks", "Map data routes and fields", "Build custom portals/apps", "Run integration checks", "Deploy to secure cloud"],
       faq: [
-        { q: "Can you automate workflows across different cloud platforms?", a: "Yes. We configure pipelines connecting various cloud APIs, custom internal systems, email servers, and support queues." },
-        { q: "How do you handle API downtime or connection failures?", a: "We build automatic retry queues, log event failures to audit logs, and trigger immediate alerts to administrators if an API request fails persistently." }
+        { q: "Can you connect older legacy tools?", a: "Yes, we design custom adapters to fetch, parse, and sync records from older systems." },
+        { q: "How secure are custom portals?", a: "We use industry-standard encryption and login rules to protect your records." }
       ]
     },
     {
-      title: "Digital Growth",
-      tagline: "Acquire qualified pipeline systematically.",
-      longDesc: "We skip generic advertising campaigns. We build technical SEO indexing pipelines, run performance Meta/Google/LinkedIn ads, and construct automated lead capture flows to grow sales pipelines.",
+      title: "Corporate Websites",
+      tagline: "Build a fast, search-optimized web presence that generates pipeline.",
+      longDesc: "Your website is the digital front door of your business. We build premium, fast-loading corporate websites optimized for search engines (SEO) and designed to turn visitors into booked meetings.",
       icon: TrendingUp,
       benefits: [
-        { title: "Programmatic Page Indexing", desc: "Deploy content directory structures that publish and index hundreds of SEO keyword routes systematically." },
-        { title: "Core Web Vitals Speed Optimization", desc: "Refactor code layers and caching headers to achieve fast page loads under 0.5s, reducing bounce rates." },
-        { title: "Multi-Channel Tracking Scripts", desc: "Configure exact UTM capture fields and payment tracking pixels to calculate return on advertising spend (ROAS) accurately." }
+        { title: "Ultra-Fast Load Times", desc: "Optimized layouts that load in under a second to keep visitors engaged." },
+        { title: "Organic Search Visibility", desc: "Structured content layouts designed to rank higher on Google search results." },
+        { title: "Built-In Lead Capture", desc: "Seamless contact forms and calendar schedulers that sync with your CRM." }
       ],
       features: [
-        { name: "Enterprise SEO", specs: "Keyword search maps, programmatic site indexing, and speed tuning", path: "/digital-marketing/seo" },
-        { name: "Performance Ads", specs: "Conversion pixel setups, Meta/Google creative A/B testing, and budget optimization", path: "/digital-marketing/google-ads" },
-        { name: "Content Marketing", specs: "Thought leadership articles, copywriting production, and SEO summaries", path: "/digital-marketing/content-creation" },
-        { name: "Marketing Automations", specs: "Targeted newsletters, behavior-based trigger email flows, and customer review captures", path: "/digital-marketing/email-marketing" }
+        { name: "Search Engine Optimization (SEO)", specs: "Search keyword structures, site speed tuning, and indexing setups.", path: "/digital-marketing/seo" },
+        { name: "Corporate Website Design", specs: "Clean, professional, responsive web systems built with fast code.", path: "/digital-marketing/google-ads" },
+        { name: "Landing Page Systems", specs: "High-converting web pages tailored for paid advertising campaigns.", path: "/digital-marketing/content-creation" },
+        { name: "Conversion Analytics", specs: "Tracking visitor actions, form submissions, and marketing campaign success.", path: "/digital-marketing/email-marketing" }
       ],
-      workflow: ["SEO audit & competitor mapping", "Performance tracking configuration", "Creative asset generation", "Campaign launches & audits", "Bi-weekly growth dashboard reports"],
+      workflow: ["Research search patterns", "Design responsive layout", "Write speed-optimized code", "Configure analytics & SEO", "Launch and test speed"],
       faq: [
-        { q: "How long before we see results from organic SEO?", a: "High-value SEO keyword rankings typically take 3 to 6 months to mature, but paid performance ads can yield inbound sales leads within the first week." },
-        { q: "Do you create the marketing graphics and copywriting?", a: "Yes. Our design and copy team produces custom landing page designs, ad creatives, performance copies, and SEO reports." }
+        { q: "Do you write the website copy?", a: "Yes, we write benefit-driven, plain-language text that explains what you do clearly." },
+        { q: "Will we be able to update the website ourselves?", a: "Yes, we set up simple editor dashboards so your team can add blog posts or edit text easily." }
       ]
     },
     {
-      title: "Business Consulting",
-      tagline: "Strategic digital transformation scoping.",
-      longDesc: "Establish a clear automation roadmap before spending on software. We review your team's offline routines, audit your systems, and deliver a detailed blueprint to scale yields.",
+      title: "Consulting & Support",
+      tagline: "Define your software roadmap and keep systems running smoothly.",
+      longDesc: "Getting your technology strategy right is half the battle; maintaining it is the other. We provide expert business consulting to plan your roadmap, along with managed support to keep everything running.",
       icon: Briefcase,
       benefits: [
-        { title: "Process SOP Mapping", desc: "Document department tasks and highlight data leakage loops between paper documents and offline folders." },
-        { title: "Technology Risk Audits", desc: "Ensure system permissions, token lifecycles, and API security keys match modern standard compliance guidelines." },
-        { title: "Custom Vendor RFP Blueprints", desc: "Receive detailed software requirements sheets and workflow mappings to evaluate packages accurately before procurement." }
+        { title: "Clear Tech Blueprint", desc: "Map your team's processes and get a clear, step-by-step implementation guide." },
+        { title: "Managed Support", desc: "Get guaranteed response times and direct access to developers when issues arise." },
+        { title: "Ongoing Optimization", desc: "Regular checks to update software, reduce cloud costs, and improve system speed." }
       ],
       features: [
-        { name: "Digital Transformation", specs: "Legacy software reviews, record migration plans, and cloud cost optimizations", path: "/consulting/digital-transformation" },
-        { name: "Workflow Strategy", specs: "Staff interviews, process bottleneck maps, and system requirements specifications", path: "/consulting/automation-strategy" },
-        { name: "IT Strategy & Audits", specs: "Enterprise security audits, security key clearances, and sync pipeline designs", path: "/consulting/it-strategy" }
+        { name: "Business Tech Consulting", specs: "Workflow auditing, system evaluations, and software roadmap planning.", path: "/consulting/digital-transformation" },
+        { name: "Managed IT Support", specs: "Ongoing support agreements with guaranteed response times.", path: "/consulting/automation-strategy" },
+        { name: "Cloud Optimization", specs: "Auditing hosting costs, securing system files, and scaling system speed.", path: "/consulting/it-strategy" },
+        { name: "Staff Training", specs: "Providing hands-on guides and workshops to help your team adopt new tools.", path: "/consulting/it-strategy" }
       ],
-      workflow: ["Onsite stakeholder workshops", "Workflow audits & SOP diagrams", "Bottlenecks & licensing audits reports", "Systems blueprint delivery", "Execution oversight consulting"],
+      workflow: ["Audit current workflows", "Deliver strategic blueprint", "Establish support schedules", "Monitor system performance", "Conduct regular reviews"],
       faq: [
-        { q: "Can we hire ELVTERA only for consulting and let our own team build it?", a: "Yes. We deliver comprehensive system design blueprints, specifications, and RFPs that your in-house engineering team can execute." },
-        { q: "What is the typical duration of a consulting cycle?", a: "A standard scoping and systems design cycle takes between 4 to 8 weeks, depending on the number of departments, locations, and systems involved." }
+        { q: "Can we hire you for planning only?", a: "Yes, we can write the strategic requirements blueprint for your internal team to execute." },
+        { q: "What are your support response times?", a: "We offer custom agreements, with support responses as fast as 1 hour for critical tasks." }
       ]
     }
   ];
 
   const tabs = [
-    { name: "Business Software", icon: Layers },
-    { name: "AI Solutions", icon: Cpu },
-    { name: "Workflow Automations", icon: Send },
-    { name: "Digital Growth", icon: TrendingUp },
-    { name: "Business Consulting", icon: Briefcase }
+    { name: "ERP & CRM", icon: Layers },
+    { name: "AI & WhatsApp", icon: Cpu },
+    { name: "Workflow & Apps", icon: Send },
+    { name: "Websites", icon: TrendingUp },
+    { name: "Consulting & Support", icon: Briefcase }
   ];
 
   const activePillar = pillarsData[activeTab];
@@ -171,15 +172,15 @@ export const Services: React.FC = () => {
               <path d="M70 60 H110" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
               
               <rect x="110" y="25" width="60" height="70" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="140" y="45" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Records Hub</text>
+              <text x="140" y="45" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">Central System</text>
               <line x1="120" y1="60" x2="160" y2="60" stroke="#14b8a6" strokeWidth="1" strokeDasharray="2 2" />
-              <text x="140" y="72" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Double Entry</text>
-              <text x="140" y="82" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="6">POSTED: SYSTEM</text>
+              <text x="140" y="72" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Automatic Sync</text>
+              <text x="140" y="82" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="6">SAVED: SYSTEM</text>
               
               <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" strokeLinecap="round" className="animate-pulse" />
               
               <rect x="210" y="35" width="60" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
-              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="9" fontWeight="bold">GL Accounts</text>
+              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="9" fontWeight="bold">Office Files</text>
               <circle cx="240" cy="71" r="5" fill="#14b8a6" className="animate-ping" />
             </svg>
           </div>
@@ -198,12 +199,12 @@ export const Services: React.FC = () => {
               
               <rect x="110" y="35" width="60" height="50" rx="8" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
               <text x="140" y="53" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="9" fontWeight="bold">AI Brain</text>
-              <text x="140" y="68" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Embeddings</text>
+              <text x="140" y="68" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Smart Match</text>
               
               <path d="M170 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="4 4" className="animate-pulse" />
               
               <rect x="210" y="30" width="60" height="60" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
-              <text x="240" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Vector Sync</text>
+              <text x="240" y="45" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">Central Sync</text>
               <circle cx="230" cy="65" r="3" fill="#14b8a6" />
               <circle cx="242" cy="72" r="3" fill="#3b82f6" />
               <circle cx="250" cy="62" r="3" fill="#14b8a6" />
@@ -215,7 +216,7 @@ export const Services: React.FC = () => {
           <div className="bg-white border border-slate-200/80 rounded-2xl p-5 shadow-xs flex items-center justify-center min-h-[160px] select-none">
             <svg className="w-full max-w-[280px] h-[120px]" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="10" y="45" width="50" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="35" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="8" fontWeight="bold">Webhook</text>
+              <text x="35" y="60" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="8" fontWeight="bold">App Trigger</text>
               
               <path d="M60 60 C80 60, 80 35, 105 35" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
               <path d="M60 60 C80 60, 80 85, 105 85" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
@@ -233,7 +234,7 @@ export const Services: React.FC = () => {
               <text x="240" y="35" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Send Email</text>
               
               <rect x="210" y="70" width="60" height="30" rx="6" fill="#f0fdfa" stroke="#14b8a6" strokeWidth="1.5" />
-              <text x="240" y="85" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Post Accounts</text>
+              <text x="240" y="85" dominantBaseline="middle" textAnchor="middle" fill="#0f766e" fontSize="7" fontWeight="bold">Update Records</text>
             </svg>
           </div>
         );
@@ -272,7 +273,7 @@ export const Services: React.FC = () => {
               <path d="M185 60 H210" stroke="#3b82f6" strokeWidth="1.5" strokeDasharray="3 3" />
               
               <rect x="210" y="35" width="60" height="50" rx="8" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.5" />
-              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">RFP Specs</text>
+              <text x="240" y="55" dominantBaseline="middle" textAnchor="middle" fill="#1e40af" fontSize="8" fontWeight="bold">System Plan</text>
               <text x="240" y="70" dominantBaseline="middle" textAnchor="middle" fill="#14b8a6" fontSize="7" fontWeight="bold">Deployment</text>
             </svg>
           </div>

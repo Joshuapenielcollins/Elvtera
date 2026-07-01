@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
-  Sparkles, 
   Shield, 
   Cpu, 
   Activity, 
@@ -76,39 +75,39 @@ export const Home: React.FC = () => {
 
   const pillars = [
     {
-      title: "Central Systems",
-      desc: "Get rid of scattered spreadsheets and copying data by hand. We build simple, custom systems that keep your stock levels, sales, and accounts in sync automatically.",
-      features: ["Live Stock Tracking", "Automatic Bookkeeping", "Custom Point-of-Sale", "Production Planning"],
+      title: "ERP & CRM Systems",
+      desc: "Stop running operations on scattered files. We customize central systems that bring your customer communications, inventory levels, and financial records into a single workspace.",
+      features: ["Custom ERP setups", "CRM sales optimization", "Multi-location inventory tracking", "Accounts and billing sync"],
       color: "border-blue-500/20 hover:border-blue-500",
-      badge: "99.99% System Reliability"
+      badge: "ERP & CRM Implementation"
     },
     {
-      title: "Connecting Your Apps",
-      desc: "Bridge your separate tools. We build secure links that automatically copy and share information between your different systems, saving your team hours.",
-      features: ["Real-Time Record Sync", "Secure Connections", "Encrypted Data Sharing", "Multi-App Integrations"],
+      title: "AI Sales & Voice Agents",
+      desc: "Qualify leads instantly without manual work. We deploy intelligent conversational voice and text agents to engage buyers 24/7 and book meetings directly into your calendar.",
+      features: ["Inbound/Outbound voice agents", "WhatsApp lead qualification", "24/7 instant replies", "Calendar sync & scheduling"],
       color: "border-teal-500/20 hover:border-teal-500",
-      badge: "Automatic Sync Core"
+      badge: "AI Conversational Sales"
     },
     {
-      title: "Automatic Daily Tasks",
-      desc: "Link your everyday business tools (like email, messaging, and customer lists) to run tasks automatically. We build triggers that update records and alert teams instantly, without any manual typing.",
-      features: ["Automated Tasks Engine", "Simple App Connections", "Automatic Sync Loops", "Custom Reporting Rules"],
+      title: "WhatsApp & Workflows",
+      desc: "Stop letting client inquiries slip away. We build official WhatsApp Business automations and trigger-based pipelines that update records and alert teams instantly.",
+      features: ["Official Meta API setups", "Shared support team inboxes", "Trigger-based notifications", "Spreadsheet-free automations"],
       color: "border-emerald-500/20 hover:border-emerald-500",
-      badge: "Workflow Automations"
+      badge: "Business Automations"
     },
     {
-      title: "Websites that Grow",
-      desc: "Attract more customers online. We design and build fast, clean websites and landing pages optimized to help people find you and book calls with your team.",
-      features: ["SEO and Web Visibility", "Fast-Loading Pages", "Conversion Tracking", "Lead Generation Funnels"],
+      title: "Custom Portals & Websites",
+      desc: "Provide client-facing logins and premium web experiences. We build search-optimized corporate websites and custom portals for secure client self-service.",
+      features: ["Search engine ranking optimization", "Secure client login portals", "Custom web applications", "Ultra-fast page load times"],
       color: "border-indigo-500/20 hover:border-indigo-500",
-      badge: "Higher Conversion Rates"
+      badge: "Websites & Custom Portals"
     },
     {
-      title: "Planning and Review",
-      desc: "Set up your plans before you build. We sit down with your team to review your processes, find bottlenecks, and write a clear roadmap for your software.",
-      features: ["Process Mapping", "Bottleneck Auditing", "Clear System Roadmap", "Phased Delivery Scoping"],
+      title: "Consulting & Managed Support",
+      desc: "Get a clear roadmap before spending on software, and keep systems running. We offer operational consulting and managed support with guaranteed response times.",
+      features: ["Operational workflow audits", "Digital strategy blueprints", "Ongoing software optimization", "Guaranteed developer support"],
       color: "border-orange-500/20 hover:border-orange-500",
-      badge: "Phased System Scoping"
+      badge: "Planning & Managed Support"
     }
   ];
 
@@ -196,15 +195,11 @@ export const Home: React.FC = () => {
             
             {/* Left side text */}
             <div className="lg:col-span-6 space-y-8 text-left">
-              <div className="flex items-center space-x-2 text-brand-blue text-xs font-bold uppercase tracking-wider w-fit">
-                <Sparkles className="h-4 w-4" />
-                <span>Enterprise Operations • Built for Scale</span>
-              </div>
-              <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 leading-[1.1] tracking-tight">
-                Run your whole business from one place.
+              <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 leading-[1.05] tracking-tight">
+                Stop running your business on spreadsheets.
               </h1>
               <p className="text-base sm:text-lg text-slate-655 max-w-xl leading-relaxed font-medium">
-                ELVTERA builds custom central systems that connect your sales, stock, accounts, and tasks. We set up your software around how you actually work, and stay on to support you.
+                We build one custom system that connects your sales, stock, accounts, and team — set up around how you actually work, and supported by us long after launch.
               </p>
               
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
@@ -212,7 +207,7 @@ export const Home: React.FC = () => {
                   to="/contact"
                   className="bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 text-sm whitespace-nowrap"
                 >
-                  <span>Book a free call</span>
+                  <span>Book a free call — it's on us</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
                 <Link
@@ -261,14 +256,9 @@ export const Home: React.FC = () => {
                               <IconComponent className="h-6 w-6" />
                             </div>
                             <div>
-                              <div className="flex items-center space-x-2">
-                                <h3 className="font-display font-extrabold text-lg text-slate-900 leading-tight">
-                                  {activeProduct.title}
-                                </h3>
-                                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md border border-slate-200/50 whitespace-nowrap">
-                                  {activeProduct.category}
-                                </span>
-                              </div>
+                              <h3 className="font-display font-extrabold text-lg text-slate-900 leading-tight">
+                                {activeProduct.title}
+                              </h3>
                               <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                                 {activeProduct.desc}
                               </p>
@@ -388,18 +378,13 @@ export const Home: React.FC = () => {
                     </div>
 
                     {/* Active Product Bottom Specifications */}
-                    <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                      <div className="flex flex-wrap gap-2 text-left">
-                        {heroProducts[currentProductIndex].specs.map((spec, sIdx) => (
-                          <span 
-                            key={sIdx} 
-                            className="inline-flex items-center space-x-1 text-[10px] font-bold text-slate-500 bg-slate-50 px-2 py-0.5 rounded-md border border-slate-200/50"
-                          >
-                            <span className="h-1 w-1 rounded-full bg-brand-teal"></span>
-                            <span>{spec}</span>
-                          </span>
-                        ))}
-                      </div>
+                    <div className="pt-2 border-t border-slate-100 flex flex-wrap gap-3 text-left">
+                      {heroProducts[currentProductIndex].specs.map((spec, sIdx) => (
+                        <span key={sIdx} className="inline-flex items-center space-x-1.5 text-[10px] font-bold text-slate-600">
+                          <span className="h-1 w-1 rounded-full bg-brand-teal shrink-0"></span>
+                          <span>{spec}</span>
+                        </span>
+                      ))}
                     </div>
 
                   </div>
@@ -452,14 +437,11 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-slate-50 border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
-              Our Capabilities
-            </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-slate-900">
-              We bring it all together, once.
+              Everything your business needs. One place.
             </h2>
             <p className="text-base text-slate-655 font-medium">
-              ELVTERA designs one connected system for your business. Orders, inventory, invoices, customers, and reports all live in the same place and stay up to date on their own.
+              Orders, inventory, invoices, customers, and reports all in the same place — up to date automatically, without your team typing anything twice.
             </p>
           </div>
 
@@ -522,14 +504,11 @@ export const Home: React.FC = () => {
       <section className="py-20 bg-white border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
-              Deployment Lifecycle
-            </span>
             <h2 className="font-display font-bold text-3xl text-slate-900">
               Too many tools, too much manual work?
             </h2>
             <p className="text-sm text-slate-550 max-w-lg mx-auto">
-              Most growing businesses end up running on a messy mix of spreadsheets, separate apps, and a lot of typing things in by hand.
+              Most growing businesses end up running on a messy mix of spreadsheets, separate apps, and a lot of typing things in twice.
             </p>
           </div>
           <InteractiveWorkflow />
@@ -540,9 +519,6 @@ export const Home: React.FC = () => {
       <section className="py-16 bg-slate-50 border-t border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-            <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5 text-center">
-              System Architecture
-            </span>
             <h2 className="font-display font-bold text-3xl text-slate-900">
               A simple way to connect your work
             </h2>
@@ -637,7 +613,6 @@ export const Home: React.FC = () => {
             
             {/* Left Side: Context (5 cols) */}
             <div className="lg:col-span-5 space-y-6 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-brand-blue">What you actually get out of it</span>
               <h2 className="font-display font-bold text-3xl text-slate-900 leading-tight">
                 Time saved and fewer mistakes
               </h2>
@@ -700,9 +675,6 @@ export const Home: React.FC = () => {
             
             {/* Left side text */}
             <div className="lg:col-span-5 text-left space-y-6">
-              <span className="text-brand-blue text-xs font-bold uppercase tracking-wider block mb-3.5">
-                Why Us
-              </span>
               <h2 className="font-display font-bold text-3xl sm:text-4xl text-slate-900 leading-tight">
                 Set up once. Supported for the long run.
               </h2>
