@@ -195,27 +195,30 @@ export const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             {/* Left side text */}
-            <div className="lg:col-span-6 space-y-8 text-left">
+            <div className="lg:col-span-6 space-y-6 text-left">
+              <span className="text-brand-blue text-xs font-extrabold uppercase tracking-wider block">
+                Custom ERP & Automation Partner
+              </span>
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6.5xl text-slate-900 leading-[1.05] tracking-tight">
-                Stop running your business on spreadsheets.
+                From fragmented tools to a unified business platform.
               </h1>
-              <p className="text-base sm:text-lg text-slate-655 max-w-xl leading-relaxed font-medium">
-                We build one custom system that connects your sales, stock, accounts, and team — set up around how you actually work, and supported by us long after launch.
+              <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed font-medium">
+                Stop wasting hours on manual data entry and scattered spreadsheets. We build one central system that connects your sales, inventory, and bookkeeping—tailored to your workflow and supported by us long after launch.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <Link
                   to="/contact"
                   className="bg-brand-blue hover:bg-brand-blue/90 text-white px-7 py-4 rounded-xl font-bold shadow-lg shadow-brand-blue/25 hover:shadow-xl transition-all duration-300 text-center flex items-center justify-center space-x-2 text-sm whitespace-nowrap"
                 >
-                  <span>Book a free call — it's on us</span>
+                  <span>Book a free workflow session</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
                 <Link
                   to="/services"
                   className="bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 px-7 py-4 rounded-xl font-bold transition-colors text-center text-sm shadow-sm whitespace-nowrap"
                 >
-                  See how it works
+                  Explore our services
                 </Link>
               </div>
             </div>
@@ -275,99 +278,102 @@ export const Home: React.FC = () => {
                         const activeProduct = heroProducts[currentProductIndex];
                         if (activeProduct.visualType === 'erp') {
                           return (
-                            <div className="bg-slate-900 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-1.5 border border-slate-800 shadow-inner w-full">
-                              <div className="flex justify-between border-b border-slate-800 pb-1.5 mb-1.5 font-bold text-[9px] text-brand-teal uppercase tracking-wider">
-                                <span>Central System Sync</span>
-                                <span className="animate-pulse">Active Sync</span>
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 w-full space-y-3">
+                              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Operational Monitor</span>
+                                <span className="text-[10px] font-bold text-brand-teal flex items-center space-x-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-teal animate-pulse"></span>
+                                  <span>Live Sync</span>
+                                </span>
                               </div>
-                              <div className="space-y-1">
-                                <div><span className="text-slate-500">Core System:</span> Central File Sync</div>
-                                <div><span className="text-slate-500">Active Pools:</span> 16 Active Threads</div>
-                                <div><span className="text-slate-500">Sync Status:</span> Files updated</div>
-                                <div className="flex items-center space-x-1.5 text-brand-teal text-[10px] font-bold animate-pulse pt-1">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-teal"></span>
-                                  <span>Syncing systems/accounts/...</span>
+                              <div className="space-y-2">
+                                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                                  <span>Sales Pipelines</span>
+                                  <span className="text-brand-blue">Active & Connected</span>
+                                </div>
+                                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                                  <span>Inventory Registers</span>
+                                  <span className="text-brand-blue">In Sync</span>
+                                </div>
+                                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                                  <span>Financial Records</span>
+                                  <span className="text-brand-blue">Automated Posts</span>
                                 </div>
                               </div>
                             </div>
                           );
                         } else if (activeProduct.visualType === 'workflow') {
                           return (
-                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 w-full flex flex-col justify-center relative overflow-hidden">
-                              <div className="flex items-center justify-between mb-3.5">
-                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Event Trigger Sync</span>
-                                <span className="text-[10px] font-extrabold text-brand-blue flex items-center space-x-1 bg-brand-blue/10 px-2 py-0.5 rounded-md">
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 w-full space-y-3">
+                              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Automated Routine</span>
+                                <span className="text-[10px] font-bold text-brand-blue flex items-center space-x-1">
                                   <span className="h-1.5 w-1.5 rounded-full bg-brand-blue animate-pulse"></span>
-                                  <span>Pipeline Sync</span>
+                                  <span>Active Workflow</span>
                                 </span>
                               </div>
-                              <div className="flex items-center justify-between px-2 pt-1">
-                                <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
-                                  <span className="text-[10px] font-bold text-slate-700 block">Customer List</span>
+                              <div className="flex items-center justify-between text-xs px-2 py-1">
+                                <div className="bg-white border border-slate-200 p-2 rounded-xl shadow-xs text-center shrink-0 w-24">
+                                  <span className="text-[10px] font-bold text-slate-700 block">Lead Forms</span>
                                 </div>
-                                <div className="grow relative flex items-center justify-center">
-                                  <div className="h-0.5 bg-slate-200 w-full absolute top-1/2 -translate-y-1/2"></div>
-                                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-1/4"></div>
-                                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-3/4"></div>
+                                <div className="grow relative flex items-center justify-center mx-2">
+                                  <div className="h-0.5 bg-slate-200 w-full"></div>
+                                  <div className="h-2 w-2 rounded-full bg-brand-blue absolute animate-ping left-1/2"></div>
                                 </div>
-                                <div className="bg-white border border-slate-200 p-2.5 rounded-xl text-center shadow-xs w-20">
-                                  <span className="text-[10px] font-bold text-slate-700 block">Main System</span>
+                                <div className="bg-white border border-slate-200 p-2 rounded-xl shadow-xs text-center shrink-0 w-24">
+                                  <span className="text-[10px] font-bold text-slate-700 block">Office Records</span>
                                 </div>
                               </div>
                             </div>
                           );
                         } else if (activeProduct.visualType === 'api') {
                           return (
-                            <div className="bg-slate-955 text-slate-350 p-4 rounded-2xl font-mono text-xs text-left space-y-2 border border-slate-800 shadow-inner w-full">
-                              <div className="flex items-center justify-between text-[9px] text-slate-500 font-bold border-b border-slate-900 pb-1.5 mb-1 shrink-0">
-                                <span>System Connection Router</span>
-                                <span className="text-brand-blue flex items-center space-x-1.5">
-                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue animate-pulse"></span>
-                                  <span>LISTENING</span>
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 w-full space-y-3">
+                              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Channel Integrations</span>
+                                <span className="text-[10px] font-bold text-brand-teal flex items-center space-x-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-teal animate-pulse"></span>
+                                  <span>Connected</span>
                                 </span>
                               </div>
-                              <div className="space-y-1 text-slate-400">
-                                <div className="flex items-center space-x-1.5">
-                                  <span className="text-slate-600">[10:14:02]</span>
-                                  <span className="text-brand-blue font-bold">API:</span>
-                                  <span>200 OK (Lead Received)</span>
+                              <div className="space-y-2">
+                                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                                  <span>WhatsApp CRM API</span>
+                                  <span className="text-slate-500">Listening...</span>
                                 </div>
-                                <div className="flex items-center space-x-1.5">
-                                  <span className="text-slate-600">[10:14:05]</span>
-                                  <span className="text-amber-500 font-bold">WH:</span>
-                                  <span>Dispatched (Sync Loop)</span>
-                                </div>
-                                <div className="flex items-center space-x-1.5">
-                                  <span className="text-slate-600">[10:14:08]</span>
-                                  <span className="text-brand-teal font-bold">Sync:</span>
-                                  <span>Accounts and Files Synced</span>
+                                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                                  <span>Customer Portals</span>
+                                  <span className="text-slate-500">Secure Active Link</span>
                                 </div>
                               </div>
                             </div>
                           );
                         } else {
                           return (
-                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-4.5 w-full flex flex-col justify-center space-y-3">
-                              <div className="flex items-center justify-between">
-                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Inventory Levels</span>
-                                <span className="text-xs font-bold text-brand-teal">84% Capacity</span>
+                            <div className="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 w-full space-y-3">
+                              <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">Inventory Registers</span>
+                                <span className="text-[10px] font-bold text-brand-blue flex items-center space-x-1">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue"></span>
+                                  <span>Automated Reorders</span>
+                                </span>
                               </div>
                               <div className="space-y-2">
                                 <div className="space-y-1">
                                   <div className="flex justify-between text-[10px] font-bold text-slate-600">
-                                    <span>Yarn Materials</span>
+                                    <span>Materials Inventory</span>
                                     <span>92%</span>
                                   </div>
-                                  <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                  <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                     <div className="bg-brand-blue h-full rounded-full" style={{ width: '92%' }}></div>
                                   </div>
                                 </div>
                                 <div className="space-y-1">
                                   <div className="flex justify-between text-[10px] font-bold text-slate-600">
-                                    <span>Packaging Boxes</span>
-                                    <span>34%</span>
+                                    <span>Packaging Stock</span>
+                                    <span>34% (Auto-Reordering)</span>
                                   </div>
-                                  <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                  <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                     <div className="bg-amber-500 h-full rounded-full animate-pulse" style={{ width: '34%' }}></div>
                                   </div>
                                 </div>
