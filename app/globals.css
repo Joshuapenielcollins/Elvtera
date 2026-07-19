@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * ELVTERA design tokens
+ *
+ * A deliberately restrained palette: deep slate for authority, one blue for
+ * action, one orange used sparingly as a highlight. Everything else is white
+ * space and typography — the enterprise look is built on restraint.
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Brand palette */
+  --color-primary: #0f172a; /* Deep slate — headings, footer, primary buttons */
+  --color-primary-soft: #1e293b;
+  --color-secondary: #0031c7; /* Action blue — links, secondary buttons */
+  --color-secondary-soft: #eff3ff;
+  --color-accent: #0031c7; /* Brand Blue used for accent highlights & logo square */
+  --color-accent-soft: #eff3ff;
+  --color-surface: #f8fafc; /* Section background gray */
+  --color-line: #e2e8f0; /* Hairline borders */
+
+  /* Typography (wired to next/font variables in app/layout.tsx) */
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  /* Soft, layered shadows — no hard edges anywhere */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 24px -8px rgba(15, 23, 42, 0.08);
+  --shadow-card-hover: 0 2px 4px rgba(15, 23, 42, 0.05),
+    0 16px 40px -12px rgba(15, 23, 42, 0.14);
+}
+
+/* Base document styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings use the display face across the whole site */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Accessible focus states — visible, consistent, never removed */
+:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

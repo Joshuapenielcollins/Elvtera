@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ELVTERA E-Solutions — Enterprise Website
 
-## Getting Started
+**Engineering Business Systems That Scale.**
 
-First, run the development server:
+Production-ready corporate website for ELVTERA E-Solutions, a business
+technology company delivering ERP, CRM, custom software, business process
+automation, AI business solutions and cloud infrastructure.
+
+## Tech stack
+
+- **Next.js 15** (App Router, Server Components, static prerendering)
+- **TypeScript** (strict)
+- **Tailwind CSS 4** (design tokens in `app/globals.css`)
+- **Framer Motion** (subtle fade-up reveals and counters only)
+- **Lucide** icons · **Manrope / Inter** via `next/font`
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build — all routes prerender statically
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/                    Routes (one folder per page; [slug] for dynamic pages)
+  services/[slug]/      11 SEO-optimized service pages
+  industries/[slug]/    10 SEO-optimized industry pages
+  case-studies/[slug]/  Case study detail pages
+  sitemap.ts, robots.ts Generated from content — never drift
+components/
+  layout/               Header, footer, logo
+  sections/             Page building blocks (heroes, cards, stats, FAQ, CTA)
+  motion/               Reveal + Counter (the site's only animation primitives)
+  forms/                Contact + careers forms (client components)
+  ui/                   Button (cva), accordion, icon registry
+content/                Typed marketing content — services, industries,
+                        case studies, insights, testimonials, FAQs
+lib/                    Site config, SEO/schema helpers, utils
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Adding a service, industry or case study is a data change, not a code
+change** — add an entry to the relevant file in `content/` and the page,
+sitemap entry, footer link and cards are generated automatically.
 
-## Learn More
+## Design system
 
-To learn more about Next.js, take a look at the following resources:
+| Token       | Value     | Use                          |
+| ----------- | --------- | ---------------------------- |
+| `primary`   | `#0F172A` | Headings, footer, buttons    |
+| `secondary` | `#2563EB` | Links, actions, icon badges  |
+| `accent`    | `#FF6B00` | Sparse emphasis only         |
+| `surface`   | `#F8FAFC` | Alternating section bg       |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Headings: **Manrope** · Body: **Inter** · Cards: `rounded-2xl`, hairline
+border, soft layered shadows. Light theme only, by design.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO & accessibility
 
-## Deploy on Vercel
+- Per-page metadata + canonical URLs (`lib/seo.ts`), OG/Twitter tags
+- JSON-LD: Organization (global), Service, FAQPage, BreadcrumbList, ContactPage
+- Semantic HTML, single `h1` per page, skip-to-content link, visible focus
+  states, `prefers-reduced-motion` respected — WCAG AA targeted
+- `sitemap.xml` and `robots.txt` generated at build time
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Before launch
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Wire `components/forms/contact-form.tsx` and `application-form.tsx`
+      to a CRM/API endpoint (marked with `TODO`)
+- [ ] Replace placeholder wordmarks in `components/sections/logo-row.tsx`
+      with licensed client logos
+- [ ] Swap the map placeholder on `/contact` for a Google Maps embed
+- [ ] Have counsel review `/privacy-policy` and `/terms` drafts
+- [ ] Confirm final contact details in `lib/site.ts` and the production
+      domain in `site.url`
