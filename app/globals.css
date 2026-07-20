@@ -11,10 +11,10 @@
   /* Brand palette - Refined for premium Enterprise feel */
   --color-primary: #09090b; /* Extremely rich deep slate-black */
   --color-primary-soft: #18181b; /* Soft dark charcoal */
-  --color-secondary: #4f46e5; /* Premium action Indigo */
-  --color-secondary-soft: #f5f3ff; /* Soft lavender-blue */
-  --color-accent: #6366f1; /* Electric violet-indigo */
-  --color-accent-soft: #eff6ff; /* Soft blue */
+  --color-secondary: #0031c7; /* Original Brand Blue */
+  --color-secondary-soft: #eff3ff; /* Soft brand blue highlight */
+  --color-accent: #0031c7; /* Original Brand Blue */
+  --color-accent-soft: #eff3ff; /* Soft brand blue highlight */
   --color-surface: #fafafa; /* Minimalist clean surface gray */
   --color-line: #f4f4f5; /* Subtle zinc border */
 
@@ -50,7 +50,7 @@
 }
 
 .grid-bg {
-  background-image: radial-gradient(rgba(79, 70, 229, 0.05) 1px, transparent 0);
+  background-image: radial-gradient(rgba(0, 49, 199, 0.05) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
@@ -68,7 +68,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 30px rgba(0, 49, 199, 0.15);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
