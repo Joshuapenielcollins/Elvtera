@@ -14,13 +14,13 @@ import { cn } from "@/lib/utils";
  */
 
 const cardBase =
-  "group relative flex h-full flex-col rounded-2xl border border-line bg-white p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--shadow-card-hover)]";
+  "group relative flex h-full flex-col rounded-2xl border border-slate-100 bg-white/80 backdrop-blur-md p-8 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-secondary/35 hover:shadow-[var(--shadow-card-hover)]";
 
 /** Icon badge used at the top of feature and link cards. */
 function IconBadge({ name, className }: { name: string; className?: string }) {
   return (
-    <span className={cn("inline-flex text-secondary", className)}>
-      <Icon name={name} className="size-7" />
+    <span className={cn("inline-flex items-center justify-center size-12 rounded-xl bg-slate-50 text-slate-700 border border-slate-100/50 shadow-[inset_0_1px_2px_rgba(9,9,11,0.02)] transition-all duration-500 group-hover:bg-secondary/5 group-hover:text-secondary group-hover:border-secondary/10", className)}>
+      <Icon name={name} className="size-6" />
     </span>
   );
 }
@@ -28,14 +28,14 @@ function IconBadge({ name, className }: { name: string; className?: string }) {
 /** Full-card link overlay + arrow affordance. */
 function CardLink({ href, label }: { href: string; label: string }) {
   return (
-    <span className="mt-auto flex items-center gap-1.5 pt-5 text-sm font-semibold text-secondary">
+    <span className="mt-auto flex items-center gap-2 pt-6 text-sm font-semibold text-secondary transition-colors duration-300">
       {/* Stretched link makes the whole card clickable while staying accessible. */}
       <Link href={href} className="after:absolute after:inset-0 after:rounded-2xl">
         {label}
       </Link>
       <ArrowRight
         aria-hidden="true"
-        className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+        className="size-4 transition-transform duration-300 group-hover:translate-x-1.5"
       />
     </span>
   );
