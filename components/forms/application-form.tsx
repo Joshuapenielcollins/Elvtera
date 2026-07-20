@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, Send } from "lucide-react";
+import { CheckCircle2, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -13,11 +13,32 @@ import { Button } from "@/components/ui/button";
  */
 export function ApplicationForm({ positions }: { positions: string[] }) {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    // TODO: POST the FormData to your applicant-tracking system.
-    setSubmitted(true);
+    setLoading(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      formData.append("type", "careers");
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit application");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -95,9 +116,18 @@ export function ApplicationForm({ positions }: { positions: string[] }) {
           />
         </div>
       </div>
-      <Button type="submit" size="lg" className="mt-7 w-full sm:w-auto">
-        Submit Application
-        <Send aria-hidden="true" />
+      <Button type="submit" size="lg" className="mt-7 w-full sm:w-auto" disabled={loading}>
+        {loading ? (
+          <>
+            Submitting...
+            <Loader2 className="animate-spin" aria-hidden="true" />
+          </>
+        ) : (
+          <>
+            Submit Application
+            <Send aria-hidden="true" />
+          </>
+        )}
       </Button>
       <p className="mt-4 text-xs leading-relaxed text-slate-500">
         Application data is used solely for recruitment and handled in line

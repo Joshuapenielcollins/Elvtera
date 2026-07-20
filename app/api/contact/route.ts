@@ -297,6 +297,70 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
+    if (type === "careers") {
+      const name = get(fd, "name");
+      const email = get(fd, "email");
+      const position = get(fd, "position");
+      const portfolio = get(fd, "portfolio");
+      const cover = get(fd, "cover");
+
+      if (!name || !email || !position || !cover) {
+        return NextResponse.json(
+          { error: "All required fields must be filled." },
+          { status: 400 }
+        );
+      }
+
+      const message = `Position: ${position}\nPortfolio: ${portfolio || "N/A"}\n\nCover Letter:\n${cover}`;
+
+      const { error } = await resend.emails.send({
+        from: "ELVTERA Careers <onboarding@resend.dev>",
+        to: process.env.GENERAL_EMAIL ?? "hello@elvtera.com",
+        replyTo: email,
+        subject: `[Careers] New Application: ${name} for ${position}`,
+        html: buildGeneralEmail({ name, email, subject: `Job Application: ${position}`, message, ip, userAgent, submittedAt }),
+      });
+
+      if (error) {
+        console.error("Resend error (careers):", error);
+        return NextResponse.json(
+          { error: "Failed to send email. Please try again." },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({ success: true });
+    }
+
+    if (type === "newsletter") {
+      const email = get(fd, "email");
+
+      if (!email) {
+        return NextResponse.json(
+          { error: "Email is required." },
+          { status: 400 }
+        );
+      }
+
+      const { error } = await resend.emails.send({
+        from: "ELVTERA Subscriptions <onboarding@resend.dev>",
+        to: process.env.GENERAL_EMAIL ?? "hello@elvtera.com",
+        replyTo: email,
+        subject: `[Newsletter] New Subscription: ${email}`,
+        html: buildGeneralEmail({ name: "Newsletter Subscriber", email, subject: "New Newsletter Subscription", message: `${email} has subscribed to the newsletter.`, ip, userAgent, submittedAt }),
+      });
+
+      if (error) {
+        console.error("Resend error (newsletter):", error);
+        return NextResponse.json(
+          { error: "Failed to send email. Please try again." },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({ success: true });
+    }
+
     return NextResponse.json({ error: "Invalid form type." }, { status: 400 });
   } catch (err) {
     console.error("Contact API error:", err);

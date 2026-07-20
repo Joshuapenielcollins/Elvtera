@@ -8,19 +8,39 @@ import {
   Twitter, 
   MapPin, 
   Send,
-  CheckCircle2
+  CheckCircle2,
+  Loader2
 } from "lucide-react";
 
 export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 5000);
+    if (email.trim() && !loading) {
+      setLoading(true);
+      try {
+        const formData = new FormData();
+        formData.append("type", "newsletter");
+        formData.append("email", email.trim());
+
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          setSubscribed(true);
+          setEmail("");
+          setTimeout(() => setSubscribed(false), 5000);
+        }
+      } catch (error) {
+        console.error("Subscription failed:", error);
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -166,9 +186,14 @@ export function Footer() {
                 />
                 <button 
                   type="submit"
-                  className="bg-secondary hover:bg-secondary/90 text-white rounded-lg px-4 py-2 flex items-center justify-center transition-colors cursor-pointer"
+                  disabled={loading}
+                  className="bg-secondary hover:bg-secondary/90 text-white rounded-lg px-4 py-2 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50"
                 >
-                  <Send className="h-4 w-4" />
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
                 </button>
               </form>
             ) : (
