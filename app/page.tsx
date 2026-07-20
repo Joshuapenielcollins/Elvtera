@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, ShieldCheck, Wrench, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Reveal } from "@/components/motion/reveal";
@@ -120,14 +120,12 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 pb-24 lg:grid-cols-[1.05fr_1fr] lg:px-8 lg:py-24 lg:pb-32">
           <Reveal>
             <h1 className="text-4xl font-extrabold leading-[1.06] tracking-tight text-primary sm:text-5xl lg:text-[3.6rem]">
-              Engineering business systems{" "}
-              <span className="text-secondary">that scale.</span>
+              Transforming Businesses Through{" "}
+              <span className="text-secondary">Intelligent Systems.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 lg:text-xl">
-              ELVTERA helps established businesses streamline operations,
-              automate workflows and grow on enterprise-grade software - ERP,
-              CRM, custom systems, intelligent automation and cloud
-              infrastructure, delivered by one accountable team.
+              We help companies modernize their operations with custom software,
+              automation, AI, and scalable digital infrastructure.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Button href="/contact" size="lg">
@@ -142,6 +140,10 @@ export default function HomePage() {
               <li className="flex items-center gap-2">
                 <ShieldCheck className="size-4 text-secondary" aria-hidden="true" />
                 Fixed-scope, itemized proposals
+              </li>
+              <li className="flex items-center gap-2">
+                <TrendingUp className="size-4 text-secondary" aria-hidden="true" />
+                Measured business outcomes
               </li>
               <li className="flex items-center gap-2">
                 <Wrench className="size-4 text-secondary" aria-hidden="true" />
