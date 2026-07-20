@@ -45,7 +45,6 @@ export function organizationSchema() {
     slogan: site.tagline,
     description: site.description,
     email: site.email,
-    telephone: site.phone,
     address: site.addresses.map((addr) => ({
       "@type": "PostalAddress",
       streetAddress: `${addr.line1}, ${addr.line2}`,

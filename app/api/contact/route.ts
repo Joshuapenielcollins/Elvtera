@@ -10,7 +10,7 @@ function get(fd: FormData, key: string): string {
 
 /** Builds a professional dark-themed HTML email for the sales team. */
 function buildSalesEmail(data: Record<string, string>): string {
-  const brand = "#FF4204";
+  const brand = "#0031c7";
   const bg = "#0f172a";
   const surface = "#1e293b";
   const muted = "#94a3b8";
@@ -135,7 +135,7 @@ function buildSalesEmail(data: Record<string, string>): string {
 
 /** Builds a clean HTML email for general enquiries. */
 function buildGeneralEmail(data: Record<string, string>): string {
-  const brand = "#FF4204";
+  const brand = "#0031c7";
   const bg = "#0f172a";
   const surface = "#1e293b";
   const muted = "#94a3b8";
@@ -248,7 +248,7 @@ export async function POST(req: NextRequest) {
 
       const { error } = await resend.emails.send({
         from: "ELVTERA Enquiries <onboarding@resend.dev>",
-        to: process.env.SALES_EMAIL ?? "sales@elvtera.com",
+        to: process.env.SALES_EMAIL ?? "hello@elvtera.com",
         replyTo: email,
         subject: `New Project Enquiry: ${company} — ${data.services || "General"}`,
         html: buildSalesEmail(data),

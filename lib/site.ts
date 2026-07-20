@@ -11,9 +11,8 @@ export const site = {
   tagline: "Engineering Business Systems That Scale.",
   description:
     "ELVTERA E-Solutions is a business technology company helping organizations streamline operations, automate workflows and scale with enterprise-grade software - ERP, CRM, custom software, automation and cloud infrastructure.",
-  url: "https://www.elvtera.com",
+  url: "https://elvtera.com",
   email: "hello@elvtera.com",
-  phone: "+1 (555) 014-2400",
   addresses: [
     {
       title: "India Operations",
