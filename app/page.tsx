@@ -118,23 +118,19 @@ export default function HomePage() {
       {/* ------------------------------------------------------------------ */}
       {/* Hero Section                                                      */}
       {/* ------------------------------------------------------------------ */}
-      <section className="relative overflow-hidden border-b border-line bg-surface grid-bg">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/50 to-white pointer-events-none" />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 pb-28 lg:grid-cols-[1.1fr_1fr] lg:px-8 lg:py-32 relative z-10">
+      <section className="overflow-hidden border-b border-line bg-surface">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 py-16 pb-24 lg:grid-cols-[1.05fr_1fr] lg:px-8 lg:py-24 lg:pb-32">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md shadow-sm mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">ELVTERA Systems Core v2.4</span>
-            </div>
-            <h1 className="text-4xl font-extrabold leading-[1.04] tracking-tight text-primary sm:text-5xl lg:text-[3.8rem] gradient-text">
-              Transforming Businesses Through Intelligent Systems.
+            <h1 className="text-4xl font-extrabold leading-[1.06] tracking-tight text-primary sm:text-5xl lg:text-[3.6rem]">
+              Transforming Businesses Through{" "}
+              <span className="text-secondary">Intelligent Systems.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 lg:text-xl font-medium">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 lg:text-xl">
               We help companies modernize their operations with custom software,
               automation, AI, and scalable digital infrastructure.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Button href="/contact" size="lg">
                 Book a Consultation
                 <ArrowRight aria-hidden="true" />
               </Button>
@@ -142,33 +138,30 @@ export default function HomePage() {
                 Explore Solutions
               </Button>
             </div>
-            <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 text-sm text-slate-600 font-semibold border-t border-slate-200/50 pt-8 max-w-lg">
-              <li className="flex items-center gap-2.5">
-                <ShieldCheck className="size-4.5 text-secondary" aria-hidden="true" />
-                Fixed-scope pricing
+            <ul className="mt-9 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-600">
+              <li className="flex items-center gap-2">
+                <ShieldCheck className="size-4 text-secondary" aria-hidden="true" />
+                Fixed-scope, itemized proposals
               </li>
-              <li className="flex items-center gap-2.5">
-                <TrendingUp className="size-4.5 text-secondary" aria-hidden="true" />
-                Measured outcomes
+              <li className="flex items-center gap-2">
+                <TrendingUp className="size-4 text-secondary" aria-hidden="true" />
+                Measured business outcomes
               </li>
-              <li className="flex items-center gap-2.5">
-                <Wrench className="size-4.5 text-secondary" aria-hidden="true" />
-                Accountable support
+              <li className="flex items-center gap-2">
+                <Wrench className="size-4 text-secondary" aria-hidden="true" />
+                Supported long after go-live
               </li>
-              <li className="flex items-center gap-2.5">
-                <ShieldCheck className="size-4.5 text-secondary" aria-hidden="true" />
-                Absolute IP ownership
+              <li className="flex items-center gap-2">
+                <ShieldCheck className="size-4 text-secondary" aria-hidden="true" />
+                You own all the code and data
               </li>
             </ul>
           </Reveal>
-          <Reveal delay={0.15} className="lg:pl-6 relative">
+          <Reveal delay={0.15} className="lg:pl-4">
             <HeroVisual />
           </Reveal>
         </div>
       </section>
-
-      {/* Trust & Credibility Partner Logo Row */}
-      <LogoRow />
 
       {/* ------------------------------------------------------------------ */}
       {/* Bento Grid Services Overview                                       */}
