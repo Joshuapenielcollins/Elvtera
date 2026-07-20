@@ -1250,6 +1250,140 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    slug: "managed-cloud",
+    name: "Managed Cloud Infrastructure",
+    shortName: "Managed Cloud",
+    icon: "Cloud",
+    excerpt: "Reliable, secure cloud hosting and infrastructure management tailored to your enterprise applications.",
+    headline: "Infrastructure that stays up, stays backed up, and stays yours.",
+    overview: [
+      "Running enterprise software requires reliable infrastructure. We provide managed cloud hosting designed specifically for security, uptime, and performance.",
+      "Our team handles server provisioning, hardening, ongoing monitoring, and guaranteed automated backups so your business operations never miss a beat."
+    ],
+    features: [
+      {
+        icon: "Shield",
+        title: "Server Hardening",
+        description: "Provisioning, OS security, firewall configurations, and fail2ban rules to protect your data."
+      },
+      {
+        icon: "Container",
+        title: "Docker Hosting",
+        description: "Deploy ERPNext, CRM systems, n8n automations, and custom apps in secure, isolated containers."
+      },
+      {
+        icon: "Activity",
+        title: "Uptime Monitoring",
+        description: "Proactive 24/7 monitoring and alerts so we address lags before your team even notices."
+      },
+      {
+        icon: "DatabaseBackup",
+        title: "Backup & Restore",
+        description: "Regular, tested offsite backups to ensure you can recover instantly from any catastrophic failure."
+      }
+    ],
+    benefits: [
+      { value: 99.9, suffix: "%", label: "Guaranteed uptime SLA for critical infrastructure" },
+      { value: 24, suffix: "/7", label: "Proactive system monitoring and incident response" }
+    ],
+    process: [
+      { title: "Infrastructure Audit", description: "Reviewing your current hosting and identifying security or performance gaps." },
+      { title: "Migration", description: "Seamless, zero-downtime transition to our managed cloud environment." },
+      { title: "Ongoing Management", description: "Routine patching, monitoring, and proactive incident resolution." }
+    ],
+    technologies: ["AWS", "DigitalOcean", "Docker", "Linux", "Nginx", "PostgreSQL"],
+    faqs: [
+      { question: "Where is our data hosted?", answer: "We deploy instances in enterprise-grade data centers strategically located to minimize latency and comply with local data sovereignty regulations." },
+      { question: "Do we have root access to our servers?", answer: "Yes. While we fully manage the infrastructure, you retain absolute ownership and access to your systems and data." }
+    ]
+  },
+  {
+    slug: "business-consulting",
+    name: "Strategic Business Consulting",
+    shortName: "Business Consulting",
+    icon: "Briefcase",
+    excerpt: "Expert guidance to refine operations, align technology with business goals, and drive sustainable scaling.",
+    headline: "Strategy built on operational reality, not just slideware.",
+    overview: [
+      "Scaling a business requires more than just new software; it requires aligned processes and clear strategic direction. We help organizations audit their operational workflows and map technology directly to their growth targets.",
+      "Our consulting engagements bridge the gap between executive vision and day-to-day execution, ensuring your teams have the systems and structures they need to succeed."
+    ],
+    features: [
+      {
+        icon: "Map",
+        title: "Operational Roadmaps",
+        description: "Clear, phased plans to transition from legacy processes to modern, scalable operations."
+      },
+      {
+        icon: "LineChart",
+        title: "Financial Modeling",
+        description: "Aligning IT investments with measurable returns to ensure technology pays for itself."
+      },
+      {
+        icon: "Users",
+        title: "Change Management",
+        description: "Strategies to ensure your team actually adopts the new processes and systems we implement."
+      }
+    ],
+    benefits: [
+      { value: 100, suffix: "%", label: "Alignment between business strategy and IT investments" },
+      { value: 360, suffix: "°", label: "View of organizational bottlenecks and opportunities" }
+    ],
+    process: [
+      { title: "Discovery & Analysis", description: "Deep-dive sessions with leadership and operational teams to understand bottlenecks." },
+      { title: "Strategy Formulation", description: "Developing a concrete plan to align operations, technology, and staff." },
+      { title: "Execution & Oversight", description: "Guiding the implementation phase to ensure strategic goals are met." }
+    ],
+    technologies: ["Process Mapping", "Change Management", "Financial Modeling"],
+    faqs: [
+      { question: "Do you only consult on technology?", answer: "We focus on operations and technology. A new system won't fix a broken process, so we start by optimizing the workflow before recommending software." },
+      { question: "How long is a typical consulting engagement?", answer: "Engagements range from 2-week intensive audits to multi-month transformational oversight, depending entirely on the scope of your challenge." }
+    ]
+  },
+  {
+    slug: "digital-growth",
+    name: "Digital Growth & Marketing",
+    shortName: "Digital Growth",
+    icon: "TrendingUp",
+    excerpt: "Data-driven growth strategies that convert operational excellence into measurable market share.",
+    headline: "Scale your revenue with predictable, trackable growth engines.",
+    overview: [
+      "A great business model needs an engine to generate consistent demand. Our digital growth services combine technical SEO, targeted campaigns, and conversion optimization.",
+      "We track every click, lead, and sale, ensuring your marketing budget delivers a clear return on investment rather than vanity metrics."
+    ],
+    features: [
+      {
+        icon: "Target",
+        title: "Performance Campaigns",
+        description: "Targeted advertising across search and social channels, optimized for cost-per-acquisition."
+      },
+      {
+        icon: "Search",
+        title: "Technical SEO",
+        description: "On-page and technical optimizations to ensure your digital properties capture organic demand."
+      },
+      {
+        icon: "MousePointerClick",
+        title: "Conversion Optimization",
+        description: "Iterative testing of landing pages and funnels to turn more visitors into qualified leads."
+      }
+    ],
+    benefits: [
+      { value: 3, suffix: "x", label: "Average increase in qualified lead volume" },
+      { value: 100, suffix: "%", label: "Transparent tracking and ROI attribution" }
+    ],
+    process: [
+      { title: "Audience Profiling", description: "Identifying your ideal customer profile and the channels they trust." },
+      { title: "Campaign Architecture", description: "Building the funnels, tracking, and ad creative required to capture attention." },
+      { title: "Launch & Iterate", description: "Deploying campaigns and rigorously testing variables to improve conversion rates over time." }
+    ],
+    technologies: ["Google Analytics", "Meta Ads", "HubSpot", "A/B Testing", "Tag Manager", "SEO"],
+    faqs: [
+      { question: "How long until we see ROI?", answer: "While organic SEO takes months to mature, our targeted performance campaigns typically generate measurable, qualified leads within the first 30 days." },
+      { question: "Do you provide reports?", answer: "Yes, you receive a live dashboard tracking spend, leads, and cost-per-acquisition. No hiding behind vanity metrics." }
+    ]
+  }
 ];
 
 /** Look up a service by slug. */
