@@ -217,21 +217,6 @@ export default function HomePage() {
                 title="A technology partner built for accountability"
                 description="We are not a marketing agency, and we are not an AI hype shop. We are engineers and consultants who take responsibility for business-critical systems."
               />
-              
-              {/* Custom Monogram Emblem Graphic */}
-              <div className="hidden lg:block relative w-56 h-56 border border-slate-200/80 rounded-3xl bg-white/70 backdrop-blur-md p-6 shadow-sm overflow-hidden">
-                <div className="absolute inset-0 bg-radial-gradient from-secondary/5 via-transparent to-transparent" />
-                <div className="relative w-full h-full flex flex-col justify-between">
-                  <div className="size-12 rounded-2xl bg-primary flex items-center justify-center text-white font-display font-black text-lg shadow-md">
-                    EV
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1.5">Connected Motifs</p>
-                    <h4 className="text-sm font-bold text-primary">System Integrity & Scale</h4>
-                    <p className="text-[10px] text-slate-500 font-semibold mt-1">Elvtera E-Solutions Group</p>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Asymmetrical staggered cards */}
