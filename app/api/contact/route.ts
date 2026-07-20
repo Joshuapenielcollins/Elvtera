@@ -247,7 +247,7 @@ export async function POST(req: NextRequest) {
       };
 
       const { error } = await resend.emails.send({
-        from: "ELVTERA Enquiries <onboarding@resend.dev>",
+        from: "ELVTERA Enquiries <hello@elvtera.com>",
         to: process.env.SALES_EMAIL ?? "hello@elvtera.com",
         replyTo: email,
         subject: `New Project Enquiry: ${company} — ${data.services || "General"}`,
@@ -279,7 +279,7 @@ export async function POST(req: NextRequest) {
       }
 
       const { error } = await resend.emails.send({
-        from: "ELVTERA Enquiries <onboarding@resend.dev>",
+        from: "ELVTERA Enquiries <hello@elvtera.com>",
         to: process.env.GENERAL_EMAIL ?? "hello@elvtera.com",
         replyTo: email,
         subject: `[ELVTERA] ${subject} — from ${name}`,
@@ -314,7 +314,7 @@ export async function POST(req: NextRequest) {
       const message = `Position: ${position}\nPortfolio: ${portfolio || "N/A"}\n\nCover Letter:\n${cover}`;
 
       const { error } = await resend.emails.send({
-        from: "ELVTERA Careers <onboarding@resend.dev>",
+        from: "ELVTERA Careers <hello@elvtera.com>",
         to: process.env.GENERAL_EMAIL ?? "hello@elvtera.com",
         replyTo: email,
         subject: `[Careers] New Application: ${name} for ${position}`,
@@ -343,7 +343,7 @@ export async function POST(req: NextRequest) {
       }
 
       const { error } = await resend.emails.send({
-        from: "ELVTERA Subscriptions <onboarding@resend.dev>",
+        from: "ELVTERA Subscriptions <hello@elvtera.com>",
         to: process.env.GENERAL_EMAIL ?? "hello@elvtera.com",
         replyTo: email,
         subject: `[Newsletter] New Subscription: ${email}`,
