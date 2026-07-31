@@ -31,10 +31,20 @@ export const metadata: Metadata = {
     "enterprise software",
     "system integration",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png" },
+    ],
+  },
   openGraph: {
     siteName: site.name,
     type: "website",
     locale: "en_US",
+    images: [{ url: "/elvtera-logo.png", alt: "Elvtera Logo" }],
   },
   robots: { index: true, follow: true },
 };

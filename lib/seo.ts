@@ -42,6 +42,8 @@ export function organizationSchema() {
     name: site.name,
     alternateName: site.shortName,
     url: site.url,
+    logo: `${site.url}/elvtera-logo.png`,
+    image: `${site.url}/elvtera-logo.png`,
     slogan: site.tagline,
     description: site.description,
     email: site.email,
