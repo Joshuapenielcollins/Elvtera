@@ -49,7 +49,7 @@ function buildSalesEmail(data: Record<string, string>): string {
           <table width="100%"><tr>
             <td>
               <div style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-.03em;">ELVTERA</div>
-              <div style="font-size:12px;color:${muted};margin-top:2px;">E-Solutions</div>
+              <div style="font-size:11px;color:${muted};margin-top:2px;letter-spacing:0.04em;">Build. Operate. Secure. Support.</div>
             </td>
             <td align="right">
               <div style="display:inline-block;padding:6px 16px;border-radius:999px;background:${brand}22;border:1px solid ${brand};font-size:12px;font-weight:700;color:${brand};">NEW SALES ENQUIRY</div>
@@ -152,7 +152,7 @@ function buildGeneralEmail(data: Record<string, string>): string {
           <table width="100%"><tr>
             <td>
               <div style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-.03em;">ELVTERA</div>
-              <div style="font-size:12px;color:${muted};margin-top:2px;">E-Solutions</div>
+              <div style="font-size:11px;color:${muted};margin-top:2px;letter-spacing:0.04em;">Build. Operate. Secure. Support.</div>
             </td>
             <td align="right">
               <div style="display:inline-block;padding:6px 16px;border-radius:999px;background:#33415544;border:1px solid #475569;font-size:12px;font-weight:700;color:${muted};">GENERAL ENQUIRY</div>

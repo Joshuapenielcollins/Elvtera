@@ -9,7 +9,11 @@ import {
   MapPin, 
   Send,
   CheckCircle2,
-  Loader2
+  Loader2,
+  ShieldCheck,
+  Server,
+  Code2,
+  Headphones
 } from "lucide-react";
 
 export function Footer() {
@@ -44,36 +48,48 @@ export function Footer() {
     }
   };
 
-  const footerLinks = {
-    pillars: [
-      { name: "Business Software", path: "/services/erp-solutions" },
-      { name: "Managed Cloud", path: "/services/managed-cloud" },
-      { name: "Automations", path: "/services/business-automation" },
-      { name: "Digital Growth", path: "/services/digital-growth" },
-      { name: "Business Consulting", path: "/services/business-consulting" }
+  const footerNavigation = {
+    infrastructure: [
+      { name: "Infrastructure & Managed IT", path: "/infrastructure" },
+      { name: "Security Operations", path: "/security" },
+      { name: "Customer & Product Support", path: "/customer-support" },
+      { name: "Cloud & Virtualization", path: "/infrastructure#cloud" },
+      { name: "SIEM & Log Monitoring", path: "/security#siem" },
+      { name: "L1/L2 Technical Support", path: "/customer-support#tiers" },
+    ],
+    software: [
+      { name: "Custom Software & Automation", path: "/software-automation" },
+      { name: "Custom Web Applications", path: "/software-automation#services" },
+      { name: "Workflow Automation", path: "/software-automation#automation" },
+      { name: "AI Agents & Chatbots", path: "/software-automation#ai" },
+      { name: "ERP & CRM Engineering", path: "/software-automation#enterprise" },
+      { name: "System Integrations & APIs", path: "/software-automation#integrations" },
     ],
     company: [
-      { name: "About Us", path: "/about" },
+      { name: "About Elvtera", path: "/about" },
+      { name: "Who We Serve", path: "/industries" },
+      { name: "How We Work", path: "/#how-it-works" },
+      { name: "Security & Trust", path: "/security-and-trust" },
       { name: "Case Studies", path: "/case-studies" },
-      { name: "Resources & Blog", path: "/resources" },
-      { name: "Careers", path: "/careers" },
-      { name: "Contact Us", path: "/contact" }
+      { name: "Resources & Insights", path: "/resources" },
+      { name: "Talk to Elvtera", path: "/contact" },
     ],
-    products: [
-      { name: "Custom ERP Systems", path: "/services/erp-solutions" },
-      { name: "Custom CRM Portals", path: "/services/crm-solutions" },
-      { name: "AI Voice & Chat Agents", path: "/services/ai-automation" },
-      { name: "WhatsApp Automation", path: "/services/business-automation" },
-      { name: "Web & SaaS Platforms", path: "/services/website-development" }
-    ]
+    trust: [
+      { name: "Security Practices", path: "/security-and-trust" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
+      { name: "Terms of Service", path: "/terms" },
+      { name: "Service Level Agreement (SLA)", path: "/legal/service-level-agreement" },
+      { name: "Data Processing Addendum", path: "/legal/data-processing-addendum" },
+      { name: "Legal Information", path: "/legal/legal-information" },
+    ],
   };
 
   return (
-    <footer className="bg-slate-50 text-slate-600 border-t border-slate-200 transition-colors duration-300">
+    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pb-12 border-b border-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-slate-800">
           
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-6">
@@ -81,43 +97,73 @@ export function Footer() {
               <img 
                 src="/elvtera-logo.png" 
                 alt="Elvtera Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-9 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <div className="space-y-2">
-              <p className="text-base text-slate-900 leading-snug max-w-sm font-bold tracking-tight">
-                AI-Powered Systems.
-                <br />
-                <span className="text-secondary">Built Around Your Business.</span>
+            
+            <div className="space-y-3">
+              <p className="text-xl text-white font-extrabold tracking-tight font-display">
+                Build. Operate. Secure. Support.
               </p>
-              <p className="text-xs text-slate-500 leading-relaxed max-w-sm font-medium">
-                Engineering business systems that scale. We build central systems for growing businesses, bringing sales, inventory, accounting and workflows together.
+              <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+                Elvtera helps businesses build software, operate infrastructure, secure their technology, and support the products their customers rely on.
               </p>
             </div>
-            {/* Contact details */}
-            <div className="space-y-3.5 pt-2 text-xs font-semibold text-slate-500">
-              <div className="flex items-center space-x-2.5">
-                <MapPin className="h-4.5 w-4.5 text-secondary shrink-0" />
-                <span>Tamilnadu India | Florida USA</span>
+
+            {/* Core pillars mini badges */}
+            <div className="grid grid-cols-2 gap-2 text-xs font-medium text-slate-300 pt-1">
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/60 border border-slate-800">
+                <Code2 className="size-3.5 text-blue-400 shrink-0" />
+                <span>BUILD: Software</span>
               </div>
-              <div className="flex items-center space-x-2.5">
-                <Mail className="h-4.5 w-4.5 text-secondary shrink-0" />
-                <span>hello@elvtera.com</span>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/60 border border-slate-800">
+                <Server className="size-3.5 text-cyan-400 shrink-0" />
+                <span>OPERATE: Infra</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/60 border border-slate-800">
+                <ShieldCheck className="size-3.5 text-emerald-400 shrink-0" />
+                <span>SECURE: Security</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-800/60 border border-slate-800">
+                <Headphones className="size-3.5 text-amber-400 shrink-0" />
+                <span>SUPPORT: Operations</span>
+              </div>
+            </div>
+
+            {/* Locations */}
+            <div className="space-y-2 pt-2 text-xs text-slate-400">
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white">United States:</span> 7901 4th St N, Ste 300, St. Petersburg, FL 33702
+                </div>
+              </div>
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-4 w-4 text-blue-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white">India:</span> Tiruchirappalli, Tamil Nadu, India 621010
+                </div>
+              </div>
+              <div className="flex items-center space-x-2 pt-1">
+                <Mail className="h-4 w-4 text-blue-400 shrink-0" />
+                <a href="mailto:hello@elvtera.com" className="hover:text-white transition-colors">
+                  hello@elvtera.com
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Pillars Column */}
+          {/* Infrastructure Column */}
           <div>
-            <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
-              What We Do
+            <h3 className="text-white font-display font-bold text-xs tracking-wider uppercase mb-4">
+              Infrastructure & Ops
             </h3>
-            <ul className="space-y-3 text-sm font-medium">
-              {footerLinks.pillars.map((link, idx) => (
+            <ul className="space-y-2.5 text-xs font-medium">
+              {footerNavigation.infrastructure.map((link, idx) => (
                 <li key={idx}>
                   <Link 
                     href={link.path} 
-                    className="text-slate-500 hover:text-secondary transition-colors"
+                    className="text-slate-400 hover:text-white transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -126,15 +172,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Products Column */}
+          {/* Software Column */}
           <div>
-            <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
-              Our Systems
+            <h3 className="text-white font-display font-bold text-xs tracking-wider uppercase mb-4">
+              Software & Automation
             </h3>
-            <ul className="space-y-3 text-sm font-medium">
-              {footerLinks.products.map((link, idx) => (
+            <ul className="space-y-2.5 text-xs font-medium">
+              {footerNavigation.software.map((link, idx) => (
                 <li key={idx}>
-                  <Link href={link.path} className="text-slate-500 hover:text-secondary transition-colors">
+                  <Link href={link.path} className="text-slate-400 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -144,13 +190,29 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <h3 className="text-slate-900 font-display font-bold text-sm tracking-wider uppercase mb-5">
+            <h3 className="text-white font-display font-bold text-xs tracking-wider uppercase mb-4">
               Company
             </h3>
-            <ul className="space-y-3 text-sm font-medium">
-              {footerLinks.company.map((link, idx) => (
+            <ul className="space-y-2.5 text-xs font-medium">
+              {footerNavigation.company.map((link, idx) => (
                 <li key={idx}>
-                  <Link href={link.path} className="text-slate-500 hover:text-secondary transition-colors">
+                  <Link href={link.path} className="text-slate-400 hover:text-white transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Trust & Legal */}
+          <div>
+            <h3 className="text-white font-display font-bold text-xs tracking-wider uppercase mb-4">
+              Trust & Legal
+            </h3>
+            <ul className="space-y-2.5 text-xs font-medium">
+              {footerNavigation.trust.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.path} className="text-slate-400 hover:text-white transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -160,46 +222,46 @@ export function Footer() {
 
         </div>
 
-        {/* Middle row: Newsletter & Socials */}
-        <div className="py-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center border-b border-slate-200">
+        {/* Middle row: Newsletter & Positioning */}
+        <div className="py-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center border-b border-slate-800">
           
-          <div className="lg:col-span-2 space-y-2">
-            <h4 className="text-slate-900 font-display font-bold text-lg">
-              Stay in touch
+          <div className="lg:col-span-2 space-y-1">
+            <h4 className="text-white font-display font-bold text-base">
+              Technology solutions for businesses that need reliable execution.
             </h4>
-            <p className="text-xs text-slate-500 font-medium">
-              Sign up to get occasional business tips and updates from our team.
+            <p className="text-xs text-slate-400">
+              Receive updates on infrastructure management, cybersecurity best practices, and engineering patterns.
             </p>
           </div>
 
           {/* Subscription Form */}
           <div>
             {!subscribed ? (
-              <form onSubmit={handleSubscribe} className="flex relative rounded-xl overflow-hidden border border-slate-200 bg-white p-1">
+              <form onSubmit={handleSubscribe} className="flex relative rounded-xl overflow-hidden border border-slate-700 bg-slate-800/80 p-1">
                 <input 
                   type="email" 
                   required
-                  placeholder="Enter your email" 
+                  placeholder="Enter your work email" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-transparent border-0 focus:outline-none focus:ring-0 text-sm px-3.5 py-2.5 text-slate-800 grow placeholder:text-slate-400"
+                  className="bg-transparent border-0 focus:outline-none focus:ring-0 text-xs px-3 py-2 text-white grow placeholder:text-slate-500"
                 />
                 <button 
                   type="submit"
                   disabled={loading}
-                  className="bg-secondary hover:bg-secondary/90 text-white rounded-lg px-4 py-2 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50"
+                  className="bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-3.5 py-2 flex items-center justify-center transition-colors cursor-pointer disabled:opacity-50 text-xs font-medium"
                 >
                   {loading ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
                   ) : (
-                    <Send className="h-4 w-4" />
+                    <Send className="h-3.5 w-3.5" />
                   )}
                 </button>
               </form>
             ) : (
-              <div className="flex items-center space-x-2 text-emerald-600 bg-emerald-50 border border-emerald-500/20 px-4 py-3 rounded-xl text-xs font-semibold">
+              <div className="flex items-center space-x-2 text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-3.5 py-2.5 rounded-xl text-xs font-semibold">
                 <CheckCircle2 className="h-4 w-4" />
-                <span>Thank you! You are now subscribed.</span>
+                <span>Thank you! Your email has been registered.</span>
               </div>
             )}
           </div>
@@ -207,33 +269,24 @@ export function Footer() {
         </div>
 
         {/* Bottom row: Rights, Links, Socials */}
-        <div className="pt-8 flex flex-col lg:flex-row items-start lg:items-center justify-between text-xs text-slate-500 gap-y-6 lg:gap-y-0">
+        <div className="pt-8 flex flex-col lg:flex-row items-start lg:items-center justify-between text-xs text-slate-400 gap-y-4 lg:gap-y-0">
           
-          <div className="space-y-1 max-w-lg">
-            <p className="font-semibold text-slate-800">
-              © 2026 Elvtera. All rights reserved.
+          <div className="space-y-1 max-w-xl">
+            <p className="font-semibold text-slate-300">
+              © {new Date().getFullYear()} Elvtera. All rights reserved.
             </p>
-            <p className="text-[11px] text-slate-400 leading-relaxed font-semibold">
-              Elvtera is operated by Collins Enterprise Solutions LLP (India) and Josh Global Brands LLC (USA).
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              Elvtera operates through Josh Global Brands LLC (USA) and Collins Enterprise Solutions LLP (India).
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-semibold">
-            <Link href="/privacy-policy" className="hover:text-secondary transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-secondary transition-colors">Terms of Service</Link>
-            <Link href="/legal/cookie-policy" className="hover:text-secondary transition-colors">Cookie Policy</Link>
-            <Link href="/legal/service-level-agreement" className="hover:text-secondary transition-colors">SLA</Link>
-            <Link href="/legal/legal-information" className="hover:text-secondary transition-colors">Legal Info</Link>
-          </div>
-
-          {/* Social icons */}
           <div className="flex items-center space-x-4">
             <a 
               href="https://www.linkedin.com/company/elvtera" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Elvtera on LinkedIn" 
-              className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
+              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
             >
               <Linkedin className="h-4 w-4" />
             </a>
@@ -242,7 +295,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Elvtera on Twitter / X" 
-              className="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
+              className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
             >
               <Twitter className="h-4 w-4" />
             </a>

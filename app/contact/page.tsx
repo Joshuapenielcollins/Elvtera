@@ -4,9 +4,9 @@ import { pageMetadata } from "@/lib/seo";
 import ContactPageClient from "./contact-client";
 
 export const metadata = pageMetadata({
-  title: "Contact ELVTERA — Let's Build Something Great",
+  title: "Contact & Book a Call — ELVTERA",
   description:
-    "Start a project with ELVTERA E-Solutions: multi-step sales qualification for AI, ERP, CRM, automation and custom software projects, or send a general enquiry. We reply within one business day.",
+    "Schedule a 30-minute technical discovery session or reach out directly to our engineering and operations teams. We reply within one business day.",
   path: "/contact",
 });
 

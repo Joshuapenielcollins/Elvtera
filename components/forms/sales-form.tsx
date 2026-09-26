@@ -15,28 +15,27 @@ import {
 /* ── Data ─────────────────────────────────────────────────────────────────── */
 
 const SERVICES = [
-  "AI Automation",
-  "AI Voice Agent",
-  "AI Chatbot",
-  "CRM",
-  "ERP",
-  "Website Development",
-  "WhatsApp Automation",
-  "Business Process Automation",
-  "Custom Software",
-  "API Integration",
+  "Infrastructure & Managed IT",
+  "Security Operations & SIEM",
+  "Remote Customer & Product Support",
+  "Cloud Infrastructure (AWS/Azure/OCI)",
+  "Server & Database Administration",
+  "Custom Software Development",
+  "Workflow & Process Automation",
+  "AI Agents & Intelligent Automation",
+  "CRM / ERP Solutions",
+  "API & System Integration",
+  "MSP Engineering Extension",
   "Other",
 ];
 
 const INDUSTRIES = [
-  "Manufacturing",
-  "Healthcare",
+  "SaaS & Software",
+  "MSPs & IT Services",
+  "Manufacturing & Logistics",
+  "Healthcare & HealthTech",
   "Retail & E-commerce",
-  "Logistics & Supply Chain",
-  "Real Estate",
-  "Education",
-  "Hospitality",
-  "Finance & Fintech",
+  "FinTech & Financial Services",
   "Professional Services",
   "Other",
 ];
@@ -100,7 +99,7 @@ type Errors = Partial<Record<keyof SalesData, string>>;
 const INITIAL: SalesData = {
   name: "", company: "", email: "", phone: "",
   services: [], industry: "", companySize: "", website: "", description: "",
-  currency: "INR", budget: "", timeline: "", source: "",
+  currency: "USD", budget: "", timeline: "", source: "",
 };
 
 const STEPS = ["Contact", "Project", "Qualification"];

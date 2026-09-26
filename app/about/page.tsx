@@ -1,117 +1,44 @@
-import { Compass, Eye, Handshake, Scale, Target, Wrench } from "lucide-react";
+import { Compass, Eye, Handshake, Scale, Target, Wrench, Server, ShieldCheck, Headphones, Code2, Workflow, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { CtaSection } from "@/components/sections/cta-section";
 import { Reveal } from "@/components/motion/reveal";
+import { Button } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "About Elvtera - Engineers & Consultants",
+  title: "About ELVTERA — Build. Operate. Secure. Support.",
   description:
-    "ELVTERA E-Solutions: engineers and consultants who design, build and support the systems established businesses run on. Our mission, values, leadership and history.",
+    "ELVTERA is an enterprise technology services company. We build custom software, operate infrastructure, secure systems, and support customers across two dedicated verticals.",
   path: "/about",
 });
 
 const values = [
   {
     icon: Scale,
-    title: "Independence",
+    title: "Engineering Independence",
     description:
-      "We sell judgment and engineering, not licenses. Recommendations are the ones we would act on with our own money - stated in writing, trade-offs included.",
+      "We provide objective technical judgment and engineering execution, not vendor lock-in. Architectural recommendations are made based strictly on performance, security, and total cost of ownership.",
   },
   {
     icon: Handshake,
-    title: "Accountability",
+    title: "End-to-End Accountability",
     description:
-      "One team owns the outcome, from discovery through years of support. When something breaks at 8 a.m. on invoice day, you know exactly who answers.",
+      "One dedicated team owns operational outcomes from deployment through years of active stewardship. When production systems demand immediate attention, you know exactly who responds.",
   },
   {
     icon: Target,
-    title: "Measured outcomes",
+    title: "Measured Operational Outcomes",
     description:
-      "We baseline before we build and report after we ship. If a project can't be justified in hours, errors or revenue, we'll tell you before you spend.",
+      "We measure success by uptime percentages, mean-time-to-resolution, ticket throughput, and engineering velocity. Every initiative is backed by clear SLAs and transparent reporting.",
   },
   {
     icon: Wrench,
-    title: "Craft",
+    title: "Production Craftsmanship",
     description:
-      "Documented code, tested backups, accessible interfaces, honest estimates. Enterprise quality is a set of habits, and we keep them on unglamorous days.",
+      "Documented architectures, tested disaster recovery playbooks, hardened access controls, and modular codebases. Enterprise reliability is built on rigorous operational habits.",
   },
-];
-
-/** Leadership team - replace placeholder bios and add photography before launch. */
-const leadership = [
-  {
-    name: "Chief Executive Officer",
-    initials: "CEO",
-    focus: "Strategy & Client Partnerships",
-    bio: "Two decades leading enterprise software delivery across manufacturing, distribution and healthcare - and still in the room for every major engagement kickoff.",
-  },
-  {
-    name: "Chief Technology Officer",
-    initials: "CTO",
-    focus: "Architecture & Engineering",
-    bio: "Systems architect behind our delivery standards: security by design, documented handovers and platforms chosen for the decade, not the demo.",
-  },
-  {
-    name: "Head of Delivery",
-    initials: "HoD",
-    focus: "Programs & Implementation",
-    bio: "Runs the delivery practice - the sprint cadence, the checkpoints and the discipline that keeps fixed-scope promises fixed.",
-  },
-  {
-    name: "Head of Client Success",
-    initials: "HCS",
-    focus: "Support & Long-Term Value",
-    bio: "Owns everything after go-live: SLAs, quarterly reviews and the 98% renewal rate we consider our most honest metric.",
-  },
-];
-
-const timeline = [
-  {
-    year: "2017",
-    title: "Founded as an engineering consultancy",
-    description:
-      "ELVTERA begins as a small team building custom operational software for manufacturers and distributors - and supporting it properly afterward.",
-  },
-  {
-    year: "2019",
-    title: "Custom systems practice established",
-    description:
-      "Repeated client demand turns custom enterprise implementation into a dedicated practice, with engineers specialized in building bespoke business systems end-to-end.",
-  },
-  {
-    year: "2021",
-    title: "Automation & integration practice",
-    description:
-      "We formalize what every project was already teaching us: the biggest returns live between systems. Integration and workflow automation become core services.",
-  },
-  {
-    year: "2023",
-    title: "Cloud & managed services",
-    description:
-      "A managed operations team takes on monitoring, security and support for client infrastructure - accountability that outlasts any single project.",
-  },
-  {
-    year: "2025",
-    title: "AI deployed as an operations tool",
-    description:
-      "Voice, chat and WhatsApp agents join the toolkit - grounded, measured and bounded, deployed only where they demonstrably earn their keep.",
-  },
-];
-
-/** Core infrastructure and integration partners we build upon. */
-const partners = [
-  "AWS",
-  "Meta Business",
-  "OpenAI API",
-  "Stripe Payments",
-  "Google Cloud",
-  "Twilio Messaging",
-  "PostgreSQL",
-  "Docker",
-  "n8n Integration",
-  "React & Next.js"
 ];
 
 export default function AboutPage() {
@@ -119,8 +46,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About ELVTERA"
-        title="Engineers and consultants for the systems businesses run on"
-        description="ELVTERA E-Solutions is a business technology company. We are not a marketing agency and not an AI hype shop - we design, build and stand behind the operational software that lets established businesses scale."
+        title="We build, operate, secure, and support the technology businesses depend on"
+        description="ELVTERA is an enterprise technology services company engineered for businesses that need dependable operational execution. We deliver senior engineering capacity across two dedicated verticals: Infrastructure, Security & Customer Operations, and Custom Software & Automation."
         breadcrumbs={[{ label: "About", href: "/about" }]}
       />
 
@@ -132,12 +59,10 @@ export default function AboutPage() {
               <div className="h-full rounded-2xl border border-line bg-surface p-9">
                 <Compass className="size-8 text-secondary" aria-hidden="true" />
                 <h2 className="mt-5 text-2xl font-extrabold text-primary">
-                  Our mission
+                  Our Mission
                 </h2>
-                <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                  To give operations-led businesses the systems advantage large
-                  enterprises take for granted - engineered honestly, priced
-                  transparently and supported for the long term.
+                <p className="mt-4 text-base lg:text-lg leading-relaxed text-slate-600">
+                  To provide businesses with reliable technical capacity and operational peace of mind — delivering hands-on systems engineering, proactive security, responsive support, and purpose-built software with transparent execution and long-term stewardship.
                 </p>
               </div>
             </Reveal>
@@ -145,12 +70,10 @@ export default function AboutPage() {
               <div className="h-full rounded-2xl border border-line bg-surface p-9">
                 <Eye className="size-8 text-secondary" aria-hidden="true" />
                 <h2 className="mt-5 text-2xl font-extrabold text-primary">
-                  Our vision
+                  Our Vision
                 </h2>
-                <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                  A mid-market where growth is limited by ambition - not by
-                  spreadsheets, retyping and systems that refuse to talk to
-                  each other.
+                <p className="mt-4 text-base lg:text-lg leading-relaxed text-slate-600">
+                  An operating environment where companies scale without being held back by infrastructure downtime, cybersecurity vulnerabilities, customer support backlogs, or rigid off-the-shelf software limitations.
                 </p>
               </div>
             </Reveal>
@@ -158,24 +81,166 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* What We Offer — Two Core Verticals */}
+      <section className="bg-surface border-y border-line py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="What We Offer"
+            title="Two Dedicated Technical Verticals"
+            description="Our service model is structured around two clear operational pillars so you can engage the exact technical capacity your business requires."
+            align="center"
+          />
+
+          <div className="mt-14 grid gap-8 lg:grid-cols-2">
+            {/* Vertical 1 */}
+            <Reveal>
+              <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 sm:p-10 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                      Vertical 01
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-primary font-display">
+                    Infrastructure, Security & Customer Operations
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    Keep your technology reliable, secure, and supported with a remote team that manages infrastructure, hardens security postures, and provides technical customer support.
+                  </p>
+
+                  <div className="mt-8 space-y-4 border-t border-slate-100 pt-6">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-blue-50 text-blue-700 shrink-0 mt-0.5">
+                        <Server className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">Infrastructure & Managed IT</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Linux & Windows servers, AWS/Azure/OCI cloud topologies, databases, backup verification, and 24/7 telemetry.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0 mt-0.5">
+                        <ShieldCheck className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">Security Operations</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          SIEM log aggregation, continuous threat detection, IAM/MFA governance, vulnerability remediation, and compliance readiness.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-amber-50 text-amber-700 shrink-0 mt-0.5">
+                        <Headphones className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">Customer & Product Support</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Dedicated remote L1/L2 technical support specialists, ticket triage, bug reproduction, and multi-channel coverage.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <Button href="/infrastructure" variant="outline" size="sm">
+                    Explore Vertical 01
+                    <ArrowRight className="size-3.5" />
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Vertical 2 */}
+            <Reveal delay={0.1}>
+              <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 sm:p-10 shadow-sm">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">
+                      Vertical 02
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-primary font-display">
+                    Custom Software & Automation
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    Build purpose-built web applications and automated systems tailored to your unique operating models instead of forcing workflows into generic SaaS tools.
+                  </p>
+
+                  <div className="mt-8 space-y-4 border-t border-slate-100 pt-6">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
+                        <Code2 className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">Custom Web Applications</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Bespoke internal platforms, client portals, SaaS architectures, and high-performance operational dashboards.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
+                        <Workflow className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">Workflow Automation</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          End-to-end integration pipelines, n8n orchestration, webhooks, and automated document and accounting processing.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
+                        <Wrench className="size-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">ERP & CRM Integration</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Connecting disparate billing, warehouse, inventory, and support tools into a single coherent data backbone.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <Button href="/software-automation" variant="outline" size="sm">
+                    Explore Vertical 02
+                    <ArrowRight className="size-3.5" />
+                  </Button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
-      <section className="bg-surface">
+      <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Values"
-            title="The standards we hold ourselves to"
+            title="The operational standards we hold ourselves to"
             align="center"
-            description="Values only matter when they cost something. These four regularly do - and they are why clients stay."
+            description="Our values guide how we communicate, engineer, and support systems daily."
           />
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
               <Reveal key={value.title} delay={index * 0.07}>
-                <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-[var(--shadow-card)]">
-                  <value.icon className="size-7 text-accent" aria-hidden="true" />
-                  <h3 className="mt-4 text-lg font-bold text-primary">
+                <div className="h-full rounded-2xl border border-line bg-surface p-7 shadow-xs">
+                  <value.icon className="size-7 text-secondary" aria-hidden="true" />
+                  <h3 className="mt-4 text-base font-bold text-primary font-display">
                     {value.title}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs lg:text-sm leading-relaxed text-slate-600">
                     {value.description}
                   </p>
                 </div>
@@ -185,102 +250,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership — hidden for now, restore when ready
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <SectionHeading
-            eyebrow="Leadership"
-            title="The team accountable for your outcome"
-            description="Leadership profiles are shown by role; full bios and photography are shared during engagement. Small firms hide their people - we simply publish carefully."
-          />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {leadership.map((person, index) => (
-              <Reveal key={person.name} delay={index * 0.07}>
-                <div className="h-full rounded-2xl border border-line bg-white p-7 shadow-[var(--shadow-card)]">
-                  <span
-                    aria-hidden="true"
-                    className="flex size-16 items-center justify-center rounded-2xl bg-primary font-display text-lg font-extrabold text-white"
-                  >
-                    {person.initials}
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-primary">
-                    {person.name}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-secondary">
-                    {person.focus}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    {person.bio}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      */}
-
-      {/* Our Story — hidden for now, restore when ready
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <SectionHeading
-            eyebrow="Our Story"
-            title="Built practice by practice, client by client"
-          />
-          <ol className="mt-14 space-y-0">
-            {timeline.map((entry, index) => (
-              <Reveal key={entry.year} delay={index * 0.05}>
-                <li className="relative flex gap-8 pb-10 last:pb-0">
-                  {index < timeline.length - 1 && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute left-10 top-16 h-[calc(100%-4rem)] w-px bg-line"
-                    />
-                  )}
-                  <span className="flex h-14 w-20 shrink-0 items-center justify-center rounded-2xl border border-line bg-white font-display font-extrabold text-secondary shadow-[var(--shadow-card)]">
-                    {entry.year}
-                  </span>
-                  <div className="pt-2.5">
-                    <h3 className="text-lg font-bold text-primary">{entry.title}</h3>
-                    <p className="mt-2 max-w-2xl leading-relaxed text-slate-600">
-                      {entry.description}
-                    </p>
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-      */}
-
-      {/* Technology partners */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <SectionHeading
-            eyebrow="Technology Partners"
-            title="Certified across the platforms we implement"
-            align="center"
-            description="Partnership credentials matter for access and support escalation - but our advice stays independent. We recommend on fit, and we say so in writing."
-          />
-          <Reveal delay={0.1} className="mt-12">
-            <ul className="flex flex-wrap items-center justify-center gap-3">
-              {partners.map((partner) => (
-                <li
-                  key={partner}
-                  className="rounded-full border border-line bg-surface px-6 py-3 font-display text-sm font-bold text-primary"
-                >
-                  {partner}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
-
       <CtaSection
-        title="Work with a team that takes your operation personally."
-        description="Whether you're comparing vendors or just starting to think about modernization, a conversation with us will leave you clearer - whatever you decide."
+        title="Ready to build, operate, secure, or support your technology?"
+        description="Schedule a technical consultation with our engineering team to review your architecture, discuss support requirements, or plan your next custom build."
       />
     </>
   );

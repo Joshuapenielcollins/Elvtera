@@ -15,9 +15,9 @@ import { ApplicationForm } from "@/components/forms/application-form";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Careers - Build Systems Businesses Run On",
+  title: "Careers — Join ELVTERA Engineering & Operations",
   description:
-    "Join ELVTERA E-Solutions: engineering, consulting and delivery roles building ERP, automation and enterprise software. Our culture, benefits and open positions.",
+    "Join ELVTERA: senior engineering, infrastructure operations, and customer support roles. Build software, manage cloud systems, and support customers.",
   path: "/careers",
 });
 

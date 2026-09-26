@@ -1,171 +1,195 @@
 "use client";
 
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import React, { useState } from "react";
+import { 
+  Code2, 
+  Server, 
+  ShieldCheck, 
+  Headphones, 
+  Activity, 
+  CheckCircle2, 
+  ArrowUpRight,
+  Terminal,
+  Zap,
+  Lock,
+  RefreshCw
+} from "lucide-react";
 import { motion } from "framer-motion";
 
-/**
- * Animated Hero product visual.
- *
- * Implements smooth spring animations for metrics, charts, and progress bars.
- * Conveys live system feedback and custom engineering.
- */
 export function HeroVisual() {
-  const bars = [42, 58, 50, 66, 61, 78, 72, 88];
+  const [activeTab, setActiveTab] = useState<"build" | "operate" | "secure" | "support">("operate");
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut" as const,
-        staggerChildren: 0.1,
-      },
+  const pillars = [
+    {
+      id: "build",
+      name: "BUILD",
+      label: "Custom Software & Automation",
+      icon: Code2,
+      accent: "text-purple-600 bg-purple-50 border-purple-200",
+      activeBorder: "border-purple-600",
+      status: "Pipeline Active",
+      badge: "Release v3.4.1",
+      metricTitle: "API Latency",
+      metricValue: "42ms",
+      detail: "Next.js · TypeScript · PostgreSQL · n8n Pipelines",
+      items: ["Microservices API Deployed", "Postgres Migration Verified", "Webhook Runner Synced"],
     },
-  };
+    {
+      id: "operate",
+      name: "OPERATE",
+      label: "Infrastructure & Managed IT",
+      icon: Server,
+      accent: "text-blue-600 bg-blue-50 border-blue-200",
+      activeBorder: "border-blue-600",
+      status: "99.98% Uptime",
+      badge: "Healthy Clusters",
+      metricTitle: "Fleet Telemetry",
+      metricValue: "28 Nodes",
+      detail: "Linux / Windows · AWS / Azure / OCI · Prometheus",
+      items: ["Kernel Hardening Applied", "Postgres WAL Sync Active", "Automated Snapshot Complete"],
+    },
+    {
+      id: "secure",
+      name: "SECURE",
+      label: "Cybersecurity & Security Operations",
+      icon: ShieldCheck,
+      accent: "text-emerald-600 bg-emerald-50 border-emerald-200",
+      activeBorder: "border-emerald-600",
+      status: "0 Critical Vulns",
+      badge: "SIEM Ingestion Active",
+      metricTitle: "Auth Posture",
+      metricValue: "100% MFA",
+      detail: "Wazuh SIEM · IAM Least Privilege · EDR Agents",
+      items: ["Syslog Stream Verified", "SSH Key-Only Enforced", "Vulnerability Scan Clear"],
+    },
+    {
+      id: "support",
+      name: "SUPPORT",
+      label: "Remote Product & Tech Support",
+      icon: Headphones,
+      accent: "text-amber-600 bg-amber-50 border-amber-200",
+      activeBorder: "border-amber-600",
+      status: "SLA Met 99.4%",
+      badge: "L1 / L2 Triage",
+      metricTitle: "Avg Resolution",
+      metricValue: "18 mins",
+      detail: "SaaS Product Support · Ticket Triage · Bug Escalations",
+      items: ["L1 Frontline Queue Cleared", "Staging Bug Repro Passed", "Docs Updated in Zendesk"],
+    },
+  ];
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-  };
+  const current = pillars.find((p) => p.id === activeTab) || pillars[1];
 
   return (
-    <motion.div 
-      aria-hidden="true" 
-      className="relative select-none"
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      {/* Main dashboard card */}
-      <div className="rounded-2xl border border-line bg-white p-5 shadow-[0_2px_6px_rgba(15,23,42,0.05),0_24px_60px_-20px_rgba(15,23,42,0.18)]">
-        {/* Window chrome */}
-        <div className="flex items-center justify-between border-b border-line pb-4">
-          <div>
-            <p className="text-sm font-bold text-primary">Operations Overview</p>
-            <p className="text-xs text-slate-500">Live · All custom subsystems</p>
+    <div className="relative select-none w-full max-w-xl mx-auto lg:max-w-none">
+      
+      {/* Decorative ambient background ring */}
+      <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-emerald-600/10 blur-xl opacity-80" />
+
+      {/* Main architectural card */}
+      <div className="relative rounded-2xl border border-slate-200/90 bg-white p-5 lg:p-6 shadow-[0_4px_20px_rgba(9,9,11,0.06),0_20px_50px_-15px_rgba(9,9,11,0.12)]">
+        
+        {/* Top Control Bar */}
+        <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div className="flex items-center gap-2.5">
+            <span className="flex size-2.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full size-2.5 bg-emerald-500"></span>
+            </span>
+            <span className="text-xs font-bold text-slate-900 tracking-wide font-mono uppercase">
+              ELVTERA CONTROL MATRIX
+            </span>
           </div>
-          <div className="flex gap-1.5">
-            <span className="size-2.5 rounded-full bg-slate-200" />
-            <span className="size-2.5 rounded-full bg-slate-200" />
-            <span className="size-2.5 rounded-full bg-slate-300" />
-          </div>
+          <span className="text-[11px] font-semibold text-slate-500 font-mono">
+            {current.status}
+          </span>
         </div>
 
-        {/* KPI row */}
-        <div className="mt-4 grid grid-cols-3 gap-3">
-          {[
-            { label: "Orders today", value: "1,284", delta: "+12.4%" },
-            { label: "On-time fulfillment", value: "98.2%", delta: "+1.1%" },
-            { label: "Open exceptions", value: "3", delta: "−67%" },
-          ].map((kpi, idx) => (
-            <motion.div 
-              key={kpi.label} 
-              variants={itemVariants}
-              className="rounded-xl bg-surface p-3.5"
-            >
-              <p className="text-[11px] font-medium text-slate-500">{kpi.label}</p>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + idx * 0.1 }}
-                className="mt-1 font-display text-xl font-extrabold text-primary"
+        {/* 4 Interactive Pillars Switcher */}
+        <div className="mt-4 grid grid-cols-4 gap-2">
+          {pillars.map((p) => {
+            const Icon = p.icon;
+            const isActive = activeTab === p.id;
+            return (
+              <button
+                key={p.id}
+                onClick={() => setActiveTab(p.id as any)}
+                className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+                  isActive 
+                    ? "bg-slate-900 text-white border-slate-900 shadow-md scale-[1.02]" 
+                    : "bg-slate-50 text-slate-600 border-slate-200/70 hover:bg-slate-100"
+                }`}
               >
-                {kpi.value}
-              </motion.p>
-              <p className="mt-0.5 flex items-center gap-0.5 text-[11px] font-semibold text-emerald-600">
-                <ArrowUpRight className="size-3" />
-                {kpi.delta}
-              </p>
-            </motion.div>
-          ))}
+                <Icon className={`size-4 mb-1 ${isActive ? "text-blue-400" : "text-slate-500"}`} />
+                <span className="text-[10px] font-extrabold tracking-wider font-mono">
+                  {p.name}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Revenue bar chart */}
-        <div className="mt-4 rounded-xl border border-line p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-primary">
-              Weekly throughput
-            </p>
-            <p className="text-[11px] text-slate-500">Last 8 weeks</p>
+        {/* Live Pillar Inspector View */}
+        <motion.div 
+          key={current.id}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+          className="mt-5 rounded-xl border border-slate-100 bg-slate-50/80 p-4"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold tracking-wider uppercase text-secondary font-mono bg-white px-2 py-0.5 rounded border border-slate-200">
+                  {current.name} STACK
+                </span>
+                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  {current.badge}
+                </span>
+              </div>
+              <h4 className="mt-2 text-base font-bold text-slate-900 font-display">
+                {current.label}
+              </h4>
+              <p className="mt-0.5 text-xs text-slate-500 font-medium">
+                {current.detail}
+              </p>
+            </div>
+
+            <div className="text-right pl-3 shrink-0">
+              <span className="text-[10px] uppercase font-semibold text-slate-400 block">
+                {current.metricTitle}
+              </span>
+              <span className="text-xl font-extrabold text-slate-900 font-display">
+                {current.metricValue}
+              </span>
+            </div>
           </div>
-          <div className="mt-4 flex h-24 items-end gap-2.5">
-            {bars.map((height, index) => (
-              <motion.div
-                key={index}
-                initial={{ height: 0 }}
-                animate={{ height: `${height}%` }}
-                transition={{
-                  delay: 0.2 + index * 0.08,
-                  duration: 0.6,
-                  ease: "easeOut",
-                }}
-                className={
-                  index === bars.length - 1
-                    ? "flex-1 rounded-t-md bg-secondary"
-                    : "flex-1 rounded-t-md bg-secondary/20"
-                }
-              />
+
+          {/* Operational Checks */}
+          <div className="mt-4 pt-3.5 border-t border-slate-200/60 space-y-2">
+            {current.items.map((it, idx) => (
+              <div key={idx} className="flex items-center justify-between text-xs text-slate-700">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                  <span className="font-medium text-[11px] sm:text-xs">{it}</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-400">PASSED</span>
+              </div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Footer Relationship Ribbon */}
+        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+          <span className="font-semibold text-slate-700">
+            One Partner. Full Operational Stack.
+          </span>
+          <span className="font-mono text-secondary font-bold">
+            BUILD · OPERATE · SECURE · SUPPORT
+          </span>
         </div>
 
-        {/* Workflow rows */}
-        <div className="mt-4 space-y-2">
-          {[
-            { label: "Purchase orders auto-approved", meta: "142 today" },
-            { label: "Invoices generated & sent", meta: "89 today" },
-          ].map((row, idx) => (
-            <motion.div
-              key={row.label}
-              initial={{ x: -10, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.6 + idx * 0.15, duration: 0.4 }}
-              className="flex items-center justify-between rounded-xl bg-surface px-4 py-3"
-            >
-              <div className="flex items-center gap-2.5">
-                <motion.div
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ repeat: Infinity, duration: 2, delay: idx * 0.5 }}
-                >
-                  <CheckCircle2 className="size-4 text-emerald-500" />
-                </motion.div>
-                <p className="text-xs font-medium text-primary">{row.label}</p>
-              </div>
-              <p className="text-[11px] font-semibold text-slate-500">
-                {row.meta}
-              </p>
-            </motion.div>
-          ))}
-        </div>
       </div>
-
-      {/* Floating accent card - automation summary */}
-      <motion.div 
-        initial={{ x: -20, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
-        className="absolute -bottom-12 -left-6 hidden w-56 rounded-2xl border border-line bg-white p-4 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.2)] sm:block"
-      >
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-          Automation savings
-        </p>
-        <p className="mt-1 font-display text-2xl font-extrabold text-primary">
-          312 hrs<span className="text-sm font-bold text-slate-400"> / month</span>
-        </p>
-        <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-surface">
-          <motion.div 
-            initial={{ width: "0%" }}
-            animate={{ width: "78%" }}
-            transition={{ delay: 1.1, duration: 1.0, ease: "easeOut" }}
-            className="h-full rounded-full bg-accent" 
-          />
-        </div>
-        <p className="mt-2 text-[11px] text-slate-500">
-          78% of manual workflows automated
-        </p>
-      </motion.div>
-    </motion.div>
+    </div>
   );
 }
