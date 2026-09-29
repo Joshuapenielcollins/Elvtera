@@ -4,6 +4,7 @@ import {
   ShieldCheck, 
   Headphones, 
   Code2, 
+  Briefcase,
   ArrowRight, 
   CheckCircle2, 
   Workflow, 
@@ -12,7 +13,12 @@ import {
   Boxes,
   Database,
   Lock,
-  Calendar
+  Globe,
+  Activity,
+  Terminal,
+  FileCode,
+  TrendingUp,
+  Settings
 } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -22,75 +28,96 @@ import { Button } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Solutions Architecture - Two Core Verticals for Modern Enterprises",
+  title: "Technology Solutions Architecture — Business Systems, Software, IT & Security",
   description:
-    "Elvtera helps businesses build, operate, secure, and support their technology. Explore our two primary verticals: Infrastructure, Security & Customer Operations, and Custom Software & Automation.",
+    "Elvtera provides end-to-end technology solutions across three balanced pillars: Business Solutions, Software Solutions, and IT & Security. From build to ongoing operations.",
   path: "/solutions",
 });
 
-const vertical1Solutions = [
+const pillar1Business = [
   {
-    title: "Infrastructure & Managed IT",
-    href: "/infrastructure",
-    icon: Server,
-    color: "text-blue-600 bg-blue-50 border-blue-200",
-    description: "Operate Linux and Windows servers, cloud architectures (AWS/Azure/OCI), databases, and network connectivity under proactive monitoring.",
-    deliverables: [
-      "Linux & Windows server administration",
-      "Database clustering, query optimization & automated backups",
-      "Cloud infrastructure (AWS, Azure, OCI) & cost optimization",
-      "High-availability network, firewall & VPN routing",
-      "24/7 telemetry monitoring & rapid incident response",
-    ],
-    cta: "Explore Infrastructure Services",
+    title: "Business Solutions Overview",
+    href: "/solutions/business-solutions",
+    desc: "Complete business systems engineering: websites, lead capture, CRM pipelines, and operations backbones.",
+    badge: "Pillar Overview",
   },
   {
-    title: "Security Operations",
-    href: "/security",
-    icon: ShieldCheck,
-    color: "text-emerald-700 bg-emerald-50 border-emerald-200",
-    description: "Protect the servers, endpoints, and identity platforms behind your business through disciplined log analysis and continuous hardening.",
-    deliverables: [
-      "SIEM log aggregation & anomaly correlation",
-      "Identity & Access Management (IAM) and mandatory MFA",
-      "Endpoint Detection & Response (EDR) agent management",
-      "Vulnerability scanning & prioritized patch management",
-      "System hardening (CIS benchmark alignment)",
-    ],
-    cta: "Explore Security Operations",
+    title: "CRM & ERP Implementation",
+    href: "/solutions/crm-erp",
+    desc: "Design and implement custom or modern CRM/ERP platforms aligned to your actual operating workflow.",
+    badge: "Core System",
   },
   {
-    title: "Customer & Product Support",
-    href: "/customer-support",
-    icon: Headphones,
-    color: "text-amber-700 bg-amber-50 border-amber-200",
-    description: "Extend your support capacity with trained remote product and technical support engineers for software and platform companies.",
-    deliverables: [
-      "Tier 1 frontline customer support & inquiry resolution",
-      "Tier 2 technical troubleshooting & log inspection",
-      "Bug reproduction & structured engineering escalation",
-      "Helpdesk management (Zendesk, Intercom, Freshdesk)",
-      "Knowledge base and FAQ documentation maintenance",
-    ],
-    cta: "Explore Support Services",
+    title: "Automation & AI Workflows",
+    href: "/solutions/automation-ai",
+    desc: "Eliminate repetitive manual data entry, disconnected spreadsheets, and fragmented handoffs.",
+    badge: "Efficiency",
+  },
+  {
+    title: "Customer Support Systems",
+    href: "/solutions/technical-support",
+    desc: "Omnichannel helpdesk setup, ticketing rules, SLA escalation routing, and customer knowledge bases.",
+    badge: "Support Ops",
   },
 ];
 
-const vertical2Solutions = [
+const pillar2Software = [
   {
-    title: "Custom Software & Automation",
-    href: "/software-automation",
-    icon: Code2,
-    color: "text-purple-700 bg-purple-50 border-purple-200",
-    description: "Build custom web applications, workflow pipelines, and AI systems tailored to your unique operational model instead of generic SaaS.",
-    deliverables: [
-      "Custom web applications & internal operations portals",
-      "Workflow & business process automation (n8n, Python)",
-      "AI agents, chatbots, and automated voice agents",
-      "Enterprise CRM & ERP core platform engineering",
-      "API integrations, webhook orchestration & legacy modernization",
-    ],
-    cta: "Explore Software & Automation",
+    title: "Software Solutions Overview",
+    href: "/solutions/software-solutions",
+    desc: "Full overview of our custom software development capabilities, architectures, and engineering standards.",
+    badge: "Pillar Overview",
+  },
+  {
+    title: "Custom Software Development",
+    href: "/solutions/custom-software",
+    desc: "Purpose-built web applications, internal tools, and client portals engineered with Next.js, Node, and SQL.",
+    badge: "Custom Dev",
+  },
+  {
+    title: "CRM & ERP Engineering",
+    href: "/solutions/crm-erp",
+    desc: "Tailored operational engines unifying inventory, finance, order management, and multi-department records.",
+    badge: "Enterprise",
+  },
+  {
+    title: "Automation & AI Applications",
+    href: "/solutions/automation-ai",
+    desc: "Context-aware AI applications, autonomous agents, automated voice systems, and high-throughput pipelines.",
+    badge: "AI & Pipeline",
+  },
+];
+
+const pillar3ItSecurity = [
+  {
+    title: "IT & Security Overview",
+    href: "/solutions/it-and-security",
+    desc: "Comprehensive overview of how we operate, monitor, manage, and protect your technology stack.",
+    badge: "Pillar Overview",
+  },
+  {
+    title: "IT Operations & Sysadmin",
+    href: "/solutions/it-operations",
+    desc: "Proactive Linux & Windows server administration, patch management, 24/7 monitoring, and performance tuning.",
+    badge: "Operations",
+  },
+  {
+    title: "Cloud & Infrastructure",
+    href: "/solutions/cloud-infrastructure",
+    desc: "Multi-cloud architecture (AWS, Azure, OCI), Terraform IaC, immutable backups, and disaster recovery.",
+    badge: "Cloud & DR",
+  },
+  {
+    title: "Cybersecurity & SIEM",
+    href: "/solutions/cybersecurity",
+    desc: "Centralized SIEM log correlation, IAM least privilege, mandatory MFA, vulnerability patching, and hardening.",
+    badge: "Security",
+  },
+  {
+    title: "Technical & Helpdesk Support",
+    href: "/solutions/technical-support",
+    desc: "Trained remote L1/L2 technical support professionals who triage tickets, inspect logs, and handle escalations.",
+    badge: "Support",
   },
 ];
 
@@ -98,174 +125,227 @@ export default function SolutionsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Solutions Architecture"
-        title="Two Ways We Help Businesses Build, Operate, Secure & Support Technology"
-        description="We structure our services around the operational lifecycle of modern technology: building software that fits your business, operating reliable infrastructure, protecting systems against threats, and supporting your end-users."
-        breadcrumbs={[{ label: "Solutions", href: "/solutions" }]}
-      >
-        <div className="mt-8 flex flex-wrap gap-4">
-          <Button href="/book" size="lg">
-            <Calendar className="size-4" />
-            Book a Technical Call
-          </Button>
-          <Button href="#verticals" variant="outline" size="lg">
-            Browse Verticals
-          </Button>
-        </div>
-      </PageHero>
-
-      {/* Narrative Ribbon */}
-      <section className="border-b border-line bg-surface py-10">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="p-4 rounded-xl bg-white border border-line">
-              <span className="font-mono text-xs font-bold text-blue-600 block">BUILD</span>
-              <p className="text-xs font-semibold text-primary mt-1">Custom Software & Automation</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white border border-line">
-              <span className="font-mono text-xs font-bold text-cyan-600 block">OPERATE</span>
-              <p className="text-xs font-semibold text-primary mt-1">Infrastructure & Managed IT</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white border border-line">
-              <span className="font-mono text-xs font-bold text-emerald-600 block">SECURE</span>
-              <p className="text-xs font-semibold text-primary mt-1">Security Operations & IAM</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white border border-line">
-              <span className="font-mono text-xs font-bold text-amber-600 block">SUPPORT</span>
-              <p className="text-xs font-semibold text-primary mt-1">Remote Product & Tech Support</p>
-            </div>
+        badge="End-to-End Technology Solutions"
+        title="Three Balanced Pillars. One Technology Partner."
+        description="Elvtera helps businesses build digital systems, develop custom software, operate their IT, and secure the technology they depend on. No vendor fragmentation, no finger-pointing."
+        actions={
+          <div className="flex flex-wrap items-center gap-4">
+            <Button href="/contact">
+              <span>Talk to Elvtera</span>
+              <ArrowRight className="size-4 ml-1" />
+            </Button>
+            <Button href="#pillars" variant="outline">
+              Explore the Pillars
+            </Button>
           </div>
-        </div>
-      </section>
+        }
+      />
 
-      {/* Vertical 1 Section */}
-      <section id="verticals" className="py-20 lg:py-28 bg-white">
+      {/* The 3 Pillars Section */}
+      <section id="pillars" className="py-20 lg:py-24 bg-white border-b border-line">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-secondary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-secondary">
-              Vertical 01
-            </div>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl font-display">
-              Infrastructure, Security & Customer Operations
-            </h2>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
-              Keep your technology reliable, secure, and supported with a remote team that can operate infrastructure and support your customers. We combine systems administration, cybersecurity operations, and technical product support into one unified discipline.
-            </p>
-          </div>
+          <SectionHeading
+            align="center"
+            eyebrow="Core Architecture"
+            title="Balanced Capabilities Across the Entire Lifecycle"
+            description="Unlike traditional IT companies that only manage hardware or software agencies that vanish after launch, Elvtera provides balanced engineering and operational support across three distinct pillars."
+          />
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-3">
-            {vertical1Solutions.map((sol, index) => {
-              const IconC = sol.icon;
-              return (
-                <Reveal key={sol.title} delay={index * 0.08}>
-                  <div className="flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-lg">
-                    <div className={`flex size-12 items-center justify-center rounded-xl border ${sol.color}`}>
-                      <IconC className="size-6" />
-                    </div>
-                    <h3 className="mt-5 text-xl font-bold text-primary font-display">
-                      {sol.title}
-                    </h3>
-                    <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                      {sol.description}
-                    </p>
-                    <ul className="mt-6 space-y-2.5 border-t border-slate-100 pt-6 text-xs text-slate-600 flex-1">
-                      {sol.deliverables.map((del, dIdx) => (
-                        <li key={dIdx} className="flex items-start gap-2">
-                          <CheckCircle2 className="size-3.5 text-secondary shrink-0 mt-0.5" />
-                          <span>{del}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-8 pt-4 border-t border-slate-100">
-                      <Link
-                        href={sol.href}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
-                      >
-                        <span>{sol.cta}</span>
-                        <ArrowRight className="size-3.5" />
-                      </Link>
-                    </div>
+          <div className="mt-14 space-y-16">
+            
+            {/* PILLAR 01: BUSINESS SOLUTIONS */}
+            <div className="rounded-3xl border border-blue-200 bg-blue-50/20 p-8 lg:p-10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-blue-100">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded">
+                    Pillar 01
                   </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+                  <h3 className="mt-2 text-2xl lg:text-3xl font-bold text-primary font-display">
+                    Business Solutions
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-blue-700">
+                    Build and scale the systems behind your business.
+                  </p>
+                </div>
+                <Button href="/solutions/business-solutions" variant="outline" className="shrink-0 bg-white">
+                  <span>Explore Pillar 01</span>
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
+              </div>
 
-      {/* Vertical 2 Section */}
-      <section className="border-t border-line bg-surface py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-md bg-purple-50 border border-purple-200 px-3 py-1 text-xs font-bold uppercase tracking-wider text-purple-700">
-              Vertical 02
-            </div>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl font-display">
-              Custom Software & Automation
-            </h2>
-            <p className="mt-4 text-base text-slate-600 leading-relaxed">
-              Build the software and automated systems your business needs instead of forcing your operations into generic tools. We engineer web applications, internal tools, ERP/CRM backbones, and workflow automations from discovery to launch.
-            </p>
-          </div>
-
-          <div className="mt-12 max-w-4xl">
-            {vertical2Solutions.map((sol, index) => {
-              const IconC = sol.icon;
-              return (
-                <Reveal key={sol.title} delay={index * 0.08}>
-                  <div className="flex flex-col md:flex-row gap-8 rounded-2xl border border-slate-200/80 bg-white p-8 lg:p-10 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-lg hover:border-purple-400">
-                    <div className="md:w-1/3">
-                      <div className={`flex size-14 items-center justify-center rounded-xl border ${sol.color}`}>
-                        <IconC className="size-7" />
-                      </div>
-                      <h3 className="mt-5 text-2xl font-bold text-primary font-display">
-                        {sol.title}
-                      </h3>
-                      <p className="mt-3 text-xs text-slate-500 leading-relaxed">
-                        {sol.description}
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {pillar1Business.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-blue-300 hover:shadow-sm transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <span className="text-[10px] font-mono font-bold text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded">
+                        {item.badge}
+                      </span>
+                      <h4 className="mt-3 font-bold text-slate-900 text-sm font-display group-hover:text-blue-700 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                        {item.desc}
                       </p>
-                      <div className="mt-6">
-                        <Button href={sol.href} variant="primary" size="md">
-                          {sol.cta}
-                          <ArrowRight className="size-4" />
-                        </Button>
-                      </div>
                     </div>
-
-                    <div className="md:w-2/3 border-t md:border-t-0 md:border-l border-slate-100 pt-6 md:pt-0 md:pl-8 flex flex-col justify-between">
-                      <div>
-                        <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-                          Key Solutions & Services Included
-                        </p>
-                        <div className="grid sm:grid-cols-2 gap-3 text-xs text-slate-700">
-                          {sol.deliverables.map((del, dIdx) => (
-                            <div key={dIdx} className="flex items-start gap-2 rounded-lg bg-surface p-3 border border-line">
-                              <CheckCircle2 className="size-3.5 text-purple-700 shrink-0 mt-0.5" />
-                              <span className="font-medium">{del}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="mt-6 rounded-xl bg-purple-50/50 border border-purple-100 p-4 text-xs text-purple-900 flex items-center justify-between">
-                        <span>Six-Stage Delivery: Discover → Design → Build → Integrate → Launch → Support</span>
-                        <Link href="/software-automation" className="font-bold underline shrink-0 ml-2">
-                          Learn More
-                        </Link>
-                      </div>
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-700">
+                      <span>View details</span>
+                      <ArrowRight className="size-3 group-hover:translate-x-0.5 transition-transform" />
                     </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* PILLAR 02: SOFTWARE SOLUTIONS */}
+            <div className="rounded-3xl border border-purple-200 bg-purple-50/20 p-8 lg:p-10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-purple-100">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-purple-700 bg-purple-100/70 px-2.5 py-1 rounded">
+                    Pillar 02
                   </div>
-                </Reveal>
-              );
-            })}
+                  <h3 className="mt-2 text-2xl lg:text-3xl font-bold text-primary font-display">
+                    Software Solutions
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-purple-700">
+                    Build the technology your business needs.
+                  </p>
+                </div>
+                <Button href="/solutions/software-solutions" variant="outline" className="shrink-0 bg-white">
+                  <span>Explore Pillar 02</span>
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
+              </div>
+
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {pillar2Software.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-purple-300 hover:shadow-sm transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <span className="text-[10px] font-mono font-bold text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded">
+                        {item.badge}
+                      </span>
+                      <h4 className="mt-3 font-bold text-slate-900 text-sm font-display group-hover:text-purple-700 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-purple-700">
+                      <span>View details</span>
+                      <ArrowRight className="size-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* PILLAR 03: IT & SECURITY */}
+            <div className="rounded-3xl border border-emerald-200 bg-emerald-50/20 p-8 lg:p-10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-emerald-100">
+                <div>
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/70 px-2.5 py-1 rounded">
+                    Pillar 03
+                  </div>
+                  <h3 className="mt-2 text-2xl lg:text-3xl font-bold text-primary font-display">
+                    IT & Security
+                  </h3>
+                  <p className="mt-1 text-sm font-semibold text-emerald-700">
+                    Keep your technology running, secure, and ready to scale.
+                  </p>
+                </div>
+                <Button href="/solutions/it-and-security" variant="outline" className="shrink-0 bg-white">
+                  <span>Explore Pillar 03</span>
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
+              </div>
+
+              <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+                {pillar3ItSecurity.map((item) => (
+                  <Link
+                    key={item.title}
+                    href={item.href}
+                    className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-emerald-300 hover:shadow-sm transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      <span className="text-[10px] font-mono font-bold text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded">
+                        {item.badge}
+                      </span>
+                      <h4 className="mt-3 font-bold text-slate-900 text-sm font-display group-hover:text-emerald-700 transition-colors">
+                        {item.title}
+                      </h4>
+                      <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
+                      <span>View details</span>
+                      <ArrowRight className="size-3 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* End-to-End Technology Flow Highlight */}
+      <section className="py-20 lg:py-24 bg-surface border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <SectionHeading
+            align="center"
+            eyebrow="Integration Framework"
+            title="How the Three Pillars Interlock"
+            description="A business does not experience technology in isolated silos. When your systems, custom software, cloud infrastructure, and security are unified under one partner, velocity accelerates and risk drops."
+          />
+
+          <div className="mt-12 max-w-4xl mx-auto grid sm:grid-cols-3 gap-6 text-left">
+            <div className="p-6 rounded-2xl border border-slate-200 bg-white">
+              <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">STEP 01</span>
+              <h4 className="mt-3 font-bold text-base text-slate-900">Build Your Business</h4>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Configure CRM, lead routing, helpdesks, and customer touchpoints so commercial operations function predictably.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-slate-200 bg-white">
+              <span className="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">STEP 02</span>
+              <h4 className="mt-3 font-bold text-base text-slate-900">Build Your Technology</h4>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Engineer custom platforms, internal portals, APIs, and automated data pipelines matching proprietary workflows.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl border border-slate-200 bg-white">
+              <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">STEP 03</span>
+              <h4 className="mt-3 font-bold text-base text-slate-900">Operate & Protect</h4>
+              <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
+                Administer cloud environments, monitor fleet telemetry, enforce SIEM security, and provide 24/7 technical support.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <Button href="/contact">
+              <span>Discuss Your Requirements</span>
+              <ArrowRight className="size-4 ml-1" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <CtaSection
-        title="Discuss your technology program with an architect."
-        description="Whether you need infrastructure operations, technical customer support, or bespoke software engineering, our team is ready to structure a solution."
+        title="Ready to consolidate your technology operations?"
+        description="Book a technical consultation with an Elvtera specialist. We will review your current systems, software requirements, and infrastructure goals."
         buttonLabel="Talk to Elvtera"
         buttonHref="/contact"
       />

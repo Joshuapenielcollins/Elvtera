@@ -15,28 +15,32 @@ import {
 /* ── Data ─────────────────────────────────────────────────────────────────── */
 
 const SERVICES = [
-  "Infrastructure & Managed IT",
-  "Security Operations & SIEM",
-  "Remote Customer & Product Support",
-  "Cloud Infrastructure (AWS/Azure/OCI)",
-  "Server & Database Administration",
+  "Business Solutions (Websites, GTM, CRM & Workflows)",
+  "Software Solutions (Custom Software, Apps & SaaS)",
+  "IT & Security (IT Operations, Cloud & Cybersecurity)",
   "Custom Software Development",
+  "CRM & ERP Solutions",
+  "IT Operations & Linux/Windows Sysadmin",
+  "Cloud Infrastructure (AWS/Azure/OCI)",
+  "Cybersecurity, SIEM & Hardening",
   "Workflow & Process Automation",
-  "AI Agents & Intelligent Automation",
-  "CRM / ERP Solutions",
-  "API & System Integration",
-  "MSP Engineering Extension",
+  "AI Applications & Autonomous Agents",
+  "Remote Technical & Customer Support",
+  "Ongoing Technology Stewardship",
   "Other",
 ];
 
 const INDUSTRIES = [
-  "SaaS & Software",
-  "MSPs & IT Services",
-  "Manufacturing & Logistics",
-  "Healthcare & HealthTech",
-  "Retail & E-commerce",
-  "FinTech & Financial Services",
+  "Growing Businesses",
+  "SaaS & Software Companies",
+  "Technology Companies",
+  "Startups & Scaleups",
   "Professional Services",
+  "Retail & E-commerce",
+  "Healthcare & HealthTech",
+  "FinTech & Financial Services",
+  "EdTech Platforms",
+  "IT Services & MSPs",
   "Other",
 ];
 

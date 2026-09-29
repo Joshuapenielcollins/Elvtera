@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { 
   Server, 
   ShieldCheck, 
-  Headphones, 
   Code2, 
+  Briefcase,
   Users, 
   CalendarCheck, 
   Clock, 
@@ -19,7 +19,12 @@ import {
   Mail,
   Building2,
   Copy,
-  Check
+  Check,
+  Workflow,
+  Globe,
+  Database,
+  Layers,
+  HelpCircle
 } from "lucide-react";
 
 export function UnifiedContactBook() {
@@ -28,15 +33,15 @@ export function UnifiedContactBook() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   // Form state
-  const [interest, setInterest] = useState<string>("infrastructure");
+  const [interest, setInterest] = useState<string>("software-solutions");
   const [specificDetails, setSpecificDetails] = useState<{
-    environment?: string;
+    focusArea?: string;
     challenge?: string;
-    supportTier?: string;
-    ticketVolume?: string;
     softwareType?: string;
+    stage?: string;
+    environment?: string;
     timeline?: string;
-    mspFleet?: string;
+    partnershipModel?: string;
   }>({});
 
   const [contact, setContact] = useState({
@@ -105,10 +110,10 @@ export function UnifiedContactBook() {
       formData.append("company", contact.company);
       formData.append("phone", contact.phone);
       formData.append("services", interest);
-      formData.append("industry", "Direct Booking & Contact");
+      formData.append("industry", "Direct Discovery Call Booking");
       formData.append(
         "description",
-        `[CALL BOOKED for ${selectedDate} at ${selectedTime} ${timezone}]\nPrimary Interest: ${interest}\nSpecifics: ${JSON.stringify(specificDetails)}\nNotes: ${contact.notes}`
+        `[CALL BOOKED for ${selectedDate} at ${selectedTime} ${timezone}]\nSolution Pillar: ${interest}\nSpecifics: ${JSON.stringify(specificDetails)}\nNotes: ${contact.notes}`
       );
 
       await fetch("/api/contact", {
@@ -128,10 +133,10 @@ export function UnifiedContactBook() {
   return (
     <div className="space-y-10">
       
-      {/* ── TIGHTENED BOOK A CALL WIZARD CARD ─────────────────────────────────── */}
+      {/* ── BOOK A DISCOVERY CALL WIZARD ────────────────────────────────────── */}
       <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-sm">
         
-        {/* Compact progress header */}
+        {/* Progress header */}
         <div className="pb-4 mb-6 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-1.5">
             {[1, 2, 3, 4].map((i) => (
@@ -148,72 +153,67 @@ export function UnifiedContactBook() {
             ))}
           </div>
           <span className="text-xs font-semibold text-slate-500">
-            {step === 1 && "Step 1 of 4: Select Focus"}
-            {step === 2 && "Step 2 of 4: Specific Scope"}
+            {step === 1 && "Step 1 of 4: Select Solution Pillar"}
+            {step === 2 && "Step 2 of 4: Project Scope & Specifics"}
             {step === 3 && "Step 3 of 4: Contact Details"}
             {step === 4 && "Step 4 of 4: Date & Time"}
             {step === 5 && "Confirmed"}
           </span>
         </div>
 
-        {/* STEP 1: Select Interest */}
+        {/* STEP 1: Select Solution Pillar */}
         {step === 1 && (
           <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-secondary mb-2">
+              <span>Direct Engineering Consultation</span>
+            </div>
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
-              What is the primary technical objective for this call?
+              Which technology solution area would you like to discuss?
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Select your focus area so we connect you with the appropriate technical practice lead.
+              Select one of our three core solution pillars or choose an end-to-end partnership review.
             </p>
 
-            <div className="mt-6 grid sm:grid-cols-2 gap-3">
+            <div className="mt-6 grid sm:grid-cols-2 gap-3.5">
               {[
                 {
-                  id: "infrastructure",
-                  title: "Infrastructure & Managed IT",
-                  desc: "Linux/Windows servers, AWS/Azure/OCI cloud, databases, backups & uptime monitoring.",
-                  icon: Server,
-                  tag: "Vertical 01",
+                  id: "business-solutions",
+                  pillarNum: "01",
+                  title: "Business Solutions",
+                  tagline: "Build and scale the systems behind your business.",
+                  desc: "Business websites, GTM architecture, CRM implementation, marketing automation, workflow systems, and customer support desks.",
+                  icon: Briefcase,
+                  tag: "Pillar 01",
                   tagColor: "bg-blue-50 text-blue-700 border-blue-200",
                 },
                 {
-                  id: "security",
-                  title: "Security Operations & Hardening",
-                  desc: "SIEM log monitoring, IAM/MFA governance, vulnerability patching & threat mitigation.",
-                  icon: ShieldCheck,
-                  tag: "Vertical 01",
-                  tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
-                },
-                {
-                  id: "customer-support",
-                  title: "Technical Customer & Product Support",
-                  desc: "Remote L1/L2 technical support engineers, ticket resolution, and product bug triage.",
-                  icon: Headphones,
-                  tag: "Vertical 01",
-                  tagColor: "bg-amber-50 text-amber-700 border-amber-200",
-                },
-                {
-                  id: "software-automation",
-                  title: "Custom Software & Automation",
-                  desc: "Purpose-built web apps, operational platforms, workflow automations, and ERP/CRM systems.",
+                  id: "software-solutions",
+                  pillarNum: "02",
+                  title: "Software Solutions",
+                  tagline: "Build the technology your business needs.",
+                  desc: "Custom web applications, purpose-built CRM/ERP platforms, SaaS applications, internal tools, API integrations, and AI agents.",
                   icon: Code2,
-                  tag: "Vertical 02",
+                  tag: "Pillar 02",
                   tagColor: "bg-purple-50 text-purple-700 border-purple-200",
                 },
                 {
-                  id: "msp-extension",
-                  title: "MSP Engineering Capacity",
-                  desc: "Tier-3 technical backstop, server migrations, and after-hours monitoring for MSPs.",
-                  icon: Users,
-                  tag: "Capacity",
-                  tagColor: "bg-cyan-50 text-cyan-700 border-cyan-200",
+                  id: "it-and-security",
+                  pillarNum: "03",
+                  title: "IT & Security",
+                  tagline: "Keep your technology running, secure, and ready to scale.",
+                  desc: "Linux/Windows sysadmin, cloud infrastructure (AWS/Azure/OCI), SIEM log monitoring, 24/7 telemetry, and remote technical support.",
+                  icon: ShieldCheck,
+                  tag: "Pillar 03",
+                  tagColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
                 },
                 {
-                  id: "general",
+                  id: "end-to-end",
+                  pillarNum: "04",
                   title: "End-to-End Technology Partnership",
-                  desc: "Combined cloud infrastructure, security stewardship, software builds, and support.",
+                  tagline: "One partner across the entire business lifecycle.",
+                  desc: "Combined coverage across business systems, software development, cloud operations, continuous security, and technical support.",
                   icon: Sparkles,
-                  tag: "Full Suite",
+                  tag: "All 3 Pillars",
                   tagColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
                 },
               ].map((opt) => {
@@ -241,6 +241,9 @@ export function UnifiedContactBook() {
                           {opt.tag}
                         </span>
                       </div>
+                      <p className="mt-0.5 text-[11px] font-semibold text-secondary">
+                        {opt.tagline}
+                      </p>
                       <p className="mt-1 text-xs text-slate-500 leading-relaxed">
                         {opt.desc}
                       </p>
@@ -252,7 +255,7 @@ export function UnifiedContactBook() {
           </div>
         )}
 
-        {/* STEP 2: Specific Scope Questions */}
+        {/* STEP 2: Specific Scope Questions Based on Chosen Solution */}
         {step === 2 && (
           <div>
             <button
@@ -261,18 +264,139 @@ export function UnifiedContactBook() {
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 mb-3 cursor-pointer"
             >
               <ArrowLeft className="size-3.5" />
-              <span>Back to focus selection</span>
+              <span>Back to solution selection</span>
             </button>
 
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
-              A few specifics on your current setup
+              A few specifics on your requirements
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Helps our engineers review relevant architectural patterns prior to the call.
+              Helps our systems and engineering leads review relevant technical patterns before the call.
             </p>
 
-            {/* Infrastructure */}
-            {(interest === "infrastructure" || interest === "general") && (
+            {/* PILLAR 1: BUSINESS SOLUTIONS SPECIFICS */}
+            {interest === "business-solutions" && (
+              <div className="mt-5 space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Primary Focus Area
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {[
+                      "Business Website & SEO",
+                      "CRM Implementation",
+                      "GTM & Sales Systems",
+                      "Marketing Automation",
+                      "Business Process Automation",
+                      "Customer Support / Helpdesk",
+                    ].map((area) => (
+                      <button
+                        key={area}
+                        type="button"
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, focusArea: area }))}
+                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
+                          specificDetails.focusArea === area
+                            ? "bg-secondary text-white border-secondary shadow-xs"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                        }`}
+                      >
+                        {area}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Primary Operational Challenge
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {[
+                      "Too much manual data entry across disconnected spreadsheets",
+                      "Inbound leads are slipping through the cracks without follow-up",
+                      "Off-the-shelf CRM doesn't match our actual sales workflow",
+                      "Customer support requests are unorganized and slow to resolve",
+                    ].map((ch) => (
+                      <button
+                        key={ch}
+                        type="button"
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, challenge: ch }))}
+                        className={`p-2.5 rounded-lg border text-xs font-semibold text-left transition-all cursor-pointer ${
+                          specificDetails.challenge === ch
+                            ? "bg-slate-900 text-white border-slate-900 shadow-xs"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                        }`}
+                      >
+                        {ch}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* PILLAR 2: SOFTWARE SOLUTIONS SPECIFICS */}
+            {interest === "software-solutions" && (
+              <div className="mt-5 space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Software Initiative Type
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {[
+                      "Custom Web Application",
+                      "Purpose-Built CRM / ERP",
+                      "Multi-Tenant SaaS Product",
+                      "Internal Operations Portal",
+                      "AI Applications & Agents",
+                      "API & System Integrations",
+                    ].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, softwareType: type }))}
+                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
+                          specificDetails.softwareType === type
+                            ? "bg-secondary text-white border-secondary shadow-xs"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Current Project Stage
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    {[
+                      "New Build (Greenfield)",
+                      "Refactoring / Scaling Existing Code",
+                      "Replacing Third-Party SaaS Tool",
+                    ].map((stg) => (
+                      <button
+                        key={stg}
+                        type="button"
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, stage: stg }))}
+                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
+                          specificDetails.stage === stg
+                            ? "bg-slate-900 text-white border-slate-900 shadow-xs"
+                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                        }`}
+                      >
+                        {stg}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* PILLAR 3: IT & SECURITY SPECIFICS */}
+            {interest === "it-and-security" && (
               <div className="mt-5 space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
@@ -298,26 +422,26 @@ export function UnifiedContactBook() {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Primary Challenge
+                    Key Infrastructure or Security Priority
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {[
-                      "Improve 99.95%+ Uptime & Observability",
-                      "Reduce Cloud Spend & Clean Orphaned Assets",
-                      "Database Optimization & Point-in-time Restores",
-                      "In-House Systems Engineering Capacity",
-                    ].map((ch) => (
+                      "Improve 99.95%+ Uptime & Fleet Observability",
+                      "Reduce Cloud Spend & Clean Idle Resources",
+                      "SIEM Log Monitoring, IAM & MFA Hardening",
+                      "Dedicated Remote Sysadmin & Tech Support Capacity",
+                    ].map((pri) => (
                       <button
-                        key={ch}
+                        key={pri}
                         type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, challenge: ch }))}
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, challenge: pri }))}
                         className={`p-2.5 rounded-lg border text-xs font-semibold text-left transition-all cursor-pointer ${
-                          specificDetails.challenge === ch
+                          specificDetails.challenge === pri
                             ? "bg-secondary text-white border-secondary shadow-xs"
                             : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                         }`}
                       >
-                        {ch}
+                        {pri}
                       </button>
                     ))}
                   </div>
@@ -325,116 +449,55 @@ export function UnifiedContactBook() {
               </div>
             )}
 
-            {/* Security */}
-            {interest === "security" && (
+            {/* END-TO-END PARTNERSHIP SPECIFICS */}
+            {interest === "end-to-end" && (
               <div className="mt-5 space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Key Security Priority
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {[
-                      "SIEM Log Aggregation & Real-time Alerting",
-                      "IAM Least-Privilege & MFA Hardening",
-                      "Vulnerability Scanning & Patch Enforcement",
-                      "Compliance Audit Preparation (SOC2/HIPAA/ISO)",
-                    ].map((sec) => (
-                      <button
-                        key={sec}
-                        type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, challenge: sec }))}
-                        className={`p-2.5 rounded-lg border text-xs font-semibold text-left transition-all cursor-pointer ${
-                          specificDetails.challenge === sec
-                            ? "bg-secondary text-white border-secondary shadow-xs"
-                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                        }`}
-                      >
-                        {sec}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Customer Support */}
-            {interest === "customer-support" && (
-              <div className="mt-5 space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Required Support Level
+                    Desired Engagement Model
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                     {[
-                      "Tier 1 Helpdesk (Triage & Resolution)",
-                      "Tier 2 Technical (Bug Reproduction & DB)",
-                      "Combined L1/L2 Full Coverage",
-                    ].map((tier) => (
+                      "Turn-Key Build + Ongoing Operations",
+                      "Extended Technology Team",
+                      "Managed Systems Stewardship",
+                    ].map((model) => (
                       <button
-                        key={tier}
+                        key={model}
                         type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, supportTier: tier }))}
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, partnershipModel: model }))}
                         className={`p-2.5 rounded-lg border text-xs font-semibold text-left transition-all cursor-pointer ${
-                          specificDetails.supportTier === tier
+                          specificDetails.partnershipModel === model
                             ? "bg-secondary text-white border-secondary shadow-xs"
                             : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                         }`}
                       >
-                        {tier}
+                        {model}
                       </button>
                     ))}
                   </div>
                 </div>
-              </div>
-            )}
 
-            {/* Custom Software & Automation */}
-            {interest === "software-automation" && (
-              <div className="mt-5 space-y-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Project Type
+                    Current Company Stage
                   </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {[
-                      "Custom Web Application",
-                      "Workflow Automation (n8n)",
-                      "Custom ERP/CRM Platform",
-                      "API & Systems Integration",
-                    ].map((type) => (
+                      "Growing business needing a complete technology partner",
+                      "Scaling platform looking to offload infrastructure & support",
+                    ].map((stg) => (
                       <button
-                        key={type}
+                        key={stg}
                         type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, softwareType: type }))}
-                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
-                          specificDetails.softwareType === type
-                            ? "bg-secondary text-white border-secondary shadow-xs"
-                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                        }`}
-                      >
-                        {type}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Target Timeline
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {["Immediate (< 30 days)", "Next Quarter (1-3 months)", "Planning & Architecture"].map((time) => (
-                      <button
-                        key={time}
-                        type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, timeline: time }))}
-                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
-                          specificDetails.timeline === time
+                        onClick={() => setSpecificDetails((prev) => ({ ...prev, stage: stg }))}
+                        className={`p-2.5 rounded-lg border text-xs font-semibold text-left transition-all cursor-pointer ${
+                          specificDetails.stage === stg
                             ? "bg-slate-900 text-white border-slate-900 shadow-xs"
                             : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                         }`}
                       >
-                        {time}
+                        {stg}
                       </button>
                     ))}
                   </div>
@@ -442,32 +505,28 @@ export function UnifiedContactBook() {
               </div>
             )}
 
-            {/* MSP Extension */}
-            {interest === "msp-extension" && (
-              <div className="mt-5 space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Endpoints / Client Fleet Size
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {["100 - 500 Endpoints", "500 - 2,000 Endpoints", "2,000+ Endpoints"].map((fleet) => (
-                      <button
-                        key={fleet}
-                        type="button"
-                        onClick={() => setSpecificDetails((prev) => ({ ...prev, mspFleet: fleet }))}
-                        className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
-                          specificDetails.mspFleet === fleet
-                            ? "bg-secondary text-white border-secondary shadow-xs"
-                            : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
-                        }`}
-                      >
-                        {fleet}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+            {/* Target Timeline */}
+            <div className="mt-5">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                Target Timeline
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {["Immediate (< 30 days)", "Next Quarter (1-3 months)", "Planning & Discovery"].map((time) => (
+                  <button
+                    key={time}
+                    type="button"
+                    onClick={() => setSpecificDetails((prev) => ({ ...prev, timeline: time }))}
+                    className={`p-2.5 rounded-lg border text-xs font-semibold text-center transition-all cursor-pointer ${
+                      specificDetails.timeline === time
+                        ? "bg-slate-900 text-white border-slate-900 shadow-xs"
+                        : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                    }`}
+                  >
+                    {time}
+                  </button>
+                ))}
               </div>
-            )}
+            </div>
 
             <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
               <span className="text-xs text-slate-400">Step 2 complete</span>
@@ -492,14 +551,14 @@ export function UnifiedContactBook() {
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 mb-3 cursor-pointer"
             >
               <ArrowLeft className="size-3.5" />
-              <span>Back to context</span>
+              <span>Back to project scope</span>
             </button>
 
             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
               Who should our engineering lead address?
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              We send the calendar invite and meeting link to this email address.
+              We send the calendar invite and Google Meet link to this email address.
             </p>
 
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -603,7 +662,7 @@ export function UnifiedContactBook() {
               Select your preferred date & time
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
-              30-minute direct technical consultation via Google Meet.
+              30-minute direct technical consultation via Google Meet with an Elvtera practice lead.
             </p>
 
             <div className="mt-5 space-y-4">
@@ -730,15 +789,15 @@ export function UnifiedContactBook() {
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Deep dive into current operational bottlenecks or custom development goals.</span>
+                <span>Deep dive into your chosen solution pillar (Business, Software, or IT & Security).</span>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Discuss scope, architectural patterns, team models, and milestones.</span>
+                <span>Review current architectural bottlenecks, data schemas, and uptime goals.</span>
               </div>
               <div className="flex items-start gap-2">
                 <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Receive itemized next steps with no sales pressure.</span>
+                <span>Receive itemized technical milestones and next steps with zero sales pressure.</span>
               </div>
             </div>
           </div>
@@ -746,7 +805,7 @@ export function UnifiedContactBook() {
 
       </div>
 
-      {/* ── COMPANY LOCATIONS & EMAIL SECTION (DIRECTLY BELOW THE BOOK A CALL CARD) ── */}
+      {/* ── COMPANY LOCATIONS & EMAIL SECTION ─────────────────────────────────── */}
       <div className="rounded-2xl border border-line bg-white p-6 sm:p-8 shadow-xs">
         
         <div className="border-b border-slate-100 pb-5 mb-6">

@@ -1,4 +1,4 @@
-import { Compass, Eye, Handshake, Scale, Target, Wrench, Server, ShieldCheck, Headphones, Code2, Workflow, ArrowRight } from "lucide-react";
+import { Compass, Eye, Handshake, Scale, Target, Wrench, Server, ShieldCheck, Headphones, Code2, Workflow, ArrowRight, Briefcase, Boxes, Cloud } from "lucide-react";
 import Link from "next/link";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionHeading } from "@/components/sections/section-heading";
@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "About ELVTERA — Build. Operate. Secure. Support.",
+  title: "About ELVTERA — End-to-End Technology Solutions for Businesses",
   description:
-    "ELVTERA is an enterprise technology services company. We build custom software, operate infrastructure, secure systems, and support customers across two dedicated verticals.",
+    "Elvtera is an end-to-end technology solutions company. We help businesses build digital systems, develop custom software, operate IT, and secure their technology.",
   path: "/about",
 });
 
@@ -25,7 +25,7 @@ const values = [
     icon: Handshake,
     title: "End-to-End Accountability",
     description:
-      "One dedicated team owns operational outcomes from deployment through years of active stewardship. When production systems demand immediate attention, you know exactly who responds.",
+      "One dedicated technology partner owns operational outcomes from initial build through years of active stewardship. When production systems demand immediate attention, you know exactly who responds.",
   },
   {
     icon: Target,
@@ -37,7 +37,7 @@ const values = [
     icon: Wrench,
     title: "Production Craftsmanship",
     description:
-      "Documented architectures, tested disaster recovery playbooks, hardened access controls, and modular codebases. Enterprise reliability is built on rigorous operational habits.",
+      "Documented architectures, tested disaster recovery runbooks, hardened access controls, and modular codebases. Enterprise reliability is built on rigorous operational habits.",
   },
 ];
 
@@ -45,35 +45,35 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About ELVTERA"
-        title="We build, operate, secure, and support the technology businesses depend on"
-        description="ELVTERA is an enterprise technology services company engineered for businesses that need dependable operational execution. We deliver senior engineering capacity across two dedicated verticals: Infrastructure, Security & Customer Operations, and Custom Software & Automation."
+        badge="About ELVTERA"
+        title="We help businesses build, operate, secure, and improve their technology."
+        description="Elvtera is an end-to-end technology solutions company. From business systems and custom software to IT operations and security, we provide the technology capabilities businesses need to build and grow."
         breadcrumbs={[{ label: "About", href: "/about" }]}
       />
 
-      {/* Mission & vision */}
+      {/* Mission & Vision */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="grid gap-6 lg:grid-cols-2">
             <Reveal>
               <div className="h-full rounded-2xl border border-line bg-surface p-9">
                 <Compass className="size-8 text-secondary" aria-hidden="true" />
-                <h2 className="mt-5 text-2xl font-extrabold text-primary">
+                <h2 className="mt-5 text-2xl font-extrabold text-primary font-display">
                   Our Mission
                 </h2>
                 <p className="mt-4 text-base lg:text-lg leading-relaxed text-slate-600">
-                  To provide businesses with reliable technical capacity and operational peace of mind — delivering hands-on systems engineering, proactive security, responsive support, and purpose-built software with transparent execution and long-term stewardship.
+                  To provide businesses with a unified, dependable technology partner across their entire lifecycle — from digital setup and custom software development to cloud operations, continuous cybersecurity, and responsive technical support.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="h-full rounded-2xl border border-line bg-surface p-9">
                 <Eye className="size-8 text-secondary" aria-hidden="true" />
-                <h2 className="mt-5 text-2xl font-extrabold text-primary">
+                <h2 className="mt-5 text-2xl font-extrabold text-primary font-display">
                   Our Vision
                 </h2>
                 <p className="mt-4 text-base lg:text-lg leading-relaxed text-slate-600">
-                  An operating environment where companies scale without being held back by infrastructure downtime, cybersecurity vulnerabilities, customer support backlogs, or rigid off-the-shelf software limitations.
+                  An operating reality where growing businesses never suffer from vendor fragmentation, finger-pointing between developers and sysadmins, or compromised uptime. One partner from build to ongoing operations.
                 </p>
               </div>
             </Reveal>
@@ -81,144 +81,118 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* What We Offer — Two Core Verticals */}
+      {/* The Three Balanced Pillars */}
       <section className="bg-surface border-y border-line py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
-            eyebrow="What We Offer"
-            title="Two Dedicated Technical Verticals"
-            description="Our service model is structured around two clear operational pillars so you can engage the exact technical capacity your business requires."
+            eyebrow="Our Core Structure"
+            title="Three Equally Important Business Pillars"
+            description="Our service model is structured across three balanced pillars, providing complete technology capabilities under one roof."
             align="center"
           />
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-2">
-            {/* Vertical 1 */}
-            <Reveal>
-              <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 sm:p-10 shadow-sm">
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
-                      Vertical 01
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-extrabold text-primary font-display">
-                    Infrastructure, Security & Customer Operations
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    Keep your technology reliable, secure, and supported with a remote team that manages infrastructure, hardens security postures, and provides technical customer support.
-                  </p>
-
-                  <div className="mt-8 space-y-4 border-t border-slate-100 pt-6">
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-blue-50 text-blue-700 shrink-0 mt-0.5">
-                        <Server className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">Infrastructure & Managed IT</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          Linux & Windows servers, AWS/Azure/OCI cloud topologies, databases, backup verification, and 24/7 telemetry.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0 mt-0.5">
-                        <ShieldCheck className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">Security Operations</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          SIEM log aggregation, continuous threat detection, IAM/MFA governance, vulnerability remediation, and compliance readiness.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-amber-50 text-amber-700 shrink-0 mt-0.5">
-                        <Headphones className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">Customer & Product Support</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          Dedicated remote L1/L2 technical support specialists, ticket triage, bug reproduction, and multi-channel coverage.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+          <div className="mt-14 grid gap-8 lg:grid-cols-3">
+            {/* Pillar 01 */}
+            <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                    Pillar 01
+                  </span>
+                  <Briefcase className="size-5 text-blue-600" />
                 </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-100">
-                  <Button href="/infrastructure" variant="outline" size="sm">
-                    Explore Vertical 01
-                    <ArrowRight className="size-3.5" />
-                  </Button>
-                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  Business Solutions
+                </h3>
+                <p className="mt-2 text-xs font-semibold text-blue-700">
+                  Build and scale the systems behind your business.
+                </p>
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We build and improve the foundational business systems required to operate and grow: websites, GTM architecture, CRM implementations, marketing automation, and customer support desks.
+                </p>
+                <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li>• Business Websites & Technical SEO</li>
+                  <li>• Go-To-Market & Lead Systems</li>
+                  <li>• CRM Implementation & Automation</li>
+                  <li>• Business Process Automation</li>
+                  <li>• Customer Support & Helpdesk Systems</li>
+                </ul>
               </div>
-            </Reveal>
-
-            {/* Vertical 2 */}
-            <Reveal delay={0.1}>
-              <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 sm:p-10 shadow-sm">
-                <div>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">
-                      Vertical 02
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-extrabold text-primary font-display">
-                    Custom Software & Automation
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    Build purpose-built web applications and automated systems tailored to your unique operating models instead of forcing workflows into generic SaaS tools.
-                  </p>
-
-                  <div className="mt-8 space-y-4 border-t border-slate-100 pt-6">
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
-                        <Code2 className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">Custom Web Applications</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          Bespoke internal platforms, client portals, SaaS architectures, and high-performance operational dashboards.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
-                        <Workflow className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">Workflow Automation</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          End-to-end integration pipelines, n8n orchestration, webhooks, and automated document and accounting processing.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-purple-50 text-purple-700 shrink-0 mt-0.5">
-                        <Wrench className="size-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-bold text-slate-900">ERP & CRM Integration</h4>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          Connecting disparate billing, warehouse, inventory, and support tools into a single coherent data backbone.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-100">
-                  <Button href="/software-automation" variant="outline" size="sm">
-                    Explore Vertical 02
-                    <ArrowRight className="size-3.5" />
-                  </Button>
-                </div>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Button href="/solutions/business-solutions" variant="outline" size="sm" className="w-full">
+                  Explore Business Solutions
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
               </div>
-            </Reveal>
+            </div>
+
+            {/* Pillar 02 */}
+            <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">
+                    Pillar 02
+                  </span>
+                  <Code2 className="size-5 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  Software Solutions
+                </h3>
+                <p className="mt-2 text-xs font-semibold text-purple-700">
+                  Build the technology your business needs.
+                </p>
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We build custom software around the specific needs of a business: custom web apps, purpose-built CRM/ERP platforms, SaaS products, internal operational tools, APIs, and AI agents.
+                </p>
+                <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li>• Custom Software Development</li>
+                  <li>• Purpose-Built CRM / ERP Engines</li>
+                  <li>• Multi-Tenant SaaS Applications</li>
+                  <li>• Internal Tools & Portals</li>
+                  <li>• AI Applications & Autonomous Agents</li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Button href="/solutions/software-solutions" variant="outline" size="sm" className="w-full">
+                  Explore Software Solutions
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Pillar 03 */}
+            <div className="flex h-full flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                    Pillar 03
+                  </span>
+                  <ShieldCheck className="size-5 text-emerald-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  IT & Security
+                </h3>
+                <p className="mt-2 text-xs font-semibold text-emerald-700">
+                  Keep your technology running, secure, and ready to scale.
+                </p>
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We help businesses operate, maintain, monitor, and protect their technology: Linux/Windows administration, cloud infrastructure, SIEM cybersecurity, backups, and 24/7 technical support.
+                </p>
+                <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li>• IT Operations & Sysadmin</li>
+                  <li>• Cloud Infrastructure (AWS/Azure/OCI)</li>
+                  <li>• Centralized SIEM Log Monitoring</li>
+                  <li>• Immutable Backups & Disaster Recovery</li>
+                  <li>• Remote Technical & Product Support</li>
+                </ul>
+              </div>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Button href="/solutions/it-and-security" variant="outline" size="sm" className="w-full">
+                  Explore IT & Security
+                  <ArrowRight className="size-3.5 ml-1" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -251,8 +225,10 @@ export default function AboutPage() {
       </section>
 
       <CtaSection
-        title="Ready to build, operate, secure, or support your technology?"
-        description="Schedule a technical consultation with our engineering team to review your architecture, discuss support requirements, or plan your next custom build."
+        title="Ready to build, operate, and secure your technology?"
+        description="Schedule a technical consultation with our engineering team to review your business systems, custom software roadmap, or IT operations."
+        buttonLabel="Talk to Elvtera"
+        buttonHref="/contact"
       />
     </>
   );

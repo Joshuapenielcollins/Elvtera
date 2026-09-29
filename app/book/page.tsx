@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import BookPageClient from "./book-client";
 
 export const metadata = pageMetadata({
-  title: "Book a Technical Discovery Call - Schedule With Our Engineers",
+  title: "Book a Technical Discovery Call — Elvtera",
   description:
-    "Schedule a 30-minute discovery call with an Elvtera systems engineer. Discuss infrastructure operations, security monitoring, technical support, or custom software.",
+    "Schedule a 30-minute discovery call with an Elvtera systems engineer. Discuss Business Solutions (CRM & GTM), Software Solutions (Custom Apps & AI), or IT & Security (Cloud & Sysadmin).",
   path: "/book",
 });
 
@@ -13,9 +13,9 @@ export default function BookPage() {
   return (
     <>
       <PageHero
-        eyebrow="Direct Engineering Consultation"
+        badge="Direct Engineering Consultation"
         title="Schedule a 30-Minute Technical Discovery Call"
-        description="Speak directly with an Elvtera systems architect or engineering lead. No sales scripts or pushy pitches—just an honest review of your infrastructure, support requirements, or software roadmap."
+        description="Speak directly with an Elvtera systems architect or engineering lead across our three solution pillars: Business Solutions, Software Solutions, or IT & Security. No sales pressure—just an honest review of your technical roadmap."
         breadcrumbs={[
           { label: "Book a Call", href: "/book" },
         ]}

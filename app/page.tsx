@@ -4,6 +4,7 @@ import {
   ShieldCheck, 
   Server, 
   Code2, 
+  Briefcase,
   Headphones, 
   Cpu, 
   Database, 
@@ -23,7 +24,13 @@ import {
   HardDrive,
   GitBranch,
   Settings,
-  Calendar
+  Globe,
+  Gauge,
+  Terminal,
+  Shield,
+  Search,
+  Zap,
+  Repeat
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
@@ -33,172 +40,155 @@ import { CtaSection } from "@/components/sections/cta-section";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Build. Operate. Secure. Support. - Enterprise Technology Services",
+  title: "Elvtera — End-to-End Technology Solutions for Growing Businesses",
   description:
-    "Elvtera helps businesses build software, operate infrastructure, secure their technology, and support the products their customers rely on. A long-term technology engineering partner.",
+    "Elvtera helps businesses build digital systems, develop custom software, operate their IT, and secure the technology they depend on. One balanced technology partner.",
   path: "/",
 });
 
-// Pain points directly from client requirements
-const businessProblems = [
+// Problems we solve: Real business problems matching solutions
+const problemsWeSolve = [
   {
-    problem: "Your infrastructure is growing faster than your IT team.",
-    solution: "We manage server provisioning, cloud topologies, and storage clusters so your team never bottlenecks scaling.",
-    category: "Infrastructure",
+    problem: "“Our technology is growing faster than our IT team.”",
+    solution: "We provide hands-on IT operations, cloud architecture (AWS/Azure/OCI), server administration, and capacity planning.",
+    pillar: "IT & Security",
+    route: "/solutions/it-operations",
     icon: Server,
   },
   {
-    problem: "Your engineers are spending too much time on operational issues.",
-    solution: "We take over patching, monitoring, and database upkeep so developers write product code rather than fighting fires.",
-    category: "Operations",
-    icon: Settings,
-  },
-  {
-    problem: "You need cloud and server expertise without building another full-time team.",
-    solution: "Get senior multi-cloud (AWS/Azure/OCI) and Linux/Windows systems architects on demand under flexible engagement models.",
-    category: "Cloud",
-    icon: Cloud,
-  },
-  {
-    problem: "Your security stack needs constant monitoring and maintenance.",
-    solution: "We implement continuous SIEM log aggregation, IAM least-privilege reviews, and proactive vulnerability mitigation.",
-    category: "Security",
-    icon: Lock,
-  },
-  {
-    problem: "Your customers need technical support while your product team focuses on development.",
-    solution: "Our remote L1/L2 product support specialists triage tickets, inspect logs, and reproduce bugs directly in staging.",
-    category: "Support",
-    icon: Headphones,
-  },
-  {
-    problem: "You have repetitive processes that should be automated.",
-    solution: "We design custom workflow pipelines (n8n, Python, webhooks) to eliminate manual data entry and invoice chasing.",
-    category: "Automation",
-    icon: Workflow,
-  },
-  {
-    problem: "You need custom software that fits your business instead of another generic SaaS tool.",
-    solution: "We engineer purpose-built web applications and operational systems designed around your real operating workflows.",
-    category: "Software",
+    problem: "“We need a system built around our workflow.”",
+    solution: "We develop purpose-built custom software, operational dashboards, and internal platforms matching your exact workflow.",
+    pillar: "Software Solutions",
+    route: "/solutions/custom-software",
     icon: Code2,
   },
   {
-    problem: "You need reliable technical capacity for a project without hiring a permanent team.",
-    solution: "Fixed-scope project delivery with clear milestones, itemized pricing, and transparent code handover.",
-    category: "Projects",
-    icon: Layers,
+    problem: "“Too much of our business still runs manually.”",
+    solution: "We engineer workflow automations, API integrations, and AI pipelines to eliminate duplicate data entry and manual administrative friction.",
+    pillar: "Business & Automation",
+    route: "/solutions/automation-ai",
+    icon: Workflow,
+  },
+  {
+    problem: "“We need better visibility into our infrastructure.”",
+    solution: "We configure 24/7 telemetry monitoring, synthetic health probes, alert escalations, and performance dashboards.",
+    pillar: "IT & Security",
+    route: "/solutions/it-operations#monitoring",
+    icon: Activity,
+  },
+  {
+    problem: "“Our systems need stronger security.”",
+    solution: "We implement centralized SIEM log monitoring, IAM least-privilege, mandatory MFA, vulnerability patching, and system hardening.",
+    pillar: "IT & Security",
+    route: "/solutions/cybersecurity",
+    icon: Lock,
+  },
+  {
+    problem: "“We need a CRM but don't want to force our process into someone else's software.”",
+    solution: "We design and deploy custom CRM & ERP systems or deeply configure modern platforms around how your team actually sells and operates.",
+    pillar: "Business & Software",
+    route: "/solutions/crm-erp",
+    icon: Briefcase,
+  },
+  {
+    problem: "“Our support team is struggling to keep up.”",
+    solution: "We provide trained remote L1/L2 technical support professionals who triage tickets, inspect logs, and reproduce issues directly in staging.",
+    pillar: "Operations & Support",
+    route: "/solutions/technical-support",
+    icon: Headphones,
   },
 ];
 
 // Target industries & client profiles
-const whoWeHelp = [
+const industriesGrid = [
   {
-    title: "SaaS & Software Companies",
-    description: "Scale infrastructure reliability, offload L1/L2 technical customer support, and maintain 99.95%+ uptime SLAs.",
-    icon: Cloud,
-  },
-  {
-    title: "MSPs & IT Service Providers",
-    tagline: "Your remote infrastructure and engineering extension.",
-    description: "We work behind the scenes as your Tier-3 infrastructure and cloud engineering backstop without touching your client relationships.",
-    icon: Users,
-    isMsp: true,
-  },
-  {
-    title: "FinTech & HealthTech",
-    description: "Enforce strict least-privilege IAM, automated SIEM audit logs, encrypted backups, and reproducible infrastructure.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "E-Commerce & Digital Brands",
-    description: "High-concurrency infrastructure, database performance tuning, checkout automation, and responsive user support.",
+    name: "Growing Businesses",
+    desc: "Scaling operations requiring modern digital systems, automated pipelines, and solid technical foundations.",
     icon: TrendingUp,
   },
   {
-    title: "Professional Services & Mid-Market",
-    description: "Custom internal tools, ERP/CRM operational backbones, and eliminating spreadsheet dependencies across teams.",
+    name: "SaaS & Software Companies",
+    desc: "Scale multi-tenant cloud reliability, offload L1/L2 product support, and secure application environments.",
+    icon: Cloud,
+  },
+  {
+    name: "Technology Companies",
+    desc: "Engineering support for complex infrastructure, API connectivity, microservices, and continuous deployment.",
+    icon: Cpu,
+  },
+  {
+    name: "Startups & Scaleups",
+    desc: "Accelerate software delivery, set up CRM & GTM infrastructure, and establish production-ready cloud architectures.",
+    icon: Sparkles,
+  },
+  {
+    name: "Professional Services",
+    desc: "Eliminate spreadsheet chaos with centralized client portals, workflow automation, and secure records.",
     icon: Building2,
   },
   {
-    title: "Businesses with Internal IT Teams",
-    description: "Augment your existing staff with specialized cloud migration, security hardening, and after-hours monitoring capacity.",
-    icon: Cpu,
+    name: "E-Commerce Brands",
+    desc: "High-concurrency cloud scaling, checkout system stability, inventory automation, and rapid customer response.",
+    icon: Globe,
+  },
+  {
+    name: "Healthcare & HealthTech",
+    desc: "Secure infrastructure, least-privilege access controls, encrypted backups, and audit-ready data retention.",
+    icon: ShieldCheck,
+  },
+  {
+    name: "FinTech & Financial",
+    desc: "Deterministic API integrations, rigorous SIEM log aggregation, multi-factor authentication, and compliance hardening.",
+    icon: Lock,
+  },
+  {
+    name: "EdTech Platforms",
+    desc: "Reliable database clusters, scalable web platforms, uptime monitoring, and tier-1 student/educator technical support.",
+    icon: Users,
+  },
+  {
+    name: "IT Services & MSPs",
+    desc: "White-label Tier-3 infrastructure engineering, 24/7 server monitoring, and database support behind your brand.",
+    icon: Server,
+  },
+  {
+    name: "Scaling Operations",
+    desc: "Companies modernizing legacy systems, migrating to cloud, and establishing disciplined IT operations.",
+    icon: Layers,
+  },
+  {
+    name: "Multi-Entity Businesses",
+    desc: "Unifying dispersed operations through integrated ERP, centralized identity, and consolidated reporting.",
+    icon: Database,
   },
 ];
 
 // 5-step delivery process
-const workProcess = [
+const howWeWorkSteps = [
   {
     step: "01",
-    name: "DISCOVER",
-    description: "Understand your infrastructure, business processes, product, and operational requirements directly from operators.",
+    name: "Understand",
+    description: "We understand your business, existing systems, technology stack, bottlenecks, and strategic objectives.",
   },
   {
     step: "02",
-    name: "ASSESS",
-    description: "Identify risks, single points of failure, inefficiencies, technical gaps, and immediate optimization opportunities.",
+    name: "Plan",
+    description: "We identify the right technical architecture, prioritize milestones, and specify exact deliverables without bloat.",
   },
   {
     step: "03",
-    name: "IMPLEMENT",
-    description: "Build, configure, migrate, secure, or automate according to itemized specifications and living runbooks.",
+    name: "Build",
+    description: "We implement the required business systems, develop custom software, provision infrastructure, or deploy security controls.",
   },
   {
     step: "04",
-    name: "OPERATE",
-    description: "Provide ongoing infrastructure management, security operations, software stewardship, or customer support under SLAs.",
+    name: "Operate",
+    description: "We provide ongoing support, 24/7 monitoring, maintenance, patch management, and triage where required under strict SLAs.",
   },
   {
     step: "05",
-    name: "OPTIMIZE",
-    description: "Continuously improve system reliability, cloud expenditure, security hardening, and operational throughput.",
-  },
-];
-
-// 3 engagement models
-const engagementModels = [
-  {
-    title: "PROJECTS",
-    subtitle: "Defined Scope & Fixed Milestones",
-    description: "For companies executing specific technical initiatives with clear start and end points.",
-    useCases: [
-      "Custom software and internal tool development",
-      "Cloud migrations & infrastructure rebuilds",
-      "Security hardening & SIEM configuration",
-      "End-to-end workflow automation pipelines",
-      "Monitoring & observability rollouts",
-    ],
-    cta: "Start a Project",
-    href: "/book?intent=projects",
-  },
-  {
-    title: "ONGOING MANAGED SERVICES",
-    subtitle: "SLA-Backed Operational Stewardship",
-    description: "Continuous day-to-day operations and stewardship under guaranteed service level agreements.",
-    useCases: [
-      "24/7 server & cloud infrastructure operations",
-      "Security monitoring, SIEM & vulnerability management",
-      "Remote L1/L2 customer and product support",
-      "Database administration & backup verification",
-      "Ongoing software maintenance & hypercare",
-    ],
-    cta: "Explore Managed Services",
-    href: "/book?intent=managed-services",
-  },
-  {
-    title: "EXTENDED TEAM",
-    subtitle: "Dedicated Technical Capacity",
-    description: "Extend your internal team with specialized engineers who integrate directly into your workflows and tools.",
-    useCases: [
-      "Dedicated infrastructure & DevOps engineering capacity",
-      "Embedded technical product support specialists",
-      "Behind-the-scenes engineering backstop for MSPs",
-      "Senior full-stack developers for sprint delivery",
-      "No agency markups or staffing churn",
-    ],
-    cta: "Extend Your Team",
-    href: "/book?intent=extended-team",
+    name: "Improve",
+    description: "We continuously identify opportunities to automate manual tasks, harden security, optimize cloud costs, and scale capacity.",
   },
 ];
 
@@ -214,46 +204,73 @@ export default function HomePage() {
             
             <div className="lg:col-span-7">
               <Reveal>
-                <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl lg:text-[3.5rem] leading-[1.08] font-display">
-                  Build. Operate. Secure. Support.
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1 text-xs font-semibold text-secondary mb-6">
+                  <span className="size-2 rounded-full bg-secondary animate-pulse" />
+                  <span>End-to-End Technology Solutions</span>
+                </div>
+
+                <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl lg:text-[3.35rem] leading-[1.08] font-display">
+                  Technology that helps your business build, operate, and grow.
                 </h1>
 
                 <p className="mt-6 text-lg leading-relaxed text-slate-600 max-w-2xl lg:text-xl font-normal">
-                  Elvtera helps businesses build software, operate infrastructure, secure their technology, and support the products their customers rely on.
+                  Elvtera helps businesses build digital systems, develop custom software, operate their IT, and secure the technology they depend on.
                 </p>
 
                 <p className="mt-3 text-sm text-slate-500 max-w-xl leading-relaxed">
-                  Technology solutions for businesses that need reliable infrastructure, secure operations, customer support, and custom software.
+                  From business systems and custom software to IT operations and security, Elvtera provides the technology capabilities businesses need to build and grow.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <Button href="/book" size="lg">
-                    <Calendar className="size-4" />
-                    Book a Technical Call
+                  <Button href="/contact" size="lg">
+                    <span>Talk to Elvtera</span>
+                    <ArrowRight className="size-4 ml-1" />
                   </Button>
-                  <Button href="#verticals" variant="outline" size="lg">
-                    Explore Our Services
+                  <Button href="/solutions" variant="outline" size="lg">
+                    Explore Solutions
                   </Button>
                 </div>
 
-                {/* Subtle visual relationship ribbon */}
-                <div className="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-                  <div>
-                    <span className="font-mono font-bold text-purple-700 block text-[11px]">BUILD</span>
-                    <span className="text-slate-600 font-medium">Software & Auto</span>
-                  </div>
-                  <div>
-                    <span className="font-mono font-bold text-blue-700 block text-[11px]">OPERATE</span>
-                    <span className="text-slate-600 font-medium">Managed Infra</span>
-                  </div>
-                  <div>
-                    <span className="font-mono font-bold text-emerald-700 block text-[11px]">SECURE</span>
-                    <span className="text-slate-600 font-medium">SecOps & IAM</span>
-                  </div>
-                  <div>
-                    <span className="font-mono font-bold text-amber-700 block text-[11px]">SUPPORT</span>
-                    <span className="text-slate-600 font-medium">Product Support</span>
-                  </div>
+                {/* Equal Importance Visual Introduction to the 3 Pillars */}
+                <div className="mt-10 pt-8 border-t border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <Link 
+                    href="/solutions/business-solutions"
+                    className="p-3.5 rounded-xl border border-blue-100 bg-white/80 hover:bg-white hover:border-blue-300 hover:shadow-xs transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="font-mono text-[10px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">01</span>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-secondary">Business Solutions</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">
+                      Build and scale the systems behind your business.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/solutions/software-solutions"
+                    className="p-3.5 rounded-xl border border-purple-100 bg-white/80 hover:bg-white hover:border-purple-300 hover:shadow-xs transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="font-mono text-[10px] font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">02</span>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-purple-700">Software Solutions</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">
+                      Build the technology your business needs.
+                    </p>
+                  </Link>
+
+                  <Link 
+                    href="/solutions/it-and-security"
+                    className="p-3.5 rounded-xl border border-emerald-100 bg-white/80 hover:bg-white hover:border-emerald-300 hover:shadow-xs transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="font-mono text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">03</span>
+                      <span className="text-xs font-bold text-slate-900 group-hover:text-emerald-700">IT & Security</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 leading-relaxed">
+                      Operate and protect the technology you depend on.
+                    </p>
+                  </Link>
                 </div>
               </Reveal>
             </div>
@@ -268,751 +285,871 @@ export default function HomePage() {
       </section>
 
       {/* ================================================================== */}
-      {/* 2. HOMEPAGE SERVICE MAP / ARCHITECTURE                             */}
+      {/* 2. WHAT WE DO — Technology Solutions Across the Lifecycle         */}
       {/* ================================================================== */}
       <section className="py-20 lg:py-24 bg-white border-b border-line">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <SectionHeading
             align="center"
-            eyebrow="Service Architecture"
-            title="The Elvtera Technology Framework"
-            description="Everything connects to one central purpose: helping businesses build, operate, secure, and support the technology their operations depend upon."
-          />
-
-          <div className="mt-14 max-w-5xl mx-auto rounded-3xl border border-slate-200 bg-slate-50/70 p-6 sm:p-10 shadow-sm">
-            
-            {/* Top Root Node */}
-            <div className="flex justify-center">
-              <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-slate-900 text-white shadow-md">
-                <span className="font-display font-extrabold tracking-wider text-sm sm:text-base">
-                  ELVTERA
-                </span>
-                <span className="text-slate-400 text-xs hidden sm:inline">|</span>
-                <span className="text-slate-300 text-xs hidden sm:inline">
-                  Enterprise Technology Partnership
-                </span>
-              </div>
-            </div>
-
-            {/* Connecting Line */}
-            <div className="w-0.5 h-8 bg-slate-300 mx-auto my-1" />
-
-            {/* 4 Pillars Horizontal Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              
-              {/* BUILD */}
-              <div className="rounded-2xl border border-purple-200 bg-white p-5 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">
-                      BUILD
-                    </span>
-                    <Code2 className="size-4 text-purple-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm font-display">
-                    Custom Software & Automation
-                  </h4>
-                  <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                    Custom web apps, internal tools, ERP/CRM engineering, workflow automation, and AI agents.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <span className="text-[11px] font-semibold text-purple-700">
-                    Software helps you build.
-                  </span>
-                </div>
-              </div>
-
-              {/* OPERATE */}
-              <div className="rounded-2xl border border-blue-200 bg-white p-5 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
-                      OPERATE
-                    </span>
-                    <Server className="size-4 text-blue-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm font-display">
-                    Infrastructure & Managed IT
-                  </h4>
-                  <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                    Cloud management (AWS/Azure/OCI), Linux/Windows servers, databases, and network connectivity.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <span className="text-[11px] font-semibold text-blue-700">
-                    Infrastructure helps you operate.
-                  </span>
-                </div>
-              </div>
-
-              {/* SECURE */}
-              <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
-                      SECURE
-                    </span>
-                    <ShieldCheck className="size-4 text-emerald-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm font-display">
-                    Cybersecurity & SecOps
-                  </h4>
-                  <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                    SIEM log management, identity & MFA controls, endpoint security, hardening, and threat detection.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <span className="text-[11px] font-semibold text-emerald-700">
-                    Security protects your business.
-                  </span>
-                </div>
-              </div>
-
-              {/* SUPPORT */}
-              <div className="rounded-2xl border border-amber-200 bg-white p-5 shadow-xs flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">
-                      SUPPORT
-                    </span>
-                    <Headphones className="size-4 text-amber-600" />
-                  </div>
-                  <h4 className="font-bold text-slate-900 text-sm font-display">
-                    Customer & Product Support
-                  </h4>
-                  <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                    Remote L1 frontline support, L2 technical triage, bug escalation, and helpdesk operations.
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <span className="text-[11px] font-semibold text-amber-700">
-                    Support protects user trust.
-                  </span>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 3. TWO PRIMARY VERTICALS                                           */}
-      {/* ================================================================== */}
-      <section id="verticals" className="py-20 lg:py-28 bg-surface border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Our Core Structure"
-            title="Two Ways We Help Businesses"
-            description="We simplify enterprise technology into two focused operational verticals designed to handle your technical weight."
-          />
-
-          {/* VERTICAL 01 */}
-          <div className="mt-14 rounded-3xl border border-slate-200 bg-white p-8 lg:p-12 shadow-sm">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-md bg-secondary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-secondary">
-                VERTICAL 01
-              </div>
-              <h3 className="mt-4 text-2xl lg:text-3xl font-bold text-primary font-display">
-                INFRASTRUCTURE, SECURITY & CUSTOMER OPERATIONS
-              </h3>
-              <p className="mt-3 text-base text-slate-600 leading-relaxed">
-                Keep your technology reliable, secure, and supported with a remote team that can operate infrastructure and support your customers.
-              </p>
-            </div>
-
-            {/* 3 Sub-groups: A, B, C */}
-            <div className="mt-10 grid gap-8 md:grid-cols-3 border-t border-slate-100 pt-10">
-              
-              {/* A. Infrastructure & Cloud */}
-              <div className="flex flex-col justify-between rounded-2xl border border-line bg-surface p-7">
-                <div>
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700 border border-blue-200">
-                    <Server className="size-5" />
-                  </div>
-                  <h4 className="mt-4 text-lg font-bold text-primary font-display">
-                    A. Infrastructure & Cloud
-                  </h4>
-                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                    Server administration (Linux/Windows), cloud operations (AWS/Azure/OCI), databases, networking, monitoring, and backups.
-                  </p>
-                  <ul className="mt-4 space-y-1.5 text-xs text-slate-600 border-t border-slate-200/60 pt-4">
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-blue-600" />
-                      <span>Server & Database Administration</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-blue-600" />
-                      <span>AWS / Azure / OCI Architecture</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-blue-600" />
-                      <span>Immutable Backups & Disaster Recovery</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-blue-600" />
-                      <span>Infrastructure & Application Monitoring</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="mt-6 pt-4 border-t border-line">
-                  <Link 
-                    href="/infrastructure" 
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
-                  >
-                    <span>Discuss Your Infrastructure</span>
-                    <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* B. Security Operations */}
-              <div className="flex flex-col justify-between rounded-2xl border border-line bg-surface p-7">
-                <div>
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
-                    <ShieldCheck className="size-5" />
-                  </div>
-                  <h4 className="mt-4 text-lg font-bold text-primary font-display">
-                    B. Security Operations
-                  </h4>
-                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                    SIEM log management, identity & MFA protection, endpoint EDR, vulnerability management, and security hardening.
-                  </p>
-                  <ul className="mt-4 space-y-1.5 text-xs text-slate-600 border-t border-slate-200/60 pt-4">
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-emerald-600" />
-                      <span>Centralized SIEM Log Monitoring</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-emerald-600" />
-                      <span>IAM Least Privilege & Mandatory MFA</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-emerald-600" />
-                      <span>Vulnerability Scanning & Patch Mitigation</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-emerald-600" />
-                      <span>Linux & Windows System Hardening</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="mt-6 pt-4 border-t border-line">
-                  <Link 
-                    href="/security" 
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:underline"
-                  >
-                    <span>Talk to a Security Specialist</span>
-                    <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* C. Remote Customer / Product Support */}
-              <div className="flex flex-col justify-between rounded-2xl border border-line bg-surface p-7">
-                <div>
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-amber-50 text-amber-700 border border-amber-200">
-                    <Headphones className="size-5" />
-                  </div>
-                  <h4 className="mt-4 text-lg font-bold text-primary font-display">
-                    C. Remote Product Support
-                  </h4>
-                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">
-                    Extend your customer support team with trained remote product support professionals for SaaS & technology platforms.
-                  </p>
-                  <ul className="mt-4 space-y-1.5 text-xs text-slate-600 border-t border-slate-200/60 pt-4">
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-amber-600" />
-                      <span>L1 User Support & Inquiry Handling</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-amber-600" />
-                      <span>L2 Technical Triage & Bug Reproduction</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-amber-600" />
-                      <span>Direct Escalation to Dev in Jira/GitHub</span>
-                    </li>
-                    <li className="flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-amber-600" />
-                      <span>Knowledge Base & FAQ Documentation</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="mt-6 pt-4 border-t border-line">
-                  <Link 
-                    href="/customer-support" 
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:underline"
-                  >
-                    <span>Discuss Your Support Requirements</span>
-                    <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* VERTICAL 02 */}
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-8 lg:p-12 shadow-sm">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 rounded-md bg-purple-50 border border-purple-200 px-3 py-1 text-xs font-bold uppercase tracking-wider text-purple-700">
-                VERTICAL 02
-              </div>
-              <h3 className="mt-4 text-2xl lg:text-3xl font-bold text-primary font-display">
-                CUSTOM SOFTWARE & AUTOMATION
-              </h3>
-              <p className="mt-3 text-base text-slate-600 leading-relaxed">
-                Build the software and automated systems your business needs instead of forcing your operations into generic tools.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 border-t border-slate-100 pt-10">
-              <div className="rounded-xl border border-line bg-surface p-5">
-                <Code2 className="size-5 text-purple-600" />
-                <h5 className="mt-3 font-bold text-sm text-slate-900 font-display">Custom Web Applications</h5>
-                <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  Bespoke internal tools, customer portals, dashboards, and multi-tenant SaaS.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-line bg-surface p-5">
-                <Workflow className="size-5 text-purple-600" />
-                <h5 className="mt-3 font-bold text-sm text-slate-900 font-display">Workflow Automation</h5>
-                <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  End-to-end process automation connecting CRM, inventory, and accounting automatically.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-line bg-surface p-5">
-                <Cpu className="size-5 text-purple-600" />
-                <h5 className="mt-3 font-bold text-sm text-slate-900 font-display">AI Agents & Assistants</h5>
-                <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  Task-specific AI agents, voice qualification systems, and guarded support chatbots.
-                </p>
-              </div>
-
-              <div className="rounded-xl border border-line bg-surface p-5">
-                <Layers className="size-5 text-purple-600" />
-                <h5 className="mt-3 font-bold text-sm text-slate-900 font-display">CRM & ERP Systems</h5>
-                <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  Unified platforms connecting billing, procurement, and warehouse operations.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <p className="text-xs text-slate-500">
-                Full lifecycle engineering: Discover → Design → Build → Integrate → Launch → Support.
-              </p>
-              <Button href="/software-automation" variant="primary" size="md">
-                Start a Software Project
-                <ArrowRight className="size-3.5" />
-              </Button>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 4. BUSINESS PROBLEMS WE SOLVE                                      */}
-      {/* ================================================================== */}
-      <section className="py-20 lg:py-28 bg-white border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Challenges We Address"
-            title="Real Operational Problems We Solve Daily"
-            description="Businesses do not buy technology for the sake of it; they engage us when operational bottlenecks threaten growth, security, or customer satisfaction."
-          />
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {businessProblems.map((prob, idx) => {
-              const IconC = prob.icon;
-              return (
-                <Reveal key={idx} delay={(idx % 4) * 0.05}>
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-surface p-6 shadow-xs transition-all duration-300 hover:border-secondary/40 hover:bg-white hover:shadow-md">
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-secondary bg-white px-2 py-0.5 rounded border border-line">
-                          {prob.category}
-                        </span>
-                        <IconC className="size-4 text-slate-400" />
-                      </div>
-                      <h4 className="mt-4 font-bold text-sm text-slate-900 leading-snug">
-                        &ldquo;{prob.problem}&rdquo;
-                      </h4>
-                      <p className="mt-3 text-xs text-slate-600 leading-relaxed">
-                        {prob.solution}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 5. WHO WE SERVE ("WHO WE HELP")                                    */}
-      {/* ================================================================== */}
-      <section className="py-20 lg:py-28 bg-surface border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Target Market"
-            title="Who We Help"
-            description="Primarily serving growing companies and operations-heavy enterprises that require high-reliability engineering, continuous infrastructure management, and technical capacity."
-          />
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {whoWeHelp.map((profile, idx) => {
-              const IconC = profile.icon;
-              return (
-                <Reveal key={idx} delay={(idx % 3) * 0.06}>
-                  <div className={`flex h-full flex-col justify-between rounded-2xl border p-7 shadow-xs transition-all duration-300 ${
-                    profile.isMsp 
-                      ? "border-blue-300 bg-blue-50/50 shadow-md" 
-                      : "border-line bg-white hover:border-slate-300"
-                  }`}>
-                    <div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex size-10 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
-                          <IconC className="size-5 text-secondary" />
-                        </div>
-                        {profile.isMsp && (
-                          <span className="text-[10px] font-bold text-secondary uppercase bg-white px-2 py-0.5 rounded border border-blue-200">
-                            Dedicated MSP Offering
-                          </span>
-                        )}
-                      </div>
-
-                      <h4 className="mt-4 font-bold text-base text-primary font-display">
-                        {profile.title}
-                      </h4>
-                      
-                      {profile.tagline && (
-                        <p className="mt-1 text-xs font-semibold text-secondary">
-                          {profile.tagline}
-                        </p>
-                      )}
-
-                      <p className="mt-2.5 text-xs text-slate-600 leading-relaxed">
-                        {profile.description}
-                      </p>
-                    </div>
-
-                    {profile.isMsp && (
-                      <div className="mt-6 pt-4 border-t border-blue-200">
-                        <Link 
-                          href="/contact?intent=msp-partnership"
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
-                        >
-                          <span>Inquire about MSP backstop capacity</span>
-                          <ArrowRight className="size-3.5" />
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 6. HOW ELVTERA WORKS (PROCESS)                                     */}
-      {/* ================================================================== */}
-      <section id="how-it-works" className="py-20 lg:py-28 bg-white border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            align="center"
-            eyebrow="Delivery Model"
-            title="How Elvtera Works"
-            description="A disciplined, repeatable methodology that turns operational complexity into stable, predictable execution."
-          />
-
-          <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {workProcess.map((step, idx) => (
-              <Reveal key={step.step} delay={idx * 0.07}>
-                <div className="flex flex-col h-full rounded-2xl border border-line bg-surface p-6 shadow-xs">
-                  <span className="font-mono text-xs font-bold text-secondary">
-                    {step.step}
-                  </span>
-                  <h4 className="mt-3 text-base font-bold text-primary font-display">
-                    {step.name}
-                  </h4>
-                  <p className="mt-2 text-xs text-slate-600 leading-relaxed flex-1">
-                    {step.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 7. ENGAGEMENT MODELS                                               */}
-      {/* ================================================================== */}
-      <section className="py-20 lg:py-28 bg-surface border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Collaboration Models"
-            title="How You Can Work With Elvtera"
-            description="Whether you need a defined project delivered, ongoing managed infrastructure operations, or dedicated technical capacity to extend your existing team."
-          />
-
-          <div className="mt-14 grid gap-8 lg:grid-cols-3">
-            {engagementModels.map((model, idx) => (
-              <Reveal key={model.title} delay={idx * 0.08}>
-                <div className="flex h-full flex-col justify-between rounded-2xl border border-line bg-white p-8 shadow-xs hover:border-secondary/40 transition-colors">
-                  <div>
-                    <span className="font-mono text-xs font-bold text-secondary uppercase bg-secondary/10 px-2.5 py-1 rounded">
-                      MODEL 0{idx + 1}
-                    </span>
-                    <h4 className="mt-4 font-bold text-xl text-primary font-display">
-                      {model.title}
-                    </h4>
-                    <p className="mt-1 text-xs font-semibold text-slate-500">
-                      {model.subtitle}
-                    </p>
-                    <p className="mt-3 text-xs text-slate-600 leading-relaxed">
-                      {model.description}
-                    </p>
-
-                    <div className="mt-6 border-t border-slate-100 pt-6">
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3">
-                        Ideal For
-                      </p>
-                      <ul className="space-y-2 text-xs text-slate-600">
-                        {model.useCases.map((uc, uIdx) => (
-                          <li key={uIdx} className="flex items-start gap-2">
-                            <CheckCircle2 className="size-3.5 text-secondary shrink-0 mt-0.5" />
-                            <span>{uc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-4 border-t border-slate-100">
-                    <Button href={model.href} variant="outline" size="md" className="w-full justify-center">
-                      {model.cta}
-                      <ArrowRight className="size-3.5" />
-                    </Button>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 8. TRUST & ENGINEERING SECURITY                                    */}
-      {/* ================================================================== */}
-      <section className="py-20 lg:py-28 bg-white border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-slate-900 text-white p-8 lg:p-14 shadow-xl">
-            <div className="grid lg:grid-cols-12 gap-10 items-center">
-              
-              <div className="lg:col-span-7">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-400 font-mono">
-                  BUILT BY ENGINEERS · DESIGNED FOR RELIABLE OPERATIONS
-                </span>
-                <h3 className="mt-3 text-3xl lg:text-4xl font-extrabold tracking-tight text-white font-display">
-                  Actual Technical Safeguards Over Vanity Badges
-                </h3>
-                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
-                  We don&apos;t make unsubstantiated claims or display fabricated logos. Our clients trust us because we operate with strict principle of least privilege, hardware MFA, living runbook documentation, and complete client ownership of all code and cloud credentials.
-                </p>
-
-                <div className="mt-8 grid sm:grid-cols-2 gap-4 text-xs text-slate-200">
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Principle of Least Privilege (RBAC) across all nodes</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Mandatory FIDO2/TOTP Multi-Factor Authentication</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Air-gapped 3-2-1 backup verification</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle2 className="size-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>You retain 100% ownership of cloud accounts & code</span>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <Button href="/security-and-trust" variant="inverse" size="md">
-                    Review Security & Trust Practices
-                    <ArrowRight className="size-4" />
-                  </Button>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 rounded-2xl bg-slate-800/80 border border-slate-700 p-6 space-y-4 text-xs font-mono text-slate-300">
-                <div className="flex items-center justify-between border-b border-slate-700 pb-2 text-slate-400">
-                  <span>TELEMETRY INTEGRITY</span>
-                  <span className="text-emerald-400">ENFORCED</span>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-slate-400"># Audit & Access Control</p>
-                  <p className="text-white">SSH: Key-Only Authentication (No Root)</p>
-                  <p className="text-white">Vault: HashiCorp / AWS Secrets Manager</p>
-                  <p className="text-white">SIEM: Wazuh & Central Syslog Ingestion</p>
-                  <p className="text-white">Disaster Recovery: Scheduled Restore Drills</p>
-                </div>
-                <div className="pt-2 border-t border-slate-700 text-[11px] text-slate-400">
-                  Zero vendor lock-in. Full handover documentation provided.
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================================================================== */}
-      {/* 9. REALISTIC CASE STUDIES / PROOF                                  */}
-      {/* ================================================================== */}
-      <section className="py-20 lg:py-28 bg-surface border-b border-line">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Proven Execution"
-            title="Engineered for Real-World Reliability"
-            description="Representative operational improvements achieved for clients across infrastructure, security, and custom software."
+            eyebrow="What We Do"
+            title="Technology solutions across the business lifecycle."
+            description="Elvtera supports businesses from digital setup and operational systems to software development, cloud infrastructure, cybersecurity, and continuous support. Three equally important pillars working in harmony."
           />
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
-            <div className="rounded-2xl border border-line bg-white p-8 shadow-xs flex flex-col justify-between">
+            
+            {/* Pillar 1: Business Solutions */}
+            <div className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs hover:border-blue-300 transition-all hover:shadow-md">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 font-mono">
-                  INFRASTRUCTURE CASE
-                </span>
-                <p className="mt-4 font-display text-4xl font-extrabold text-primary">
-                  99.98%
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+                    PILLAR 01
+                  </span>
+                  <Briefcase className="size-5 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  Business Solutions
+                </h3>
+                <p className="mt-2 text-sm font-semibold text-blue-700">
+                  Build and scale the systems behind your business.
                 </p>
-                <p className="text-xs text-slate-500 font-medium mt-1">
-                  Uptime across multi-region AWS & bare-metal nodes
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We implement and optimize the foundational business technologies required to acquire customers, organize operations, and streamline daily delivery.
                 </p>
-                <h4 className="mt-5 font-bold text-base text-primary">
-                  High-Availability Cloud Migration & Monitoring
-                </h4>
-                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                  Migrated fragmented legacy VPS instances into an automated, Terraform-managed AWS ECS & RDS cluster with automated WAL point-in-time recovery.
-                </p>
+                <ul className="mt-5 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-blue-600 shrink-0" />
+                    <span>Business Websites & Technical SEO</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-blue-600 shrink-0" />
+                    <span>GTM & Lead Management Systems</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-blue-600 shrink-0" />
+                    <span>CRM Implementation & Sales Automation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-blue-600 shrink-0" />
+                    <span>Business Process & Workflow Automation</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-blue-600 shrink-0" />
+                    <span>Customer Support & Helpdesk Systems</span>
+                  </li>
+                </ul>
               </div>
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <span className="text-xs font-semibold text-slate-700">Scope: Linux · Windows · Database techs · Backups · Zabbix · Commvault · CrowdStrike</span>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Link
+                  href="/solutions/business-solutions"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 group"
+                >
+                  <span>Explore Business Solutions</span>
+                  <ArrowRight className="size-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-line bg-white p-8 shadow-xs flex flex-col justify-between">
+            {/* Pillar 2: Software Solutions */}
+            <div className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs hover:border-purple-300 transition-all hover:shadow-md">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 font-mono">
-                  CUSTOMER OPERATIONS CASE
-                </span>
-                <p className="mt-4 font-display text-4xl font-extrabold text-primary">
-                  &lt;18 min
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">
+                    PILLAR 02
+                  </span>
+                  <Code2 className="size-5 text-purple-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  Software Solutions
+                </h3>
+                <p className="mt-2 text-sm font-semibold text-purple-700">
+                  Build the technology your business needs.
                 </p>
-                <p className="text-xs text-slate-500 font-medium mt-1">
-                  First-response SLA on critical Tier-2 escalations
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We engineer custom software, internal platforms, SaaS applications, and intelligent automation built precisely around how your company operates.
                 </p>
-                <h4 className="mt-5 font-bold text-base text-primary">
-                  Remote Technical Support for B2B SaaS
-                </h4>
-                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                  Provided dedicated remote L1 and L2 support engineers who reproduce application bugs in staging and submit clean Jira tickets, saving 15+ engineering hours per week.
-                </p>
+                <ul className="mt-5 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-600 shrink-0" />
+                    <span>Custom Web Applications & Platforms</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-600 shrink-0" />
+                    <span>Purpose-Built CRM & ERP Systems</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-600 shrink-0" />
+                    <span>SaaS Applications & Multi-Tenant Stacks</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-600 shrink-0" />
+                    <span>Internal Tools, Portals & Dashboards</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-purple-600 shrink-0" />
+                    <span>AI Applications, Agents & Automation</span>
+                  </li>
+                </ul>
               </div>
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <span className="text-xs font-semibold text-slate-700">Scope: Zendesk · ServiceNow · Jira · Postman · Chrome DevTools</span>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Link
+                  href="/solutions/software-solutions"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 hover:text-purple-900 group"
+                >
+                  <span>Explore Software Solutions</span>
+                  <ArrowRight className="size-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-line bg-white p-8 shadow-xs flex flex-col justify-between">
+            {/* Pillar 3: IT & Security */}
+            <div className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs hover:border-emerald-300 transition-all hover:shadow-md">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-purple-600 font-mono">
-                  SOFTWARE & AUTOMATION CASE
-                </span>
-                <p className="mt-4 font-display text-4xl font-extrabold text-primary">
-                  40+ hrs/wk
+                <div className="flex items-center justify-between mb-4">
+                  <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                    PILLAR 03
+                  </span>
+                  <ShieldCheck className="size-5 text-emerald-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary font-display">
+                  IT & Security
+                </h3>
+                <p className="mt-2 text-sm font-semibold text-emerald-700">
+                  Keep your technology running, secure, and ready to scale.
                 </p>
-                <p className="text-xs text-slate-500 font-medium mt-1">
-                  Manual spreadsheet reconciliation eliminated
+                <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+                  We administer cloud environments, servers, networks, databases, and cybersecurity operations so your business stays resilient and available.
                 </p>
-                <h4 className="mt-5 font-bold text-base text-primary">
-                  Custom Operations Platform & Automated Sync
-                </h4>
-                <p className="mt-2 text-xs text-slate-600 leading-relaxed">
-                  Engineered a bespoke Next.js and PostgreSQL internal portal with automated n8n webhook sync between order intake, invoicing, and inventory tracking.
-                </p>
+                <ul className="mt-5 space-y-2 border-t border-slate-100 pt-5 text-xs text-slate-700">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                    <span>IT Operations & Linux/Windows Sysadmin</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                    <span>Cloud Architecture (AWS, Azure, OCI)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                    <span>SIEM Log Monitoring, IAM & MFA Hardening</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                    <span>Continuous Monitoring & Observability</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
+                    <span>Backup, Disaster Recovery & Tech Support</span>
+                  </li>
+                </ul>
               </div>
-              <div className="mt-6 pt-4 border-t border-slate-100">
-                <span className="text-xs font-semibold text-slate-700">Scope: Next.js · TypeScript · n8n · PostgreSQL (Not limited to a single tech stack for dev)</span>
+              <div className="mt-8 pt-5 border-t border-slate-100">
+                <Link
+                  href="/solutions/it-and-security"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-900 group"
+                >
+                  <span>Explore IT & Security</span>
+                  <ArrowRight className="size-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
               </div>
             </div>
+
           </div>
+
+          {/* Lifecycle Connection Ribbon */}
+          <div className="mt-14 p-6 rounded-2xl bg-slate-50 border border-slate-200 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div className="flex items-center gap-2 font-semibold text-slate-800">
+              <Sparkles className="size-4 text-secondary shrink-0" />
+              <span>The End-to-End Advantage:</span>
+              <span className="text-slate-600 font-normal">No handoff friction between systems, software, and operations.</span>
+            </div>
+            <Link href="/how-we-work" className="font-bold text-secondary hover:underline shrink-0">
+              Learn How We Work →
+            </Link>
+          </div>
+
         </div>
       </section>
 
       {/* ================================================================== */}
-      {/* 10. FINAL INTENT-BASED CTA                                         */}
+      {/* 3. BUSINESS SOLUTIONS (Section 3)                                  */}
       {/* ================================================================== */}
-      <section className="bg-primary text-white py-20 lg:py-28">
+      <section className="py-20 lg:py-24 bg-surface border-b border-line">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-400 font-mono">
-              LET&apos;S TALK TECHNOLOGY
-            </span>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display">
-              Build. Operate. Secure. Support.
-            </h2>
-            <p className="mt-6 text-base sm:text-lg text-slate-300 leading-relaxed">
-              Tell us about your infrastructure requirements, customer support needs, or upcoming software project. We will schedule a direct conversation with an engineer.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">
+                Pillar 01 — Business Solutions
+              </div>
+              <h2 className="mt-3 text-3xl font-extrabold text-primary sm:text-4xl font-display">
+                Build the systems behind your business.
+              </h2>
+              <p className="mt-2 text-base text-slate-600 max-w-2xl">
+                A business cannot scale on ad-hoc spreadsheets and broken handoffs. We build and integrate the digital backbones that connect marketing, sales, operations, and support.
+              </p>
+            </div>
+            <Button href="/solutions/business-solutions" variant="outline" className="shrink-0">
+              Explore Business Solutions
+            </Button>
+          </div>
 
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Button href="/book" variant="inverse" size="lg">
-                <Calendar className="size-4" />
-                Book a Technical Call
-              </Button>
-              <Button 
-                href="/solutions" 
-                size="lg"
-                className="border border-white/20 bg-transparent text-white hover:bg-white/10"
-              >
-                Explore Solutions
-              </Button>
+          {/* 9 Services Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Websites", desc: "Modern, high-converting digital storefronts and marketing websites engineered for speed, technical SEO, and brand authority." },
+              { title: "GTM Systems", desc: "Go-to-market systems with unified tracking, lead enrichment, form validation, and automated attribution." },
+              { title: "CRM", desc: "Tailored CRM architecture designed around your sales stages, stopping lead slippage and manual data duplication." },
+              { title: "Sales Systems", desc: "Proposal generation, quotation workflows, deal pipelines, and automated outreach sequencing." },
+              { title: "Marketing Automation", desc: "Behavioral email journeys, lifecycle re-engagement, audience tagging, and analytics reporting." },
+              { title: "Business Automation", desc: "Automate administrative friction, invoice approvals, client onboarding steps, and cross-tool notifications." },
+              { title: "Customer Support", desc: "Centralize customer requests across email, live chat, and web portals with automated assignment rules." },
+              { title: "Helpdesk & Ticketing", desc: "SLA-backed ticketing systems, escalation paths, issue categorization, and operator audit trails." },
+              { title: "Workflow Systems", desc: "Connect disjointed SaaS applications via robust webhook orchestrations and custom data pipelines." },
+            ].map((svc) => (
+              <div key={svc.title} className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-blue-200 transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 text-base font-display">{svc.title}</h3>
+                  <span className="size-2 rounded-full bg-blue-600" />
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-end">
+            <Link 
+              href="/contact?intent=business-systems" 
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900"
+            >
+              <span>Discuss Your Business Systems</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 4. SOFTWARE SOLUTIONS (Section 4)                                  */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-white border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2.5 py-1 rounded border border-purple-200">
+                Pillar 02 — Software Solutions
+              </div>
+              <h2 className="mt-3 text-3xl font-extrabold text-primary sm:text-4xl font-display">
+                Build software around the way your business works.
+              </h2>
+              <p className="mt-2 text-base text-slate-600 max-w-2xl">
+                Avoid the trap of forcing your unique operations into rigid commercial templates. We build custom applications, internal tools, ERP platforms, and AI systems tailored to your workflows.
+              </p>
+            </div>
+            <Button href="/solutions/software-solutions" variant="outline" className="shrink-0">
+              Explore Software Solutions
+            </Button>
+          </div>
+
+          {/* 9 Software Services Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Custom Software", desc: "Purpose-built web applications and digital platforms engineered with clean TypeScript, robust APIs, and modern databases." },
+              { title: "CRM / ERP Development", desc: "Enterprise resource planning platforms unifying inventory, finance, order fulfillment, and multi-location operations." },
+              { title: "SaaS Applications", desc: "Scalable multi-tenant SaaS products complete with subscription billing, role hierarchies, and high-uptime architectures." },
+              { title: "Internal Tools", desc: "Custom operational software that empowers staff to execute complex procedures accurately and rapidly." },
+              { title: "Dashboards & Portals", desc: "Executive business intelligence, KPI visualizations, and client-facing collaboration portals with role-based access." },
+              { title: "API Integrations", desc: "Reliable bidirectional data bridges, custom webhooks, payment gateways, and third-party SaaS synchronization." },
+              { title: "AI Applications", desc: "Custom software infused with contextual intelligence, document summarization, semantic search, and predictive workflows." },
+              { title: "AI Agents", desc: "Autonomous multi-step agents that perform complex tasks, triage data, and interface with backend systems." },
+              { title: "Workflow Automation", desc: "High-throughput automation pipelines using Python, n8n, and message queues to eliminate operational bottlenecks." },
+            ].map((svc) => (
+              <div key={svc.title} className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-purple-200 transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 text-base font-display">{svc.title}</h3>
+                  <span className="size-2 rounded-full bg-purple-600" />
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-end">
+            <Link 
+              href="/contact?intent=software-project" 
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 hover:text-purple-900"
+            >
+              <span>Start a Software Project</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 5. IT & SECURITY (Section 5)                                       */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-surface border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200">
+                Pillar 03 — IT & Security
+              </div>
+              <h2 className="mt-3 text-3xl font-extrabold text-primary sm:text-4xl font-display">
+                Keep your technology running and protected.
+              </h2>
+              <p className="mt-2 text-base text-slate-600 max-w-2xl">
+                Software is only as good as the infrastructure and security supporting it. We operate, monitor, maintain, and defend your IT environments with rigorous operational discipline.
+              </p>
+            </div>
+            <Button href="/solutions/it-and-security" variant="outline" className="shrink-0">
+              Explore IT & Security
+            </Button>
+          </div>
+
+          {/* IT & Security Capability Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Cloud Infrastructure", desc: "Architecture, provisioning, migration, and cost optimization across AWS, Microsoft Azure, and Oracle Cloud Infrastructure (OCI)." },
+              { title: "Servers & OS Administration", desc: "Proactive Linux (RHEL, Ubuntu, Debian, Rocky) and Windows Server sysadmin, kernel patching, and configuration management." },
+              { title: "Networks & Firewalls", desc: "Site-to-site IPsec & WireGuard VPNs, VPC routing, DNS management, and Next-Gen firewall defense (pfSense, Fortinet, AWS WAF)." },
+              { title: "Monitoring & Observability", desc: "24/7 telemetry monitoring with Prometheus, Grafana, synthetic probes, and automated escalation before downtime affects users." },
+              { title: "Backup & Recovery", desc: "3-2-1 immutable backup topologies, offsite air-gapping, database point-in-time recovery, and verified restoration drills." },
+              { title: "Disaster Recovery", desc: "Living DR runbooks, recovery time objective (RTO) and recovery point objective (RPO) guarantees with simulated failover exercises." },
+              { title: "Cybersecurity & SIEM", desc: "Centralized Wazuh SIEM log collection, real-time threat detection, anomalous behavior correlation, and compliance audit reporting." },
+              { title: "IAM & Access Hardening", desc: "Strict least-privilege identity access management, mandatory multi-factor authentication (MFA), and SSH key-only policies." },
+              { title: "Technical Support", desc: "Remote L1/L2 technical support specialists who inspect logs, reproduce issues in staging, and resolve technical tickets." },
+            ].map((svc) => (
+              <div key={svc.title} className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-emerald-200 transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-slate-900 text-base font-display">{svc.title}</h3>
+                  <span className="size-2 rounded-full bg-emerald-600" />
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">{svc.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-end">
+            <Link 
+              href="/contact?intent=it-environment" 
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-900"
+            >
+              <span>Discuss Your IT Environment</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 6. END-TO-END TECHNOLOGY SECTION (Section 6)                       */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-950/80 px-3 py-1 rounded-full border border-blue-800">
+              The Unified Ecosystem
+            </span>
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl font-display">
+              One technology partner. From build to ongoing operations.
+            </h2>
+            <p className="mt-4 text-base text-slate-400 leading-relaxed">
+              Most companies struggle because they juggle four disconnected vendors: a web agency that doesn’t understand backend code, developers who don’t operate servers, an IT provider that doesn't understand custom applications, and security consultants who only write PDFs. Elvtera unifies the entire lifecycle.
+            </p>
+          </div>
+
+          {/* Sequential Lifecycle Flow */}
+          <div className="mt-16 max-w-5xl mx-auto">
+            <div className="space-y-4">
+              
+              {/* Step 1: Business Setup */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-xl bg-blue-900/60 border border-blue-700 text-blue-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                    01
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">Business Setup & Digital Systems</h3>
+                    <p className="text-xs text-slate-400">Establish the operational foundation and customer touchpoints.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-blue-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+                  <span>Website</span>
+                  <span className="text-slate-600">→</span>
+                  <span>CRM</span>
+                  <span className="text-slate-600">→</span>
+                  <span>GTM Pipelines</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Business Systems</span>
+                </div>
+              </div>
+
+              {/* Connecting arrow */}
+              <div className="flex justify-center -my-2 text-slate-600">
+                <ArrowRight className="size-4 rotate-90" />
+              </div>
+
+              {/* Step 2: Software */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-xl bg-purple-900/60 border border-purple-700 text-purple-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                    02
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">Software Engineering & Automation</h3>
+                    <p className="text-xs text-slate-400">Engineer custom tools tailored to the company&apos;s unique process.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-purple-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+                  <span>Custom Applications</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Automation</span>
+                  <span className="text-slate-600">→</span>
+                  <span>AI Workflows</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Integrations</span>
+                </div>
+              </div>
+
+              {/* Connecting arrow */}
+              <div className="flex justify-center -my-2 text-slate-600">
+                <ArrowRight className="size-4 rotate-90" />
+              </div>
+
+              {/* Step 3: Infrastructure */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-xl bg-cyan-900/60 border border-cyan-700 text-cyan-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                    03
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">Cloud & Infrastructure Operations</h3>
+                    <p className="text-xs text-slate-400">Provide high-availability compute, storage, and networking.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+                  <span>Cloud (AWS/Azure/OCI)</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Servers</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Networks</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Databases</span>
+                </div>
+              </div>
+
+              {/* Connecting arrow */}
+              <div className="flex justify-center -my-2 text-slate-600">
+                <ArrowRight className="size-4 rotate-90" />
+              </div>
+
+              {/* Step 4: Security */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-xl bg-emerald-900/60 border border-emerald-700 text-emerald-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                    04
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">Cybersecurity & Protection</h3>
+                    <p className="text-xs text-slate-400">Continuous telemetry monitoring, hardening, and threat mitigation.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-emerald-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+                  <span>Monitoring</span>
+                  <span className="text-slate-600">→</span>
+                  <span>IAM Least Privilege</span>
+                  <span className="text-slate-600">→</span>
+                  <span>SIEM Telemetry</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Security Operations</span>
+                </div>
+              </div>
+
+              {/* Connecting arrow */}
+              <div className="flex justify-center -my-2 text-slate-600">
+                <ArrowRight className="size-4 rotate-90" />
+              </div>
+
+              {/* Step 5: Support */}
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="size-10 rounded-xl bg-amber-900/60 border border-amber-700 text-amber-400 flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                    05
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-white text-base">Support & Continuous Improvement</h3>
+                    <p className="text-xs text-slate-400">Ongoing engineering support and performance optimization after launch.</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-amber-300 bg-slate-950 px-3 py-2 rounded-lg border border-slate-800">
+                  <span>IT Support</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Technical Support</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Customer Support</span>
+                  <span className="text-slate-600">→</span>
+                  <span>Continuous Tuning</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 7. PROBLEMS WE SOLVE (Section 8)                                   */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-white border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Practical Solutions"
+            title="Real business challenges we solve every day."
+            description="Instead of pitching abstract jargon, we address the exact operational friction points that constrain growing businesses."
+          />
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {problemsWeSolve.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-slate-200/90 bg-surface p-7 flex flex-col justify-between hover:border-secondary/40 hover:shadow-sm transition-all"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider bg-white px-2.5 py-1 rounded border border-slate-200">
+                        {item.pillar}
+                      </span>
+                      <Icon className="size-4 text-slate-400" />
+                    </div>
+                    <h3 className="text-base font-bold text-primary font-display leading-snug">
+                      {item.problem}
+                    </h3>
+                    <p className="mt-3 text-xs text-slate-600 leading-relaxed border-t border-slate-200/60 pt-3">
+                      {item.solution}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-3 border-t border-slate-200/40">
+                    <Link
+                      href={item.route}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
+                    >
+                      <span>Explore this solution</span>
+                      <ArrowRight className="size-3" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 8. WHO WE HELP (Section 7)                                         */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-surface border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Target Profiles"
+            title="Who We Help"
+            description="We serve ambitious businesses and technology leaders who require reliable execution, disciplined operations, and dependable technical capabilities."
+          />
+
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industriesGrid.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <div key={ind.name} className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-slate-300 transition-all">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-slate-50 text-slate-700 border border-slate-200 mb-4">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="font-bold text-primary text-base font-display">{ind.name}</h3>
+                  <p className="mt-2 text-xs text-slate-500 leading-relaxed">{ind.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link href="/industries" className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline">
+              <span>View industry-specific capabilities & technical frameworks</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 9. ENGAGEMENT MODELS (Section 9)                                   */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-white border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Engagement Models"
+            title="How businesses work with Elvtera."
+            description="Engage our team for defined projects, retain ongoing operational stewardship, or extend your internal technology team with specialized engineering capacity."
+          />
+
+          <div className="mt-14 grid gap-8 lg:grid-cols-3">
+            
+            {/* Model 1: Project-Based */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+              <div>
+                <span className="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                  01 · Fixed Scope
+                </span>
+                <h3 className="mt-4 text-2xl font-bold text-primary font-display">
+                  Project-Based
+                </h3>
+                <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                  For defined technical initiatives with clear milestones, concrete deliverables, and transparent timeline commitments.
+                </p>
+                <div className="mt-6 border-t border-slate-100 pt-5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-3">
+                    Ideal For:
+                  </span>
+                  <ul className="space-y-2 text-xs text-slate-600">
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Business websites & digital setups</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Custom software & internal tools</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>CRM & ERP implementations</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Cloud migration & infrastructure rebuilds</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Security hardening & SIEM configuration</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>End-to-end automation pipelines</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <Button href="/contact?model=project" variant="primary" className="w-full">
+                  Start a Project
+                </Button>
+              </div>
             </div>
 
-            {/* Quick intent links */}
-            <div className="mt-12 pt-8 border-t border-slate-800 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
-              <Link href="/infrastructure" className="hover:text-white transition-colors">
-                → Discuss Infrastructure
-              </Link>
-              <Link href="/security" className="hover:text-white transition-colors">
-                → Talk to a Security Specialist
-              </Link>
-              <Link href="/customer-support" className="hover:text-white transition-colors">
-                → Discuss Support Requirements
-              </Link>
-              <Link href="/software-automation" className="hover:text-white transition-colors">
-                → Start a Software Project
-              </Link>
+            {/* Model 2: Ongoing Support */}
+            <div className="rounded-3xl border-2 border-secondary bg-surface p-8 shadow-sm flex flex-col justify-between relative">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-secondary text-white font-mono text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider shadow-sm">
+                Recommended For Long-Term Scale
+              </div>
+              <div>
+                <span className="font-mono text-xs font-bold text-secondary bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wider">
+                  02 · SLA-Backed
+                </span>
+                <h3 className="mt-4 text-2xl font-bold text-primary font-display">
+                  Ongoing Support
+                </h3>
+                <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                  Continuous day-to-day operations, proactive monitoring, patch management, and support under agreed availability guarantees.
+                </p>
+                <div className="mt-6 border-t border-slate-200/80 pt-5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-3">
+                    Ideal For:
+                  </span>
+                  <ul className="space-y-2 text-xs text-slate-600">
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>Proactive IT Operations & Sysadmin</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>Cloud & server infrastructure management</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>SIEM monitoring & security operations</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>Remote L1/L2 technical support & triage</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>Continuous software maintenance & bug fixes</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-secondary" />
+                      <span>Ongoing business technology support</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-slate-200/80">
+                <Button href="/contact?model=ongoing" variant="primary" className="w-full">
+                  Discuss Ongoing Support
+                </Button>
+              </div>
+            </div>
+
+            {/* Model 3: Extended Technology Team */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xs flex flex-col justify-between hover:border-slate-300 transition-all">
+              <div>
+                <span className="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full uppercase tracking-wider">
+                  03 · Embedded Capacity
+                </span>
+                <h3 className="mt-4 text-2xl font-bold text-primary font-display">
+                  Extended Technology Team
+                </h3>
+                <p className="mt-2 text-xs text-slate-500 leading-relaxed">
+                  An extension of your technology team. Add specialized engineering capacity directly into your communication channels without building an expensive internal department from scratch.
+                </p>
+                <div className="mt-6 border-t border-slate-100 pt-5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-3">
+                    Embedded Roles:
+                  </span>
+                  <ul className="space-y-2 text-xs text-slate-600">
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Dedicated Infrastructure & Linux Engineers</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Cloud / DevOps Engineers (AWS/Azure/OCI)</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Cybersecurity & SIEM Engineers</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>Senior Full-Stack Software Engineers</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>L1/L2 Technical Support Specialists</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="size-1.5 rounded-full bg-slate-900" />
+                      <span>No agency markups or staffing churn</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-8 pt-6 border-t border-slate-100">
+                <Button href="/contact?model=extended-team" variant="outline" className="w-full">
+                  Extend Your Team
+                </Button>
+              </div>
             </div>
 
           </div>
         </div>
       </section>
+
+      {/* ================================================================== */}
+      {/* 10. HOW WE WORK (Section 10)                                       */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-surface border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Process"
+            title="How We Work"
+            description="A disciplined, transparent 5-step methodology that replaces guesswork with clear architectural specifications and reliable execution."
+          />
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {howWeWorkSteps.map((step) => (
+              <div key={step.step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-xs font-bold text-secondary bg-blue-50 px-2 py-1 rounded">
+                    {step.step}
+                  </span>
+                  <h3 className="mt-4 font-bold text-lg text-primary font-display">
+                    {step.name}
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link href="/how-we-work" className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline">
+              <span>Read complete process documentation & operational standards</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 11. TRUST SECTION (Section 11)                                     */}
+      {/* ================================================================== */}
+      <section className="py-20 lg:py-24 bg-white border-b border-line">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <SectionHeading
+            eyebrow="Trust & Transparency"
+            title="Built around practical technology operations."
+            description="We do not make inflated promises or invent synthetic metrics. We focus on verifiable architecture, documented runbooks, and disciplined technology engineering."
+          />
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="p-7 rounded-2xl border border-slate-200 bg-surface">
+              <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-white mb-4">
+                <FileText className="size-5" />
+              </div>
+              <h3 className="font-bold text-base text-primary font-display">Living Runbooks</h3>
+              <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                Every server configuration, database failover routine, deployment step, and support escalation workflow is documented down to the exact command. Nothing depends on undocumented tribal knowledge.
+              </p>
+            </div>
+
+            <div className="p-7 rounded-2xl border border-slate-200 bg-surface">
+              <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-white mb-4">
+                <ShieldCheck className="size-5" />
+              </div>
+              <h3 className="font-bold text-base text-primary font-display">Zero-Trust Access Control</h3>
+              <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                All client environments are isolated under least-privilege identity boundaries with mandatory multi-factor authentication (MFA), audit logging, and strict data processing addendums.
+              </p>
+            </div>
+
+            <div className="p-7 rounded-2xl border border-slate-200 bg-surface">
+              <div className="flex size-10 items-center justify-center rounded-xl bg-slate-900 text-white mb-4">
+                <Repeat className="size-5" />
+              </div>
+              <h3 className="font-bold text-base text-primary font-display">Full Code & Infrastructure Ownership</h3>
+              <p className="mt-2 text-xs text-slate-600 leading-relaxed">
+                You retain complete, unencumbered ownership of all custom software repositories, cloud tenants, configuration code, and documentation. No vendor lock-in or proprietary traps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================== */}
+      {/* 12. FINAL HOMEPAGE CTA                                             */}
+      {/* ================================================================== */}
+      <CtaSection
+        title="Ready to build, operate, and secure your technology?"
+        description="Whether you need to engineer new business systems, build custom software, stabilize your IT operations, or protect your infrastructure, Elvtera provides the end-to-end capabilities your business needs."
+        buttonLabel="Talk to Elvtera"
+        buttonHref="/contact"
+      />
     </>
   );
 }

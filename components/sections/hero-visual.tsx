@@ -5,80 +5,96 @@ import {
   Code2, 
   Server, 
   ShieldCheck, 
-  Headphones, 
-  Activity, 
-  CheckCircle2, 
-  ArrowUpRight,
-  Terminal,
+  Briefcase,
+  ArrowRight,
+  Sparkles,
+  Workflow,
+  Cpu,
+  CheckCircle2,
+  Activity,
+  Layers,
   Zap,
+  Globe,
+  Database,
   Lock,
-  RefreshCw
+  Headphones
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export function HeroVisual() {
-  const [activeTab, setActiveTab] = useState<"build" | "operate" | "secure" | "support">("operate");
+  const [activeTab, setActiveTab] = useState<"business" | "software" | "it-security">("software");
 
   const pillars = [
     {
-      id: "build",
-      name: "BUILD",
-      label: "Custom Software & Automation",
+      id: "business" as const,
+      number: "01",
+      name: "Business Solutions",
+      subline: "Build and scale systems",
+      icon: Briefcase,
+      badge: "Operations Online",
+      badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+      accentBorder: "border-blue-600",
+      accentBg: "bg-blue-600",
+      metricTitle: "Process Throughput",
+      metricValue: "99.8%",
+      metricSub: "Automated routing active",
+      stack: "CRM · GTM Pipelines · Helpdesk · Zapier / n8n · Web Systems",
+      components: [
+        { label: "CRM & Sales Automation", detail: "Multi-stage pipeline synced", status: "Active" },
+        { label: "GTM Lead Inbound Engine", detail: "Enrichment & auto-triage", status: "Live" },
+        { label: "Customer Support Desk", detail: "Omnichannel ticket SLA", status: "Ready" },
+      ],
+      link: "/solutions/business-solutions",
+      linkText: "Explore Business Solutions",
+    },
+    {
+      id: "software" as const,
+      number: "02",
+      name: "Software Solutions",
+      subline: "Build custom technology",
       icon: Code2,
-      accent: "text-purple-600 bg-purple-50 border-purple-200",
-      activeBorder: "border-purple-600",
-      status: "Pipeline Active",
-      badge: "Release v3.4.1",
-      metricTitle: "API Latency",
+      badge: "Production Deployed",
+      badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+      accentBorder: "border-purple-600",
+      accentBg: "bg-purple-600",
+      metricTitle: "API Response Time",
       metricValue: "42ms",
-      detail: "Next.js · TypeScript · PostgreSQL · n8n Pipelines",
-      items: ["Microservices API Deployed", "Postgres Migration Verified", "Webhook Runner Synced"],
+      metricSub: "Zero downtime deployment",
+      stack: "Next.js · TypeScript · PostgreSQL · REST/GraphQL · AI Workflows",
+      components: [
+        { label: "Custom Business Platform", detail: "Role-based portals & admin", status: "Active" },
+        { label: "AI Agent Orchestration", detail: "Context-aware LLM pipeline", status: "Live" },
+        { label: "API Integrations & Sync", detail: "Bidirectional ERP connectors", status: "Synced" },
+      ],
+      link: "/solutions/software-solutions",
+      linkText: "Explore Software Solutions",
     },
     {
-      id: "operate",
-      name: "OPERATE",
-      label: "Infrastructure & Managed IT",
-      icon: Server,
-      accent: "text-blue-600 bg-blue-50 border-blue-200",
-      activeBorder: "border-blue-600",
-      status: "99.98% Uptime",
-      badge: "Healthy Clusters",
-      metricTitle: "Fleet Telemetry",
-      metricValue: "28 Nodes",
-      detail: "Linux / Windows · AWS / Azure / OCI · Prometheus",
-      items: ["Kernel Hardening Applied", "Postgres WAL Sync Active", "Automated Snapshot Complete"],
-    },
-    {
-      id: "secure",
-      name: "SECURE",
-      label: "Cybersecurity & Security Operations",
+      id: "it-security" as const,
+      number: "03",
+      name: "IT & Security",
+      subline: "Operate and protect",
       icon: ShieldCheck,
-      accent: "text-emerald-600 bg-emerald-50 border-emerald-200",
-      activeBorder: "border-emerald-600",
-      status: "0 Critical Vulns",
-      badge: "SIEM Ingestion Active",
-      metricTitle: "Auth Posture",
-      metricValue: "100% MFA",
-      detail: "Wazuh SIEM · IAM Least Privilege · EDR Agents",
-      items: ["Syslog Stream Verified", "SSH Key-Only Enforced", "Vulnerability Scan Clear"],
-    },
-    {
-      id: "support",
-      name: "SUPPORT",
-      label: "Remote Product & Tech Support",
-      icon: Headphones,
-      accent: "text-amber-600 bg-amber-50 border-amber-200",
-      activeBorder: "border-amber-600",
-      status: "SLA Met 99.4%",
-      badge: "L1 / L2 Triage",
-      metricTitle: "Avg Resolution",
-      metricValue: "18 mins",
-      detail: "SaaS Product Support · Ticket Triage · Bug Escalations",
-      items: ["L1 Frontline Queue Cleared", "Staging Bug Repro Passed", "Docs Updated in Zendesk"],
+      badge: "Fleet Protected",
+      badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+      accentBorder: "border-emerald-600",
+      accentBg: "bg-emerald-600",
+      metricTitle: "Uptime & Posture",
+      metricValue: "99.98%",
+      metricSub: "0 critical vulnerabilities",
+      stack: "AWS / Azure / OCI · Linux & Windows · SIEM · Terraform · EDR",
+      components: [
+        { label: "Cloud & Server Fleet", detail: "Auto-scaling & WAL backups", status: "Nominal" },
+        { label: "SIEM & SecOps Telemetry", detail: "Continuous log correlation", status: "Enforced" },
+        { label: "24/7 IT Technical Support", detail: "Proactive uptime monitoring", status: "Guaranteed" },
+      ],
+      link: "/solutions/it-and-security",
+      linkText: "Explore IT & Security",
     },
   ];
 
-  const current = pillars.find((p) => p.id === activeTab) || pillars[1];
+  const current = pillars.find((p) => p.id === activeTab) || pillars[0];
 
   return (
     <div className="relative select-none w-full max-w-xl mx-auto lg:max-w-none">
@@ -97,96 +113,162 @@ export function HeroVisual() {
               <span className="relative inline-flex rounded-full size-2.5 bg-emerald-500"></span>
             </span>
             <span className="text-xs font-bold text-slate-900 tracking-wide font-mono uppercase">
-              ELVTERA CONTROL MATRIX
+              ELVTERA END-TO-END PLATFORM
             </span>
           </div>
-          <span className="text-[11px] font-semibold text-slate-500 font-mono">
-            {current.status}
-          </span>
+          <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-500 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200/80">
+            <Activity className="size-3 text-emerald-600 animate-pulse" />
+            <span>3 Pillars Synced</span>
+          </div>
         </div>
 
-        {/* 4 Interactive Pillars Switcher */}
-        <div className="mt-4 grid grid-cols-4 gap-2">
-          {pillars.map((p) => {
-            const Icon = p.icon;
-            const isActive = activeTab === p.id;
+        {/* 3 Pillar Tabs */}
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
+            const isSelected = activeTab === pillar.id;
             return (
               <button
-                key={p.id}
-                onClick={() => setActiveTab(p.id as any)}
-                className={`flex flex-col items-center justify-center p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
-                  isActive 
-                    ? "bg-slate-900 text-white border-slate-900 shadow-md scale-[1.02]" 
-                    : "bg-slate-50 text-slate-600 border-slate-200/70 hover:bg-slate-100"
+                key={pillar.id}
+                onClick={() => setActiveTab(pillar.id)}
+                className={`relative flex flex-col items-start p-2.5 sm:p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-slate-50/90 border-slate-300 shadow-xs"
+                    : "border-slate-100 bg-white hover:bg-slate-50/50"
                 }`}
               >
-                <Icon className={`size-4 mb-1 ${isActive ? "text-blue-400" : "text-slate-500"}`} />
-                <span className="text-[10px] font-extrabold tracking-wider font-mono">
-                  {p.name}
-                </span>
+                <div className="flex items-center justify-between w-full mb-1">
+                  <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded ${
+                    pillar.id === "business" ? "text-blue-700 bg-blue-50" :
+                    pillar.id === "software" ? "text-purple-700 bg-purple-50" :
+                    "text-emerald-700 bg-emerald-50"
+                  }`}>
+                    {pillar.number}
+                  </span>
+                  <Icon className={`size-3.5 ${isSelected ? "text-slate-900" : "text-slate-400"}`} />
+                </div>
+                <div className="text-[11px] sm:text-xs font-bold text-slate-900 line-clamp-1 leading-snug">
+                  {pillar.name}
+                </div>
+                <div className="text-[10px] text-slate-500 line-clamp-1 hidden sm:block">
+                  {pillar.subline}
+                </div>
+
+                {isSelected && (
+                  <motion.div
+                    layoutId="activeTabIndicator"
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 ${pillar.accentBg} rounded-full`}
+                  />
+                )}
               </button>
             );
           })}
         </div>
 
-        {/* Live Pillar Inspector View */}
-        <motion.div 
-          key={current.id}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="mt-5 rounded-xl border border-slate-100 bg-slate-50/80 p-4"
-        >
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-bold tracking-wider uppercase text-secondary font-mono bg-white px-2 py-0.5 rounded border border-slate-200">
-                  {current.name} STACK
+        {/* Interactive Content Area */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.16 }}
+            className="mt-4 space-y-4"
+          >
+            {/* Metric + Status Ribbon */}
+            <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+              <div>
+                <span className="text-[11px] font-medium text-slate-500 block">
+                  {current.metricTitle}
                 </span>
-                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                <span className="text-xl sm:text-2xl font-extrabold text-slate-900 font-display tracking-tight">
+                  {current.metricValue}
+                </span>
+                <span className="text-[10px] text-slate-500 block">
+                  {current.metricSub}
+                </span>
+              </div>
+              <div className="flex flex-col justify-between items-end text-right">
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full border ${current.badgeColor}`}>
                   {current.badge}
                 </span>
+                <span className="text-[10px] font-mono text-slate-400">
+                  Live Telemetry
+                </span>
               </div>
-              <h4 className="mt-2 text-base font-bold text-slate-900 font-display">
-                {current.label}
-              </h4>
-              <p className="mt-0.5 text-xs text-slate-500 font-medium">
-                {current.detail}
-              </p>
             </div>
 
-            <div className="text-right pl-3 shrink-0">
-              <span className="text-[10px] uppercase font-semibold text-slate-400 block">
-                {current.metricTitle}
+            {/* Architecture Items */}
+            <div className="space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block px-1">
+                Capability Architecture
               </span>
-              <span className="text-xl font-extrabold text-slate-900 font-display">
-                {current.metricValue}
-              </span>
-            </div>
-          </div>
-
-          {/* Operational Checks */}
-          <div className="mt-4 pt-3.5 border-t border-slate-200/60 space-y-2">
-            {current.items.map((it, idx) => (
-              <div key={idx} className="flex items-center justify-between text-xs text-slate-700">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="size-3.5 text-emerald-600 shrink-0" />
-                  <span className="font-medium text-[11px] sm:text-xs">{it}</span>
+              {current.components.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between p-2.5 rounded-lg border border-slate-100 bg-white hover:border-slate-200 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
+                    <div>
+                      <span className="text-xs font-semibold text-slate-800 block leading-snug">
+                        {item.label}
+                      </span>
+                      <span className="text-[11px] text-slate-500">
+                        {item.detail}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                    {item.status}
+                  </span>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400">PASSED</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+              ))}
+            </div>
 
-        {/* Footer Relationship Ribbon */}
-        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-          <span className="font-semibold text-slate-700">
-            One Partner. Full Operational Stack.
-          </span>
-          <span className="font-mono text-secondary font-bold">
-            BUILD · OPERATE · SECURE · SUPPORT
-          </span>
+            {/* Technology stack strip */}
+            <div className="p-3 rounded-lg bg-slate-900 text-white flex items-center justify-between gap-2 text-xs">
+              <div className="space-y-0.5 overflow-hidden">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
+                  Technology Foundation
+                </span>
+                <p className="text-[11px] text-slate-200 truncate font-mono">
+                  {current.stack}
+                </p>
+              </div>
+              <Link
+                href={current.link}
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-400 hover:text-white shrink-0 ml-2 group"
+              >
+                <span>Details</span>
+                <ArrowRight className="size-3 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </div>
+
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Bottom End-to-End Interconnection Bar */}
+        <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <div className="flex items-center gap-1.5 text-[11px]">
+            <span className="size-1.5 rounded-full bg-blue-600" />
+            <span>Build</span>
+            <span className="text-slate-300">→</span>
+            <span className="size-1.5 rounded-full bg-purple-600" />
+            <span>Software</span>
+            <span className="text-slate-300">→</span>
+            <span className="size-1.5 rounded-full bg-emerald-600" />
+            <span>Operate</span>
+            <span className="text-slate-300">→</span>
+            <span className="font-semibold text-slate-700">Support</span>
+          </div>
+          <Link
+            href="/how-we-work"
+            className="text-[11px] font-semibold text-secondary hover:underline flex items-center gap-1"
+          >
+            <span>How it works</span>
+            <ArrowRight className="size-3" />
+          </Link>
         </div>
 
       </div>

@@ -10,9 +10,9 @@ export const site = {
   shortName: "ELVTERA",
   tagline: "Build. Operate. Secure. Support.",
   description:
-    "Elvtera helps businesses build software, operate infrastructure, secure their technology, and support the products their customers rely on.",
+    "Elvtera helps businesses build digital systems, develop custom software, operate their IT, and secure the technology they depend on.",
   supportingStatement:
-    "Technology solutions for businesses that need reliable infrastructure, secure operations, customer support, and custom software.",
+    "From business systems and custom software to IT operations and security, Elvtera provides the technology capabilities businesses need to build and grow.",
   url: "https://elvtera.com",
   email: "hello@elvtera.com",
   addresses: [
@@ -41,45 +41,128 @@ export const site = {
 
 /** Primary navigation shown in the header. */
 export const mainNav = [
+  { label: "Home", href: "/" },
   { label: "Solutions", href: "/solutions" },
   { label: "Industries", href: "/industries" },
-  { label: "Security & Trust", href: "/security-and-trust" },
+  { label: "How We Work", href: "/how-we-work" },
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
-/** Solutions categorized under the two primary verticals. */
+/** Solutions categorized under the three balanced primary pillars. */
 export const solutionsNav = [
   {
-    vertical: "Infrastructure, Security & Customer Operations",
-    tagline: "Keep your technology reliable, secure, and supported with a remote team that can operate infrastructure and support your customers.",
+    pillar: "01",
+    vertical: "Business Solutions",
+    href: "/solutions/business-solutions",
+    tagline: "Build and scale the systems behind your business.",
     items: [
       {
-        name: "Infrastructure & Managed IT",
-        href: "/infrastructure",
-        description: "Cloud management, Linux/Windows servers, databases, networking, monitoring, and backups.",
+        name: "Websites & Digital Setup",
+        href: "/solutions/business-solutions#websites",
+        description: "Modern high-performance business websites, technical SEO, and conversion infrastructure.",
       },
       {
-        name: "Security Operations",
-        href: "/security",
-        description: "Threat detection, SIEM, IAM/MFA, endpoint security, hardening, and incident response support.",
+        name: "GTM & Sales Systems",
+        href: "/solutions/business-solutions#gtm",
+        description: "Go-to-market architecture, inbound routing, lead tracking, and pipeline ops.",
       },
       {
-        name: "Customer & Product Support",
-        href: "/customer-support",
-        description: "Extend your support with trained remote L1/L2 technical and product support professionals.",
+        name: "CRM Implementation",
+        href: "/solutions/crm-erp",
+        description: "Clean CRM adoption, custom pipelines, and sales automation built around your process.",
+      },
+      {
+        name: "Marketing Automation",
+        href: "/solutions/business-solutions#marketing",
+        description: "Lifecycle email, behavioral triggers, audience segmentation, and attribution.",
+      },
+      {
+        name: "Business Process Automation",
+        href: "/solutions/automation-ai",
+        description: "Eliminate repetitive manual admin, invoicing friction, and fragmented spreadsheets.",
+      },
+      {
+        name: "Customer Support Systems",
+        href: "/solutions/technical-support",
+        description: "Omnichannel helpdesk setup, ticketing workflows, SLA routing, and knowledge bases.",
       },
     ],
   },
   {
-    vertical: "Custom Software & Automation",
-    tagline: "Build the software and automated systems your business needs instead of forcing your operations into generic tools.",
+    pillar: "02",
+    vertical: "Software Solutions",
+    href: "/solutions/software-solutions",
+    tagline: "Build the technology your business needs.",
     items: [
       {
-        name: "Custom Software & Automation",
-        href: "/software-automation",
-        description: "Custom web applications, business platforms, workflow automation, AI agents, and integrations.",
+        name: "Custom Software Development",
+        href: "/solutions/custom-software",
+        description: "Purpose-built web applications and platforms engineered to your exact operational workflows.",
+      },
+      {
+        name: "CRM / ERP Development",
+        href: "/solutions/crm-erp",
+        description: "Unified operations backbones, inventory, procurement, and multi-department record systems.",
+      },
+      {
+        name: "SaaS Applications",
+        href: "/solutions/software-solutions#saas",
+        description: "Scalable multi-tenant cloud software with modern subscription and auth architectures.",
+      },
+      {
+        name: "Internal Tools & Portals",
+        href: "/solutions/custom-software#internal-tools",
+        description: "Executive dashboards, operational portals, and secure internal administration consoles.",
+      },
+      {
+        name: "API & System Integrations",
+        href: "/solutions/software-solutions#integrations",
+        description: "Bi-directional API sync, legacy modernization, webhooks, and payment rails.",
+      },
+      {
+        name: "AI Applications & Agents",
+        href: "/solutions/automation-ai",
+        description: "Intelligent agent workflows, context-aware LLM apps, chatbots, and automated voice agents.",
+      },
+    ],
+  },
+  {
+    pillar: "03",
+    vertical: "IT & Security",
+    href: "/solutions/it-and-security",
+    tagline: "Keep your technology running, secure, and ready to scale.",
+    items: [
+      {
+        name: "IT Operations & Sysadmin",
+        href: "/solutions/it-operations",
+        description: "Proactive Linux & Windows server administration, patch governance, and telemetry.",
+      },
+      {
+        name: "Cloud & Infrastructure",
+        href: "/solutions/cloud-infrastructure",
+        description: "AWS, Azure, and OCI cloud architecture, IaC Terraform pipelines, and cost optimization.",
+      },
+      {
+        name: "Cybersecurity & SecOps",
+        href: "/solutions/cybersecurity",
+        description: "SIEM log monitoring, IAM least-privilege, MFA enforcement, and system hardening.",
+      },
+      {
+        name: "Monitoring & Observability",
+        href: "/solutions/it-operations#monitoring",
+        description: "24/7 metrics, synthetic uptime probes, automated alert routing, and incident response.",
+      },
+      {
+        name: "Backup & Disaster Recovery",
+        href: "/solutions/cloud-infrastructure#backup",
+        description: "Immutable backups, offsite retention, RTO/RPO enforcement, and scheduled restore drills.",
+      },
+      {
+        name: "Technical & Helpdesk Support",
+        href: "/solutions/technical-support",
+        description: "Trained remote L1/L2 technical support, ticket triage, and user escalations.",
       },
     ],
   },
