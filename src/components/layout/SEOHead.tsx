@@ -20,7 +20,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
   useEffect(() => {
     // Set page title
-    document.title = `${title} | Elvtera`;
+    const fullTitle = title.toLowerCase().includes('elvtera')
+      ? title
+      : `${title} | Elvtera`;
+    document.title = fullTitle;
 
     // Helper to set or create meta tag
     const updateMeta = (name: string, content: string, isProperty = false) => {

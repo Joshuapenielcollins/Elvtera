@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Done-For-You Client Acquisition Partner"
+        title="Elvtera | B2B Intent-Based Outreach System"
         description="We put qualified calls on your calendar. You close. Outbound acquisition system finding active intent with zero ad spend."
         canonicalPath="/"
         jsonLd={jsonLd}
