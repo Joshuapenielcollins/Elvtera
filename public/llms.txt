@@ -1,0 +1,38 @@
+# Elvtera
+
+> Elvtera Business Solutions is a done-for-you B2B outbound partner. We watch for real buying signals (hiring, funding, new leaders, tech changes, expansion), reach out only to companies that fit a client's ideal customer profile, qualify every reply, and book qualified sales calls on the client's calendar. No ad spend. We also build business systems: websites, CRM pipelines, speed-to-lead automation and end-to-end business setups. Teams in India and the USA.
+
+Key facts:
+
+- Best fit: B2B companies with a proven offer and deals of roughly $5,000 or more.
+- Target: 25+ qualified calls a month within 30 days, depending on offer and market.
+- Clients approve every message before it is sent.
+- A no-risk pilot lets clients see real prospects before committing.
+- Contact: hello@elvtera.com
+
+## Services
+
+- [Signal-based outbound](https://elvtera.com/): The flagship service. Buying-signal research, outreach, reply qualification and calendar booking, done for you.
+- [Outbound in detail](https://elvtera.com/solutions/client-acquisition): Intent sourcing examples, what is included, fit criteria and FAQs.
+- [Business systems & websites](https://elvtera.com/solutions/business-systems): Conversion-focused websites, sales pipelines, speed-to-lead automation and follow-up.
+- [End-to-end launch](https://elvtera.com/solutions/launch): A four-week path from idea to first paying clients for consulting and service founders.
+- [All services](https://elvtera.com/solutions): The two services side by side, and how to choose.
+
+## How it works
+
+- [How it works](https://elvtera.com/how-it-works): The five stages over the first 90 days, with what Elvtera delivers and what the client does.
+- [Who we work with](https://elvtera.com/who-we-work-with): Sectors served, including agencies, IT services, consultancies, SaaS, recruitment, healthcare and manufacturing.
+- [FAQ](https://elvtera.com/faq): Answers about channels, deliverability, qualification, pipelines and the pilot.
+
+## Company
+
+- [About](https://elvtera.com/about): Principles and how the team works.
+- [Contact](https://elvtera.com/contact): Book a 30-minute call or send a written brief.
+- [Careers](https://elvtera.com/careers): Open roles.
+
+## Optional
+
+- [Privacy policy](https://elvtera.com/privacy-policy)
+- [Terms of service](https://elvtera.com/terms)
+- [Cookie policy](https://elvtera.com/cookie-policy)
+- [Sitemap](https://elvtera.com/sitemap.xml)

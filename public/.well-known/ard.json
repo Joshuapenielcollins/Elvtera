@@ -1,0 +1,52 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:elvtera.com:website:home",
+      "displayName": "Elvtera: signal-based B2B outbound",
+      "type": "text/html",
+      "url": "https://elvtera.com/",
+      "description": "Done-for-you B2B outbound that contacts only companies showing real buying signals and books qualified calls on the client's calendar.",
+      "tags": ["b2b", "outbound", "lead-generation", "intent-data", "sales"],
+      "representativeQueries": [
+        "Who can run signal-based outbound for my B2B company?",
+        "Done-for-you lead generation that books qualified sales calls",
+        "Outbound agency that uses buying intent signals instead of cold lists"
+      ]
+    },
+    {
+      "identifier": "urn:air:elvtera.com:website:business-systems",
+      "displayName": "Elvtera business systems & websites",
+      "type": "text/html",
+      "url": "https://elvtera.com/solutions/business-systems",
+      "description": "Websites, CRM pipelines, speed-to-lead automation and end-to-end business setup for B2B and service companies.",
+      "tags": ["websites", "crm", "sales-automation", "speed-to-lead"],
+      "representativeQueries": [
+        "Who can build a B2B website and sales pipeline for my company?",
+        "Speed-to-lead automation and CRM setup service",
+        "Help launching a consulting business from idea to first clients"
+      ]
+    },
+    {
+      "identifier": "urn:air:elvtera.com:docs:llms",
+      "displayName": "Elvtera llms.txt",
+      "type": "text/markdown",
+      "url": "https://elvtera.com/llms.txt",
+      "description": "Plain-language summary of Elvtera's services with links to every key page, for AI agents and language models.",
+      "representativeQueries": [
+        "What services does Elvtera offer?",
+        "Summary of Elvtera for an AI assistant"
+      ]
+    },
+    {
+      "identifier": "urn:air:elvtera.com:website:contact",
+      "displayName": "Contact Elvtera or book a call",
+      "type": "text/html",
+      "url": "https://elvtera.com/contact",
+      "description": "Book a 30-minute call with the Elvtera team or send a written brief.",
+      "representativeQueries": [
+        "How do I book a call with Elvtera?",
+        "Contact Elvtera about outbound or business systems"
+      ]
+    }
+  ]
+}
