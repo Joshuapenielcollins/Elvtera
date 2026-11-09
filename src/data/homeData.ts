@@ -27,7 +27,7 @@ export const heroContent = {
 export const sampleBookingNotifications: BookingNotification[] = [
   {
     id: "bk-1",
-    companyName: "Logistics Fleet Co.",
+    companyName: "Lone Star Freight",
     title: "Operations Director",
     dealValue: "$18,500 ACV",
     channel: "Multi-channel intent",
@@ -276,3 +276,97 @@ export const finalCTAContent = {
   secondaryButtonText: "Book an Intro Call",
   calendlyUrl: "#book",
 };
+
+/* ───────────────────────── Redesign content ───────────────────────── */
+
+export interface SignalType {
+  label: string;
+  /** what the signal tells us */
+  means: string;
+  tone: 'butter' | 'mint' | 'sky' | 'lilac' | 'pink' | 'peach';
+  tag: string;
+}
+
+/** The kinds of buying signals we listen for, shown on the draggable board. */
+export const signalTypes: SignalType[] = [
+  { tag: 'Hiring', label: 'Hiring for the role you support', means: 'They are growing the team your service makes easier, or replaces.', tone: 'butter' },
+  { tag: 'Funding', label: 'Fresh funding round', means: 'New budget and a board expecting growth this quarter.', tone: 'mint' },
+  { tag: 'New leader', label: 'New decision-maker in the seat', means: 'New heads review vendors in their first 90 days.', tone: 'sky' },
+  { tag: 'Tech change', label: 'Switching tools or stack', means: 'A migration opens the door to rethink how the work gets done.', tone: 'lilac' },
+  { tag: 'Expansion', label: 'New office, market or facility', means: 'Expansion creates problems that need solving fast.', tone: 'peach' },
+  { tag: 'Social', label: 'Posting about the problem you fix', means: 'They are saying, in public, that it hurts.', tone: 'pink' },
+  { tag: 'Engagement', label: 'Engaging with competitors', means: 'Liking, commenting on or following people who sell what you sell.', tone: 'sky' },
+  { tag: 'Research', label: 'Researching your category', means: 'Comparing vendors and reading reviews across the web.', tone: 'butter' },
+];
+
+export interface SampleThread {
+  id: string;
+  company: string;
+  person: string;
+  role: string;
+  signal: string;
+  signalTag: string;
+  subject: string;
+  outbound: string;
+  reply: string;
+  checks: { label: string; value: string }[];
+  booked: string;
+}
+
+/** Illustrative threads for the inbox demo. Not real clients. */
+export const sampleThreads: SampleThread[] = [
+  {
+    id: 't1',
+    company: 'Lone Star Freight',
+    person: 'Megan C.',
+    role: 'Operations Director',
+    signalTag: 'Hiring',
+    signal: 'Posted 3 dispatcher roles this week and a job ad mentioning "manual route planning".',
+    subject: 'Your 3 dispatcher roles',
+    outbound:
+      'Hi Megan, saw you are hiring three dispatchers and the ad mentions manual route planning. We help fleets your size take most of that off the team. Worth a 20-minute look before the new hires start?',
+    reply: 'Timing is good, we are drowning in it. Thursday afternoon works.',
+    checks: [
+      { label: 'Fits your ICP', value: '140 staff, logistics, US' },
+      { label: 'Decision-maker', value: 'Owns ops budget' },
+      { label: 'Timeline', value: 'This quarter' },
+    ],
+    booked: 'Thu · 2:00 PM',
+  },
+  {
+    id: 't2',
+    company: 'Apex Cloud Services',
+    person: 'Daniel R.',
+    role: 'Head of Infrastructure',
+    signalTag: 'Tech change',
+    signal: 'Announced a move off their legacy hosting provider on LinkedIn.',
+    subject: 'The hosting move',
+    outbound:
+      'Hi Daniel, congrats on kicking off the migration. Most teams hit the same two snags around week three. Happy to share how we handled them for a similar team, no pitch.',
+    reply: 'Yes please. We are already seeing one of those. Can you do Monday?',
+    checks: [
+      { label: 'Fits your ICP', value: 'Series B, 80 engineers' },
+      { label: 'Decision-maker', value: 'Signs infra vendors' },
+      { label: 'Timeline', value: 'Migration live now' },
+    ],
+    booked: 'Mon · 11:30 AM',
+  },
+  {
+    id: 't3',
+    company: 'Beacon Health Group',
+    person: 'Sarah K.',
+    role: 'Managing Partner',
+    signalTag: 'New leader',
+    signal: 'Appointed a new COO 3 weeks ago. Opened a second clinic location.',
+    subject: 'Second clinic',
+    outbound:
+      'Hi Sarah, saw the second location just opened and you have a new COO in seat. That is usually when intake starts to creak. Open to comparing notes?',
+    reply: 'Looping in our new COO. We can both do Wednesday.',
+    checks: [
+      { label: 'Fits your ICP', value: '2 sites, 60 staff' },
+      { label: 'Decision-maker', value: 'Partner + COO' },
+      { label: 'Timeline', value: 'Next 60 days' },
+    ],
+    booked: 'Wed · 4:00 PM',
+  },
+];

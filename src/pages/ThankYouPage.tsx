@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
+import { useLocation } from 'react-router-dom';
 import { SEOHead } from '../components/layout/SEOHead';
-import { Button } from '../components/ui/Button';
-import { CALENDLY_URL } from '../data/siteConfig';
-import { CheckCircle2, Calendar, ArrowLeft } from 'lucide-react';
+import { openBookCall } from '../utils/analytics';
+import { Btn } from '../components/kit/Btn';
+import { Hand, Sticky } from '../components/kit/Paper';
 
 export const ThankYouPage: React.FC = () => {
   const location = useLocation();
@@ -12,51 +11,29 @@ export const ThankYouPage: React.FC = () => {
 
   return (
     <>
-      <SEOHead
-        title="Thank You"
-        description="Your submission has been received by Elvtera Business Solutions."
-        canonicalPath="/thank-you"
-      />
-
-      <Breadcrumbs items={[{ label: 'Thank You' }]} />
-
-      <section className="py-20 lg:py-32 bg-white">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-blue-50 text-[#0546F2] flex items-center justify-center mx-auto mb-6 border border-[#0546F2] rounded-2xl">
-            <CheckCircle2 className="w-10 h-10" />
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight mb-4">
-            Brief Received{state.name ? `, ${state.name}` : ''}.
+      <SEOHead title="Thank You" description="Your message has reached Elvtera Business Solutions." />
+      <section className="glow desk-grid flex min-h-[80vh] items-center pb-24 pt-36">
+        <div className="mx-auto max-w-2xl px-5 text-center">
+          <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-slate">Brief received</span>
+          <h1 className="display mt-5 text-[clamp(44px,6vw,76px)]">
+            Thank you{state.name ? `, ${state.name.split(' ')[0]}` : ''}. <span className="accent text-blue">We're on it.</span>
           </h1>
-          <p className="text-base text-neutral-600 mb-8 leading-relaxed">
-            Thank you for reaching out. We have logged your submission and an acquisition strategist will review your market details within 24 business hours.
+          <p className="mx-auto mt-6 max-w-lg text-[17px] leading-relaxed text-slate">
+            Our team will look at your market and reply within one business day
+            {state.email ? <> at <b className="font-medium text-ink">{state.email}</b></> : null}.
           </p>
-
-          <div className="p-8 bg-[#F4F5F7] border border-neutral-300 mb-10 text-left sm:text-center rounded-3xl shadow-sm">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0546F2] mb-2">
-              <Calendar className="w-4 h-4" /> Fast Track
-            </div>
-            <h3 className="text-lg font-black text-[#0B0F19] mb-2">
-              Want to speak right away?
-            </h3>
-            <p className="text-xs text-neutral-600 mb-6">
-              Skip waiting for an email response and schedule a 20-minute intro directly on our calendar.
-            </p>
-            <Button href={CALENDLY_URL} variant="primary" size="md">
-              Book a Call on Calendar
-            </Button>
+          <Sticky tone="butter" pin className="mx-auto mt-12 max-w-sm -rotate-2 p-6 text-left">
+            <p className="font-hand text-[22px] leading-tight">Don't want to wait? Grab a 30-minute slot on our calendar instead.</p>
+            <Btn variant="dark" arrow className="mt-4" onClick={openBookCall}>
+              Book a call
+            </Btn>
+          </Sticky>
+          <div className="mt-12">
+            <Btn variant="ghost" to="/">
+              Back to home
+            </Btn>
           </div>
-
-          <div>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-600 hover:text-[#0546F2]"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Return to Home</span>
-            </Link>
-          </div>
+          <Hand className="mt-6 text-[22px]">talk soon</Hand>
         </div>
       </section>
     </>

@@ -1,26 +1,18 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 
+/**
+ * Fades each page in on navigation.
+ *
+ * This is a plain CSS animation keyed on the path. It used to be framer-motion's
+ * AnimatePresence (mode="wait"), whose exit step could stall and leave the next
+ * page stuck at opacity 0 until a full refresh.
+ */
 export const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const location = useLocation();
-
+  const { pathname } = useLocation();
   return (
-    <div className="relative w-full">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+    <div key={pathname} className="page-in relative w-full">
+      {children}
     </div>
   );
 };

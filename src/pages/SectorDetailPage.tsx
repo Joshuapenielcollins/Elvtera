@@ -1,300 +1,194 @@
 import React from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { ArrowLeft, Check, Globe2, UserRound } from 'lucide-react';
 import { SEOHead } from '../components/layout/SEOHead';
 import { businessSectors } from '../data/whoWeWorkWithData';
-import { openPilotApply, openBookCall } from '../utils/analytics';
-import { DarkCtaSection } from '../components/common/DarkCtaSection';
-import { CALENDLY_URL } from '../data/siteConfig';
-import {
-  Check,
-  ArrowRight,
-  Building2,
-  Radio,
-  AlertCircle,
-  MapPin,
-  Users,
-  Globe,
-  Compass,
-} from 'lucide-react';
+import { openBookCall, openPilotApply } from '../utils/analytics';
+import { Btn } from '../components/kit/Btn';
+import { CTABand, NumberDot, PageHero } from '../components/kit/Bits';
+import { Hand, Reveal, SectionHead, SectionLabel, Sticky, Tone } from '../components/kit/Paper';
+
+const tones: Tone[] = ['butter', 'mint', 'sky', 'lilac'];
 
 export const SectorDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const sector = businessSectors.find((s) => s.slug === slug);
+  if (!sector) return <Navigate to="/who-we-work-with" replace />;
 
-  if (!sector) {
-    return <Navigate to="/who-we-work-with" replace />;
-  }
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Client Acquisition for ${sector.title}`,
-    provider: {
-      '@type': 'Organization',
-      name: 'Elvtera Business Solutions',
-      url: 'https://elvtera.com',
-    },
-    areaServed: sector.targetGeos.map((geo) => ({
-      '@type': 'AdministrativeArea',
-      name: geo,
-    })),
-    audience: sector.keyPersonas.map((persona) => ({
-      '@type': 'Audience',
-      audienceType: persona,
-    })),
-    description: sector.summary,
-  };
+  const others = businessSectors.filter((s) => s.slug !== sector.slug).slice(0, 4);
 
   return (
     <>
       <SEOHead
-        title={`Outbound Client Acquisition Playbook for ${sector.title} | Elvtera`}
-        description={`${sector.summary} Explore regional GEO targeting, decision-maker personas, and live intent signals for ${sector.title}.`}
+        title={`Outbound for ${sector.title}`}
+        description={sector.summary}
         canonicalPath={`/who-we-work-with/${sector.slug}`}
-        jsonLd={jsonLd}
+        jsonLd={{ '@context': 'https://schema.org', '@type': 'Service', name: `Signal-based outbound for ${sector.title}`, provider: { '@type': 'Organization', name: 'Elvtera Business Solutions' } }}
       />
 
-      <Breadcrumbs
-        items={[
-          { label: 'Who We Work With', href: '/who-we-work-with' },
-          { label: sector.title },
-        ]}
-      />
+      <PageHero
+        label={`Sector · ${sector.tagline}`}
+        title={
+          <>
+            Outbound for <span className="accent text-blue">{sector.title.toLowerCase()}.</span>
+          </>
+        }
+        sub={sector.summary}
+        actions={
+          <>
+            <Btn size="lg" variant="dark" onClick={openBookCall}>
+              Book a sector call
+            </Btn>
+            <Btn size="lg" variant="ghost" onClick={() => openPilotApply(`/who-we-work-with/${sector.slug}`)}>
+              Apply for a no-risk pilot
+            </Btn>
+          </>
+        }
+        aside={
+          <div className="ruled relative rounded-[3px] bg-cream py-8 pl-12 pr-8 shadow-float">
+            <span className="absolute inset-y-0 left-8 w-px bg-[#e8a0a0]" aria-hidden="true" />
+            <span
+              aria-hidden="true"
+              className="tape-stripe absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 rotate-2"
+              style={{ ['--tape' as string]: '#9cc3f2' }}
+            />
+            <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-slate">The challenge</div>
+            <p className="display mt-3 text-[clamp(22px,2.2vw,28px)] leading-[1.3]">{sector.challenge}</p>
+          </div>
+        }
+      >
+        <div className="relative mx-auto mt-10 max-w-6xl px-5">
+          <Link to="/who-we-work-with" className="inline-flex items-center gap-1.5 text-[14px] text-slate hover:text-ink">
+            <ArrowLeft className="h-4 w-4" /> All sectors
+          </Link>
+        </div>
+      </PageHero>
 
-      {/* Hero */}
-      <section className="py-16 lg:py-24 bg-white border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-neutral-100 border border-neutral-300 mb-6 text-xs font-mono font-bold uppercase tracking-wider text-black rounded-full">
-              <Building2 className="w-3.5 h-3.5 text-[#0546F2]" />
-              <span>Sector Playbook & Regional Coverage</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-black tracking-tight leading-[1.08] mb-6">
-              Done-for-you client acquisition for {sector.title}.
-            </h1>
-            <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed mb-8">
-              {sector.summary}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                type="button"
-                onClick={() => openPilotApply(`/who-we-work-with/${sector.slug}`)}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0546F2] text-white font-bold text-sm tracking-wide rounded-full hover:bg-[#0438c7] transition-all shadow-md cursor-pointer"
-              >
-                <span>Apply for a No-Risk Pilot</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                onClick={openBookCall}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-bold text-sm tracking-wide border border-black/20 rounded-full hover:bg-neutral-50 transition-all cursor-pointer"
-              >
-                <span>Schedule Sector Proof Call</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+      {/* Signals */}
+      <section className="desk-grid bg-canvas py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="01" note="Real examples">
+            Signals we watch
+          </SectionLabel>
+          <SectionHead
+            className="mt-10"
+            title={
+              <>
+                What "ready to buy" <span className="accent text-blue">looks like here.</span>
+              </>
+            }
+          />
+          <div className="mt-10 grid gap-10 md:grid-cols-2">
+            {sector.sampleIntentSignals.map((sig, i) => (
+              <Reveal key={sig} delay={i * 0.08}>
+                <div className={`relative ${i % 2 ? 'rotate-1' : '-rotate-1'}`}>
+                  <NumberDot n={i + 1} className="absolute -left-3 -top-3 z-10" />
+                  <Sticky tone={tones[i % tones.length]} pin className="p-7">
+                    <p className="font-hand text-[26px] leading-[1.15]">{sig}</p>
+                  </Sticky>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Core Sector Challenge */}
-      <section className="py-16 bg-neutral-50 border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white border border-black/10 p-8 sm:p-12 rounded-3xl shadow-xs">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-amber-700 mb-3">
-              <AlertCircle className="w-4 h-4 text-amber-600" />
-              <span>Core Market Bottleneck</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-black tracking-tight mb-4">
-              The acquisition challenge in {sector.title.toLowerCase()}.
-            </h2>
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed max-w-3xl">
-              {sector.challenge}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Geographic Coverage & Key Personas (GEO & SEO friendly) */}
-      <section className="py-20 bg-white border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#0546F2] mb-2 px-3 py-1 bg-blue-50 border border-blue-200 rounded-full">
-              <Compass className="w-4 h-4" />
-              <span>GEO Targeting & Persona Architecture</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-black tracking-tight">
-              Where & who we target for {sector.title}.
-            </h2>
-            <p className="text-sm sm:text-base text-neutral-600 mt-2">
-              We execute localized, timezone-synchronized outbound across premier commercial hubs.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {/* Target Geographies */}
-            <div className="p-8 border border-black/10 bg-neutral-50 rounded-3xl flex flex-col justify-between shadow-xs">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-4">
-                  <MapPin className="w-4 h-4 text-[#0546F2]" />
-                  <span>Primary Geographic Corridors</span>
-                </div>
-                <h3 className="text-xl font-black text-black mb-4">
-                  High-Converting Target Territories
-                </h3>
-                <ul className="space-y-3">
-                  {sector.targetGeos.map((geo, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-neutral-800 font-medium">
-                      <span className="w-2 h-2 rounded-full bg-[#0546F2] mt-1.5 shrink-0" />
-                      <span>{geo}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Key Personas */}
-            <div className="p-8 border border-black/10 bg-neutral-50 rounded-3xl flex flex-col justify-between shadow-xs">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-neutral-500 mb-4">
-                  <Users className="w-4 h-4 text-[#0546F2]" />
-                  <span>Decision-Maker Job Titles</span>
-                </div>
-                <h3 className="text-xl font-black text-black mb-4">
-                  Executive Buyer Personas
-                </h3>
-                <ul className="space-y-3">
-                  {sector.keyPersonas.map((persona, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-neutral-800 font-medium">
-                      <span className="w-2 h-2 rounded-full bg-black mt-1.5 shrink-0" />
-                      <span>{persona}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Regional Strategy Callout */}
-          <div className="p-6 sm:p-8 bg-blue-50/60 border border-[#0546F2]/30 rounded-2xl flex flex-col sm:flex-row items-start gap-4 shadow-xs">
-            <div className="w-10 h-10 bg-[#0546F2] text-white flex items-center justify-center shrink-0 rounded-xl">
-              <Globe className="w-5 h-5" />
-            </div>
+      {/* How we help + fit */}
+      <section className="bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="02">How we help</SectionLabel>
+          <div className="mt-10 grid gap-12 lg:grid-cols-2">
             <div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#0546F2] mb-1">
-                Regional Strategy & Compliance Protocol
-              </div>
-              <p className="text-sm sm:text-base text-neutral-800 leading-relaxed font-medium">
-                {sector.geoStrategy}
-              </p>
+              <SectionHead
+                title={
+                  <>
+                    The play, <span className="accent text-blue">step by step.</span>
+                  </>
+                }
+              />
+              <ol className="mt-8 space-y-4">
+                {sector.howElvteraHelps.map((h, i) => (
+                  <Reveal key={h} delay={i * 0.05}>
+                    <li className="flex gap-4 rounded-[18px] bg-canvas p-5">
+                      <span className="font-serif text-[26px] italic leading-none text-blue">0{i + 1}</span>
+                      <span className="text-[15.5px] leading-relaxed">{h}</span>
+                    </li>
+                  </Reveal>
+                ))}
+              </ol>
             </div>
+            <Reveal delay={0.1}>
+              <Sticky tone="mint" pin className="rotate-1 p-8">
+                <h3 className="font-hand text-[34px] leading-none">A good fit if…</h3>
+                <ul className="mt-5 space-y-3">
+                  {sector.fitCriteria.map((f) => (
+                    <li key={f} className="flex gap-3 text-[15.5px] leading-snug">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-ok" /> {f}
+                    </li>
+                  ))}
+                </ul>
+              </Sticky>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* How Elvtera Helps & Sample Intent Signals */}
-      <section className="py-20 lg:py-28 bg-neutral-50 border-b border-black/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            {/* How Elvtera Helps */}
-            <div className="border border-black/10 p-8 sm:p-10 bg-white rounded-3xl shadow-xs">
-              <div className="flex items-center gap-3 pb-4 mb-6 border-b border-neutral-200">
-                <div className="w-8 h-8 bg-[#0546F2] text-white flex items-center justify-center rounded-xl">
-                  <Check className="w-4 h-4 stroke-[3]" />
+      {/* Who + where */}
+      <section className="glow py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="03">Who and where</SectionLabel>
+          <p className="display mt-10 max-w-3xl text-[clamp(26px,2.8vw,36px)] leading-[1.25]">{sector.geoStrategy}</p>
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <Reveal>
+              <div className="h-full rounded-[22px] bg-paper p-7 shadow-float">
+                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-slate">
+                  <UserRound className="h-4 w-4 text-blue" /> Who we reach
                 </div>
-                <div>
-                  <h2 className="text-xl font-black text-black">
-                    How Elvtera Solves It
-                  </h2>
-                  <span className="text-xs font-mono text-neutral-500">Targeted acquisition mechanics</span>
-                </div>
-              </div>
-
-              <ul className="space-y-4">
-                {sector.howElvteraHelps.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-neutral-800 font-medium leading-relaxed">
-                    <Check className="w-4 h-4 text-[#0546F2] shrink-0 mt-0.5 stroke-[3]" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Sample Intent Signals & Recommended Solution */}
-            <div className="space-y-6">
-              <div className="border border-black/10 p-8 sm:p-10 bg-white rounded-3xl shadow-xs">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#0546F2] mb-4">
-                  <Radio className="w-4 h-4" />
-                  <span>Real Intent Signals Monitored</span>
-                </div>
-                <div className="space-y-3">
-                  {sector.sampleIntentSignals.map((sig, idx) => (
-                    <div key={idx} className="p-4 bg-neutral-50 border border-neutral-200 rounded-2xl text-xs sm:text-sm font-semibold text-black">
-                      Trigger: {sig}
-                    </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {sector.keyPersonas.map((p) => (
+                    <span key={p} className="rounded-full bg-canvas px-3.5 py-1.5 text-[14px]">
+                      {p}
+                    </span>
                   ))}
                 </div>
               </div>
-
-              <div className="border border-black p-6 bg-black text-white rounded-2xl shadow-md">
-                <span className="text-[10px] font-mono uppercase text-[#3B82F6] font-bold block mb-1">
-                  Recommended Architecture
-                </span>
-                <h3 className="text-lg font-black text-white mb-2">
-                  {sector.recommendedSolutionTitle}
-                </h3>
-                <Link
-                  to={sector.recommendedSolutionSlug}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-300 hover:text-white transition-colors"
-                >
-                  <span>Explore Architecture Blueprint</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="h-full rounded-[22px] bg-paper p-7 shadow-float">
+                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.1em] text-slate">
+                  <Globe2 className="h-4 w-4 text-blue" /> Where
+                </div>
+                <ul className="mt-5 space-y-2.5">
+                  {sector.targetGeos.map((g) => (
+                    <li key={g} className="text-[14.5px] leading-snug">
+                      {g}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* Fit Criteria */}
-      <section className="py-20 bg-white border-b border-black/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl font-black text-black tracking-tight">
-              Fit criteria for {sector.title} companies.
-            </h2>
-            <p className="text-sm text-neutral-600 mt-2">
-              We verify these operational parameters before accepting new client partners.
-            </p>
-          </div>
-
-          <div className="border border-black/10 p-8 sm:p-10 bg-neutral-50 rounded-3xl shadow-xs">
-            <ul className="space-y-4">
-              {sector.fitCriteria.map((crit, idx) => (
-                <li key={idx} className="flex items-start gap-4">
-                  <div className="w-5 h-5 bg-[#0546F2] text-white flex items-center justify-center shrink-0 mt-0.5 rounded-full">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-sm sm:text-base font-semibold text-neutral-800 leading-relaxed">
-                    {crit}
-                  </span>
-                </li>
+          <div className="mt-12">
+            <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-slate">Other sectors</div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {others.map((o) => (
+                <Link key={o.slug} to={`/who-we-work-with/${o.slug}`} className="btn-gloss-light rounded-full px-4 py-2 text-[14px] font-medium">
+                  {o.title}
+                </Link>
               ))}
-            </ul>
+            </div>
+            <Hand className="mt-6 text-[22px]">every sector, the same rule: only people already looking</Hand>
           </div>
         </div>
       </section>
 
-      {/* Luxury Dark CTA */}
-      <DarkCtaSection
-        eyebrowBadge={`${sector.title} Acquisition`}
-        headline={`Ready to scale your ${sector.title.toLowerCase()} sales pipeline?`}
-        subheadline="Test intent sourcing and qualification response metrics across a dedicated 14-day no-risk pilot sprint."
-        primaryButtonText="Apply for a No-Risk Pilot"
-        primaryButtonAction={() => openPilotApply(`/who-we-work-with/${sector.slug}`)}
-        secondaryButtonText="Book an Intro Call"
-        secondaryButtonHref={CALENDLY_URL}
+      <CTABand
+        quote="Test it first: a 14-day pilot where you approve every message."
+        title={
+          <>
+            Try it in <span className="accent font-normal text-blue-soft">{sector.title.toLowerCase()}.</span>
+          </>
+        }
       />
     </>
   );

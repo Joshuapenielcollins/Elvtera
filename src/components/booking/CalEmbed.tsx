@@ -92,7 +92,7 @@ export const CalEmbed: React.FC<CalEmbedProps> = ({
   return (
     <div className={`w-full ${className}`}>
       {/* Inline Embed Container */}
-      <div className="w-full bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-xs relative">
+      <div className="relative w-full overflow-hidden rounded-2xl bg-paper ring-1 ring-line">
         <div
           id={elementId}
           style={{ width: '100%', height: '100%', minHeight, overflow: 'scroll' }}
@@ -101,16 +101,16 @@ export const CalEmbed: React.FC<CalEmbedProps> = ({
       </div>
 
       {/* Fallback / Direct Link Bar */}
-      <div className="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 px-3 py-2.5 bg-neutral-50 border border-neutral-200/90 rounded-xl text-xs text-neutral-600">
+      <div className="mt-4 flex flex-col items-center justify-between gap-3 rounded-xl bg-canvas px-3.5 py-2.5 text-[12.5px] text-slate sm:flex-row">
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-[#0546F2] flex-shrink-0" />
+          <Calendar className="h-4 w-4 shrink-0 text-blue" />
           <span>Need immediate access or experiencing browser embed issues?</span>
         </div>
         <a
           href={directUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 font-bold text-[#0546F2] hover:text-[#0438c7] hover:underline"
+          className="inline-flex items-center gap-1.5 font-medium text-blue hover:underline"
         >
           <span>Open Direct Booking Calendar</span>
           <ExternalLink className="w-3.5 h-3.5" />

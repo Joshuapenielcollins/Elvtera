@@ -1,182 +1,168 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
+import { ArrowUpRight, MapPin } from 'lucide-react';
 import { SEOHead } from '../components/layout/SEOHead';
-import { Button } from '../components/ui/Button';
-import { aboutPageContent, teamMembers, founderDetails } from '../data/aboutData';
-import { CALENDLY_URL } from '../data/siteConfig';
-import { DarkCtaSection } from '../components/common/DarkCtaSection';
-import { PatternBackground } from '../components/ui/PatternBackground';
-import { Shield, Target, CheckCircle2 } from 'lucide-react';
+import { aboutPageContent } from '../data/aboutData';
+import { openBookCall } from '../utils/analytics';
+import { Btn } from '../components/kit/Btn';
+import { CTABand, NumberDot, PageHero } from '../components/kit/Bits';
+import { Hand, Reveal, SectionHead, SectionLabel, Sticky, Tone } from '../components/kit/Paper';
+
+const tones: Tone[] = ['butter', 'sky', 'mint', 'lilac'];
+const tilts = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2'];
 
 export const AboutPage: React.FC = () => {
-  const triggerPilotModal = () => {
-    window.dispatchEvent(new CustomEvent('open-pilot-modal'));
-  };
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'AboutPage',
-    name: 'About Elvtera Business Solutions',
-    url: 'https://elvtera.com/about',
-    description: aboutPageContent.hero.subtitle,
-  };
+  const { principles, howWeWork } = aboutPageContent;
 
   return (
     <>
       <SEOHead
-        title="About Us | Principle-Led Outbound Partner"
-        description="Learn about Elvtera's operating principles: start with real intent, qualify before booking, and execute across multiple channels with zero ad spend."
+        title="About Elvtera | Outbound and Business Systems Partner"
+        description="Elvtera finds B2B buyers who are already looking, and builds the systems that turn them into clients. Teams in India and the USA."
         canonicalPath="/about"
-        jsonLd={jsonLd}
+        jsonLd={{ '@context': 'https://schema.org', '@type': 'AboutPage', name: 'About Elvtera Business Solutions' }}
       />
 
-      <Breadcrumbs items={[{ label: 'About' }]} />
+      <PageHero
+        label="About Elvtera"
+        title={
+          <>
+            We find your buyers, and build <span className="accent text-blue">the systems that close them.</span>
+          </>
+        }
+        sub="Elvtera runs signal-based outbound for B2B companies with a proven offer, and builds the websites, pipelines and automation behind the sale. No software licences, no bought lists, no vague retainers."
+        actions={
+          <>
+            <Btn size="lg" variant="dark" onClick={openBookCall}>
+              Talk to us
+            </Btn>
+            <Btn size="lg" variant="ghost" to="/solutions">
+              Our two services
+            </Btn>
+          </>
+        }
+      />
 
-      {/* Hero */}
-      <section className="relative py-16 lg:py-24 bg-white border-b border-neutral-200 overflow-hidden">
-        <PatternBackground variant="light" bokehPositions={['top-right', 'bottom-left']} />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 mb-6 rounded-full">
-              <Shield className="w-3.5 h-3.5 text-[#0546F2]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19]">
-                {aboutPageContent.hero.eyebrow}
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0B0F19] tracking-tight leading-[1.08] mb-6">
-              {aboutPageContent.hero.title}
-            </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-              {aboutPageContent.hero.subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button href={CALENDLY_URL} variant="primary" size="md">
-                Schedule a Conversation
-              </Button>
-              <Button variant="secondary" size="md" onClick={triggerPilotModal}>
-                Apply for a No-Risk Pilot
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Core Principles */}
-      <section className="py-20 lg:py-28 bg-[#F4F5F7] border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#0546F2]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-                Operating Discipline
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight">
-              Our core principles.
-            </h2>
-            <p className="text-sm text-neutral-600 mt-2">
-              The foundational convictions behind how we engineer client acquisition.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {aboutPageContent.principles.map((pr) => (
-              <div
-                key={pr.number}
-                className="bg-white border border-neutral-300 p-8 sm:p-10 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="text-2xl font-black font-mono text-[#0546F2] mb-3">
-                  {pr.number}
+      {/* Principles */}
+      <section className="desk-grid bg-canvas py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="01" note="What we won't compromise on">
+            Principles
+          </SectionLabel>
+          <SectionHead
+            className="mt-10"
+            title={
+              <>
+                Four things <span className="accent text-blue">we always do.</span>
+              </>
+            }
+          />
+          <div className="mt-12 grid gap-10 sm:grid-cols-2">
+            {principles.map((p, i) => (
+              <Reveal key={p.number} delay={(i % 2) * 0.08}>
+                <div className={`relative ${tilts[i]}`}>
+                  <NumberDot n={p.number} className="absolute -left-3 -top-3 z-10" />
+                  <Sticky tone={tones[i]} pin className="p-7 sm:p-8">
+                    <h3 className="display text-[30px]">{p.title}</h3>
+                    <p className="mt-3 text-[15.5px] leading-relaxed text-ink/75">{p.summary}</p>
+                  </Sticky>
                 </div>
-                <h3 className="text-xl font-black text-[#0B0F19] tracking-tight mb-3">
-                  {pr.title}
-                </h3>
-                <p className="text-sm text-neutral-600 leading-relaxed">
-                  {pr.summary}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How We Work With Clients */}
-      <section className="py-20 bg-white border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0546F2] block mb-2">
-              Partnership Framework
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight">
-              How we work with our clients.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {aboutPageContent.howWeWork.map((hw, idx) => (
-              <div key={idx} className="p-8 border border-neutral-300 rounded-2xl bg-[#F4F5F7]">
-                <div className="w-8 h-8 bg-blue-50 text-[#0546F2] flex items-center justify-center font-bold mb-4 rounded-lg border border-blue-200">
-                  <Target className="w-4 h-4" />
-                </div>
-                <h3 className="text-lg font-black text-[#0B0F19] tracking-tight mb-2">
-                  {hw.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                  {hw.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Data-Driven Team and Founder Blocks (Hidden until data exists) */}
-      {founderDetails && (
-        <section className="py-20 bg-[#F4F5F7] border-b border-neutral-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-8">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0546F2]">Leadership</span>
-              <h2 className="text-3xl font-black text-[#0B0F19] mt-1">Founder &amp; Principal</h2>
-            </div>
-            <div className="bg-white border border-neutral-300 p-8 rounded-2xl shadow-sm max-w-xl">
-              <h3 className="text-xl font-black text-[#0B0F19]">{founderDetails.name}</h3>
-              <p className="text-xs font-semibold text-[#0546F2] mb-3">{founderDetails.role}</p>
-              <p className="text-sm text-neutral-600 leading-relaxed">{founderDetails.bio}</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {teamMembers.length > 0 && (
-        <section className="py-20 bg-white border-b border-neutral-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0546F2]">Operations</span>
-              <h2 className="text-3xl font-black text-[#0B0F19] mt-1">Acquisition Strategy Team</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {teamMembers.map((tm) => (
-                <div key={tm.id} className="p-6 border border-neutral-300 rounded-2xl bg-[#F4F5F7]">
-                  <h3 className="text-lg font-black text-[#0B0F19]">{tm.name}</h3>
-                  <p className="text-xs font-semibold text-[#0546F2] mb-2">{tm.role}</p>
-                  <p className="text-xs text-neutral-600 leading-relaxed">{tm.bio}</p>
-                </div>
+      {/* How we work */}
+      <section className="bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="02">How we work with you</SectionLabel>
+          <div className="mt-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <SectionHead
+              title={
+                <>
+                  One team. <span className="accent text-blue">End to end.</span>
+                </>
+              }
+              sub="You get one partner that handles the research, infrastructure, copy, inboxes and scheduling, and reports back every week."
+            />
+            <div className="space-y-4">
+              {howWeWork.map((h, i) => (
+                <Reveal key={h.title} delay={i * 0.06}>
+                  <div className="flex gap-5 rounded-[20px] bg-paper p-6 shadow-card ring-1 ring-line">
+                    <span className="font-serif text-[34px] italic leading-none text-blue">0{i + 1}</span>
+                    <div>
+                      <h3 className="text-[18px] font-semibold tracking-[-0.01em]">{h.title}</h3>
+                      <p className="mt-1.5 text-[15px] leading-relaxed text-slate">{h.description}</p>
+                    </div>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* Luxury Dark CTA */}
-      <DarkCtaSection
-        eyebrowBadge="Strategy Partnership"
-        headline="Work with an outbound partner focused on qualified appointments."
-        subheadline="Schedule a conversation with our strategy team to evaluate whether your offer and market match our outbound model."
-        primaryButtonText="Apply for a No-Risk Pilot"
-        primaryButtonAction={triggerPilotModal}
-        secondaryButtonText="Book an Intro Call"
-        secondaryButtonHref={CALENDLY_URL}
+      {/* Where */}
+      <section className="glow py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="03">Where we are</SectionLabel>
+          <div className="mt-10 grid items-center gap-12 lg:grid-cols-2">
+            <SectionHead
+              title={
+                <>
+                  India <span className="accent text-blue">&amp;</span> USA.
+                </>
+              }
+              sub="Our team works across India and the USA, so outreach runs in your buyers' time zones and someone is always minding the inbox."
+            />
+            <div className="grid grid-cols-2 gap-4">
+              {['India', 'USA'].map((c, i) => (
+                <Reveal key={c} delay={i * 0.08}>
+                  <div className={`rounded-[22px] bg-paper p-6 shadow-float ${i ? 'rotate-2' : '-rotate-2'}`}>
+                    <MapPin className="h-5 w-5 text-blue" />
+                    <div className="display mt-8 text-[40px]">{c}</div>
+                    <div className="mt-1 text-[13px] text-slate">Elvtera team</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="04">What we do</SectionLabel>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {[
+              { to: '/', tag: 'Flagship', t: 'Signal-based outbound', d: 'We find businesses showing real buying signals and book the qualified ones on your calendar.', tone: 'butter' as Tone },
+              { to: '/solutions/business-systems', tag: 'Build', t: 'Business systems & websites', d: 'Websites, pipelines, speed-to-lead automation and full business setups.', tone: 'mint' as Tone },
+            ].map((s) => (
+              <Link key={s.t} to={s.to} className="group rounded-[24px] bg-canvas p-2 transition-shadow hover:shadow-float">
+                <Sticky tone={s.tone} tape={false} className="rounded-[18px] p-7">
+                  <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.1em] text-ink/55">
+                    {s.tag}
+                    <ArrowUpRight className="h-5 w-5 text-ink transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </div>
+                  <h3 className="display mt-10 text-[34px]">{s.t}</h3>
+                </Sticky>
+                <p className="p-5 text-[15px] leading-relaxed text-slate">{s.d}</p>
+              </Link>
+            ))}
+          </div>
+          <Hand className="mt-10 text-center text-[24px]">two services, one team behind both</Hand>
+        </div>
+      </section>
+
+      <CTABand
+        quote="Not sure which one you need? Tell us what's going on and we'll point you the right way."
+        title={
+          <>
+            Let's <span className="accent font-normal text-blue-soft">talk.</span>
+          </>
+        }
       />
     </>
   );

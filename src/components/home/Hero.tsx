@@ -1,80 +1,132 @@
-import React from 'react';
-import { Check, ArrowUpRight } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { heroContent } from '../../data/homeData';
-import { CALENDLY_URL } from '../../data/siteConfig';
+import { openBookCall, openPilotApply } from '../../utils/analytics';
+import { Btn } from '../kit/Btn';
+import { Drag, Mark, useCanDrag, useMedia } from '../kit/Paper';
+import { Cursor } from '../kit/Bits';
+import { AppWindow } from '../kit/AppDemo';
+import { WidgetBooked, WidgetICP, WidgetReply, WidgetSignals } from '../kit/Mocks';
+
+const howSteps = [
+  ['We spot the signal', 'Hiring, funding, new leaders, tech changes.'],
+  ['We reach out for you', 'A short, personal note. You approve it.'],
+  ['You take the call', 'Qualified, with a briefing note.'],
+];
 
 export const Hero: React.FC = () => {
-  const triggerPilotModal = () => {
-    window.dispatchEvent(new CustomEvent('open-pilot-modal'));
-  };
+  const area = useRef<HTMLDivElement>(null);
+  const shot = useRef<HTMLDivElement>(null);
+  const canDrag = useCanDrag();
+  // The floating cards need room either side of the headline.
+  const wide = useMedia('(min-width: 1280px)');
+
+  // The product window tilts back and straightens as it scrolls into view.
+  const { scrollYProgress } = useScroll({ target: shot, offset: ['start end', 'start 35%'] });
+  const rotateX = useTransform(scrollYProgress, [0, 1], [14, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1]);
 
   return (
-    <section className="relative pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-neutral-200/80 overflow-hidden bg-white">
-      {/* Background ambient lighting and dot grid */}
-      <div className="absolute inset-0 hero-dot-grid opacity-65 pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 ambient-glow-blue pointer-events-none" />
-      <div className="absolute -top-20 -right-20 w-[460px] h-[460px] rounded-full blur-[100px] bg-[#0546F2]/8 pointer-events-none" />
-      <div className="absolute -bottom-24 -left-20 w-[400px] h-[400px] rounded-full blur-[90px] bg-sky-400/8 pointer-events-none" />
+    <section className="glow relative overflow-hidden pb-16 pt-24 sm:pt-28">
+      <div className="desk-grid absolute inset-0 opacity-70" aria-hidden="true" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-3xl mx-auto space-y-7">
-          {/* Top eyebrow badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-blue-50/80 border border-blue-200/80 rounded-full shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0546F2] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0546F2]"></span>
-            </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0546F2]">
-              Done-For-You Client Acquisition
-            </span>
-          </div>
+      {/* Headline area with floating widgets */}
+      <div ref={area} className="relative mx-auto max-w-[1320px] px-5">
+        {canDrag && wide && (
+          <>
+            <Drag constraints={area} rotate={-4} className="absolute left-[1%] top-[4%]">
+              <WidgetSignals />
+            </Drag>
+            <Drag constraints={area} rotate={3} className="absolute right-[1%] top-[2%]">
+              <WidgetReply />
+            </Drag>
+            <Drag constraints={area} rotate={2} className="absolute bottom-[6%] left-[2%]">
+              <WidgetICP />
+            </Drag>
+            <Drag constraints={area} rotate={-3} className="absolute bottom-[10%] right-[2%]">
+              <WidgetBooked />
+            </Drag>
+            <Cursor name="You" className="right-[13%] top-[44%]" path={[[0, 0], [-24, 16], [10, -10], [0, 0]]} duration={11} />
+            <Cursor name="Elvtera" color="#7c3aed" className="left-[12%] top-[52%]" path={[[0, 0], [22, -16], [-8, 10], [0, 0]]} duration={9} />
+          </>
+        )}
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-extrabold text-[#0B0F19] tracking-[-0.035em] leading-[1.08]">
-            {heroContent.headline}
-          </h1>
+        <div className="relative mx-auto max-w-4xl pb-10 pt-6 text-center lg:pb-14 lg:pt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 rounded-full bg-paper/80 py-1 pl-1 pr-3.5 text-[12.5px] text-slate shadow-card ring-1 ring-line backdrop-blur"
+          >
+            <span className="rounded-full bg-blue px-2 py-0.5 text-[11px] font-medium text-white">B2B</span>
+            Done-for-you, signal-based outbound
+          </motion.div>
 
-          {/* Subheadline */}
-          <p className="text-base sm:text-lg lg:text-xl text-neutral-600 font-normal leading-relaxed max-w-2xl mx-auto">
-            {heroContent.subheadline}
-          </p>
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.05, ease: [0.2, 0.8, 0.2, 1] }}
+            className="display mx-auto mt-6 max-w-[17ch] text-[clamp(42px,6.4vw,88px)] text-ink"
+          >
+            We only contact people who are{' '}
+            <Mark>
+              <span className="accent">already looking</span>
+            </Mark>{' '}
+            for what you sell.
+          </motion.h1>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
-            <button
-              onClick={triggerPilotModal}
-              className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-[#0546F2] px-8 py-4 text-sm font-bold text-white hover:bg-[#0438c7] transition-all cursor-pointer shadow-lg hover:shadow-xl"
-            >
-              <span>{heroContent.ctaPilotText}</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
-            <a
-              href={CALENDLY_URL}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-7 py-4 text-sm font-bold text-neutral-800 hover:text-black hover:border-neutral-400 hover:bg-neutral-50 transition-all shadow-sm"
-            >
-              <span>{heroContent.ctaBookText}</span>
-            </a>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mx-auto mt-6 max-w-[38rem] text-[clamp(16px,1.4vw,18.5px)] leading-relaxed text-slate"
+          >
+            Bought lists and mass emails burn your domain and fill your calendar with people who were never buying. We
+            watch for real buying signals, reach out to the companies that fit your ideal customer, and book the
+            qualified ones on your calendar. <span className="text-ink">No ad spend.</span>
+          </motion.p>
 
-          {/* Target footnote */}
-          <p className="text-xs text-neutral-500 font-mono">
-            * {heroContent.footnote}
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <Btn size="lg" variant="dark" onClick={openBookCall}>
+              Book a call
+            </Btn>
+            <Btn size="lg" variant="ghost" onClick={() => openPilotApply()}>
+              {heroContent.ctaPilotText}
+            </Btn>
+          </motion.div>
 
-          {/* Three check lines */}
-          <div className="pt-6 border-t border-neutral-200/80 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            {heroContent.checkLines.map((line, idx) => (
-              <div key={idx} className="flex items-center gap-2.5">
-                <div className="w-5 h-5 bg-blue-50 text-[#0546F2] border border-blue-200/80 rounded-full flex items-center justify-center flex-shrink-0 shadow-xs">
-                  <Check className="w-3.5 h-3.5 stroke-[3]" />
+          {/* How it works, in one glance */}
+          <motion.ol
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mx-auto mt-10 grid max-w-3xl gap-2 text-left sm:grid-cols-3"
+          >
+            {howSteps.map(([t, d], i) => (
+              <li key={t} className="flex gap-3 rounded-2xl bg-paper/70 p-3.5 ring-1 ring-line backdrop-blur">
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ink font-mono text-[11px] text-white">{i + 1}</span>
+                <div>
+                  <div className="text-[14px] font-semibold leading-tight">{t}</div>
+                  <div className="mt-0.5 text-[12.5px] leading-snug text-slate">{d}</div>
                 </div>
-                <span className="text-sm font-semibold text-neutral-800 text-left">
-                  {line.text}
-                </span>
-              </div>
+              </li>
             ))}
-          </div>
+          </motion.ol>
         </div>
+      </div>
+
+      {/* Product window */}
+      <div ref={shot} className="relative mx-auto mt-6 max-w-6xl px-4 [perspective:1600px]">
+        <motion.div style={{ rotateX, scale, transformOrigin: 'center top' }}>
+          <AppWindow />
+        </motion.div>
+        <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-[0.1em] text-ash">
+          Sample workspace · {heroContent.footnote}
+        </p>
       </div>
     </section>
   );

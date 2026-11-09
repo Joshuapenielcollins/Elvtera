@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Calendar, Check, Copy, Mail } from 'lucide-react';
 import { SEOHead } from '../components/layout/SEOHead';
-import { Button } from '../components/ui/Button';
 import { intentOptions } from '../data/contactData';
-import { CALENDLY_URL, CONTACT_EMAIL } from '../data/siteConfig';
+import { CONTACT_EMAIL } from '../data/siteConfig';
 import { CalEmbed } from '../components/booking/CalEmbed';
-import { PatternBackground } from '../components/ui/PatternBackground';
 import { sendContactEmail } from '../services/emailService';
-import {
-  Mail,
-  Calendar,
-  CheckCircle2,
-  Clock,
-  Target,
-  Radio,
-  UserCheck,
-  ShieldCheck,
-  Copy,
-  Check,
-  ExternalLink,
-} from 'lucide-react';
+import { Btn } from '../components/kit/Btn';
+import { Field, Input, Select, Textarea } from '../components/kit/Bits';
+import { Hand, Sticky } from '../components/kit/Paper';
+import { motion } from 'framer-motion';
+
+const onTheCall = [
+  ['Your market', 'We look at your ideal customer, deal size ($5,000+) and how big the market is.'],
+  ['Live signals', 'We show you companies showing buying signals in your niche, on screen.'],
+  ['Straight answer', "We tell you plainly if outbound is a fit. If it isn't, we say so."],
+];
 
 export const ContactPage: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -28,12 +23,10 @@ export const ContactPage: React.FC = () => {
   const intentParam = searchParams.get('intent') || '';
   const tabParam = searchParams.get('tab') || '';
 
-  // Mode: 'book' (Cal.com scheduler) vs 'brief' (contact form)
-  const [activeTab, setActiveTab] = useState<'book' | 'brief'>(
-    tabParam === 'brief' || intentParam ? 'brief' : 'book'
-  );
+  // 'book' = Cal.com scheduler, 'brief' = written brief form
+  const [activeTab, setActiveTab] = useState<'book' | 'brief'>(tabParam === 'brief' || intentParam ? 'brief' : 'book');
   const [copiedEmail, setCopiedEmail] = useState(false);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -46,9 +39,7 @@ export const ContactPage: React.FC = () => {
   useEffect(() => {
     if (intentParam) {
       const matched = intentOptions.find((opt) => opt.value === intentParam);
-      if (matched) {
-        setFormData((prev) => ({ ...prev, intent: matched.value }));
-      }
+      if (matched) setFormData((prev) => ({ ...prev, intent: matched.value }));
     }
   }, [intentParam]);
 
@@ -57,8 +48,6 @@ export const ContactPage: React.FC = () => {
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,320 +62,177 @@ export const ContactPage: React.FC = () => {
     }
   };
 
-  const hookBenefits = [
-    {
-      icon: Target,
-      title: 'Target Market Verification',
-      desc: 'We inspect your ideal customer profile, contract values ($5,000+ ACV), and outbound market capacity.',
-    },
-    {
-      icon: Radio,
-      title: 'Live Intent Inspection',
-      desc: 'See companies showing live buying signals in your specific B2B niche directly on screen.',
-    },
-    {
-      icon: UserCheck,
-      title: 'Direct Principal Access',
-      desc: 'Consult directly with experienced outbound operators. No junior SDRs or canned slide decks.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Zero Risk Assessment',
-      desc: 'We tell you straightforwardly if outbound is a commercial fit for your business.',
-    },
-  ];
+  const set = (k: keyof typeof formData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setFormData({ ...formData, [k]: e.target.value });
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
     name: 'Contact Elvtera Business Solutions',
     url: 'https://elvtera.com/contact',
-    mainEntity: {
-      '@type': 'Organization',
-      name: 'Elvtera Business Solutions',
-      email: CONTACT_EMAIL,
-      url: 'https://elvtera.com',
-    },
+    mainEntity: { '@type': 'Organization', name: 'Elvtera Business Solutions', email: CONTACT_EMAIL, url: 'https://elvtera.com' },
   };
 
   return (
     <>
       <SEOHead
-        title="Contact Us & Book Strategy Call"
-        description="Speak directly with the Elvtera team. Pick a time on our live Cal.com calendar for a 30-minute outbound strategy consultation or submit a brief."
+        title="Contact Us & Book a Call"
+        description="Talk to the Elvtera team. Pick a time for a 30-minute call, or send us a short brief."
         canonicalPath="/contact"
         jsonLd={jsonLd}
       />
 
-      <Breadcrumbs items={[{ label: 'Contact' }]} />
+      <section className="glow desk-grid relative overflow-hidden pb-16 pt-28 sm:pt-32">
+        <div className="relative mx-auto grid max-w-6xl gap-14 px-5 lg:grid-cols-[0.85fr_1.15fr]">
+          {/* Left */}
+          <div>
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-slate"
+            >
+              <span className="h-px w-6 bg-blue" /> Contact
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.05 }}
+              className="display mt-5 text-[clamp(44px,6vw,76px)]"
+            >
+              Let's talk about <span className="accent text-blue">your pipeline.</span>
+            </motion.h1>
+            <p className="mt-6 max-w-md text-[17px] leading-relaxed text-slate">
+              Book a 30-minute call with our team, or send a short brief. We'll look at your offer, your market and the
+              buying signals in it.
+            </p>
 
-      <section className="relative py-16 lg:py-24 bg-white border-b border-neutral-200 overflow-hidden">
-        <PatternBackground variant="light" bokehPositions={['top-left', 'bottom-right']} />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
-            {/* Left Column: Compelling Hook & Information */}
-            <div className="lg:col-span-5 space-y-8">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 mb-4 rounded-full">
-                  <span className="w-2 h-2 rounded-full bg-[#0546F2] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19]">
-                    Direct Partnership Intake
-                  </span>
-                </div>
-                <h1 className="text-4xl sm:text-5xl font-black text-[#0B0F19] tracking-tight leading-tight">
-                  Let's inspect your pipeline opportunities.
-                </h1>
-                <p className="text-base text-neutral-600 mt-4 leading-relaxed">
-                  Schedule a 30-minute strategy call with our principal team, or submit an operational brief. We evaluate your offer, market, and buyer intent live.
-                </p>
-              </div>
-
-              {/* Call Hook Highlights */}
-              <div className="p-6 sm:p-7 bg-[#F4F5F7] border border-neutral-200/90 rounded-3xl space-y-5">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#0546F2] block">
-                  What happens on the call:
-                </span>
-                <div className="space-y-4">
-                  {hookBenefits.map((item, idx) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={idx} className="flex items-start gap-3.5">
-                        <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center shrink-0 mt-0.5 text-[#0546F2] shadow-2xs">
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <h4 className="text-sm font-bold text-[#0B0F19]">
-                            {item.title}
-                          </h4>
-                          <p className="text-xs text-neutral-600 leading-relaxed mt-0.5">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Email & Details */}
-              <div className="space-y-4 pt-1">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 bg-neutral-100 text-[#0546F2] flex items-center justify-center shrink-0 mt-0.5 border border-neutral-300 rounded-xl">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block">
-                      Direct Principal Email
+            <Sticky tone="paper" tape="stripe" className="mt-12 -rotate-1 p-7">
+              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-slate">On the call</div>
+              <ol className="mt-4 space-y-4">
+                {onTheCall.map(([t, d], i) => (
+                  <li key={t} className="flex gap-3.5">
+                    <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ink font-mono text-[11px] text-white">
+                      {i + 1}
                     </span>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <a
-                        href={`mailto:${CONTACT_EMAIL}`}
-                        className="text-base font-bold text-[#0B0F19] hover:text-[#0546F2] transition-colors"
-                      >
-                        {CONTACT_EMAIL}
-                      </a>
-                      <button
-                        onClick={handleCopyEmail}
-                        className="p-1 text-neutral-400 hover:text-neutral-700 transition-colors cursor-pointer"
-                        title="Copy email to clipboard"
-                        type="button"
-                      >
-                        {copiedEmail ? (
-                          <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        ) : (
-                          <Copy className="w-3.5 h-3.5" />
-                        )}
-                      </button>
+                    <div>
+                      <div className="text-[15px] font-semibold">{t}</div>
+                      <p className="mt-0.5 text-[14px] leading-relaxed text-slate">{d}</p>
                     </div>
-                  </div>
-                </div>
+                  </li>
+                ))}
+              </ol>
+            </Sticky>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 bg-neutral-100 text-[#0546F2] flex items-center justify-center shrink-0 mt-0.5 border border-neutral-300 rounded-xl">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 block">
-                      Response Timeline
-                    </span>
-                    <span className="text-sm font-semibold text-neutral-800">
-                      Immediate calendar confirmation, or within 24 business hours for direct briefs.
-                    </span>
-                  </div>
-                </div>
+            <div className="mt-10 space-y-1">
+              <div className="font-mono text-[11px] uppercase tracking-[0.1em] text-slate">Or email us</div>
+              <div className="flex items-center gap-2">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="font-hand text-[30px] text-ink underline decoration-blue decoration-2 underline-offset-4">
+                  {CONTACT_EMAIL}
+                </a>
+                <button
+                  onClick={handleCopyEmail}
+                  type="button"
+                  title="Copy email"
+                  aria-label="Copy email address"
+                  className="grid h-8 w-8 place-items-center rounded-full text-slate hover:bg-paper hover:text-ink"
+                >
+                  {copiedEmail ? <Check className="h-4 w-4 text-ok" /> : <Copy className="h-4 w-4" />}
+                </button>
               </div>
+              <p className="text-[13.5px] text-slate">Calendar bookings confirm instantly. Briefs get a reply within one business day.</p>
             </div>
+          </div>
 
-            {/* Right Column: Interactive Booking & Brief Card */}
-            <div className="lg:col-span-7">
-              <div className="border border-neutral-200/90 bg-white p-6 sm:p-8 shadow-xl rounded-3xl">
-                
-                {/* Mode Selector Tabs */}
-                <div className="flex items-center gap-2 p-1.5 bg-[#F4F5F7] rounded-2xl mb-6 border border-neutral-200">
+          {/* Right */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative"
+          >
+            <Hand arrow="down-right" className="absolute -top-14 right-6 hidden rotate-2 lg:block">
+              takes 2 minutes
+            </Hand>
+            <div className="overflow-hidden rounded-[22px] bg-paper shadow-app">
+              <div className="flex gap-1 border-b border-line bg-canvas/70 p-1.5">
+                {(
+                  [
+                    ['book', 'Book a call', Calendar],
+                    ['brief', 'Send a brief', Mail],
+                  ] as const
+                ).map(([key, label, Icon]) => (
                   <button
+                    key={key}
                     type="button"
-                    onClick={() => setActiveTab('book')}
-                    className={`flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                      activeTab === 'book'
-                        ? 'bg-white text-[#0546F2] shadow-sm border border-neutral-200/80 font-extrabold'
-                        : 'text-neutral-600 hover:text-black hover:bg-white/50'
+                    onClick={() => setActiveTab(key)}
+                    aria-pressed={activeTab === key}
+                    className={`flex flex-1 items-center justify-center gap-2 rounded-2xl py-3 text-[14px] font-medium transition-all ${
+                      activeTab === key ? 'bg-paper text-ink shadow-card' : 'text-slate hover:text-ink'
                     }`}
                   >
-                    <Calendar className="w-4 h-4" />
-                    <span>Book Strategy Call</span>
+                    <Icon className="h-4 w-4" /> {label}
                   </button>
+                ))}
+              </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('brief')}
-                    className={`flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                      activeTab === 'brief'
-                        ? 'bg-white text-[#0546F2] shadow-sm border border-neutral-200/80 font-extrabold'
-                        : 'text-neutral-600 hover:text-black hover:bg-white/50'
-                    }`}
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>Send Direct Brief</span>
-                  </button>
-                </div>
-
-                {/* Tab 1: Live Cal.com Embed */}
+              <div className="p-5 sm:p-8">
                 {activeTab === 'book' ? (
-                  <div>
-                    <div className="border-b border-neutral-100 pb-3 mb-5">
-                      <h2 className="text-xl font-black text-[#0B0F19] tracking-tight">
-                        Select a time for your 30-min strategy call
-                      </h2>
-                      <p className="text-xs text-neutral-500 mt-1">
-                        Hosted via Google Meet. Pick an open slot directly from our calendar.
-                      </p>
+                  <>
+                    <h2 className="display text-[30px]">Pick a time for a 30-minute call</h2>
+                    <p className="mt-1 text-[14px] text-slate">On Google Meet. Choose any open slot.</p>
+                    <div className="mt-6">
+                      <CalEmbed elementId="contact-cal-inline-30min" minHeight="680px" />
                     </div>
-
-                    {/* Cal.com Inline Embed */}
-                    <CalEmbed
-                      elementId="contact-cal-inline-30min"
-                      minHeight="680px"
-                    />
-                  </div>
+                  </>
                 ) : (
-                  /* Tab 2: Direct Brief Form */
-                  <div>
-                    <div className="border-b border-neutral-100 pb-3 mb-6">
-                      <h2 className="text-xl font-black text-[#0B0F19] tracking-tight">
-                        Send a Direct Brief
-                      </h2>
-                      <p className="text-xs text-neutral-500 mt-1">
-                        All fields marked with an asterisk (*) are required.
-                      </p>
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                            Full Name *
-                          </label>
-                          <input
-                            required
-                            type="text"
-                            placeholder="Marcus Vance"
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2]"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                            Work Email *
-                          </label>
-                          <input
-                            required
-                            type="email"
-                            placeholder="marcus@company.com"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2]"
-                          />
-                        </div>
+                  <>
+                    <h2 className="display text-[30px]">Send us a brief</h2>
+                    <p className="mt-1 text-[14px] text-slate">Fields marked * are required.</p>
+                    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <Field label="Full name" required>
+                          <Input required type="text" placeholder="Your name" value={formData.name} onChange={set('name')} />
+                        </Field>
+                        <Field label="Work email" required>
+                          <Input required type="email" placeholder="you@company.com" value={formData.email} onChange={set('email')} />
+                        </Field>
                       </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                            Company Name *
-                          </label>
-                          <input
-                            required
-                            type="text"
-                            placeholder="Apex Logistics"
-                            value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2]"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                            Phone (Optional)
-                          </label>
-                          <input
-                            type="tel"
-                            placeholder="+1 (555) 000-0000"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2]"
-                          />
-                        </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <Field label="Company" required>
+                          <Input required type="text" placeholder="Company name" value={formData.company} onChange={set('company')} />
+                        </Field>
+                        <Field label="Phone">
+                          <Input type="tel" placeholder="Optional" value={formData.phone} onChange={set('phone')} />
+                        </Field>
                       </div>
-
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                          Primary Focus Area *
-                        </label>
-                        <select
-                          value={formData.intent}
-                          onChange={(e) => setFormData({ ...formData, intent: e.target.value })}
-                          className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2] bg-white"
-                        >
+                      <Field label="What can we help with?" required>
+                        <Select value={formData.intent} onChange={set('intent')}>
                           {intentOptions.map((opt) => (
                             <option key={opt.value} value={opt.value}>
                               {opt.label}
                             </option>
                           ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-[#0B0F19] mb-1">
-                          Brief Message or Current Pipeline Challenge *
-                        </label>
-                        <textarea
+                        </Select>
+                      </Field>
+                      <Field label="Tell us a little" required>
+                        <Textarea
                           required
-                          rows={4}
-                          placeholder="Give us context on your offer, average deal size, and what you need from our acquisition partnership."
+                          rows={5}
+                          placeholder="What you sell, your average deal size, and what you need from us."
                           value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="w-full px-4 py-3 border border-neutral-300 rounded-xl text-sm focus:outline-none focus:border-[#0546F2]"
+                          onChange={set('message')}
                         />
-                      </div>
-
-                      <div className="pt-2">
-                        <Button type="submit" variant="primary" size="lg" className="w-full justify-center">
-                          Submit Direct Brief
-                        </Button>
-                      </div>
-
-                      <p className="text-xs text-neutral-500 font-mono text-center">
-                        Confidential business intake. Evaluated directly by partnership principals.
-                      </p>
+                      </Field>
+                      <Btn type="submit" size="lg" variant="dark" arrow disabled={isSubmitting} className="w-full">
+                        {isSubmitting ? 'Sending…' : 'Send brief'}
+                      </Btn>
+                      <p className="text-center text-[12.5px] text-ash">Read by our team only. We reply within one business day.</p>
                     </form>
-                  </div>
+                  </>
                 )}
-
               </div>
             </div>
-
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

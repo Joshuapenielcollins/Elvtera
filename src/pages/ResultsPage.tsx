@@ -1,103 +1,54 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumbs } from '../components/layout/Breadcrumbs';
+import { ArrowUpRight } from 'lucide-react';
 import { SEOHead } from '../components/layout/SEOHead';
-import { Button } from '../components/ui/Button';
 import { caseStudies } from '../data/proofData';
-import { CALENDLY_URL } from '../data/siteConfig';
-import { openPilotApply } from '../utils/analytics';
-import { ShieldAlert, ArrowRight, BarChart3 } from 'lucide-react';
+import { Btn } from '../components/kit/Btn';
+import { CTABand, PageHero } from '../components/kit/Bits';
+import { Reveal } from '../components/kit/Paper';
 
-export const ResultsPage: React.FC = () => {
-  return (
-    <>
-      <SEOHead
-        title="Client Results & Performance Data"
-        description="Verified pipeline outcomes and campaign metrics from Elvtera's done-for-you client acquisition system."
-        canonicalPath="/results"
-      />
-
-      <Breadcrumbs items={[{ label: 'Results' }]} />
-
-      <section className="py-16 lg:py-24 bg-white border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 mb-6 rounded-full">
-              <BarChart3 className="w-3.5 h-3.5 text-[#0546F2]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19]">
-                Performance Records
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-black text-[#0B0F19] tracking-tight leading-tight mb-4">
-              Verified client results.
-            </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed">
-              We document outbound pipeline outcomes based on verified calendar placements and closed deal metrics.
-            </p>
+/** Renders only real case studies. Hidden from the menu until there is at least one. */
+export const ResultsPage: React.FC = () => (
+  <>
+    <SEOHead title="Client Results" description="Pipeline outcomes from Elvtera's signal-based outbound." canonicalPath="/results" />
+    <PageHero
+      label="Results"
+      title={
+        <>
+          Real results, <span className="accent text-blue">in real numbers.</span>
+        </>
+      }
+      sub="Every number here comes from a real campaign. We don't publish anything we can't stand behind."
+    />
+    <section className="bg-canvas pb-20">
+      <div className="mx-auto max-w-6xl px-5">
+        {caseStudies.length > 0 ? (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {caseStudies.map((s, i) => (
+              <Reveal key={s.id} delay={(i % 3) * 0.05}>
+                <Link to={`/results/${s.id}`} className="group flex h-full flex-col rounded-[22px] bg-paper p-7 shadow-card transition-shadow hover:shadow-float">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-blue">{s.clientIndustry}</span>
+                  <div className="display mt-5 text-[56px] leading-none">{s.qualifiedCalls}</div>
+                  <div className="mt-1 text-[14px] text-slate">qualified calls in {s.daysToResult} days · deal size {s.dealSize}</div>
+                  <p className="mt-5 text-[15px] leading-relaxed text-ink/75">{s.summary}</p>
+                  <span className="mt-auto flex items-center gap-1 pt-6 text-[14px] font-medium">
+                    Read more <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-[#F4F5F7] border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {caseStudies.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {caseStudies.map((study) => (
-                <div
-                  key={study.id}
-                  className="bg-white border border-neutral-300 p-8 rounded-2xl shadow-sm flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="text-xs font-mono font-bold uppercase text-[#0546F2] block mb-2">
-                      {study.clientIndustry}
-                    </span>
-                    <h3 className="text-2xl font-black text-[#0B0F19] mb-1">
-                      {study.qualifiedCalls} Qualified Calls
-                    </h3>
-                    <p className="text-xs text-neutral-500 font-mono mb-4">
-                      Within {study.daysToResult} days &bull; Deal size {study.dealSize}
-                    </p>
-                    <p className="text-sm text-neutral-600 leading-relaxed mb-6">
-                      {study.summary}
-                    </p>
-                  </div>
-                  <Link
-                    to={`/results/${study.id}`}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0546F2] hover:text-[#0437be]"
-                  >
-                    <span>Read Full Debrief</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="bg-white border border-neutral-300 p-12 sm:p-16 text-center max-w-2xl mx-auto rounded-3xl shadow-sm">
-              <div className="w-12 h-12 bg-neutral-100 text-[#0546F2] flex items-center justify-center mx-auto mb-4 rounded-2xl border border-neutral-200">
-                <ShieldAlert className="w-6 h-6" />
-              </div>
-              <h2 className="text-2xl font-black text-[#0B0F19] mb-3">
-                Strict Proof Standard
-              </h2>
-              <p className="text-sm text-neutral-600 leading-relaxed mb-8">
-                We never publish invented case studies, synthetic statistics, or unverified logos. Performance studies are published only after formal client sign-off and contract verification.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  type="button"
-                  onClick={() => openPilotApply('/results')}
-                  className="btn-glow inline-flex items-center justify-center rounded-full bg-[#0546F2] hover:bg-[#0438c7] text-white px-6 py-3 font-bold text-sm tracking-wide shadow-lg transition-all cursor-pointer whitespace-nowrap"
-                >
-                  Apply for Pilot
-                </button>
-                <Button href={CALENDLY_URL} variant="secondary" size="md">
-                  Discuss Expected Metrics
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-    </>
-  );
-};
+        ) : (
+          <div className="mx-auto max-w-xl rounded-[22px] bg-paper p-12 text-center shadow-float">
+            <h2 className="display text-[32px]">Case studies are on the way.</h2>
+            <p className="mt-3 text-[15px] text-slate">We publish results once clients have signed off on them.</p>
+            <Btn variant="dark" className="mt-6" to="/">
+              See how it works
+            </Btn>
+          </div>
+        )}
+      </div>
+    </section>
+    <CTABand title={<>Be the next <span className="accent font-normal text-blue-soft">result.</span></>} />
+  </>
+);

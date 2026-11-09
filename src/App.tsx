@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { PageLayout } from './components/layout/PageLayout';
 import { HomePage } from './pages/HomePage';
-import { PilotPage } from './pages/PilotPage';
 import { ContactPage } from './pages/ContactPage';
 import { ThankYouPage } from './pages/ThankYouPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -29,13 +28,15 @@ import {
   cookiePolicyContent,
 } from './data/legalData';
 
-// Scroll to top helper
+// Scroll to top on every navigation, including clicking a link to the page you're already on.
+// Links with a #hash are left alone so they can jump to their section.
 const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
+    if (hash) return;
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [pathname]);
+  }, [pathname, hash, key]);
 
   return null;
 };

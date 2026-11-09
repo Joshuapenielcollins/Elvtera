@@ -1,73 +1,38 @@
 import { NavItem } from '../types';
 
+/**
+ * Two services:
+ *  1. Signal-based outbound (the home page)
+ *  2. Business systems, websites and end-to-end setup
+ */
 export const navItems: NavItem[] = [
-  {
-    label: "Solutions",
-    href: "/solutions",
-    dropdown: [
-      {
-        title: "Client Acquisition",
-        description: "Targeted outbound system finding active intent and booking qualified calls.",
-        href: "/solutions/client-acquisition",
-        badge: "Flagship",
-      },
-      {
-        title: "Business Systems",
-        description: "Sales pipeline, speed-to-lead and conversion automation on your infrastructure.",
-        href: "/solutions/business-systems",
-      },
-      {
-        title: "Launch",
-        description: "Idea to first paying customers for consulting and service businesses.",
-        href: "/solutions/launch",
-      },
-    ],
-  },
-  {
-    label: "How It Works",
-    href: "/how-it-works",
-  },
-  {
-    label: "Who We Work With",
-    href: "/who-we-work-with",
-  },
-  {
-    label: "Results",
-    href: "/results",
-    requiresProofData: true,
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Resources",
-    href: "/resources",
-    requiresResourceCount: 3,
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  { label: "Outbound", href: "/" },
+  { label: "Business Systems", href: "/solutions/business-systems" },
+  { label: "How it works", href: "/how-it-works" },
+  { label: "Who we work with", href: "/who-we-work-with" },
+  { label: "Results", href: "/results", requiresProofData: true },
+  { label: "Resources", href: "/resources", requiresResourceCount: 3 },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerNavigation = {
-  solutions: [
-    { label: "Client Acquisition (Flagship)", href: "/solutions/client-acquisition" },
-    { label: "Business Systems", href: "/solutions/business-systems" },
-    { label: "Launch System", href: "/solutions/launch" },
+  services: [
+    { label: "Signal-based outbound", href: "/" },
+    { label: "Outbound in detail", href: "/solutions/client-acquisition" },
+    { label: "Business systems & websites", href: "/solutions/business-systems" },
+    { label: "End-to-end launch", href: "/solutions/launch" },
+    { label: "All services", href: "/solutions" },
   ],
   company: [
-    { label: "How It Works", href: "/how-it-works" },
-    { label: "Who We Work With", href: "/who-we-work-with" },
-    { label: "About Elvtera", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Frequently Asked Questions", href: "/faq" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "How it works", href: "/how-it-works" },
+    { label: "Who we work with", href: "/who-we-work-with" },
+      { label: "Careers", href: "/careers" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookie-policy" },
+    { label: "Privacy", href: "/privacy-policy" },
+    { label: "Terms", href: "/terms" },
+    { label: "Cookies", href: "/cookie-policy" },
   ],
 };

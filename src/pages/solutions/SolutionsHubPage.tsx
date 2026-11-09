@@ -1,208 +1,160 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Breadcrumbs } from '../../components/layout/Breadcrumbs';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { SEOHead } from '../../components/layout/SEOHead';
-import { Button } from '../../components/ui/Button';
 import { solutionsHubContent } from '../../data/solutionsData';
 import { solutionsGridContent } from '../../data/homeData';
-import { CALENDLY_URL } from '../../data/siteConfig';
-import { openPilotApply } from '../../utils/analytics';
-import { ArrowRight, Check, HelpCircle } from 'lucide-react';
+import { openBookCall } from '../../utils/analytics';
+import { Btn } from '../../components/kit/Btn';
+import { Hand, Reveal, SectionHead, SectionLabel, Sticky } from '../../components/kit/Paper';
+
+const services = [
+  {
+    n: '01',
+    to: '/',
+    tag: 'Flagship',
+    title: 'Signal-based outbound',
+    body: solutionsGridContent[0].description,
+    points: solutionsGridContent[0].deliverables,
+    tone: 'butter' as const,
+    cta: 'See how outbound works',
+  },
+  {
+    n: '02',
+    to: '/solutions/business-systems',
+    tag: 'Build',
+    title: 'Business systems & websites',
+    body: 'Websites that book calls, sales pipelines and follow-up automation, or a full business setup for founders starting out. Inside your tools or from scratch.',
+    points: [
+      'Conversion-focused B2B websites',
+      ...solutionsGridContent[1].deliverables.slice(0, 3),
+      'End-to-end launch for new service businesses',
+    ],
+    tone: 'mint' as const,
+    cta: 'See what we build',
+  },
+];
 
 export const SolutionsHubPage: React.FC = () => {
-  const [selectedFitIndex, setSelectedFitIndex] = useState(0);
-  const activeFit = solutionsHubContent.whichOneFitsYou[selectedFitIndex];
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Elvtera Solutions Stack',
-    url: 'https://elvtera.com/solutions',
-    description: solutionsHubContent.subtitle,
-  };
+  const [pick, setPick] = useState(0);
+  const fit = solutionsHubContent.whichOneFitsYou[pick];
 
   return (
     <>
       <SEOHead
-        title="Solutions Stack"
-        description="Explore Elvtera's three focused capabilities: Client Acquisition, Business Systems, and Launch. Predictable outbound systems and conversion infrastructure."
+        title="Services"
+        description="Two services: signal-based outbound that books qualified calls, and the business systems and websites that turn those calls into clients."
         canonicalPath="/solutions"
-        jsonLd={jsonLd}
       />
 
-      <Breadcrumbs items={[{ label: 'Solutions' }]} />
+      <section className="glow relative overflow-hidden pb-16 pt-28 sm:pt-32">
+        <div className="desk-grid absolute inset-0 opacity-70" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl px-5">
+          <span className="inline-flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.12em] text-slate">
+            <span className="h-px w-6 bg-blue" /> Services
+          </span>
+          <h1 className="display mt-5 max-w-4xl text-[clamp(48px,7vw,92px)]">
+            Two things, <span className="accent text-blue">done well.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-[clamp(16px,1.45vw,19px)] leading-relaxed text-slate">
+            We find buyers who are ready now, and we build the systems that turn them into clients.
+          </p>
 
-      {/* Hero */}
-      <section className="py-16 lg:py-24 bg-white border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-100 border border-neutral-200 mb-6 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-[#0546F2]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0B0F19]">
-                {solutionsHubContent.eyebrow}
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0B0F19] tracking-tight leading-[1.1] mb-6">
-              {solutionsHubContent.title}
-            </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-              {solutionsHubContent.subtitle}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href={CALENDLY_URL} variant="primary" size="md">
-                Schedule a Solution Intake
-              </Button>
-              <button
-                type="button"
-                onClick={() => openPilotApply('/solutions')}
-                className="btn-glow inline-flex items-center justify-center rounded-full bg-white hover:bg-neutral-100 text-[#0B0F19] border border-neutral-300 px-6 py-3 font-bold text-sm tracking-wide shadow-sm transition-all cursor-pointer"
-              >
-                Apply for a No-Risk Pilot
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Cards Grid */}
-      <section className="py-20 bg-[#F4F5F7] border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {solutionsGridContent.map((sol) => (
-              <div
-                key={sol.slug}
-                className="bg-white border border-neutral-300 p-8 sm:p-10 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow rounded-2xl"
-              >
-                <div>
-                  <div className="flex items-center justify-between pb-6 mb-6 border-b border-neutral-200">
-                    <span className="text-2xl font-black text-[#0546F2] font-mono">
-                      {sol.number}
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-400">
-                      {sol.tagline}
-                    </span>
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+            {services.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <Link
+                  to={s.to}
+                  className="group flex h-full flex-col rounded-[26px] bg-paper p-2 shadow-float transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Sticky tone={s.tone} tape={false} className="rounded-[20px] p-7">
+                    <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.08em] text-ink/55">
+                      <span>
+                        {s.n} · {s.tag}
+                      </span>
+                      <ArrowUpRight className="h-5 w-5 text-ink transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
+                    <h2 className="display mt-10 text-[clamp(34px,3.6vw,46px)]">{s.title}</h2>
+                  </Sticky>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="text-[15.5px] leading-relaxed text-slate">{s.body}</p>
+                    <ul className="mt-6 space-y-2.5">
+                      {s.points.map((p) => (
+                        <li key={p} className="flex gap-2.5 text-[14.5px]">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-blue" /> {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <span className="mt-8 font-hand text-[22px] text-blue">{s.cta} →</span>
                   </div>
-
-                  <h2 className="text-2xl font-black text-[#0B0F19] tracking-tight mb-3">
-                    {sol.title}
-                  </h2>
-                  <p className="text-sm text-neutral-600 leading-relaxed mb-6">
-                    {sol.description}
-                  </p>
-
-                  <div className="space-y-3 pt-4 border-t border-neutral-100 mb-8">
-                    {sol.deliverables.map((deliv, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-neutral-700">
-                        <div className="w-4 h-4 bg-blue-50 text-[#0546F2] flex items-center justify-center flex-shrink-0 mt-0.5 border border-blue-200 rounded-md">
-                          <Check className="w-3 h-3 stroke-[3]" />
-                        </div>
-                        <span>{deliv}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <Link
-                    to={`/solutions/${sol.slug}`}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 bg-[#0B0F19] text-white text-xs font-bold uppercase tracking-wider btn-brand-fill hover:border-[#0546F2] rounded-full"
-                  >
-                    <span>View {sol.title} Details</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* "Which One Fits You" Selector */}
-      <section className="py-20 lg:py-28 bg-white border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#0546F2]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-                Fit Evaluation
-              </span>
+      {/* Which one fits */}
+      <section className="bg-paper py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionLabel n="01" note="Pick a sentence">
+            Not sure?
+          </SectionLabel>
+          <SectionHead
+            className="mt-10"
+            title={
+              <>
+                Which one <span className="accent text-blue">fits you?</span>
+              </>
+            }
+            sub="Pick the sentence that sounds most like you."
+          />
+          <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_1fr]">
+            <div className="space-y-3">
+              {solutionsHubContent.whichOneFitsYou.map((o, i) => (
+                <button
+                  key={o.id}
+                  type="button"
+                  onClick={() => setPick(i)}
+                  aria-pressed={pick === i}
+                  className={`w-full rounded-2xl p-5 text-left text-[16px] leading-relaxed transition-all ${
+                    pick === i ? 'bg-ink text-white shadow-lift' : 'bg-canvas text-ink hover:bg-hover'
+                  }`}
+                >
+                  “{o.situation}”
+                </button>
+              ))}
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight">
-              Which solution fits your current situation?
-            </h2>
-            <p className="text-sm text-neutral-600 mt-2">
-              Select the statement that matches your business reality to see our direct recommendation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Options list */}
-            <div className="lg:col-span-6 space-y-3">
-              {solutionsHubContent.whichOneFitsYou.map((opt, idx) => {
-                const isSelected = selectedFitIndex === idx;
-                return (
-                  <div
-                    key={opt.id}
-                    onClick={() => setSelectedFitIndex(idx)}
-                    className={`p-6 border cursor-pointer transition-all rounded-xl ${
-                      isSelected
-                        ? 'bg-[#0B0F19] text-white border-[#0B0F19] shadow-md'
-                        : 'bg-white text-[#0B0F19] border-neutral-300 hover:border-neutral-400'
-                    }`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 rounded-full border text-xs font-mono font-bold ${
-                          isSelected
-                            ? 'bg-[#0546F2] text-white border-[#0546F2]'
-                            : 'bg-neutral-100 text-neutral-500 border-neutral-300'
-                        }`}
-                      >
-                        {idx + 1}
-                      </div>
-                      <p className="text-sm font-semibold leading-relaxed">
-                        "{opt.situation}"
-                      </p>
-                    </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={fit.id}
+                initial={{ opacity: 0, y: 12, rotate: 0 }}
+                animate={{ opacity: 1, y: 0, rotate: 1.5 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Sticky tone="butter" pin className="p-8">
+                  <div className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink/55">Start with</div>
+                  <h3 className="display mt-3 text-[34px]">{fit.recommendationTitle}</h3>
+                  <p className="mt-4 text-[15.5px] leading-relaxed text-ink/80">{fit.explanation}</p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Btn variant="dark" arrow to={fit.recommendationSlug}>
+                      Take a look
+                    </Btn>
+                    <Btn variant="light" onClick={openBookCall}>
+                      Book a call
+                    </Btn>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Recommendation Display Card */}
-            <div className="lg:col-span-6 sticky top-28">
-              <div className="border border-[#0B0F19] bg-[#F4F5F7] p-8 sm:p-10 rounded-2xl shadow-xl">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0546F2] mb-3">
-                  <HelpCircle className="w-4 h-4" />
-                  Recommended Architecture
-                </div>
-
-                <h3 className="text-2xl font-black text-[#0B0F19] tracking-tight mb-4">
-                  {activeFit.recommendationTitle}
-                </h3>
-                <p className="text-sm text-neutral-700 leading-relaxed mb-8">
-                  {activeFit.explanation}
-                </p>
-
-                <div className="pt-6 border-t border-neutral-300 flex flex-col sm:flex-row gap-3">
-                  <Link to={activeFit.recommendationSlug} className="flex-1">
-                    <Button variant="primary" size="md" className="w-full justify-center">
-                      Read Complete Blueprint
-                    </Button>
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => openPilotApply('/solutions')}
-                    className="flex-1 btn-glow inline-flex items-center justify-center rounded-full bg-white hover:bg-neutral-100 text-[#0B0F19] border border-neutral-300 px-6 py-3 font-bold text-sm tracking-wide shadow-sm transition-all cursor-pointer"
-                  >
-                    Apply for a No-Risk Pilot
-                  </button>
-                </div>
-              </div>
-            </div>
+                </Sticky>
+              </motion.div>
+            </AnimatePresence>
           </div>
+          <Hand className="mt-12 text-center text-[24px]">still unsure? just ask us on a call</Hand>
         </div>
       </section>
     </>
   );
 };
+
+export default SolutionsHubPage;

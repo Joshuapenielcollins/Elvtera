@@ -1,44 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/layout/SEOHead';
-import { Button } from '../components/ui/Button';
-import { ArrowLeft } from 'lucide-react';
+import { Btn } from '../components/kit/Btn';
+import { Hand, Sticky } from '../components/kit/Paper';
 
-export const NotFoundPage: React.FC = () => {
-  return (
-    <>
-      <SEOHead
-        title="Page Not Found"
-        description="The page you requested could not be found on Elvtera."
-        canonicalPath="/404"
-      />
-
-      <section className="py-24 lg:py-36 bg-white text-center">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-block p-4 bg-[#F4F5F7] border border-neutral-300 rounded-2xl mb-6">
-            <span className="text-4xl font-black text-[#0546F2] font-mono">404</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight mb-4">
-            Page Not Found
-          </h1>
-          <p className="text-sm text-neutral-600 mb-8 leading-relaxed">
-            The route you navigated to does not exist or may have been updated.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/">
-              <Button variant="primary">
-                Return to Home
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button variant="secondary" showArrow={false}>
-                Contact Support
-              </Button>
-            </Link>
-          </div>
+export const NotFoundPage: React.FC = () => (
+  <>
+    <SEOHead title="Page Not Found" description="The page you requested could not be found on Elvtera." />
+    <section className="glow desk-grid flex min-h-[80vh] items-center pb-24 pt-36">
+      <div className="mx-auto max-w-2xl px-5 text-center">
+        <Sticky tone="pink" pin className="mx-auto inline-block -rotate-3 px-10 py-6">
+          <span className="display text-[96px] leading-none">404</span>
+        </Sticky>
+        <h1 className="display mt-10 text-[clamp(38px,5vw,60px)]">
+          This page <span className="accent text-blue">isn't looking for you.</span>
+        </h1>
+        <p className="mx-auto mt-5 max-w-md text-[17px] text-slate">The link may be old, or the page may have moved.</p>
+        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <Btn variant="dark" to="/">
+            Go home
+          </Btn>
+          <Btn variant="ghost" to="/contact">
+            Contact us
+          </Btn>
         </div>
-      </section>
-    </>
-  );
-};
+        <Hand className="mt-6 text-[22px]">unlike our outreach</Hand>
+      </div>
+    </section>
+  </>
+);
