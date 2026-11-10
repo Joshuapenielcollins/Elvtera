@@ -572,72 +572,128 @@ const InboxView: React.FC<{ c: Ctx }> = ({ c }) => {
 
 /* ---------- Calendar ---------- */
 
+interface Booking {
+  person: string;
+  role: string;
+  company: string;
+  detail: string;
+  signal: string;
+  tag: Tag;
+}
+
+/** A full sample week. Built from the signals list plus a few extra US accounts. */
+const BOOKINGS: Booking[] = [
+  ...SIGNALS.filter((s) => s.region === 'US' && s.id !== 's6').map((s) => ({
+    person: s.person,
+    role: s.role,
+    company: s.company,
+    detail: `${s.size} staff · ${s.industry} · ${s.city}`,
+    signal: s.text,
+    tag: s.tag,
+  })),
+  { person: 'Brian Foster', role: 'VP Operations', company: 'Ironwood Builders', detail: '210 staff · Construction · Nashville, TN', signal: 'Hiring 2 project coordinators', tag: 'Hiring' },
+  { person: 'Rachel Hughes', role: 'Head of Growth', company: 'Clearwater Insurance', detail: '160 staff · Insurance · Tampa, FL', signal: 'New CMO appointed last month', tag: 'New leader' },
+  { person: 'Tyler Jensen', role: 'COO', company: 'Prairie Cold Storage', detail: '95 staff · Logistics · Omaha, NE', signal: 'Opening a third facility', tag: 'Expansion' },
+  { person: 'Hannah Price', role: 'Director of Sales', company: 'Bluebird Payroll', detail: '120 staff · SaaS · Raleigh, NC', signal: 'Switching CRM this quarter', tag: 'Tech change' },
+];
+
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const TIMES = ['9:00 AM', '11:00 AM', '2:00 PM', '4:00 PM'];
+/** Which slots are booked: [day, time] pairs, 14 of 20. */
+const SLOTS: [number, number][] = [
+  [0, 0], [0, 1], [0, 3],
+  [1, 0], [1, 2], [1, 3],
+  [2, 1], [2, 2], [2, 3],
+  [3, 0], [3, 1], [3, 2],
+  [4, 1], [4, 2],
+];
+const TIMELINES = ['This quarter', 'Next 30 days', 'Within 60 days', 'Budget approved'];
+
 const CalendarView: React.FC = () => {
-  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-  const times = ['9 AM', '11 AM', '2 PM', '4 PM'];
-  const booked: Record<string, string> = { 'Mon-1': 't2', 'Wed-3': 't3', 'Thu-2': 't1' };
-  const [sel, setSel] = useState<string>('t1');
-  const t = sampleThreads.find((x) => x.id === sel)!;
+  const booked = new Map(SLOTS.map(([d, t], i) => [`${d}-${t}`, i]));
+  const [sel, setSel] = useState(0); // Monday 9 AM, Megan Carter
+  const b = BOOKINGS[sel];
+  const [d, t] = SLOTS[sel];
 
   return (
-    <div className="grid gap-4 @min-[760px]:grid-cols-[1.3fr_1fr]">
-      <div className="overflow-x-auto">
-        <div className="grid min-w-[380px] grid-cols-[44px_repeat(5,1fr)] gap-1.5">
-          <span />
-          {days.map((d) => (
-            <span key={d} className="text-center font-mono text-[10px] uppercase text-ash">
-              {d}
-            </span>
-          ))}
-          {times.map((tm, ti) => (
-            <React.Fragment key={tm}>
-              <span className="pt-2 text-right font-mono text-[9.5px] text-ash">{tm}</span>
-              {days.map((d) => {
-                const id = booked[`${d}-${ti}`];
-                const th = sampleThreads.find((x) => x.id === id);
-                return th ? (
-                  <button
-                    key={d}
-                    type="button"
-                    onClick={() => setSel(th.id)}
-                    className={`h-14 rounded-lg p-1.5 text-left text-[10px] leading-tight text-white transition-all ${
-                      sel === th.id ? 'bg-blue shadow-[0_6px_14px_-6px_rgb(5_70_242/0.7)] ring-2 ring-blue/30' : 'bg-blue/70 hover:bg-blue'
-                    }`}
-                  >
-                    <div className="font-semibold">{th.person}</div>
-                    <div className="opacity-80">{th.company}</div>
-                  </button>
-                ) : (
-                  <span key={d} className="h-14 rounded-lg bg-canvas" />
-                );
-              })}
-            </React.Fragment>
-          ))}
+    <div className="grid gap-4 @min-[760px]:grid-cols-[1.35fr_1fr]">
+      <div>
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px]">
+          <span className="rounded-full bg-ok-tint px-2.5 py-1 font-medium text-ok">{SLOTS.length} qualified calls this week</span>
+          <span className="rounded-full bg-canvas px-2.5 py-1 text-slate">Sample week</span>
+          <span className="text-slate">Each one with a briefing note</span>
+        </div>
+        <div className="overflow-x-auto">
+          <div className="grid min-w-[400px] grid-cols-[48px_repeat(5,1fr)] gap-1.5">
+            <span />
+            {DAYS.map((day) => (
+              <span key={day} className="text-center font-mono text-[10px] uppercase text-ash">
+                {day}
+              </span>
+            ))}
+            {TIMES.map((tm, ti) => (
+              <React.Fragment key={tm}>
+                <span className="pt-2 text-right font-mono text-[9.5px] text-ash">{tm.replace(':00', '')}</span>
+                {DAYS.map((day, di) => {
+                  const i = booked.get(`${di}-${ti}`);
+                  if (i === undefined) return <span key={day} className="h-[60px] rounded-lg bg-canvas" />;
+                  const bk = BOOKINGS[i];
+                  return (
+                    <button
+                      key={day}
+                      type="button"
+                      onClick={() => setSel(i)}
+                      aria-pressed={sel === i}
+                      className={`h-[60px] min-w-0 overflow-hidden rounded-lg p-1.5 text-left text-[10px] leading-tight text-white transition-all ${
+                        sel === i ? 'bg-blue shadow-[0_6px_14px_-6px_rgb(5_70_242/0.7)] ring-2 ring-blue/30' : 'bg-blue/65 hover:bg-blue'
+                      }`}
+                    >
+                      <div className="truncate font-semibold">{bk.person.split(' ')[0]} {bk.person.split(' ')[1][0]}.</div>
+                      <div className="line-clamp-2 opacity-85">{bk.company}</div>
+                    </button>
+                  );
+                })}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </div>
+
       <AnimatePresence mode="wait">
-        <motion.div key={t.id} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="rounded-2xl bg-canvas p-4">
-          <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-blue">Briefing note · {t.booked}</div>
-          <div className="mt-2 flex items-center gap-2.5">
-            <Avatar name={t.person} size={32} />
-            <div>
-              <div className="text-[13.5px] font-semibold">{t.person}</div>
-              <div className="text-[11.5px] text-slate">
-                {t.role}, {t.company}
+        <motion.div key={sel} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="min-w-0 rounded-2xl bg-canvas p-4">
+          <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-blue">
+            Briefing note · {DAYS[d]} {TIMES[t]}
+          </div>
+          <div className="mt-2.5 flex items-center gap-2.5">
+            <Avatar name={b.person} size={34} />
+            <div className="min-w-0">
+              <div className="truncate text-[13.5px] font-semibold">{b.person}</div>
+              <div className="truncate text-[11.5px] text-slate">
+                {b.role}, {b.company}
               </div>
             </div>
           </div>
-          <p className="mt-3 text-[12.5px] leading-relaxed text-ink/80">{t.signal}</p>
+          <div className="mt-3 flex items-center gap-2 text-[12.5px]">
+            <TagChip tag={b.tag} />
+            <span className="text-ink/80">{b.signal}</span>
+          </div>
           <div className="mt-3 space-y-1.5">
-            {t.checks.map((ch) => (
-              <div key={ch.label} className="flex items-center justify-between rounded-lg bg-paper px-2.5 py-1.5 text-[11.5px]">
-                <span className="flex items-center gap-1.5 font-medium">
-                  <Check className="h-3.5 w-3.5 text-ok" /> {ch.label}
+            {[
+              ['Fits your ICP', b.detail],
+              ['Decision-maker', b.role],
+              ['Timeline', TIMELINES[sel % TIMELINES.length]],
+            ].map(([k, v]) => (
+              <div key={k} className="flex items-center justify-between gap-3 rounded-lg bg-paper px-2.5 py-1.5 text-[11.5px]">
+                <span className="flex shrink-0 items-center gap-1.5 font-medium">
+                  <Check className="h-3.5 w-3.5 text-ok" /> {k}
                 </span>
-                <span className="text-slate">{ch.value}</span>
+                <span className="truncate text-right text-slate">{v}</span>
               </div>
             ))}
           </div>
+          <p className="mt-3 text-[11.5px] leading-relaxed text-slate">
+            Talking point: open with their {b.tag.toLowerCase()} signal and ask how they're handling it today.
+          </p>
         </motion.div>
       </AnimatePresence>
     </div>
@@ -647,20 +703,21 @@ const CalendarView: React.FC = () => {
 /* ---------- Reports ---------- */
 
 const ReportsView: React.FC<{ c: Ctx }> = ({ c }) => {
+  // Week 6 is the same sample week shown in Calendar (14 calls).
   const weeks = [
-    [40, 4, 1],
-    [62, 7, 2],
-    [78, 9, 3],
-    [96, 12, 5],
-    [110, 14, 6],
-    [124 + c.sent.size, 17, 7],
+    [60, 5, 2],
+    [90, 8, 4],
+    [120, 12, 7],
+    [150, 16, 10],
+    [165, 19, 12],
+    [180 + c.sent.size, 22, 14],
   ];
-  const max = 140;
+  const max = 200;
   const kpis = [
     ['Signals spotted', String(c.spotted)],
-    ['Contacted', String(86 + c.sent.size)],
-    ['Positive replies', '14'],
-    ['Calls booked', '7'],
+    ['Contacted this week', String(180 + c.sent.size)],
+    ['Positive replies', '22'],
+    ['Calls booked', String(SLOTS.length)],
   ];
   return (
     <div>
@@ -687,14 +744,14 @@ const ReportsView: React.FC<{ c: Ctx }> = ({ c }) => {
             </span>
           </span>
         </div>
-        <div className="mt-4 flex h-40 items-end gap-3">
+        <div className="mt-4 flex items-end gap-3">
           {weeks.map(([a, b, d], i) => (
             <div key={i} className="flex flex-1 flex-col items-center gap-1.5">
-              <div className="flex h-full w-full items-end justify-center gap-1">
+              <div className="flex h-36 w-full items-end justify-center gap-1">
                 {[
                   [a, 'bg-blue/30'],
                   [b * 4, 'bg-blue'],
-                  [d * 8, 'bg-[#e0a91b]'],
+                  [d * 6, 'bg-[#e0a91b]'],
                 ].map(([v, cls], j) => (
                   <motion.span
                     key={j}

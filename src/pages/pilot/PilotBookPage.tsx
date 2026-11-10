@@ -13,7 +13,7 @@ const prep = [
 ];
 
 const steps = [
-  ['Proof call (15–45 min)', 'We show you real companies showing buying signals for your offer.'],
+  ['Proof call (45 min)', 'We show you real companies showing buying signals for your offer.'],
   ['Setup in 48 hours', 'We set up sending infrastructure and draft messages for your approval.'],
   ['Outreach goes live', 'We contact people across multiple channels and handle replies.'],
   ['Reports on day 7 and day 14', 'Who we contacted, who replied, and what was booked.'],

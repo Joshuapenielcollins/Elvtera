@@ -18,7 +18,7 @@ export const pilotCopy = {
   },
   hero: {
     headline: "See your customers first. Decide after.",
-    sub: `A 15-minute call where we show you real people who need what you sell right now. Then a ${PILOT_LENGTH.replace(' days', '-day')} pilot where you approve every message.`,
+    sub: `A 45-minute call where we show you real people who need what you sell right now. Then a ${PILOT_LENGTH.replace(' days', '-day')} pilot where you approve every message.`,
     applyButton: "Apply for a No-Risk Pilot",
     bookButton: "Book a Call",
   },
