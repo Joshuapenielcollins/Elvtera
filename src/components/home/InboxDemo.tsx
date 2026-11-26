@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, CalendarCheck2, Check, ExternalLink, Mail, Radar, Send, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Calendar, CalendarCheck2, Check, ExternalLink, Radar, Send, Sparkles } from 'lucide-react';
 import { sampleThreads } from '../../data/homeData';
 import { CONTACT_EMAIL } from '../../data/siteConfig';
 import { openBookCall } from '../../utils/analytics';
@@ -174,7 +174,7 @@ export const InboxDemo: React.FC = () => {
                     </span>
                   </div>
                   <div className={`mt-0.5 text-[12px] ${view === 'book' ? 'text-white/80' : 'text-white/60'}`}>
-                    30 min · Strategy & Live Signals
+                    30 min · strategy & live signals
                   </div>
                   <div
                     className={`mt-1.5 flex items-center gap-1 text-[11px] font-medium ${
@@ -242,7 +242,7 @@ export const InboxDemo: React.FC = () => {
                             Want qualified buyers like {t.person.split(' ')[0]} on your calendar?
                           </div>
                           <div className="mt-0.5 text-[12px] text-white/60">
-                            We show you live buying signals for your specific offer on a 30-min proof call.
+                            We show you live buying signals for your specific offer on a free 30-minute intro call.
                           </div>
                         </div>
                         <button
@@ -270,8 +270,8 @@ export const InboxDemo: React.FC = () => {
                       <span>30-minute intro call · Google Meet</span>
                     </div>
 
-                    <h3 className="mt-3 text-[clamp(22px,2.4vw,32px)] font-semibold tracking-[-0.02em] text-white">
-                      Pick a time for your strategy call
+                    <h3 className="display mt-4 text-[clamp(28px,3vw,40px)] text-white">
+                      Pick a time for your <span className="accent text-blue-soft">strategy call.</span>
                     </h3>
                     <p className="mt-2 max-w-xl text-[14.5px] leading-relaxed text-white/70">
                       We'll bring 5–10 real companies currently showing buying intent for your offer, and walk you
@@ -282,7 +282,7 @@ export const InboxDemo: React.FC = () => {
                     <div className="mt-5 grid gap-2.5 sm:grid-cols-3">
                       <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
                         <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#7ee2a8]">
-                          <Check className="h-3.5 w-3.5" /> Live Signal Audit
+                          <Check className="h-3.5 w-3.5" /> Live signal audit
                         </div>
                         <div className="mt-1 text-[12.5px] text-white/70">
                           See real buyers in your market before you commit to anything.
@@ -290,7 +290,7 @@ export const InboxDemo: React.FC = () => {
                       </div>
                       <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
                         <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#7ee2a8]">
-                          <Check className="h-3.5 w-3.5" /> 100% No Pitch Deck
+                          <Check className="h-3.5 w-3.5" /> No pitch deck
                         </div>
                         <div className="mt-1 text-[12.5px] text-white/70">
                           A pragmatic teardown of your ICP, copy angles, and deliverability.
@@ -298,10 +298,10 @@ export const InboxDemo: React.FC = () => {
                       </div>
                       <div className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
                         <div className="flex items-center gap-1.5 text-[12px] font-medium text-[#7ee2a8]">
-                          <Check className="h-3.5 w-3.5" /> Zero Obligation
+                          <Check className="h-3.5 w-3.5" /> No obligation
                         </div>
                         <div className="mt-1 text-[12.5px] text-white/70">
-                          Decide if our no-risk 14-day pilot makes sense for your team.
+                          Decide if our 14-day pilot makes sense for your team.
                         </div>
                       </div>
                     </div>
